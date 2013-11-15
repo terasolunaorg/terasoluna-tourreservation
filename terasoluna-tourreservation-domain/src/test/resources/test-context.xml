@@ -23,7 +23,7 @@
         </property>
         <property name="defaultExceptionCode" value="e.tr.fw.0003" />
     </bean>
-    <bean id="jdbcTemplate"
+    <bean id="namedParameterJdbcTemplate"
         class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
         <constructor-arg>
             <ref bean="dataSource" />
