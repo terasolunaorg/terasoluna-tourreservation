@@ -11,6 +11,10 @@ This application shows how to use the framework ,how to configure project struct
 
 Download source code from [here](https://github.com/terasolunaorg/terasoluna-tourreservation/releases "here").
 
+### Run PostgreSQL
+
+Install and start PostgreSQL.
+
 #### Insert test data
 
 TEST data is written in only japanese now.
