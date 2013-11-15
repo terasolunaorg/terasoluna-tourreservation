@@ -7,7 +7,7 @@ This application shows how to use the framework ,how to configure project struct
 
 ### Getting started
 
-### Download
+#### Download
 
 Download source code from [here](https://github.com/terasolunaorg/terasoluna-tourreservation/releases "here").
 
@@ -19,18 +19,18 @@ TEST data is written in only japanese now.
 
 Change the configuration of Database in terasoluna-tourreservation-initdb/pom.xml if required.
 
-### Install jars
+#### Install jars
 
 
 	$ mvn -f terasoluna-tourreservation-parent/pom.xml install
 	$ mvn -f terasoluna-tourreservation-env/pom.xml intalll
 	$ mvn -f terasoluna-tourreservation-domain/pom.xml install
 
-### Build war
+#### Build war
 
 	$ mvn -f terasoluna-tourreservation-web/pom.xml package
 
-### Deploy war
+#### Deploy war
 
 Deploy `terasoluna-tourreservation-web/target/terasoluna-tourreservation-web.war`
 
@@ -40,7 +40,7 @@ access http://localhost:8080/terasoluna-tourreservation-web
 
 Surely, You can import these project into Eclipse and run the application using WTP.
 
-### Test with selenium
+#### Test with selenium
 Install Firefox
 
 	$ mvn -f terasoluna-tourreservation-selenium/pom.xml test
