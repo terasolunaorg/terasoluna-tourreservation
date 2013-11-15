@@ -1,0 +1,21 @@
+<host xmlns="http://caucho.com/ns/resin" xmlns:resin="urn:java:com.caucho.resin">
+
+  <web-app id="/terasoluna-tourreservation-web" root-directory="webapps/terasoluna-tourreservation-web">
+    <!-- settings of DataSource -->
+    <database jndi-name="jdbc/dataSource">
+      <driver>
+        <type>org.postgresql.Driver</type>
+        <url>jdbc:postgresql://localhost:5432/tourreserve</url>
+        <user>postgres</user>
+        <password>P0stgres</password>
+      </driver>
+    </database>
+    <!-- settings of class loader for web application -->
+    <class-loader>
+      <library-loader path="/home/terasoluna/gfw/webapps-env-jars/terasoluna-tourreservation-env-resin-postgresql" />
+    </class-loader>
+  </web-app>
+
+</host>
+
+

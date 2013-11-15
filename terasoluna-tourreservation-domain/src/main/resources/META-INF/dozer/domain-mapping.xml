@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+          
+	<configuration>
+		<copy-by-references>
+			<copy-by-reference>
+		org.terasoluna.tourreservation.domain.model.*
+			</copy-by-reference>
+		</copy-by-references>
+	</configuration>
+	
+	<mapping map-id="reserve_map_nonnull" map-null="false">
+		<class-a> org.terasoluna.tourreservation.domain.service.reserve.ReservationUpdateInput
+		</class-a>
+		<class-b>org.terasoluna.tourreservation.domain.model.Reserve
+		</class-b>
+	</mapping>
+
+</mappings> 

@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.terasoluna.app</groupId>
+        <artifactId>terasoluna-tourreservation-parent</artifactId>
+        <version>1.0.0.RELEASE</version>
+        <relativePath>../terasoluna-tourreservation-parent/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>terasoluna-tourreservation-initdb</artifactId>
+    <name>${project.artifactId}</name>
+
+    <properties>
+        <postgresql.version>8.3-606.jdbc3</postgresql.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>local-postgres</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <db.encoding>UTF8</db.encoding>
+                <db.basedir>src/sqls/postgres</db.basedir>
+                <db.url>jdbc:postgresql://127.0.0.1:5432/tourreserve</db.url>
+                <db.username>postgres</db.username>
+                <db.password>P0stgres</db.password>
+                <db.driver>org.postgresql.Driver</db.driver>
+                <db.groupId>postgresql</db.groupId>
+                <db.artifactId>postgresql</db.artifactId>
+                <db.version>${postgresql.version}</db.version>
+                <db.delimiterType>row</db.delimiterType>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sql-maven-plugin</artifactId>
+                <version>1.5</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>${db.groupId}</groupId>
+                        <artifactId>${db.artifactId}</artifactId>
+                        <version>${db.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <driver>${db.driver}</driver>
+                    <url>${db.url}</url>
+                    <username>${db.username}</username>
+                    <password>${db.password}</password>
+                    <encoding>${db.encoding}</encoding>
+                    <autocommit>false</autocommit>
+                    <delimiterType>${db.delimiterType}</delimiterType>
+                    <onError>continue</onError>
+                    <skip>false</skip>
+                    <fileset>
+                        <basedir>${db.basedir}</basedir>
+                        <includes>
+                            <include>0*.sql</include>
+                        </includes>
+                    </fileset>
+                    <orderFile>ascending</orderFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

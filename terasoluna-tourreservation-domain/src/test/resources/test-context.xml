@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder
+        location="classpath*:/META-INF/spring/*.properties" />
+    <import resource="classpath:/META-INF/spring/tourreservation-domain.xml" />
+    <!-- Exception Logger. -->
+    <bean id="exceptionLogger"
+        class="org.terasoluna.gfw.common.exception.ExceptionLogger">
+        <property name="exceptionCodeResolver" ref="exceptionCodeResolver" />
+    </bean>
+    <!-- Exception Code Resolver. -->
+    <bean id="exceptionCodeResolver"
+        class="org.terasoluna.gfw.common.exception.SimpleMappingExceptionCodeResolver">
+        <property name="exceptionMappings">
+            <map>
+                <entry key="BusinessException" value="e.tr.fw.0003" />
+            </map>
+        </property>
+        <property name="defaultExceptionCode" value="e.tr.fw.0003" />
+    </bean>
+    <bean id="jdbcTemplate"
+        class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg>
+            <ref bean="dataSource" />
+        </constructor-arg>
+    </bean>
+
+	<bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+		
+    <bean class="org.dozer.spring.DozerBeanMapperFactoryBean">
+        <property name="mappingFiles"
+            value="classpath*:/META-INF/dozer/**/*-mapping.xml" />
+    </bean>
+</beans>

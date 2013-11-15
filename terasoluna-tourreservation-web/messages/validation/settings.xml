@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InputBean xml:space="preserve">
+    <docPath>ValidationMessages.xls</docPath>
+    <keyClassOutputDir>../../src/main/java</keyClassOutputDir>
+    <keyClassPackageName>org.terasoluna.tourreservation.app.common.constants</keyClassPackageName>
+    <keyClassName>ValidationMessageKeys</keyClassName>
+    <keyClassEncoding>UTF-8</keyClassEncoding>
+    <propertyFileOutputDir>../../src/main/resources/META-INF</propertyFileOutputDir>
+    <propertyFileBaseName>ValidationMessages</propertyFileBaseName>
+    <propertyFileEncoding>UTF-8</propertyFileEncoding>
+    <xlsSheetName>.*</xlsSheetName>
+    <xlsTitleName>message</xlsTitleName>
+    <idColumnName>MESSAGEID</idColumnName>
+    <messageColumnName>MESSAGES</messageColumnName>
+</InputBean>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sec="http://www.springframework.org/schema/security"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <sec:http auto-config="true">
+        <sec:custom-filter ref="csrfFilter" before="LOGOUT_FILTER" />
+        <sec:intercept-url pattern="/tourreserve/confirm"
+            access="ROLE_USER" />
+        <sec:intercept-url pattern="/tourreserve/reserve"
+            access="ROLE_USER" />
+        <sec:intercept-url pattern="/reservationreference/**"
+            access="ROLE_USER" />
+        <sec:intercept-url pattern="/managereservation/**"
+            access="ROLE_USER" />
+
+        <sec:form-login login-page="/login"
+            default-target-url="/" always-use-default-target="false"
+            authentication-failure-handler-ref="redirectErrorHandler"
+            authentication-success-handler-ref="redirectHandler" />
+
+        <sec:logout logout-url="/logout" logout-success-url="/"
+            delete-cookies="JSESSIONID" invalidate-session="true" />
+
+        <!-- It is recommended that key contains unique name of application 
+            and is atleast 36 random characters long -->
+        <sec:remember-me key="terasoluna-tourreservation-km/ylnHv"
+            token-validity-seconds="2419200" />
+
+        <sec:session-management
+            session-authentication-strategy-ref="sessionAuthenticationStrategy" />
+    </sec:http>
+
+
+    <bean id="userDetailsService"
+        class="org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetailsService">
+    </bean>
+
+    <sec:authentication-manager>
+        <sec:authentication-provider user-service-ref="userDetailsService">
+            <sec:password-encoder ref="passwordEncoder" />
+        </sec:authentication-provider>
+    </sec:authentication-manager>
+
+    <bean id="passwordEncoder"
+        class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+
+    <bean id="redirectHandler"
+        class="org.terasoluna.gfw.security.web.redirect.RedirectAuthenticationHandler">
+    </bean>
+
+    <bean id="redirectErrorHandler"
+        class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+        <property name="defaultFailureUrl" value="/login?error=true" />
+        <property name="useForward" value="true" />
+    </bean>
+
+
+    <!-- CSRF Protection -->
+    <bean id="csrfTokenRepository"
+        class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository" />
+
+    <bean id="csrfFilter" class="org.springframework.security.web.csrf.CsrfFilter">
+        <constructor-arg index="0" ref="csrfTokenRepository" />
+        <property name="accessDeniedHandler">
+            <bean
+                class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+                <property name="errorPage"
+                    value="/WEB-INF/views/common/error/csrf-error.jsp" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="sessionAuthenticationStrategy"
+        class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy">
+        <constructor-arg index="0">
+            <list>
+                <bean
+                    class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy" />
+                <bean
+                    class="org.springframework.security.web.csrf.CsrfAuthenticationStrategy">
+                    <constructor-arg index="0"
+                        ref="csrfTokenRepository" />
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>
