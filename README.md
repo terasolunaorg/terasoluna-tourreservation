@@ -18,6 +18,10 @@ Install and start PostgreSQL.
 select 'POstgres' as password for db user or select any password of choice. Be sure to remember the password. 
 If 'POstgres' is not used, some changes will be required in configuration files. Hence be sure to remember it.
 
+### Run PostgreSQL
+
+Install and start PostgreSQL.
+
 #### Insert test data
 
 It is assumed that maven is already installed.
