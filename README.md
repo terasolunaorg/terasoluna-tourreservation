@@ -22,7 +22,7 @@ If 'POstgres' is not used, some changes will be required in configuration files.
 
 Install and start PostgreSQL.
 
-crate database 'tourreserve'.
+create database 'tourreserve'.
 
 #### Insert test data
 
