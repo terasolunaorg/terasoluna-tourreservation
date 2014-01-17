@@ -18,6 +18,8 @@
         </property>
     </bean>
 
+    <bean id="dateFactory" class="org.terasoluna.gfw.common.date.DefaultDateFactory" /> 
+
     <beans profile="firefox default">
         <bean id="webDriver" class="org.openqa.selenium.firefox.FirefoxDriver" scope="prototype" />
     </beans>
