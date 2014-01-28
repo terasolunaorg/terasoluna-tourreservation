@@ -20,6 +20,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,6 +34,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.terasoluna.gfw.common.date.DateFactory;
 import org.terasoluna.tourreservation.app.common.constants.MessageId;
 import org.terasoluna.tourreservation.app.common.constants.ValidationMessageKeys;
 
@@ -43,6 +46,9 @@ public class TourSearchValidateTest {
 
     @Autowired
     protected WebDriver driver;
+
+    @Inject
+    protected DateFactory dateFactory;
 
     @Value("${selenium.baseUrl}")
     protected String baseUrl;
@@ -65,8 +71,8 @@ public class TourSearchValidateTest {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
-                .click();
+                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE)
+                        + "']")).click();
 
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("password");
@@ -79,8 +85,8 @@ public class TourSearchValidateTest {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
-                .click();
+                        + getMessage(MessageId.LABEL_TR_MENU_SEARCHBTNMESSAGE)
+                        + "']")).click();
 
         new Select(driver.findElement(By.id("depCode"))).selectByValue("");
         new Select(driver.findElement(By.id("arrCode"))).selectByValue("01");
@@ -91,7 +97,8 @@ public class TourSearchValidateTest {
 
         assertEquals(
                 getMessage(ValidationMessageKeys.NOTEMPTY_TOURINFOSEARCHCRITERIA_DEPCODE),
-                driver.findElement(By.id("tourInfoSearchCriteria.errors")).getText());
+                driver.findElement(By.id("tourInfoSearchCriteria.errors"))
+                        .getText());
 
         new Select(driver.findElement(By.id("depCode"))).selectByValue("01");
         new Select(driver.findElement(By.id("arrCode"))).selectByValue("");
@@ -102,7 +109,8 @@ public class TourSearchValidateTest {
 
         assertEquals(
                 getMessage(ValidationMessageKeys.NOTEMPTY_TOURINFOSEARCHCRITERIA_ARRCODE),
-                driver.findElement(By.id("tourInfoSearchCriteria.errors")).getText());
+                driver.findElement(By.id("tourInfoSearchCriteria.errors"))
+                        .getText());
     }
 
     @Test
@@ -111,12 +119,16 @@ public class TourSearchValidateTest {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
-                .click();
+                        + getMessage(MessageId.LABEL_TR_MENU_SEARCHBTNMESSAGE)
+                        + "']")).click();
 
         new Select(driver.findElement(By.id("depCode"))).selectByValue("01");
         new Select(driver.findElement(By.id("arrCode"))).selectByValue("01");
-        new Select(driver.findElement(By.id("depYear"))).selectByValue("2013");
+
+        int currentYear = dateFactory.newDateTime().getYear();
+
+        new Select(driver.findElement(By.id("depYear"))).selectByValue(String
+                .valueOf(currentYear));
         new Select(driver.findElement(By.id("depMonth"))).selectByValue("2");
         new Select(driver.findElement(By.id("depDay"))).selectByValue("30");
 
@@ -126,7 +138,8 @@ public class TourSearchValidateTest {
                 .click();
 
         assertEquals(getMessage(ValidationMessageKeys.INCORRECTDATE_INPUTDATE),
-                driver.findElement(By.id("tourInfoSearchCriteria.errors")).getText());
+                driver.findElement(By.id("tourInfoSearchCriteria.errors"))
+                        .getText());
     }
 
     @After
