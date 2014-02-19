@@ -37,19 +37,19 @@ import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoSharedServ
 public class ManageReservationHelper {
 
     @Inject
-    protected TourInfoSharedService tourInfoSharedService;
+    TourInfoSharedService tourInfoSharedService;
 
     @Inject
-    protected PriceCalculateSharedSerivce priceCalculateService;
+    PriceCalculateSharedSerivce priceCalculateService;
 
     @Inject
-    protected MessageSource messageSource;
+    MessageSource messageSource;
 
     @Inject
-    protected ReserveService reserveService;
+    ReserveService reserveService;
 
     @Inject
-    protected Mapper dozerBeanMapper;
+    Mapper dozerBeanMapper;
 
     protected String convertNightDays(int days) {
         if (days == 1) {
