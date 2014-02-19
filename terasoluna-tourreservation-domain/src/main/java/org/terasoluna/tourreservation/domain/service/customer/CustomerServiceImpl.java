@@ -15,8 +15,8 @@
  */
 package org.terasoluna.tourreservation.domain.service.customer;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -29,13 +29,14 @@ import org.terasoluna.tourreservation.domain.repository.customer.CustomerReposit
 @Service
 public class CustomerServiceImpl implements CustomerService {
     @Inject
-    protected CustomerRepository customerRepository;
-
-    @Resource
-    protected Sequencer<String> customerCodeSeq;
+    CustomerRepository customerRepository;
 
     @Inject
-    protected PasswordEncoder passwordEncoder;
+    @Named("customerCodeSeq")
+    Sequencer<String> customerCodeSeq;
+
+    @Inject
+    PasswordEncoder passwordEncoder;
 
     @Transactional(readOnly = true)
     @Override

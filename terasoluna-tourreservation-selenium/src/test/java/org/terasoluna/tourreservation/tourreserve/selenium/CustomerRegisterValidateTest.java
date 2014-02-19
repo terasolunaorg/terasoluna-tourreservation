@@ -23,6 +23,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,7 +32,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
@@ -41,14 +42,14 @@ import org.terasoluna.tourreservation.app.common.constants.ValidationMessageKeys
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
 public class CustomerRegisterValidateTest {
-    @Autowired
-    protected MessageSource messageSource;
+    @Inject
+    MessageSource messageSource;
 
-    @Autowired
-    protected WebDriver driver;
+    @Inject
+    WebDriver driver;
 
     @Value("${selenium.baseUrl}")
-    protected String baseUrl;
+    String baseUrl;
 
     public CustomerRegisterValidateTest() {
     }

@@ -30,7 +30,7 @@ import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoSearchC
 public class TourInfoServiceImpl implements TourInfoService {
 
     @Inject
-    protected TourInfoRepository tourInfoRepository;
+    TourInfoRepository tourInfoRepository;
 
     @Transactional(readOnly = true)
     @Override

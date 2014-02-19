@@ -44,10 +44,10 @@ import org.terasoluna.tourreservation.domain.repository.reserve.ReserveRepositor
 public class ReserveRepositoryImplTest {
 
 	@Inject
-	protected NamedParameterJdbcTemplate jdbcTemplate;
+	NamedParameterJdbcTemplate jdbcTemplate;
 
 	@Inject
-	protected ReserveRepository reserveRepository;
+	ReserveRepository reserveRepository;
 
 	@Test
 	public void testFindWithDetail01() {
