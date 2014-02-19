@@ -31,16 +31,16 @@ import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateShar
 public class ReportingHelper {
 
     @Inject
-    protected ManageReservationHelper manageReservationService;
+    ManageReservationHelper manageReservationService;
 
     @Inject
-    protected PriceCalculateSharedSerivce priceCalculateService;
+    PriceCalculateSharedSerivce priceCalculateService;
 
     @Inject
-    protected MessageSource messageSource;
+    MessageSource messageSource;
 
     @Inject
-    protected DateFactory dateFactory;
+    DateFactory dateFactory;
 
     public DownloadPDFOutput createPDF(String reserveNo) {
 

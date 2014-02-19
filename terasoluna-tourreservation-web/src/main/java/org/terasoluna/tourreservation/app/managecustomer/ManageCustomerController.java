@@ -48,25 +48,25 @@ public class ManageCustomerController {
             .getLogger(ManageCustomerController.class);
 
     @Inject
-    protected CustomerService customerService;
+    CustomerService customerService;
 
     @Inject
-    protected CustomerPassEqualsValidator passwordEqualsValidator;
+    CustomerPassEqualsValidator passwordEqualsValidator;
 
     @Inject
-    protected CustomerBirthdayValidator dateValidator;
+    CustomerBirthdayValidator dateValidator;
 
     @Inject
-    protected Mapper dozerBeanMapper;
+    Mapper dozerBeanMapper;
 
     @Value("${customer.initialBirthYear}")
-    protected Integer initialBirthYear;
+    Integer initialBirthYear;
 
     @Value("${customer.initialBirthMonth}")
-    protected Integer initialBirthMonth;
+    Integer initialBirthMonth;
 
     @Value("${customer.initialBirthDay}")
-    protected Integer initialBirthDay;
+    Integer initialBirthDay;
 
     @InitBinder("customerForm")
     public void initBinder(WebDataBinder webDataBinder) {

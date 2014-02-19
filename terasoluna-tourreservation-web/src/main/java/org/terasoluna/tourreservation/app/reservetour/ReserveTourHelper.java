@@ -35,16 +35,16 @@ import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUser
 public class ReserveTourHelper {
 
 	@Inject
-	protected PriceCalculateSharedSerivce priceCalculateService;
+	PriceCalculateSharedSerivce priceCalculateService;
 
 	@Inject
-	protected ReserveService reserveService;
+	ReserveService reserveService;
 
 	@Inject
-	protected TourInfoSharedService tourInfoSharedService;
+	TourInfoSharedService tourInfoSharedService;
 
 	@Inject
-	protected Mapper dozerBeanMapper;
+	Mapper dozerBeanMapper;
 
 	/**
 	 * Fetches detailed information of a particular tour (associated entities
