@@ -20,6 +20,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Before;
@@ -38,14 +40,14 @@ import org.terasoluna.tourreservation.app.common.constants.MessageId;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
 public class UnauthorizedAccessTest {
-    @Autowired
-    protected MessageSource messageSource;
+    @Inject
+    MessageSource messageSource;
 
-    @Autowired
-    protected WebDriver driver;
+    @Inject
+    WebDriver driver;
 
     @Value("${selenium.baseUrl}")
-    protected String baseUrl;
+    String baseUrl;
 
     public UnauthorizedAccessTest() {
     }

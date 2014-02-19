@@ -46,10 +46,10 @@ import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoReposit
 public class TourInfoRepositoryImplTest {
 
     @Inject
-    protected TourInfoRepository tourInfoRepository;
+    TourInfoRepository tourInfoRepository;
 
     @Inject
-    protected NamedParameterJdbcTemplate jdbcTemplate;
+    NamedParameterJdbcTemplate jdbcTemplate;
 
     String tourCode;
 

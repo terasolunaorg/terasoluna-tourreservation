@@ -47,13 +47,13 @@ import org.terasoluna.tourreservation.domain.service.reserve.ReserveService;
 public class ManageReservationController {
 
     @Inject
-    protected ManageReservationHelper manageReservationHelper;
+    ManageReservationHelper manageReservationHelper;
 
     @Inject
-    protected ReserveService reserveService;
+    ReserveService reserveService;
 
     @Inject
-    protected Mapper dozerBeanMapper;
+    Mapper dozerBeanMapper;
 
     /**
      * pre-initialization of form backed bean

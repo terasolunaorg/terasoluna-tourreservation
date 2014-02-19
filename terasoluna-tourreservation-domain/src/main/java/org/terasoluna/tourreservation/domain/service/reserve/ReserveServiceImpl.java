@@ -19,6 +19,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import org.dozer.Mapper;
 import org.joda.time.DateTime;
@@ -48,22 +49,23 @@ public class ReserveServiceImpl implements ReserveService {
             .getLogger(ReserveServiceImpl.class);
 
     @Inject
-    protected ReserveRepository reserveRepository;
+    ReserveRepository reserveRepository;
 
     @Inject
-    protected TourInfoSharedService tourInfoSharedService;
+    TourInfoSharedService tourInfoSharedService;
 
     @Inject
-    protected PriceCalculateSharedSerivce priceCalculateService;
+    PriceCalculateSharedSerivce priceCalculateService;
 
     @Inject
-    protected DateFactory dateFactory;
+    DateFactory dateFactory;
 
     @Inject
-    protected Mapper dozerBeanMapper;
+    Mapper dozerBeanMapper;
 
-    @Resource
-    protected Sequencer<String> reserveNoSeq;
+    @Inject
+    @Named("reserveNoSeq")
+    Sequencer<String> reserveNoSeq;
 
     @Transactional(readOnly = true)
     @Override
