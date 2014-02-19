@@ -51,13 +51,13 @@ public class SearchTourController {
             .getLogger(SearchTourController.class);
 
     @Inject
-    protected TourInfoService tourInfoService;
+    TourInfoService tourInfoService;
 
     @Inject
-    protected TourInfoSearchCriteriaDateValidator validator;
+    TourInfoSearchCriteriaDateValidator validator;
 
     @Inject
-    protected DateFactory dateFactory;
+    DateFactory dateFactory;
 
     @InitBinder("tourInfoSearchCriteria")
     public void initBinder(WebDataBinder webDataBinder) {

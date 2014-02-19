@@ -25,7 +25,7 @@ import org.terasoluna.tourreservation.domain.repository.customer.CustomerReposit
 
 public class ReservationUserDetailsService implements UserDetailsService {
     @Inject
-    protected CustomerRepository customerRepository;
+    CustomerRepository customerRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

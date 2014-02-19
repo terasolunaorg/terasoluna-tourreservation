@@ -31,7 +31,7 @@ import org.terasoluna.tourreservation.domain.model.TourInfo;
 
 public class TourInfoRepositoryImpl implements TourInfoRepositoryCustom {
     @PersistenceContext
-    protected EntityManager entityManager;
+    EntityManager entityManager;
 
     @Override
     @Transactional(readOnly = true)
