@@ -30,7 +30,7 @@ import org.terasoluna.gfw.common.date.DateFactory;
 public class DepYearCodeList extends AbstractCodeList {
 
     @Inject
-    protected DateFactory dateFactory;
+    DateFactory dateFactory;
 
     @Override
     public Map<String, String> asMap() {

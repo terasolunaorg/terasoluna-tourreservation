@@ -29,7 +29,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
@@ -41,17 +40,17 @@ import org.terasoluna.tourreservation.app.common.constants.ValidationMessageKeys
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
 public class TourSearchValidateTest {
-    @Autowired
-    protected MessageSource messageSource;
-
-    @Autowired
-    protected WebDriver driver;
+    @Inject
+    MessageSource messageSource;
 
     @Inject
-    protected DateFactory dateFactory;
+    WebDriver driver;
+
+    @Inject
+    DateFactory dateFactory;
 
     @Value("${selenium.baseUrl}")
-    protected String baseUrl;
+    String baseUrl;
 
     public TourSearchValidateTest() {
     }

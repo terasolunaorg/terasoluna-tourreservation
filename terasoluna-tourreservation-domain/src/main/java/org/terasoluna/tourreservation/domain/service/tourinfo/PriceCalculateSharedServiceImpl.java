@@ -27,7 +27,7 @@ public class PriceCalculateSharedServiceImpl implements PriceCalculateSharedSeri
                                       InitializingBean {
 
     @Inject
-    protected AgeRepository ageRepository;
+    AgeRepository ageRepository;
 
     private Age adultAge;
 

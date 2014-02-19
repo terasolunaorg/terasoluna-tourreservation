@@ -47,7 +47,7 @@ public class ReserveTourController {
             .getLogger(ReserveTourController.class);
 
     @Inject
-    protected ReserveTourHelper reserveTourHelper;
+    ReserveTourHelper reserveTourHelper;
 
     /**
      * pre-initialization of form backed bean

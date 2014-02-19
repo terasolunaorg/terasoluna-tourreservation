@@ -34,10 +34,10 @@ public class TourInfoSharedServiceImpl implements TourInfoSharedService {
             .getLogger(TourInfoSharedServiceImpl.class);
 
     @Inject
-    protected TourInfoRepository tourInfoRepository;
+    TourInfoRepository tourInfoRepository;
 
     @Inject
-    protected DateFactory dateFactory;
+    DateFactory dateFactory;
 
     @Transactional(readOnly = true)
     @Override
