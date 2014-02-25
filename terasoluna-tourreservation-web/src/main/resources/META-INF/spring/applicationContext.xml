@@ -21,6 +21,7 @@
             <list>
                 <value>i18n/domain-messages</value>
                 <value>i18n/application-messages</value>
+                <value>ValidationMessages</value>
             </list>
         </property>
     </bean>

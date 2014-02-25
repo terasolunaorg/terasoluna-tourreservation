@@ -36,14 +36,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.common.date.DateFactory;
 import org.terasoluna.tourreservation.app.common.constants.MessageId;
 import org.terasoluna.tourreservation.app.common.constants.ValidationMessageKeys;
+import org.terasoluna.tourreservation.tourreserve.selenium.common.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
-public class TourSearchValidateTest {
+public class TourSearchValidateTest extends FunctionTestSupport {
     @Inject
     MessageSource messageSource;
 
-    @Inject
     WebDriver driver;
 
     @Inject
@@ -57,6 +57,7 @@ public class TourSearchValidateTest {
 
     @Before
     public void setUp() {
+        driver = createLocaleSpecifiedDriver(Locale.getDefault().toLanguageTag());
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
@@ -95,7 +96,7 @@ public class TourSearchValidateTest {
                 .click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.NOTEMPTY_TOURINFOSEARCHCRITERIA_DEPCODE),
+                getMessage(ValidationMessageKeys.NOTEMPTY).replace("{0}", getMessage(ValidationMessageKeys.DEPCODE)),
                 driver.findElement(By.id("tourInfoSearchCriteria.errors"))
                         .getText());
 
@@ -107,7 +108,7 @@ public class TourSearchValidateTest {
                 .click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.NOTEMPTY_TOURINFOSEARCHCRITERIA_ARRCODE),
+                getMessage(ValidationMessageKeys.NOTEMPTY).replace("{0}", getMessage(ValidationMessageKeys.ARRCODE)),
                 driver.findElement(By.id("tourInfoSearchCriteria.errors"))
                         .getText());
     }
