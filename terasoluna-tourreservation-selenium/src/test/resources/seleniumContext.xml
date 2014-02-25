@@ -14,20 +14,11 @@
             <list>
                 <value>i18n/domain-messages</value>
                 <value>i18n/application-messages</value>
+                <value>ValidationMessages</value>
             </list>
         </property>
     </bean>
 
     <bean id="dateFactory" class="org.terasoluna.gfw.common.date.DefaultDateFactory" /> 
-
-    <beans profile="firefox default">
-        <bean id="webDriver" class="org.openqa.selenium.firefox.FirefoxDriver" scope="prototype" />
-    </beans>
-    <beans profile="chrome">
-        <bean id="webDriver" class="org.openqa.selenium.chrome.ChromeDriver" scope="prototype" />
-    </beans>
-    <beans profile="ie">
-        <bean id="webDriver" class="org.openqa.selenium.ie.InternetExplorerDriver" scope="prototype" />
-    </beans>
     
 </beans>

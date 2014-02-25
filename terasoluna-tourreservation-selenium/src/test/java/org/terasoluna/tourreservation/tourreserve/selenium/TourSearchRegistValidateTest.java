@@ -36,14 +36,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.app.common.constants.MessageId;
 import org.terasoluna.tourreservation.app.common.constants.ValidationMessageKeys;
+import org.terasoluna.tourreservation.tourreserve.selenium.common.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
-public class TourSearchRegistValidateTest {
+public class TourSearchRegistValidateTest extends FunctionTestSupport {
     @Inject
     MessageSource messageSource;
 
-    @Inject
     WebDriver driver;
 
     @Value("${selenium.baseUrl}")
@@ -54,6 +54,7 @@ public class TourSearchRegistValidateTest {
 
     @Before
     public void setUp() {
+        driver = createLocaleSpecifiedDriver(Locale.getDefault().toLanguageTag());
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
@@ -111,8 +112,8 @@ public class TourSearchRegistValidateTest {
                         + "']")).click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.SIZE_RESERVETOURFORM_REMARKS)
-                        .replace("{1}", "80").replace("{2}", "0"), driver
+                getMessage(ValidationMessageKeys.SIZE)
+                        .replace("{0}", getMessage(ValidationMessageKeys.REMARKS)).replace("{max}", "80").replace("{min}", "0"), driver
                         .findElement(By.id("reserveTourForm.errors")).getText());
     }
 
