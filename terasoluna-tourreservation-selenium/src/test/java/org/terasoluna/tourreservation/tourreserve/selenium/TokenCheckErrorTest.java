@@ -36,14 +36,14 @@ import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.app.common.constants.MessageId;
+import org.terasoluna.tourreservation.tourreserve.selenium.common.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
-public class TokenCheckErrorTest {
+public class TokenCheckErrorTest extends FunctionTestSupport {
     @Inject
     MessageSource messageSource;
 
-    @Inject
     WebDriver driver;
 
     @Value("${selenium.baseUrl}")
@@ -54,6 +54,7 @@ public class TokenCheckErrorTest {
 
     @Before
     public void setUp() {
+        driver = createLocaleSpecifiedDriver(Locale.getDefault().toLanguageTag());
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 

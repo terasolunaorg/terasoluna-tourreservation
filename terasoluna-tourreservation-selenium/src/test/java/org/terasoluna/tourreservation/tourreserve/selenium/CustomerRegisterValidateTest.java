@@ -38,14 +38,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.app.common.constants.MessageId;
 import org.terasoluna.tourreservation.app.common.constants.ValidationMessageKeys;
+import org.terasoluna.tourreservation.tourreserve.selenium.common.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
-public class CustomerRegisterValidateTest {
+public class CustomerRegisterValidateTest extends FunctionTestSupport {
     @Inject
     MessageSource messageSource;
 
-    @Inject
     WebDriver driver;
 
     @Value("${selenium.baseUrl}")
@@ -56,6 +56,7 @@ public class CustomerRegisterValidateTest {
 
     @Before
     public void setUp() {
+        driver = createLocaleSpecifiedDriver(Locale.getDefault().toLanguageTag());
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
@@ -86,7 +87,7 @@ public class CustomerRegisterValidateTest {
                 .click();
 
         assertTrue(multiMessageAssert(
-                getMessage(ValidationMessageKeys.NOTEMPTY_CUSTOMERFORM_CUSTOMERKANA)
+                getMessage(ValidationMessageKeys.NOTEMPTY).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERKANA))
                         + "\n"
                         + getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERKANA),
                 driver.findElement(By.id("customerForm.errors")).getText(),
@@ -115,7 +116,7 @@ public class CustomerRegisterValidateTest {
                 .click();
 
         assertTrue(multiMessageAssert(
-                getMessage(ValidationMessageKeys.NOTEMPTY_CUSTOMERFORM_CUSTOMERNAME)
+                getMessage(ValidationMessageKeys.NOTEMPTY).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERNAME))
                         + "\n"
                         + getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERNAME),
                 driver.findElement(By.id("customerForm.errors")).getText(),
@@ -144,7 +145,7 @@ public class CustomerRegisterValidateTest {
                 .click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.NOTEMPTY_CUSTOMERFORM_CUSTOMERJOB),
+                getMessage(ValidationMessageKeys.NOTEMPTY).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERJOB)),
                 driver.findElement(By.id("customerForm.errors")).getText());
 
         driver.findElement(By.id("customerKana")).clear();
@@ -170,8 +171,8 @@ public class CustomerRegisterValidateTest {
                 .click();
 
         assertTrue(multiMessageAssert(
-                getMessage(ValidationMessageKeys.SIZE_CUSTOMERFORM_CUSTOMERTEL)
-                        .replace("{2}", "10").replace("{1}", "13")
+                getMessage(ValidationMessageKeys.SIZE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERTEL))
+                        .replace("{min}", "10").replace("{max}", "13")
                         + "\n"
                         + getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERTEL),
                 driver.findElement(By.id("customerForm.errors")).getText(),
@@ -201,8 +202,8 @@ public class CustomerRegisterValidateTest {
 
         assertEquals(
                 getMessage(
-                        ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERPOST)
-                        .replace("{2}", "[0-9]{3}-[0-9]{4}"), driver
+                        ValidationMessageKeys.PATTERN).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERPOST))
+                        .replace("{regexp}", "[0-9]{3}-[0-9]{4}"), driver
                         .findElement(By.id("customerForm.errors")).getText());
 
         driver.findElement(By.id("customerKana")).clear();
@@ -228,7 +229,7 @@ public class CustomerRegisterValidateTest {
                 .click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.NOTEMPTY_CUSTOMERFORM_CUSTOMERADD),
+                getMessage(ValidationMessageKeys.NOTEMPTY).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERADD)),
                 driver.findElement(By.id("customerForm.errors")).getText());
 
         driver.findElement(By.id("customerKana")).clear();
@@ -256,11 +257,11 @@ public class CustomerRegisterValidateTest {
         assertTrue(multiMessageAssert(
                 getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERPASS)
                         + "\n"
-                        + getMessage(ValidationMessageKeys.NOTEMPTY_CUSTOMERFORM_CUSTOMERPASS)
+                        + getMessage(ValidationMessageKeys.NOTEMPTY).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERPASS))
                         + "\n"
                         + getMessage(
-                                ValidationMessageKeys.SIZE_CUSTOMERFORM_CUSTOMERPASS)
-                                .replace("{2}", "4").replace("{1}", "20")
+                                ValidationMessageKeys.SIZE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERPASS))
+                                .replace("{min}", "4").replace("{max}", "20")
                         + "\n"
                         + getMessage(ValidationMessageKeys.NOTEQUALS_CUSTOMERPASS),
                 driver.findElement(By.id("customerForm.errors")).getText(),
@@ -289,13 +290,13 @@ public class CustomerRegisterValidateTest {
                 .click();
 
         assertTrue(multiMessageAssert(
-                getMessage(ValidationMessageKeys.NOTEMPTY_CUSTOMERFORM_CUSTOMERPASSCONFIRM)
+                getMessage(ValidationMessageKeys.NOTEMPTY).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERPASSCONFIRM))
                         + "\n"
                         + getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERPASSCONFIRM)
                         + "\n"
                         + getMessage(
-                                ValidationMessageKeys.SIZE_CUSTOMERFORM_CUSTOMERPASSCONFIRM)
-                                .replace("{2}", "4").replace("{1}", "20")
+                                ValidationMessageKeys.SIZE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERPASSCONFIRM))
+                                .replace("{min}", "4").replace("{max}", "20")
                         + "\n"
                         + getMessage(ValidationMessageKeys.NOTEQUALS_CUSTOMERPASS),
                 driver.findElement(By.id("customerForm.errors")).getText(),
@@ -335,8 +336,8 @@ public class CustomerRegisterValidateTest {
 
         assertEquals(
                 getMessage(
-                        ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERPOST)
-                        .replace("{2}", "[0-9]{3}-[0-9]{4}"), driver
+                        ValidationMessageKeys.PATTERN)
+                        .replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERPOST)).replace("{regexp}", "[0-9]{3}-[0-9]{4}"), driver
                         .findElement(By.id("customerForm.errors")).getText());
 
         driver.findElement(By.id("customerKana")).clear();
@@ -363,7 +364,7 @@ public class CustomerRegisterValidateTest {
                 .click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.EMAIL_CUSTOMERFORM_CUSTOMERMAIL),
+                getMessage(ValidationMessageKeys.EMAIL),
                 driver.findElement(By.id("customerForm.errors")).getText());
     }
 
@@ -448,8 +449,8 @@ public class CustomerRegisterValidateTest {
                 .click();
 
         assertTrue(multiMessageAssert(
-                getMessage(ValidationMessageKeys.SIZE_CUSTOMERFORM_CUSTOMERPASS)
-                        .replace("{2}", "4").replace("{1}", "20")
+                getMessage(ValidationMessageKeys.SIZE).
+                        replace("{0}",getMessage(ValidationMessageKeys.CUSTOMERPASS)).replace("{min}", "4").replace("{max}", "20")
                         + "\n"
                         + getMessage(ValidationMessageKeys.NOTEQUALS_CUSTOMERPASS),
                 driver.findElement(By.id("customerForm.errors")).getText(),
@@ -479,8 +480,8 @@ public class CustomerRegisterValidateTest {
 
         assertTrue(multiMessageAssert(
                 getMessage(
-                        ValidationMessageKeys.SIZE_CUSTOMERFORM_CUSTOMERPASSCONFIRM)
-                        .replace("{2}", "4").replace("{1}", "20")
+                        ValidationMessageKeys.SIZE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERPASSCONFIRM))
+                        .replace("{min}", "4").replace("{max}", "20")
                         + "\n"
                         + getMessage(ValidationMessageKeys.NOTEQUALS_CUSTOMERPASS),
                 driver.findElement(By.id("customerForm.errors")).getText(),
@@ -509,8 +510,8 @@ public class CustomerRegisterValidateTest {
                 .click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.SIZE_CUSTOMERFORM_CUSTOMERTEL)
-                        .replace("{2}", "10").replace("{1}", "13"), driver
+                getMessage(ValidationMessageKeys.SIZE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERTEL))
+                        .replace("{min}", "10").replace("{max}", "13"), driver
                         .findElement(By.id("customerForm.errors")).getText());
     }
 
