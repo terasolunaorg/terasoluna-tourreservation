@@ -112,7 +112,7 @@ public class TourSearchRegistValidateTest extends FunctionTestSupport {
                         + "']")).click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.SIZE)
+                getMessage(ValidationMessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE)
                         .replace("{0}", getMessage(ValidationMessageKeys.REMARKS)).replace("{max}", "80").replace("{min}", "0"), driver
                         .findElement(By.id("reserveTourForm.errors")).getText());
     }
