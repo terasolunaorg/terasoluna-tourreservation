@@ -34,8 +34,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.terasoluna.tourreservation.app.common.constants.MessageId;
-import org.terasoluna.tourreservation.tourreserve.selenium.common.FunctionTestSupport;
+import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
+import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
@@ -67,7 +67,7 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE)
                         + "']")).click();
 
         driver.findElement(By.id("password")).clear();
@@ -76,14 +76,14 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
         driver.findElement(By.id("username")).sendKeys("00000001");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGIN) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
                 .click();
 
-        assertEquals(getMessage(MessageId.LABEL_TR_MENU_MENUMESSAGE), driver
+        assertEquals(getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE), driver
                 .findElement(By.cssSelector("p.box")).getText());
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_SEARCHBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE)
                         + "']")).click();
 
         DateTime dt = new DateTime();
@@ -100,7 +100,7 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_SEARCH) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
                 .click();
 
         driver.findElement(By.linkText("2")).click();
@@ -110,27 +110,27 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
                 .click();
 
         assertEquals(
-                getMessage(MessageId.LABEL_TR_SEARCHTOUR_TITLEDETAILSCREENMESSAGE),
+                getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_TITLEDETAILSCREENMESSAGE),
                 driver.findElement(By.cssSelector("h2")).getText());
         driver.findElement(By.id("remarks")).sendKeys(
                 "Global TERASOLUNA Framewrok");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertEquals(
-                getMessage(MessageId.LABEL_TR_SEARCHTOUR_TITLECONFIRMSCREENMESSAGE),
+                getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_TITLECONFIRMSCREENMESSAGE),
                 driver.findElement(By.cssSelector("h2")).getText());
         assertEquals("Global TERASOLUNA Framewrok", driver.findElement(
                 By.xpath("//table[4]/tbody/tr/td[2]")).getText());
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_SEARCHTOUR_CONFIRMEDMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_CONFIRMEDMESSAGE)
                         + "']")).click();
 
         assertEquals(
-                getMessage(MessageId.LABEL_TR_SEARCHTOUR_RESERVESCREENTITLEMESSAGE),
+                getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_RESERVESCREENTITLEMESSAGE),
                 driver.findElement(By.cssSelector("h2")).getText());
     }
 
@@ -140,7 +140,7 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE)
                         + "']")).click();
 
         driver.findElement(By.id("password")).clear();
@@ -149,24 +149,24 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
         driver.findElement(By.id("username")).sendKeys("00000001");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGIN) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_REFERBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MENU_REFERBTNMESSAGE)
                         + "']")).click();
 
         assertEquals(
-                getMessage(MessageId.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONMESSAGE),
+                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONMESSAGE),
                 driver.findElement(By.cssSelector("span")).getText());
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CHANGERESERVATIONBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CHANGERESERVATIONBTNMESSAGE)
                         + "']")).click();
 
         assertEquals(
-                getMessage(MessageId.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONEDITSCREENTITLE),
+                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONEDITSCREENTITLE),
                 driver.findElement(By.cssSelector("span")).getText());
         new Select(driver.findElement(By.id("adultCount")))
                 .selectByVisibleText("2");
@@ -176,13 +176,13 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
         // update
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CONFIRMEDITBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CONFIRMEDITBTNMESSAGE)
                         + "']")).click();
 
         // back
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CHANGERESERVATIONSTABTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CHANGERESERVATIONSTABTNMESSAGE)
                         + "']")).click();
 
         assertEquals(new Select(driver.findElement(By.id("adultCount")))
@@ -193,11 +193,11 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
         // update
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CONFIRMEDITBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CONFIRMEDITBTNMESSAGE)
                         + "']")).click();
 
         assertEquals(
-                getMessage(MessageId.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONCONFIRMSCREENTITLEMESSAGE),
+                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONCONFIRMSCREENTITLEMESSAGE),
                 driver.findElement(By.cssSelector("span")).getText());
         // asseert Price
         String totalPrice = driver.findElement(
@@ -205,51 +205,51 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
                 "[^0-9]", "");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CHANGERESERVATIONFINBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CHANGERESERVATIONFINBTNMESSAGE)
                         + "']")).click();
 
         assertEquals(
-                getMessage(MessageId.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONUPDATEDSCREENTITLEMESSAGE),
+                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONUPDATEDSCREENTITLEMESSAGE),
                 driver.findElement(By.cssSelector("span")).getText());
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_RETURNTOLISTSCREENBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_RETURNTOLISTSCREENBTNMESSAGE)
                         + "']")).click();
 
-        assertEquals(getMessage(MessageId.LABEL_TR_COMMON_ADULT)
-                + getMessage(MessageId.LABEL_TR_COMMON_PERSONCOUNTPATTERN)
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_ADULT)
+                + getMessage(MessageKeys.LABEL_TR_COMMON_PERSONCOUNTPATTERN)
                         .replace("##", " 2")
                 + "\n"
-                + getMessage(MessageId.LABEL_TR_COMMON_CHILD)
-                + getMessage(MessageId.LABEL_TR_COMMON_PERSONCOUNTPATTERN)
+                + getMessage(MessageKeys.LABEL_TR_COMMON_CHILD)
+                + getMessage(MessageKeys.LABEL_TR_COMMON_PERSONCOUNTPATTERN)
                         .replace("##", " 2"), driver.findElement(
                 By.xpath("//td[7]")).getText());
         assertEquals(totalPrice, driver.findElement(By.xpath("//td[9]"))
                 .getText().replaceAll("[^0-9]", ""));
 
         driver.findElement(By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_SHOWDETAILSBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_SHOWDETAILSBTNMESSAGE)
                         + "']")).click();
 
         assertEquals(
-                getMessage(MessageId.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONSHOWSCREENTITLEMESSAGE),
+                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONSHOWSCREENTITLEMESSAGE),
                 driver.findElement(By.cssSelector("span")).getText());
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
                         + "']")).click();
 
         assertEquals(
-                getMessage(MessageId.LABEL_TR_MANAGERESERVATION_BEFORECANCELSCREENTITLEMESSAGE),
+                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_BEFORECANCELSCREENTITLEMESSAGE),
                 driver.findElement(By.cssSelector("h2")).getText());
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
                         + "']")).click();
 
         assertEquals(
-                getMessage(MessageId.LABEL_TR_MANAGERESERVATION_AFTERCANCELSCREENTITLEMESSAGE),
+                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_AFTERCANCELSCREENTITLEMESSAGE),
                 driver.findElement(By.cssSelector("h2")).getText());
     }
 

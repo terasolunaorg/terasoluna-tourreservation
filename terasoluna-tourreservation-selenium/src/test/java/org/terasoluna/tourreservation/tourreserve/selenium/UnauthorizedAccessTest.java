@@ -34,8 +34,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.terasoluna.tourreservation.app.common.constants.MessageId;
-import org.terasoluna.tourreservation.tourreserve.selenium.common.FunctionTestSupport;
+import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
+import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
@@ -67,7 +67,7 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.id("password")).clear();
@@ -76,12 +76,12 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         driver.findElement(By.id("username")).sendKeys("00000002");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGIN) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
                 .click();
 
         DateTime dt = new DateTime();
@@ -98,7 +98,7 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_SEARCH) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
                 .click();
 
         driver.findElement(By.linkText("2")).click();
@@ -110,33 +110,33 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         driver.findElement(By.id("remarks")).sendKeys("test");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_SEARCHTOUR_CONFIRMEDMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_CONFIRMEDMESSAGE)
                         + "']")).click();
 
-        driver.findElement(By.linkText(getMessage(MessageId.TITLE_COMMON)))
+        driver.findElement(By.linkText(getMessage(MessageKeys.TITLE_COMMON)))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
                 .click();
 
         String reservNum = driver.findElement(By.cssSelector("td")).getText();
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGOUT) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGOUT) + "']"))
                 .click();
 
         driver.get(baseUrl
                 + "/terasoluna-tourreservation-web/managereservation/detail/"
                 + reservNum);
 
-        assertEquals(getMessage(MessageId.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver
                 .findElement(By.cssSelector("p.box")).getText());
     }
 
@@ -146,7 +146,7 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.id("password")).clear();
@@ -155,27 +155,27 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         driver.findElement(By.id("username")).sendKeys("00000002");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGIN) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
                 .click();
 
-        driver.findElement(By.linkText(getMessage(MessageId.TITLE_COMMON)))
+        driver.findElement(By.linkText(getMessage(MessageKeys.TITLE_COMMON)))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
                 .click();
 
         String reservNum = driver.findElement(By.cssSelector("td")).getText()
                 .replaceAll("[^0-9]", "");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGOUT) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGOUT) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.id("password")).clear();
@@ -184,32 +184,32 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         driver.findElement(By.id("username")).sendKeys("00000001");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGIN) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
                 .click();
 
         driver.get(baseUrl
                 + "/terasoluna-tourreservation-web/managereservation/detail/"
                 + reservNum);
 
-        assertEquals(getMessage(MessageId.E_TR_FW_0004),
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0004),
                 driver.findElement(By.cssSelector("li")).getText());
 
-        driver.findElement(By.linkText(getMessage(MessageId.TITLE_COMMON)))
+        driver.findElement(By.linkText(getMessage(MessageKeys.TITLE_COMMON)))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGOUT) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGOUT) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.id("password")).clear();
@@ -218,22 +218,22 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         driver.findElement(By.id("username")).sendKeys("00000002");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGIN) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
                         + "']")).click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
                         + "']")).click();
     }
 

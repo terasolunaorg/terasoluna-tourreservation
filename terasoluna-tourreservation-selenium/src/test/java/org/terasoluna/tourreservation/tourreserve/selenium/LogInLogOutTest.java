@@ -32,8 +32,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.terasoluna.tourreservation.app.common.constants.MessageId;
-import org.terasoluna.tourreservation.tourreserve.selenium.common.FunctionTestSupport;
+import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
+import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
@@ -62,16 +62,16 @@ public class LogInLogOutTest extends FunctionTestSupport {
     @Test
     public void testLoginLogoff() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
-        assertEquals(getMessage(MessageId.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
-                + getMessage(MessageId.LABEL_TR_MENU_MENUMESSAGE),
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
+                + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
                 driver.findElement(By.cssSelector("p.box")).getText());
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
                 .click();
 
-        assertEquals(getMessage(MessageId.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver
                 .findElement(By.cssSelector("p.box")).getText());
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("password");
@@ -80,23 +80,23 @@ public class LogInLogOutTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGIN) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
                 .click();
 
-        assertEquals(getMessage(MessageId.LABEL_TR_MENU_MENUMESSAGE),
+        assertEquals(getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
                 driver.findElement(By.cssSelector("p.box")).getText());
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGOUT) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGOUT) + "']"))
                 .click();
 
-        assertEquals(getMessage(MessageId.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
-                + getMessage(MessageId.LABEL_TR_MENU_MENUMESSAGE),
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
+                + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
                 driver.findElement(By.cssSelector("p.box")).getText());
     }
 

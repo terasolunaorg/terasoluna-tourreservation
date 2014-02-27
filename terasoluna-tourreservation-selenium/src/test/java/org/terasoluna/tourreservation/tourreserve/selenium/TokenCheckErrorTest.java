@@ -35,8 +35,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.terasoluna.tourreservation.app.common.constants.MessageId;
-import org.terasoluna.tourreservation.tourreserve.selenium.common.FunctionTestSupport;
+import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
+import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
@@ -68,7 +68,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.name("customerKana")).sendKeys("テラ");
@@ -89,7 +89,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
@@ -99,10 +99,10 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_REGISTER) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_REGISTER) + "']"))
                 .click();
 
-        assertEquals(getMessage(MessageId.E_TR_FW_0001),
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0001),
                 driver.findElement(By.cssSelector("p")).getText());
     }
 
@@ -112,7 +112,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.name("customerKana")).sendKeys("テラ");
@@ -133,7 +133,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
@@ -143,9 +143,9 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_REGISTER) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_REGISTER) + "']"))
                 .click();
-        assertEquals(getMessage(MessageId.E_TR_FW_0002),
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0002),
                 driver.findElement(By.cssSelector("p")).getText());
 
     }
@@ -157,7 +157,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.id("password")).clear();
@@ -166,12 +166,12 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         driver.findElement(By.id("username")).sendKeys("00000001");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGIN) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
                 .click();
 
         DateTime dt = new DateTime();
@@ -188,7 +188,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_SEARCH) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
                 .click();
 
         driver.findElement(By.linkText("2")).click();
@@ -201,7 +201,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
                 "Global TERASOLUNA Framewrok");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
@@ -212,10 +212,10 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_SEARCHTOUR_CONFIRMEDMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_CONFIRMEDMESSAGE)
                         + "']")).click();
 
-        assertEquals(getMessage(MessageId.E_TR_FW_0001),
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0001),
                 driver.findElement(By.cssSelector("p")).getText());
     }
 
@@ -225,7 +225,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.id("password")).clear();
@@ -234,12 +234,12 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         driver.findElement(By.id("username")).sendKeys("00000001");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGIN) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
                 .click();
 
         DateTime dt = new DateTime();
@@ -256,7 +256,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_SEARCH) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
                 .click();
 
         driver.findElement(By.linkText("2")).click();
@@ -269,30 +269,30 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
                 "Global TERASOLUNA Framewrok");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_SEARCHTOUR_CONFIRMEDMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_CONFIRMEDMESSAGE)
                         + "']")).click();
 
-        driver.findElement(By.linkText(getMessage(MessageId.TITLE_COMMON)))
+        driver.findElement(By.linkText(getMessage(MessageKeys.TITLE_COMMON)))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CHANGERESERVATIONBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CHANGERESERVATIONBTNMESSAGE)
                         + "']")).click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CONFIRMEDITBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CONFIRMEDITBTNMESSAGE)
                         + "']")).click();
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
@@ -303,28 +303,28 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CHANGERESERVATIONFINBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CHANGERESERVATIONFINBTNMESSAGE)
                         + "']")).click();
 
-        assertEquals(getMessage(MessageId.E_TR_FW_0001),
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0001),
                 driver.findElement(By.cssSelector("p")).getText());
 
-        driver.findElement(By.linkText(getMessage(MessageId.TITLE_COMMON)))
+        driver.findElement(By.linkText(getMessage(MessageKeys.TITLE_COMMON)))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
                         + "']")).click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
                         + "']")).click();
     }
 
@@ -334,7 +334,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.id("password")).clear();
@@ -343,12 +343,12 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         driver.findElement(By.id("username")).sendKeys("00000001");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGIN) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
                 .click();
 
         DateTime dt = new DateTime();
@@ -365,7 +365,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_SEARCH) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
                 .click();
 
         driver.findElement(By.linkText("2")).click();
@@ -378,25 +378,25 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
                 "Global TERASOLUNA Framewrok");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_SEARCHTOUR_CONFIRMEDMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_CONFIRMEDMESSAGE)
                         + "']")).click();
 
-        driver.findElement(By.linkText(getMessage(MessageId.TITLE_COMMON)))
+        driver.findElement(By.linkText(getMessage(MessageKeys.TITLE_COMMON)))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
                         + "']")).click();
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
@@ -407,28 +407,28 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
                         + "']")).click();
 
-        assertEquals(getMessage(MessageId.E_TR_FW_0001),
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0001),
                 driver.findElement(By.cssSelector("p")).getText());
 
-        driver.findElement(By.linkText(getMessage(MessageId.TITLE_COMMON)))
+        driver.findElement(By.linkText(getMessage(MessageKeys.TITLE_COMMON)))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
                         + "']")).click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
+                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
                         + "']")).click();
 
     }
