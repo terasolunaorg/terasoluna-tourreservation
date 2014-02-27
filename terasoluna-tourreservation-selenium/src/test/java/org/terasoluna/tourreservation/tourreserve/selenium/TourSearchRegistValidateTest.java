@@ -34,16 +34,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.terasoluna.tourreservation.app.common.constants.MessageId;
-import org.terasoluna.tourreservation.app.common.constants.ValidationMessageKeys;
+import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
+import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
-public class TourSearchRegistValidateTest {
+public class TourSearchRegistValidateTest extends FunctionTestSupport {
     @Inject
     MessageSource messageSource;
 
-    @Inject
     WebDriver driver;
 
     @Value("${selenium.baseUrl}")
@@ -54,6 +53,7 @@ public class TourSearchRegistValidateTest {
 
     @Before
     public void setUp() {
+        driver = createLocaleSpecifiedDriver(Locale.getDefault().toLanguageTag());
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
@@ -67,19 +67,19 @@ public class TourSearchRegistValidateTest {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']")).click();
+                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']")).click();
 
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("password");
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys("00000001");
         driver.findElement(
-                By.xpath("//input[@value='" + getMessage(MessageId.LABEL_TR_COMMON_LOGIN)
+                By.xpath("//input[@value='" + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN)
                         + "']")).click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']")).click();
+                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']")).click();
 
         DateTime dt = new DateTime();
         DateTime dtPlus = dt.plusDays(8);
@@ -94,7 +94,7 @@ public class TourSearchRegistValidateTest {
         new Select(driver.findElement(By.id("arrCode"))).selectByValue("01");
 
         driver.findElement(
-                By.xpath("//input[@value='" + getMessage(MessageId.LABEL_TR_COMMON_SEARCH)
+                By.xpath("//input[@value='" + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH)
                         + "']")).click();
 
         driver.findElement(By.linkText("2")).click();
@@ -107,12 +107,12 @@ public class TourSearchRegistValidateTest {
                 .sendKeys(
                         "111111111111111111111111111111111111111111111111111111111111111111111111111111111");
         driver.findElement(
-                By.xpath("//input[@value='" + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM)
+                By.xpath("//input[@value='" + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM)
                         + "']")).click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.SIZE_RESERVETOURFORM_REMARKS)
-                        .replace("{1}", "80").replace("{2}", "0"), driver
+                getMessage(MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE)
+                        .replace("{0}", getMessage(MessageKeys.REMARKS)).replace("{max}", "80").replace("{min}", "0"), driver
                         .findElement(By.id("reserveTourForm.errors")).getText());
     }
 
