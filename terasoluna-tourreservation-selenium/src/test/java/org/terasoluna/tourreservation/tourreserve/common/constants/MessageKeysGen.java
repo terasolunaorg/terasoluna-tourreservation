@@ -1,4 +1,4 @@
-package org.terasoluna.tourreservation.app.common.constants;
+package org.terasoluna.tourreservation.tourreserve.common.constants;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,18 +13,18 @@ import java.util.regex.Pattern;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
-public class ValidationMessageKeysGen {
+public class MessageKeysGen {
     public static void main(String[] args) throws IOException {
         // message properties file
         
-        InputStream applicationMessagesInputStream = new FileInputStream("src/main/resources/i18n/application-messages_en.properties");
-        InputStream validationMessagesInputStream = new FileInputStream("src/main/resources/ValidationMessages_en.properties");
+        InputStream applicationMessagesInputStream = new FileInputStream("src/test/resources/i18n/application-messages_en.properties");
+        InputStream validationMessagesInputStream = new FileInputStream("src/test/resources/ValidationMessages_en.properties");
         SequenceInputStream inputStream = new SequenceInputStream(applicationMessagesInputStream, validationMessagesInputStream);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         
         
-        Class<?> targetClazz = ValidationMessageKeys.class;
-        File output = new File("src/main/java/"
+        Class<?> targetClazz = MessageKeys.class;
+        File output = new File("src/test/java/"
                 + targetClazz.getName().replaceAll(Pattern.quote("."), "/")
                 + ".java");
         System.out.println("write " + output.getAbsolutePath());

@@ -36,9 +36,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.terasoluna.tourreservation.app.common.constants.MessageId;
-import org.terasoluna.tourreservation.app.common.constants.ValidationMessageKeys;
-import org.terasoluna.tourreservation.tourreserve.selenium.common.FunctionTestSupport;
+import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
+import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
@@ -70,7 +69,7 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.name("customerKana")).sendKeys("");
@@ -83,13 +82,13 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertTrue(multiMessageAssert(
-                getMessage(ValidationMessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERKANA))
+                getMessage(MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(MessageKeys.CUSTOMERKANA))
                         + "\n"
-                        + getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERKANA),
+                        + getMessage(MessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERKANA),
                 driver.findElement(By.id("customerForm.errors")).getText(),
                 "\n"));
 
@@ -112,13 +111,13 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertTrue(multiMessageAssert(
-                getMessage(ValidationMessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERNAME))
+                getMessage(MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(MessageKeys.CUSTOMERNAME))
                         + "\n"
-                        + getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERNAME),
+                        + getMessage(MessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERNAME),
                 driver.findElement(By.id("customerForm.errors")).getText(),
                 "\n"));
 
@@ -141,11 +140,11 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERJOB)),
+                getMessage(MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(MessageKeys.CUSTOMERJOB)),
                 driver.findElement(By.id("customerForm.errors")).getText());
 
         driver.findElement(By.id("customerKana")).clear();
@@ -167,14 +166,14 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertTrue(multiMessageAssert(
-                getMessage(ValidationMessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERTEL))
+                getMessage(MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE).replace("{0}", getMessage(MessageKeys.CUSTOMERTEL))
                         .replace("{min}", "10").replace("{max}", "13")
                         + "\n"
-                        + getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERTEL),
+                        + getMessage(MessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERTEL),
                 driver.findElement(By.id("customerForm.errors")).getText(),
                 "\n"));
 
@@ -197,12 +196,12 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertEquals(
                 getMessage(
-                        ValidationMessageKeys.JAVAX_VALIDATION_CONSTRAINTS_PATTERN_MESSAGE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERPOST))
+                        MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_PATTERN_MESSAGE).replace("{0}", getMessage(MessageKeys.CUSTOMERPOST))
                         .replace("{regexp}", "[0-9]{3}-[0-9]{4}"), driver
                         .findElement(By.id("customerForm.errors")).getText());
 
@@ -225,11 +224,11 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERADD)),
+                getMessage(MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(MessageKeys.CUSTOMERADD)),
                 driver.findElement(By.id("customerForm.errors")).getText());
 
         driver.findElement(By.id("customerKana")).clear();
@@ -251,19 +250,19 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertTrue(multiMessageAssert(
-                getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERPASS)
+                getMessage(MessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERPASS)
                         + "\n"
-                        + getMessage(ValidationMessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERPASS))
+                        + getMessage(MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(MessageKeys.CUSTOMERPASS))
                         + "\n"
                         + getMessage(
-                                ValidationMessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERPASS))
+                                MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE).replace("{0}", getMessage(MessageKeys.CUSTOMERPASS))
                                 .replace("{min}", "4").replace("{max}", "20")
                         + "\n"
-                        + getMessage(ValidationMessageKeys.NOTEQUALS_CUSTOMERPASS),
+                        + getMessage(MessageKeys.NOTEQUALS_CUSTOMERPASS),
                 driver.findElement(By.id("customerForm.errors")).getText(),
                 "\n"));
 
@@ -286,19 +285,19 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertTrue(multiMessageAssert(
-                getMessage(ValidationMessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERPASSCONFIRM))
+                getMessage(MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(MessageKeys.CUSTOMERPASSCONFIRM))
                         + "\n"
-                        + getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERPASSCONFIRM)
+                        + getMessage(MessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERPASSCONFIRM)
                         + "\n"
                         + getMessage(
-                                ValidationMessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERPASSCONFIRM))
+                                MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE).replace("{0}", getMessage(MessageKeys.CUSTOMERPASSCONFIRM))
                                 .replace("{min}", "4").replace("{max}", "20")
                         + "\n"
-                        + getMessage(ValidationMessageKeys.NOTEQUALS_CUSTOMERPASS),
+                        + getMessage(MessageKeys.NOTEQUALS_CUSTOMERPASS),
                 driver.findElement(By.id("customerForm.errors")).getText(),
                 "\n"));
 
@@ -309,7 +308,7 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.id("customerKana")).clear();
@@ -331,13 +330,13 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertEquals(
                 getMessage(
-                        ValidationMessageKeys.JAVAX_VALIDATION_CONSTRAINTS_PATTERN_MESSAGE)
-                        .replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERPOST)).replace("{regexp}", "[0-9]{3}-[0-9]{4}"), driver
+                        MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_PATTERN_MESSAGE)
+                        .replace("{0}", getMessage(MessageKeys.CUSTOMERPOST)).replace("{regexp}", "[0-9]{3}-[0-9]{4}"), driver
                         .findElement(By.id("customerForm.errors")).getText());
 
         driver.findElement(By.id("customerKana")).clear();
@@ -360,11 +359,11 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_EMAIL_MESSAGE),
+                getMessage(MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_EMAIL_MESSAGE),
                 driver.findElement(By.id("customerForm.errors")).getText());
     }
 
@@ -374,7 +373,7 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.id("customerKana")).clear();
@@ -402,11 +401,11 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.INCORRECTDATE_CUSTOMERBIRTH),
+                getMessage(MessageKeys.INCORRECTDATE_CUSTOMERBIRTH),
                 driver.findElement(By.id("customerForm.errors")).getText());
     }
 
@@ -416,7 +415,7 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.id("customerKana")).clear();
@@ -445,14 +444,14 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertTrue(multiMessageAssert(
-                getMessage(ValidationMessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE).
-                        replace("{0}",getMessage(ValidationMessageKeys.CUSTOMERPASS)).replace("{min}", "4").replace("{max}", "20")
+                getMessage(MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE).
+                        replace("{0}",getMessage(MessageKeys.CUSTOMERPASS)).replace("{min}", "4").replace("{max}", "20")
                         + "\n"
-                        + getMessage(ValidationMessageKeys.NOTEQUALS_CUSTOMERPASS),
+                        + getMessage(MessageKeys.NOTEQUALS_CUSTOMERPASS),
                 driver.findElement(By.id("customerForm.errors")).getText(),
                 "\n"));
 
@@ -475,15 +474,15 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("ter");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertTrue(multiMessageAssert(
                 getMessage(
-                        ValidationMessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERPASSCONFIRM))
+                        MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE).replace("{0}", getMessage(MessageKeys.CUSTOMERPASSCONFIRM))
                         .replace("{min}", "4").replace("{max}", "20")
                         + "\n"
-                        + getMessage(ValidationMessageKeys.NOTEQUALS_CUSTOMERPASS),
+                        + getMessage(MessageKeys.NOTEQUALS_CUSTOMERPASS),
                 driver.findElement(By.id("customerForm.errors")).getText(),
                 "\n"));
 
@@ -506,11 +505,11 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE).replace("{0}", getMessage(ValidationMessageKeys.CUSTOMERTEL))
+                getMessage(MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE).replace("{0}", getMessage(MessageKeys.CUSTOMERTEL))
                         .replace("{min}", "10").replace("{max}", "13"), driver
                         .findElement(By.id("customerForm.errors")).getText());
     }
@@ -521,7 +520,7 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.id("customerKana")).clear();
@@ -543,11 +542,11 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERKANA),
+                getMessage(MessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERKANA),
                 driver.findElement(By.id("customerForm.errors")).getText());
 
         driver.findElement(By.id("customerKana")).clear();
@@ -569,11 +568,11 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERNAME),
+                getMessage(MessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERNAME),
                 driver.findElement(By.id("customerForm.errors")).getText());
 
         driver.findElement(By.id("customerKana")).clear();
@@ -596,13 +595,13 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
                 "@@terasoluna-#");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertTrue(multiMessageAssert(
-                getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERPASSCONFIRM)
+                getMessage(MessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERPASSCONFIRM)
                         + "\n"
-                        + getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERPASS),
+                        + getMessage(MessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERPASS),
                 driver.findElement(By.id("customerForm.errors")).getText(),
                 "\n"));
 
@@ -625,11 +624,11 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         assertEquals(
-                getMessage(ValidationMessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERTEL),
+                getMessage(MessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERTEL),
                 driver.findElement(By.id("customerForm.errors")).getText());
     }
 

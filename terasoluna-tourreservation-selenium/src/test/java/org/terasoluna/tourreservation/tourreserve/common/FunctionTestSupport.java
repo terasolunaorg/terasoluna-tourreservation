@@ -1,4 +1,4 @@
-package org.terasoluna.tourreservation.tourreserve.selenium.common;
+package org.terasoluna.tourreservation.tourreserve.common;
 
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;

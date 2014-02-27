@@ -33,8 +33,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.terasoluna.tourreservation.app.common.constants.MessageId;
-import org.terasoluna.tourreservation.tourreserve.selenium.common.FunctionTestSupport;
+import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
+import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
@@ -66,7 +66,7 @@ public class CustomerRegisterTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.name("customerKana")).sendKeys("テラソルナ");
@@ -87,7 +87,7 @@ public class CustomerRegisterTest extends FunctionTestSupport {
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
 
         // confirm registration contents
@@ -96,7 +96,7 @@ public class CustomerRegisterTest extends FunctionTestSupport {
         // back
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_GOBACKMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_GOBACKMESSAGE) + "']"))
                 .click();
         
         // reenter confirm password again
@@ -106,7 +106,7 @@ public class CustomerRegisterTest extends FunctionTestSupport {
         // confirm
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_CONFIRM) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
                 .click();
         
         // confirm registration contents again
@@ -115,7 +115,7 @@ public class CustomerRegisterTest extends FunctionTestSupport {
         // Register
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_REGISTER) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_REGISTER) + "']"))
                 .click();
 
         // Retention of ID that are registered
@@ -123,12 +123,12 @@ public class CustomerRegisterTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_GOTOMENUMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_GOTOMENUMESSAGE) + "']"))
                 .click();
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
                 .click();
 
         driver.findElement(By.id("password")).clear();
@@ -138,10 +138,10 @@ public class CustomerRegisterTest extends FunctionTestSupport {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGIN) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
                 .click();
 
-        assertEquals(getMessage(MessageId.LABEL_TR_MENU_MENUMESSAGE),
+        assertEquals(getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
                 driver.findElement(By.cssSelector("p.box")).getText());
     }
 
@@ -149,9 +149,9 @@ public class CustomerRegisterTest extends FunctionTestSupport {
         assertEquals("テラソルナ", driver.findElement(By.xpath("//td[2]")).getText());
         assertEquals("ＴＥＲＡＳＯＬＵＮＡ", driver
                 .findElement(By.xpath("//tr[2]/td[2]")).getText());
-        assertEquals("2000" + getMessage(MessageId.LABEL_TR_COMMON_YEAR) + " 12"
-                + getMessage(MessageId.LABEL_TR_COMMON_MONTH) + " 1"
-                + getMessage(MessageId.LABEL_TR_COMMON_DAY),
+        assertEquals("2000" + getMessage(MessageKeys.LABEL_TR_COMMON_YEAR) + " 12"
+                + getMessage(MessageKeys.LABEL_TR_COMMON_MONTH) + " 1"
+                + getMessage(MessageKeys.LABEL_TR_COMMON_DAY),
                 driver.findElement(By.xpath("//tr[3]/td[2]")).getText());
         assertEquals("FW", driver.findElement(By.xpath("//tr[4]/td[2]"))
                 .getText());
