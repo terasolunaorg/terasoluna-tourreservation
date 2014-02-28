@@ -22,6 +22,7 @@ import javax.inject.Inject;
 import javax.validation.groups.Default;
 
 import org.dozer.Mapper;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -71,8 +72,8 @@ public class ManageReservationController {
      * @return
      */
     @RequestMapping(value = "list", method = RequestMethod.GET)
-    public String list(Model model) {
-        List<ReserveRowOutput> rows = manageReservationHelper.list();
+    public String list(Authentication auth, Model model) {
+        List<ReserveRowOutput> rows = manageReservationHelper.list(auth);
 
         model.addAttribute("rows", rows);
         return "managereservation/list";

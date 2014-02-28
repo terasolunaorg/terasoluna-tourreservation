@@ -18,6 +18,7 @@ package org.terasoluna.tourreservation.app.reservetour;
 import javax.inject.Inject;
 
 import org.dozer.Mapper;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.tourreservation.app.common.security.UserDetailsUtils;
@@ -53,7 +54,7 @@ public class ReserveTourHelper {
 	 * @param form
 	 * @return
 	 */
-	public TourDetailOutput findTourDetail(ReserveTourForm form) {
+	public TourDetailOutput findTourDetail(Authentication auth, ReserveTourForm form) {
 		TourDetailOutput output = new TourDetailOutput();
 		TourInfo tourInfo = tourInfoSharedService.findOne(form.getTourCode());
 
@@ -62,7 +63,8 @@ public class ReserveTourHelper {
 						form.getChildCount());
 		output.setTourInfo(tourInfo);
 		output.setPriceCalculateOutput(priceCalculateOutput);
-		ReservationUserDetails userDetails = UserDetailsUtils.getUserDetails();
+		ReservationUserDetails userDetails = UserDetailsUtils.getUserDetails(auth);
+		
 		if (userDetails != null) {
 			output.setCustomer(userDetails.getCustomer());
 		}
@@ -76,13 +78,13 @@ public class ReserveTourHelper {
 	 * @return
 	 * @throws BusinessException
 	 */
-	public ReserveTourOutput reserve(ReserveTourForm tourReserveForm)
+	public ReserveTourOutput reserve(Authentication auth, ReserveTourForm tourReserveForm)
 			throws BusinessException {
 
 		ReserveTourInput input = dozerBeanMapper.map(tourReserveForm,
 				ReserveTourInput.class);
 
-		Customer customer = UserDetailsUtils.getUserDetails().getCustomer();
+		Customer customer = UserDetailsUtils.getUserDetails(auth).getCustomer();
 		input.setCustomer(customer);
 		ReserveTourOutput tourReserveOutput = reserveService.reserveTour(input);
 		return tourReserveOutput;

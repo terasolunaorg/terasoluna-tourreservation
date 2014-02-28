@@ -121,10 +121,7 @@ public class ReserveTourHelperTest {
     @Test
     public void testFindTourDetail01() {
         // test when principal is not null
-        SecurityContextHolder
-                .getContext()
-                .setAuthentication(
-                        new UsernamePasswordAuthenticationToken(new ReservationUserDetails(customer), "pass", null));
+        authentication = new UsernamePasswordAuthenticationToken(new ReservationUserDetails(customer), "pass", null);
 
         String tourCode = "xxxxx";
 
@@ -134,7 +131,7 @@ public class ReserveTourHelperTest {
         form.setChildCount(2);
 
         // run
-        TourDetailOutput resultOutput = reserveHelper.findTourDetail(form);
+        TourDetailOutput resultOutput = reserveHelper.findTourDetail(authentication, form);
 
         // assert
         assertThat(resultOutput.getCustomer(), is(customer));
@@ -146,7 +143,7 @@ public class ReserveTourHelperTest {
     @Test
     public void testFindTourDetail02() {
         // test when principal is null
-        SecurityContextHolder.getContext().setAuthentication(null);
+        authentication = null;
         String tourCode = "xxxxx";
 
         ReserveTourForm form = new ReserveTourForm();
@@ -155,7 +152,7 @@ public class ReserveTourHelperTest {
         form.setChildCount(2);
 
         // run
-        TourDetailOutput resultOutput = reserveHelper.findTourDetail(form);
+        TourDetailOutput resultOutput = reserveHelper.findTourDetail(authentication, form);
 
         // assert
         assertThat(resultOutput.getCustomer(), is(nullValue()));
@@ -166,10 +163,7 @@ public class ReserveTourHelperTest {
 
     @Test
     public void testReserve01() {
-        SecurityContextHolder
-                .getContext()
-                .setAuthentication(
-                        new UsernamePasswordAuthenticationToken(new ReservationUserDetails(customer), "pass", null));
+        authentication = new UsernamePasswordAuthenticationToken(new ReservationUserDetails(customer), "pass", null);
 
         ReserveTourForm form = new ReserveTourForm();
         ReserveTourOutput output = new ReserveTourOutput();
@@ -177,7 +171,7 @@ public class ReserveTourHelperTest {
                 .thenReturn(output);
 
         // run
-        ReserveTourOutput result = reserveHelper.reserve(form);
+        ReserveTourOutput result = reserveHelper.reserve(authentication, form);
 
         // assert
         assertThat(result, is(output));
