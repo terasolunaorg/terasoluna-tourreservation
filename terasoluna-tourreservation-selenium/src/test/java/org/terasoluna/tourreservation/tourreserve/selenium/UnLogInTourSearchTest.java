@@ -34,15 +34,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.terasoluna.tourreservation.app.common.constants.MessageId;
+import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
+import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
-public class UnLogInTourSearchTest {
+public class UnLogInTourSearchTest extends FunctionTestSupport {
     @Inject
     MessageSource messageSource;
 
-    @Inject
     WebDriver driver;
 
     @Value("${selenium.baseUrl}")
@@ -53,6 +53,7 @@ public class UnLogInTourSearchTest {
 
     @Before
     public void setUp() {
+        driver = createLocaleSpecifiedDriver(Locale.getDefault().toLanguageTag());
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
@@ -64,15 +65,15 @@ public class UnLogInTourSearchTest {
     public void testUnLogInTourSearch() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
-        assertEquals(getMessage(MessageId.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
-                + getMessage(MessageId.LABEL_TR_MENU_MENUMESSAGE),
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
+                + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
                 driver.findElement(By.cssSelector("p.box")).getText());
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
                 .click();
 
-        assertEquals(getMessage(MessageId.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver
                 .findElement(By.cssSelector("p.box")).getText());
 
         DateTime dt = new DateTime();
@@ -89,7 +90,7 @@ public class UnLogInTourSearchTest {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_SEARCH) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
                 .click();
 
         driver.findElement(By.linkText("2")).click();
@@ -101,9 +102,9 @@ public class UnLogInTourSearchTest {
                 By.linkText(driver.findElement(By.xpath("//td[2]")).getText()))
                 .click();
 
-        assertEquals(getMessage(MessageId.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver
                 .findElement(By.cssSelector("p.box")).getText());
-        assertEquals(getMessage(MessageId.LABEL_TR_SEARCHTOUR_TITLEDETAILSCREENMESSAGE),
+        assertEquals(getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_TITLEDETAILSCREENMESSAGE),
                 driver.findElement(By.cssSelector("h2")).getText());
 
         assertEquals(basePrice,
@@ -112,7 +113,7 @@ public class UnLogInTourSearchTest {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
                 .click();
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys("00000001");
@@ -121,10 +122,10 @@ public class UnLogInTourSearchTest {
 
         driver.findElement(
                 By.xpath("//input[@value='"
-                        + getMessage(MessageId.LABEL_TR_COMMON_LOGIN) + "']"))
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
                 .click();
 
-        assertEquals(getMessage(MessageId.LABEL_TR_SEARCHTOUR_TITLEDETAILSCREENMESSAGE),
+        assertEquals(getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_TITLEDETAILSCREENMESSAGE),
                 driver.findElement(By.cssSelector("h2")).getText());
     }
 
