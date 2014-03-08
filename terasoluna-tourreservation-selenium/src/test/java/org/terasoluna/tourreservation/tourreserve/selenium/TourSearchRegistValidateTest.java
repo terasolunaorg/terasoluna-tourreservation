@@ -17,9 +17,6 @@ package org.terasoluna.tourreservation.tourreserve.selenium;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-
 import javax.inject.Inject;
 
 import org.joda.time.DateTime;
@@ -53,12 +50,7 @@ public class TourSearchRegistValidateTest extends FunctionTestSupport {
 
     @Before
     public void setUp() {
-        driver = createLocaleSpecifiedDriver(Locale.getDefault().toLanguageTag());
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
-
-    private String getMessage(String code) {
-        return messageSource.getMessage(code, null, Locale.getDefault());
+        driver = createDefaultLocaleDriver();
     }
 
     @Test
