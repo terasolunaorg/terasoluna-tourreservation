@@ -20,10 +20,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
 
 import org.junit.After;
 import org.junit.Before;
@@ -33,7 +29,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
@@ -42,8 +37,6 @@ import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
 public class CustomerRegisterValidateTest extends FunctionTestSupport {
-    @Inject
-    MessageSource messageSource;
 
     WebDriver driver;
 
@@ -55,12 +48,7 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
 
     @Before
     public void setUp() {
-        driver = createLocaleSpecifiedDriver(Locale.getDefault().toLanguageTag());
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
-
-    private String getMessage(String code) {
-        return messageSource.getMessage(code, null, Locale.getDefault());
+        driver = createDefaultLocaleDriver();
     }
 
     @Test

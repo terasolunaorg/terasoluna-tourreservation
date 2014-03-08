@@ -21,12 +21,5 @@
 
 	<bean id="dateFactory" class="org.terasoluna.gfw.common.date.DefaultDateFactory" />
 
-	<beans profile="chrome">
-		<bean id="webDriver" class="org.openqa.selenium.chrome.ChromeDriver"
-			scope="prototype" />
-	</beans>
-	<beans profile="ie">
-		<bean id="webDriver" class="org.openqa.selenium.ie.InternetExplorerDriver"
-			scope="prototype" />
-	</beans>
+
 </beans>
