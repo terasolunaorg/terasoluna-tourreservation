@@ -28,7 +28,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.terasoluna.tourreservation.domain.model.Customer;
 import org.terasoluna.tourreservation.domain.model.Reserve;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
@@ -38,6 +37,8 @@ import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUser
 
 public class ManageReservationHelperTest {
 
+    Authentication authentication;
+    
     ManageReservationHelper manageReservationFacade;
 
     ReserveService reserveService;
@@ -51,11 +52,9 @@ public class ManageReservationHelperTest {
         manageReservationFacade = new ManageReservationHelper();
 
         securityContext = mock(SecurityContext.class);
-        Authentication authentication = mock(Authentication.class);
+        authentication = mock(Authentication.class);
         when(authentication.getPrincipal()).thenReturn(
                 new ReservationUserDetails(new Customer("xxxx")));
-        when(securityContext.getAuthentication()).thenReturn(authentication);
-        SecurityContextHolder.setContext(securityContext);
 
         reserveService = mock(ReserveService.class);
         tourInfoSharedService = mock(TourInfoSharedService.class);
@@ -83,7 +82,7 @@ public class ManageReservationHelperTest {
         when(tourInfoSharedService.isOverPaymentLimitTour(tour2)).thenReturn(
                 true);
 
-        List<ReserveRowOutput> result = manageReservationFacade.list();
+        List<ReserveRowOutput> result = manageReservationFacade.list(authentication);
         assertThat(result, is(notNullValue()));
         assertThat(result.size(), is(2));
         ReserveRowOutput o1 = result.get(0);

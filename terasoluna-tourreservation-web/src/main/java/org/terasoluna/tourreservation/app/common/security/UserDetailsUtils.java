@@ -16,14 +16,10 @@
 package org.terasoluna.tourreservation.app.common.security;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
 
 public class UserDetailsUtils {
-    public static ReservationUserDetails getUserDetails() {
-        Authentication auth = SecurityContextHolder.getContext()
-                .getAuthentication();
-
+    public static ReservationUserDetails getUserDetails(Authentication auth) {
         if (auth != null
                 && auth.getPrincipal() instanceof ReservationUserDetails) {
             return ((ReservationUserDetails) auth.getPrincipal());

@@ -33,6 +33,7 @@ import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.springframework.security.core.Authentication;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
@@ -47,6 +48,8 @@ import org.terasoluna.tourreservation.domain.service.reserve.ReserveService;
 public class ManageReservationControllerTest {
 
     MockMvc mockMvc;
+    
+    Authentication auth;
 
     ManageReservationController manageReservationController;
 
@@ -66,6 +69,7 @@ public class ManageReservationControllerTest {
         manageReservationHelper = mock(ManageReservationHelper.class);
         dozerBeanMapper = new DozerBeanMapper();
         reserveService = mock(ReserveService.class);
+        auth = mock(Authentication.class);
         manageReservationController.manageReservationHelper = manageReservationHelper;
         manageReservationController.dozerBeanMapper = dozerBeanMapper;
         manageReservationController.reserveService = reserveService;
@@ -83,7 +87,7 @@ public class ManageReservationControllerTest {
                 .get("/managereservation/list");
 
         // Set mock behavior for helper method
-        when(manageReservationHelper.list()).thenReturn(
+        when(manageReservationHelper.list(auth)).thenReturn(
                 new ArrayList<ReserveRowOutput>());
 
         try {

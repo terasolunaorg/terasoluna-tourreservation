@@ -28,16 +28,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.security.core.Authentication;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.terasoluna.gfw.common.exception.BusinessException;
+import org.terasoluna.tourreservation.domain.model.Customer;
 import org.terasoluna.tourreservation.domain.service.reserve.ReserveTourOutput;
+import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
 
 public class ReserveTourControllerTest {
 
+    Authentication authentication;
+    
     MockMvc mockMvc;
 
     ReserveTourHelper reserveTourHelper;
@@ -51,6 +56,9 @@ public class ReserveTourControllerTest {
         reserveTourController = new ReserveTourController();
 
         // other members instantiation and assignment
+        authentication = mock(Authentication.class);
+        when(authentication.getPrincipal()).thenReturn(
+                new ReservationUserDetails(new Customer("xxxx")));
         reserveTourHelper = mock(ReserveTourHelper.class);
         reserveTourController.reserveTourHelper = reserveTourHelper;
 
@@ -67,7 +75,7 @@ public class ReserveTourControllerTest {
                 .get("/reservetour/read");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((ReserveTourForm) anyObject()))
+        when(reserveTourHelper.findTourDetail((Authentication) anyObject(), (ReserveTourForm) anyObject()))
                 .thenReturn(new TourDetailOutput());
 
         try {
@@ -93,7 +101,7 @@ public class ReserveTourControllerTest {
                 .post("/reservetour/reserve").param("confirm", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((ReserveTourForm) anyObject()))
+        when(reserveTourHelper.findTourDetail((Authentication) anyObject(), (ReserveTourForm) anyObject()))
                 .thenReturn(new TourDetailOutput());
 
         // Set form data
@@ -124,7 +132,7 @@ public class ReserveTourControllerTest {
                 .post("/reservetour/reserve").param("confirm", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((ReserveTourForm) anyObject()))
+        when(reserveTourHelper.findTourDetail((Authentication) anyObject(), (ReserveTourForm) anyObject()))
                 .thenReturn(new TourDetailOutput());
 
         // Do not Set any form data so that form validation will fail
@@ -153,7 +161,7 @@ public class ReserveTourControllerTest {
                 .post("/reservetour/reserve");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.reserve((ReserveTourForm) anyObject()))
+        when(reserveTourHelper.reserve((Authentication) anyObject(), (ReserveTourForm) anyObject()))
                 .thenReturn(new ReserveTourOutput());
 
         // Set form data to session
@@ -189,9 +197,9 @@ public class ReserveTourControllerTest {
                 .post("/reservetour/reserve");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.reserve((ReserveTourForm) anyObject()))
+        when(reserveTourHelper.reserve((Authentication) anyObject(), (ReserveTourForm) anyObject()))
                 .thenThrow(new BusinessException(""));
-        when(reserveTourHelper.findTourDetail((ReserveTourForm) anyObject()))
+        when(reserveTourHelper.findTourDetail((Authentication) anyObject(), (ReserveTourForm) anyObject()))
                 .thenReturn(new TourDetailOutput());
 
         // Set form data
