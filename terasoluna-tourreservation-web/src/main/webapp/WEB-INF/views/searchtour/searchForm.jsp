@@ -81,7 +81,7 @@
 					<form:select path="basePrice" items="${CL_BASE_PRICE}" />
 				</div>
 				<div class="span-24 last">
-					<input type="submit"
+					<input id="search" type="submit"
 						name="search"
 						value="<spring:message code="label.tr.common.search" />">
 				</div>
@@ -119,8 +119,8 @@
 			<c:forEach var="tourInfo" items="${page.content}" varStatus="sts">
 				<tr>
 					<td>${page.number * page.size + sts.index + 1}</td>
-					<td><a
-						href="${pageContext.request.contextPath}/reservetour/read?tourCode=${f:h(tourInfo.tourCode)}&${f:query(tourInfoSearchCriteria)}&page.page=${f:h(page.number + 1)}&page.size=${f:h(page.size)}">
+					<td><a id="${page.number * page.size + sts.index + 1}"
+						href="${pageContext.request.contextPath}/reservetour/read?tourCode=${f:h(tourInfo.tourCode)}&${f:query(tourInfoSearchCriteria)}&page=${f:h(page.number)}&size=${f:h(page.size)}">
 							${f:h(tourInfo.tourName)} </a></td>
 					<td><fmt:formatDate value="${tourInfo.depDay}"
 							pattern="${datePattern}" /></td>

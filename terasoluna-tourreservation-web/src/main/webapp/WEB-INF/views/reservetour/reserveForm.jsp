@@ -67,30 +67,30 @@
 				method="get">
 				<input type="submit"
 					value="<spring:message code="label.tr.common.goBackMessage"/>"></input>
-				<input type="hidden" name="page.page"
-					value="${f:h(param['page.page'])}" />
-				<input type="hidden" name="page.size"
-					value="${f:h(param['page.size'])}" />
+				<input type="hidden" name="page"
+					value="${f:h(param['page'])}" />
+				<input type="hidden" name="size"
+					value="${f:h(param['size'])}" />
 			</form:form>
 		</table>
 	</sec:authorize>
 	<sec:authorize ifNotGranted="ROLE_USER">
 		<form:form action="${pageContext.request.contextPath}/login"
 			method="get" cssClass="inline">
-			<input type="submit"
+			<input type="submit" id="loginButton"
 				value="<spring:message code="label.tr.menu.loginBtnMessage" />">
 			<input type="hidden" name="redirectTo"
-				value="${pageContext.request.contextPath}/reservetour/read?${f:query(reserveTourForm)}&page.page=${f:h(param['page.page'])}&page.size=${f:h(param['page.size'])}" />
+				value="${pageContext.request.contextPath}/reservetour/read?${f:query(reserveTourForm)}&page=${f:h(param['page'])}&size=${f:h(param['size'])}" />
 		</form:form>
 		<form:form
 			action="${pageContext.request.contextPath}/searchtour/search"
 			method="get" cssClass="inline">
-			<input type="submit"
+			<input type="hidden" name="page"
+					value="${f:h(param['page'])}" />
+				<input type="hidden" name="size"
+					value="${f:h(param['size'])}" />
+			<input type="submit" id="goBackButton"
 				value="<spring:message code="label.tr.common.goBackMessage"/>"></input>
-			<input type="hidden" name="page.page"
-				value="${f:h(param['page.page'])}" />
-			<input type="hidden" name="page.size"
-				value="${f:h(param['page.size'])}" />
 		</form:form>
 	</sec:authorize>
 </div>
