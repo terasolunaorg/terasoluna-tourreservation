@@ -62,14 +62,14 @@ public class NoLogInTourSearchPaginationTest extends FunctionTestSupport {
                         + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
                 .click();
         
-        driver.findElement(By.linkText("3")).click();
+        driver.findElement(By.linkText("2")).click();
         
-        driver.findElement(By.id("21")).click();
+        driver.findElement(By.id("11")).click();
         driver.findElement(By.xpath("//input[@value='"
                 + getMessage(MessageKeys.LABEL_TR_COMMON_GOBACKMESSAGE) + "']")).click();
         
         // assert that it navigates back to page 3
-        assertNotNull(driver.findElement(By.id("21")));
+        assertNotNull(driver.findElement(By.id("11")));
         
     }
 
