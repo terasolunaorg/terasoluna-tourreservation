@@ -15,10 +15,8 @@
  */
 package org.terasoluna.tourreservation.tourreserve.selenium;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -64,7 +62,7 @@ public class NoLogInTourSearchPaginationTest extends FunctionTestSupport {
         
         driver.findElement(By.linkText("2")).click();
         
-        driver.findElement(By.id("11")).click();
+        driver.findElement(By.linkText(driver.findElement(By.xpath("//td[2]")).getText())).click();
         driver.findElement(By.xpath("//input[@value='"
                 + getMessage(MessageKeys.LABEL_TR_COMMON_GOBACKMESSAGE) + "']")).click();
         
