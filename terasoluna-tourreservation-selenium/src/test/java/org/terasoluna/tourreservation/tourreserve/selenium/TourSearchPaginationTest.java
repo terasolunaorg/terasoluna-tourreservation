@@ -15,7 +15,8 @@
  */
 package org.terasoluna.tourreservation.tourreserve.selenium;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
 
 import org.junit.After;
 import org.junit.Before;
@@ -32,14 +33,14 @@ import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
-public class NoLogInTourSearchPaginationTest extends FunctionTestSupport {
+public class TourSearchPaginationTest extends FunctionTestSupport {
 
     WebDriver driver;
 
     @Value("${selenium.baseUrl}")
     String baseUrl;
 
-    public NoLogInTourSearchPaginationTest() {
+    public TourSearchPaginationTest() {
     }
 
     @Before
@@ -48,7 +49,7 @@ public class NoLogInTourSearchPaginationTest extends FunctionTestSupport {
     }
 
     @Test
-    public void testNoLogInTourSearchPagination() {
+    public void testTourSearchPagination() {
         
         
         driver.get(baseUrl + "/terasoluna-tourreservation-web/");
@@ -66,8 +67,8 @@ public class NoLogInTourSearchPaginationTest extends FunctionTestSupport {
         driver.findElement(By.xpath("//input[@value='"
                 + getMessage(MessageKeys.LABEL_TR_COMMON_GOBACKMESSAGE) + "']")).click();
         
-        // assert that it navigates back to page 3
-        assertNotNull(driver.findElement(By.id("11")));
+        // currentPage query check
+        assertThat(driver.findElement(By.xpath("//a[contains(@href, '?page=1&size=10')]")).getText(), is("2"));
         
     }
 
