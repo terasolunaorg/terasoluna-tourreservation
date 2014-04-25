@@ -99,7 +99,7 @@
 		</p>
 		<div class="pagination">
 			<t:pagination page="${page}"
-				queryTmpl="page={page}&size={size}&${f:query(tourInfoSearchCriteria)}" />
+				queryTmpl="page={page}&size={size}" criteriaQuery="${f:query(tourInfoSearchCriteria)}" />
 		</div>
 		<table>
 			<caption>
@@ -134,7 +134,7 @@
 		</table>
 		<div class="pagination">
 			<t:pagination page="${page}"
-				queryTmpl="page={page}&size={size}&${f:query(tourInfoSearchCriteria)}" />
+				queryTmpl="page={page}&size={size}" criteriaQuery="${f:query(tourInfoSearchCriteria)}" />
 		</div>
 	</c:if>
 </div>
