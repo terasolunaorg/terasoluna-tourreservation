@@ -8,7 +8,8 @@
         <relativePath>../terasoluna-tourreservation-parent/pom.xml</relativePath>
     </parent>
     <artifactId>terasoluna-tourreservation-env</artifactId>
-    <name>${project.artifactId}</name>
+    <name>Terasoluna Global Framework - Tour Reservation Application - Environment Layer</name>
+    <description>Environment dependent settings of Tour Reservation Application using Terasoluna Global Framework</description>
     <packaging>jar</packaging>
 
     <build>
