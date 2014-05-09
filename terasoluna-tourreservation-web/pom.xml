@@ -9,7 +9,8 @@
         <relativePath>../terasoluna-tourreservation-parent/pom.xml</relativePath>
     </parent>
     <artifactId>terasoluna-tourreservation-web</artifactId>
-    <name>${project.artifactId}</name>
+    <name>Terasoluna Global Framework - Tour Reservation Application - Web Layer</name>
+    <description>Web layer of Tour Reservation Application using Terasoluna Global Framework</description>
     <packaging>war</packaging>
 
     <build>
