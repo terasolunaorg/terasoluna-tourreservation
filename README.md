@@ -53,7 +53,7 @@ If db user password is not set to 'POstgres', then go to terasoluna-tourreservat
 
 #### Deploy war
 
-Deploy `terasoluna-tourreservation-web/target/terasoluna-tourreservation-web.war` to your Application server (ex. Tomcat7)
+Deploy `terasoluna-tourreservation-web/target/terasoluna-tourreservation-web.war` to your Application server (e.g. Tomcat7)
 
 You can also use `mvn tomcat7:run` to test this application quickly with option `MAVEN_OPTS=-XX:MaxPermSize=256m` in environment variable.
 
