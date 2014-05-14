@@ -17,7 +17,7 @@ package org.terasoluna.tourreservation.tourreserve.selenium;
 
 import static org.junit.Assert.assertThat;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 
 import org.junit.After;
 import org.junit.Before;
