@@ -17,7 +17,7 @@ package org.terasoluna.tourreservation.tourreserve.selenium;
 
 import static org.junit.Assert.assertThat;
 
-import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.is;
 
 import org.junit.After;
 import org.junit.Before;
@@ -65,7 +65,7 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
                         + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
                 .click();
 
-        driver.findElement(By.linkText("2")).click();
+        driver.findElement(By.linkText("3")).click();
 
         driver.findElement(By.linkText(driver.findElement(By.xpath("//td[2]")).getText())).click();
 
@@ -85,7 +85,7 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
                         + "']")).click();
 
         // currentPage query check
-        assertThat(driver.findElement(By.id("11")), notNullValue());
+        assertThat(driver.findElement(By.className("active")).getText(), is("3"));
     }
 
     @After
