@@ -119,8 +119,7 @@
 			<c:forEach var="tourInfo" items="${page.content}" varStatus="sts">
 				<tr>
 					<td>${page.number * page.size + sts.index + 1}</td>
-					<td><a id="${page.number * page.size + sts.index + 1}"
-						href="${pageContext.request.contextPath}/reservetour/read?tourCode=${f:h(tourInfo.tourCode)}&${f:query(tourInfoSearchCriteria)}&page=${f:h(page.number)}&size=${f:h(page.size)}">
+					<td><a href="${pageContext.request.contextPath}/reservetour/read?tourCode=${f:h(tourInfo.tourCode)}&${f:query(tourInfoSearchCriteria)}&page=${f:h(page.number)}&size=${f:h(page.size)}">
 							${f:h(tourInfo.tourName)} </a></td>
 					<td><fmt:formatDate value="${tourInfo.depDay}"
 							pattern="${datePattern}" /></td>
