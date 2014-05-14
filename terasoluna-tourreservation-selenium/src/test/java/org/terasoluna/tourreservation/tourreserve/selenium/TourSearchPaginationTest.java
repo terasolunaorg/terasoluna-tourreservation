@@ -16,7 +16,7 @@
 package org.terasoluna.tourreservation.tourreserve.selenium;
 
 import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 
 import org.junit.After;
 import org.junit.Before;
@@ -50,26 +50,42 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
 
     @Test
     public void testTourSearchPagination() {
-        
-        
+
         driver.get(baseUrl + "/terasoluna-tourreservation-web/");
-        driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+
+        driver.findElement(
+                By.xpath("//input[@value='"
+                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE)
+                        + "']")).click();
         new Select(driver.findElement(By.id("depCode"))).selectByValue("01");
         new Select(driver.findElement(By.id("arrCode"))).selectByValue("01");
         driver.findElement(
                 By.xpath("//input[@value='"
                         + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
                 .click();
-        
+
         driver.findElement(By.linkText("2")).click();
-        
-        driver.findElement(By.linkText(driver.findElement(By.xpath("//td[2]")).getText())).click();
+
+        // driver.findElement(By.linkText(driver.findElement(By.xpath("//td[2]")).getText())).click();
+        driver.findElement(By.id("11")).click();
+
         driver.findElement(By.xpath("//input[@value='"
-                + getMessage(MessageKeys.LABEL_TR_COMMON_GOBACKMESSAGE) + "']")).click();
-        
+                + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE)
+                + "']")).click();
+        driver.findElement(By.id("username")).clear();
+        driver.findElement(By.id("username")).sendKeys("00000001");
+        driver.findElement(By.id("password")).clear();
+        driver.findElement(By.id("password")).sendKeys("password");
+        driver.findElement(By.xpath("//input[@value='"
+                + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN)
+                + "']")).click();
+        driver.findElement(
+                By.xpath("//input[@value='"
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_GOBACKMESSAGE)
+                        + "']")).click();
+
         // currentPage query check
-        assertThat(driver.findElement(By.xpath("//a[contains(@href, '?page=1&size=10')]")).getText(), is("2"));
-        
+        assertThat(driver.findElement(By.id("11")), notNullValue());
     }
 
     @After
