@@ -77,7 +77,7 @@
 	<sec:authorize ifNotGranted="ROLE_USER">
 		<form:form action="${pageContext.request.contextPath}/login"
 			method="get" cssClass="inline">
-			<input type="submit" id="loginButton"
+			<input type="submit"
 				value="<spring:message code="label.tr.menu.loginBtnMessage" />">
 			<input type="hidden" name="redirectTo"
 				value="${pageContext.request.contextPath}/reservetour/read?${f:query(reserveTourForm)}&page=${f:h(param['page'])}&size=${f:h(param['size'])}" />
@@ -89,8 +89,7 @@
 					value="${f:h(param['page'])}" />
 				<input type="hidden" name="size"
 					value="${f:h(param['size'])}" />
-			<input type="submit" id="goBackButton"
-				value="<spring:message code="label.tr.common.goBackMessage"/>"></input>
+			<input type="submit" value="<spring:message code="label.tr.common.goBackMessage"/>"></input>
 		</form:form>
 	</sec:authorize>
 </div>
