@@ -98,8 +98,7 @@
 				arguments="${page.totalElements}" />
 		</p>
 		<div class="pagination">
-			<t:pagination page="${page}"
-				queryTmpl="page={page}&size={size}&${f:query(tourInfoSearchCriteria)}" />
+			<t:pagination page="${page}" criteriaQuery="${f:query(tourInfoSearchCriteria)}" />
 		</div>
 		<table>
 			<caption>
@@ -133,8 +132,7 @@
 			</c:forEach>
 		</table>
 		<div class="pagination">
-			<t:pagination page="${page}"
-				queryTmpl="page={page}&size={size}&${f:query(tourInfoSearchCriteria)}" />
+			<t:pagination page="${page}" criteriaQuery="${f:query(tourInfoSearchCriteria)}" />
 		</div>
 	</c:if>
 </div>
