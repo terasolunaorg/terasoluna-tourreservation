@@ -11,9 +11,9 @@
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <name>Terasoluna Global Framework - Tour Reservation Application - Parent</name>
+    <name>TERASOLUNA Global Framework - Tour Reservation Application - Parent</name>
     <version>1.0.1-SNAPSHOT</version>
-    <description>Parent POM of Tour Reservation Application using Terasoluna Global Framework</description>
+    <description>Parent POM of Tour Reservation Application using TERASOLUNA Global Framework</description>
     <url>http://terasoluna.org</url>
     <inceptionYear>2013</inceptionYear>
     <licenses>

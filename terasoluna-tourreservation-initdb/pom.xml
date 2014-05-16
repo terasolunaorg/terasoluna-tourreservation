@@ -10,8 +10,8 @@
     </parent>
 
     <artifactId>terasoluna-tourreservation-initdb</artifactId>
-    <name>Terasoluna Global Framework - Tour Reservation Application - DB Init</name>
-    <description>Db initialization scripts for Tour Reservation Application using Terasoluna Global Framework</description>
+    <name>TERASOLUNA Global Framework - Tour Reservation Application - DB Init</name>
+    <description>Db initialization scripts for Tour Reservation Application using TERASOLUNA Global Framework</description>
 
     <properties>
         <postgresql.version>8.3-606.jdbc3</postgresql.version>
