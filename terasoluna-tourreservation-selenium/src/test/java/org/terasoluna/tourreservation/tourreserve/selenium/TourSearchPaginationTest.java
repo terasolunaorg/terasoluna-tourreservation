@@ -49,8 +49,52 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
         driver = createDefaultLocaleDriver();
     }
 
+    /**
+     * 
+     * Pagination tag related test about usage of page and size parameters (without login). <br>
+     * Tests the use of page
+     * On returning from a detail screen, tests whether the page number is the same the one selected before 
+     * going to the detail page.<br> 
+     * 
+     */
     @Test
-    public void testTourSearchPagination() {
+    public void testTourSearchPagination1() {
+
+        driver.get(baseUrl + "/terasoluna-tourreservation-web/");
+
+        driver.findElement(
+                By.xpath("//input[@value='"
+                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE)
+                        + "']")).click();
+        new Select(driver.findElement(By.id("depCode"))).selectByValue("01");
+        new Select(driver.findElement(By.id("arrCode"))).selectByValue("01");
+        driver.findElement(
+                By.xpath("//input[@value='"
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
+                .click();
+
+        driver.findElement(By.linkText("3")).click();
+
+        driver.findElement(By.linkText(driver.findElement(By.xpath("//td[2]")).getText())).click();
+
+        driver.findElement(
+                By.xpath("//input[@value='"
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_GOBACKMESSAGE)
+                        + "']")).click();
+
+        // currentPage query check
+        assertThat(driver.findElement(By.className("active")).getText(), is("3"));
+    }
+    
+    /**
+     * 
+     *  Pagination tag related test about usage of page and size parameters (with login). <br>
+     * On returning from a detail screen, tests whether the page number is the same the one selected before 
+     * going to the detail page.<br> 
+     * 
+     */
+    @Test
+    public void testTourSearchPagination2() {
 
         driver.get(baseUrl + "/terasoluna-tourreservation-web/");
 
@@ -87,7 +131,8 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
         // currentPage query check
         assertThat(driver.findElement(By.className("active")).getText(), is("3"));
     }
-
+    
+    
     @After
     public void tearDown() {
         driver.quit();
