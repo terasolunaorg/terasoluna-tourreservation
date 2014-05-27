@@ -30,7 +30,7 @@
 			<th><spring:message code="label.tr.searchtour.reserveNo" /></th>
 			<td>${f:h(output.reserve.reserveNo)}</td>
 			<th><spring:message code="label.tr.searchtour.reserveDate" /></th>
-			<td>${f:h(output.reserve.reservedDay)}</td>
+			<td><fmt:formatDate value="${output.reserve.reservedDay}" pattern="${datePattern}" /></td>
 		</tr>
 		<tr>
 			<th><spring:message code="label.tr.searchtour.tourname" /></th>
