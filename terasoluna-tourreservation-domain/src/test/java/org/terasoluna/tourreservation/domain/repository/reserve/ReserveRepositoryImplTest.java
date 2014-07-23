@@ -229,7 +229,7 @@ public class ReserveRepositoryImplTest {
 
 		assertThat(r.getCustomer().getCustomerAdd(), is("千葉県八千代市上高野"));
 		assertThat(r.getCustomer().getCustomerBirth().getTime(),
-				is(158079600000L));
+				is(DateTime.parse("1975-01-05").getMillis()));
 		assertThat(r.getCustomer().getCustomerCode(), is("00000001"));
 		assertThat(r.getCustomer().getCustomerJob(), is("プログラマ"));
 		assertThat(r.getCustomer().getCustomerKana(), is("キムラ　タロウ"));
