@@ -1,0 +1,14 @@
+language: java
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c 'create database tourreserve;' -U postgres
+jdk:
+  - oraclejdk7
+  
+script: 
+  - mvn sql:execute -f terasoluna-tourreservation-initdb -Ddb.password=
+  - mvn install -f terasoluna-tourreservation-parent/pom.xml
+  - mvn install -f terasoluna-tourreservation-env/pom.xml
+  - mvn install -f terasoluna-tourreservation-domain/pom.xml -Ddatabase.password=
+  - mvn install -f terasoluna-tourreservation-web/pom.xml
