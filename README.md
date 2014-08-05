@@ -5,6 +5,9 @@ This application shows **how an IDEAL project configuration and package structur
 
 **This sample uses Spring Data JPA. MyBatis version has not been not created yet.**
 
+* master [![Build Status for master](https://travis-ci.org/terasolunaorg/terasoluna-tourreservation.svg?branch=master)](https://travis-ci.org/terasolunaorg/terasoluna-tourreservation)
+* 1.0.x [![Build Status for 1.0.x](https://travis-ci.org/terasolunaorg/terasoluna-tourreservation.svg?branch=1.0.x)](https://travis-ci.org/terasolunaorg/terasoluna-tourreservation)
+
 ### Getting started
 
 #### Download
