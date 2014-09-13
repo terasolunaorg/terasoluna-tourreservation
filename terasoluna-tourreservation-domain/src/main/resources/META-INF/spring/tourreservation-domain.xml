@@ -18,12 +18,6 @@
 
     <context:component-scan base-package="org.terasoluna.tourreservation.domain" />
 
-    <bean id="passwordEncoder"
-        class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
-        <property name="iterations" value="1000" />
-        <constructor-arg value="256" />
-    </bean>
-
     <bean id="dateFactory" class="org.terasoluna.gfw.common.date.DefaultDateFactory" />
 
     <!-- AOP. -->

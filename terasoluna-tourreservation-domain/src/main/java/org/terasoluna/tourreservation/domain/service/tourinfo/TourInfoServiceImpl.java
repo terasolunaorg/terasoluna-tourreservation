@@ -36,6 +36,6 @@ public class TourInfoServiceImpl implements TourInfoService {
     @Override
     public Page<TourInfo> searchTour(TourInfoSearchCriteria criteria,
             Pageable pageable) {
-        return tourInfoRepository.searchTourInfo(criteria, pageable);
+        return tourInfoRepository.findPageBySearchCriteria(criteria, pageable);
     }
 }

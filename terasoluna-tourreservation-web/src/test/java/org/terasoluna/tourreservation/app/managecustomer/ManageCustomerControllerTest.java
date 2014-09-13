@@ -236,7 +236,7 @@ public class ManageCustomerControllerTest {
                 .post("/managecustomer/create");
 
         when(customerService.register((Customer) anyObject(), eq("12345")))
-                .thenReturn("12345678");
+                .thenReturn(new Customer("12345678"));
 
         CustomerForm form = prepareNewForm();
         setFormForPost(form, postRequest);
@@ -267,7 +267,7 @@ public class ManageCustomerControllerTest {
                 .post("/managecustomer/create");
 
         when(customerService.register((Customer) anyObject(), eq("12345")))
-                .thenReturn("12345678");
+                .thenReturn(new Customer("12345678"));
 
         CustomerForm form = prepareNewForm();
 
