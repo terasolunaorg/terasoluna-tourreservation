@@ -142,9 +142,9 @@ public class ManageCustomerController {
                 .getCustomerBirthMonth(), form.getCustomerBirthDay(), 0, 0, 0)
                 .toDate());
 
-        String customerCode = customerService.register(customer, form
+        Customer registeredCustomer = customerService.register(customer, form
                 .getCustomerPass());
-        redirectAttr.addFlashAttribute("customerCode", customerCode);
+        redirectAttr.addFlashAttribute("customerCode", registeredCustomer.getCustomerCode());
         return "redirect:/managecustomer/create?complete";
     }
 

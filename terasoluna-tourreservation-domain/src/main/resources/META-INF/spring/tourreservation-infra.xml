@@ -47,11 +47,13 @@
         </property>
     </bean>
 
-    <bean
-        class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource" />
+        <property name="fetchSize" value="100" />
+    </bean>
 
     <bean id="customerCodeSeq" class="org.terasoluna.gfw.common.sequencer.JdbcSequencer">
-        <property name="dataSource" ref="dataSource" />
+        <property name="jdbcTemplate" ref="jdbcTemplate" />
         <property name="sequenceClass" value="java.lang.String" />
         <property name="nextValueQuery"
             value="SELECT TO_CHAR(nextval('CUSTOMER_CODE_SEQ'),'FM00000000') AS customerCode" />
@@ -60,7 +62,7 @@
     </bean>
 
     <bean id="reserveNoSeq" class="org.terasoluna.gfw.common.sequencer.JdbcSequencer">
-        <property name="dataSource" ref="dataSource" />
+        <property name="jdbcTemplate" ref="jdbcTemplate" />
         <property name="sequenceClass" value="java.lang.String" />
         <property name="nextValueQuery"
             value="SELECT TO_CHAR(nextval('RESERVE_NO_SEQ'),'FM00000000') AS customerCode" />

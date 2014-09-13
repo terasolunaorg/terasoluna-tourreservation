@@ -70,7 +70,7 @@ public class ManageReservationHelper {
         String customerCode = UserDetailsUtils.getUserDetails(auth).getUsername();
 
         List<Reserve> reserves = reserveService
-                .findByCustomerCode(customerCode);
+                .findAllByCustomerCode(customerCode);
 
         List<ReserveRowOutput> rows = new ArrayList<ReserveRowOutput>();
         for (Reserve reservation : reserves) {
@@ -78,7 +78,7 @@ public class ManageReservationHelper {
             TourInfo tourInfo = reservation.getTourInfo();
 
             reservationRowOutput.setLimitExceeding(tourInfoSharedService
-                    .isOverPaymentLimitTour(tourInfo));
+                    .isOverPaymentLimit(tourInfo));
             reservationRowOutput.setTourDays(tourInfo.getTourDays() + "");// TODO
             reservationRowOutput.setReserve(reservation);
             rows.add(reservationRowOutput);
@@ -113,7 +113,7 @@ public class ManageReservationHelper {
         // payment related
         output.setPaymentTimeLimit(info.getPaymentLimit().toDate());
         output.setLimitExceeding(tourInfoSharedService
-                .isOverPaymentLimitTour(info));
+                .isOverPaymentLimit(info));
 
         return output;
 

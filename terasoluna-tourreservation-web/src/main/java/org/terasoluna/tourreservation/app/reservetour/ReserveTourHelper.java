@@ -86,7 +86,7 @@ public class ReserveTourHelper {
 
 		Customer customer = UserDetailsUtils.getUserDetails(auth).getCustomer();
 		input.setCustomer(customer);
-		ReserveTourOutput tourReserveOutput = reserveService.reserveTour(input);
+		ReserveTourOutput tourReserveOutput = reserveService.reserve(input);
 		return tourReserveOutput;
 	}
 

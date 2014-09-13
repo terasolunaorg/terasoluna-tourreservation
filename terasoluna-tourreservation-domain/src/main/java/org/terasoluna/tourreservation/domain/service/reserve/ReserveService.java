@@ -23,13 +23,11 @@ import org.terasoluna.tourreservation.domain.model.Reserve;
 public interface ReserveService {
     Reserve findOne(String reserveNo);
 
-    List<Reserve> findByCustomerCode(String customerCode);
+    List<Reserve> findAllByCustomerCode(String customerCode);
 
-    ReserveTourOutput reserveTour(ReserveTourInput input) throws BusinessException;
+    ReserveTourOutput reserve(ReserveTourInput input) throws BusinessException;
 
     void cancel(String reserveNo) throws BusinessException;
-
-    void update(Reserve reserve);
 
     ReservationUpdateOutput update(ReservationUpdateInput input) throws BusinessException;
 

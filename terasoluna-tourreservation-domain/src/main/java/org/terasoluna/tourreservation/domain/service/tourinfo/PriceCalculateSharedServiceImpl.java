@@ -15,16 +15,15 @@
  */
 package org.terasoluna.tourreservation.domain.service.tourinfo;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 import org.terasoluna.tourreservation.domain.model.Age;
 import org.terasoluna.tourreservation.domain.repository.age.AgeRepository;
 
 @Service
-public class PriceCalculateSharedServiceImpl implements PriceCalculateSharedSerivce,
-                                      InitializingBean {
+public class PriceCalculateSharedServiceImpl implements PriceCalculateSharedSerivce {
 
     @Inject
     AgeRepository ageRepository;
@@ -57,8 +56,8 @@ public class PriceCalculateSharedServiceImpl implements PriceCalculateSharedSeri
         return result;
     }
 
-    @Override
-    public void afterPropertiesSet() {
+    @PostConstruct
+    public void loadAges() {
         this.childAge = ageRepository.findOne("1");
         this.adultAge = ageRepository.findOne("0");
     }

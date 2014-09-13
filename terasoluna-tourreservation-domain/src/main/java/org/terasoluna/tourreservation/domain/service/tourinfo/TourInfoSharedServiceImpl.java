@@ -47,7 +47,7 @@ public class TourInfoSharedServiceImpl implements TourInfoSharedService {
 
     @Transactional(readOnly = true)
     @Override
-    public boolean isOverPaymentLimitTour(TourInfo tour) {
+    public boolean isOverPaymentLimit(TourInfo tour) {
         Assert.notNull(tour, "tour must not be null");
         DateTime today = dateFactory.newDateTime().withTime(0, 0, 0, 0);
         DateTime paymentLimit = tour.getPaymentLimit();

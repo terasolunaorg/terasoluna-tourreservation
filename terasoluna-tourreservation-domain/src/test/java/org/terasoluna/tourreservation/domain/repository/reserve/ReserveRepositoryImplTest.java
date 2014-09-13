@@ -75,7 +75,7 @@ public class ReserveRepositoryImplTest {
 			jdbcTemplate.update(q, param);
 		}
 
-		Reserve reserve = reserveRepository.findWithDetail(reserveNo);
+		Reserve reserve = reserveRepository.findOneWithDetail(reserveNo);
 		assertThat(reserve, is(notNullValue()));
 		assertThat(reserve.getReserveNo(), is(reserveNo));
 		assertThat(reserve.getReservedDay(), is(reservedDay.toDate()));
@@ -93,7 +93,7 @@ public class ReserveRepositoryImplTest {
 	@Test
 	public void testFindWithDetail02() {
 		String reserveNo = "10000000";
-		Reserve reserve = reserveRepository.findWithDetail(reserveNo);
+		Reserve reserve = reserveRepository.findOneWithDetail(reserveNo);
 		assertThat(reserve, is(nullValue()));
 	}
 
@@ -137,7 +137,7 @@ public class ReserveRepositoryImplTest {
 		}
 
 		// run
-		Long retValue = reserveRepository.findReservedSumByTourInfo(tourInfo);
+		Long retValue = reserveRepository.countReservedPersonSumByTourInfo(tourInfo);
 
 		// assert
 		assertThat(retValue, is(7L));
@@ -149,7 +149,7 @@ public class ReserveRepositoryImplTest {
 		tourInfo.setTourCode("xxxxx");
 
 		// run
-		Long retValue = reserveRepository.findReservedSumByTourInfo(tourInfo);
+		Long retValue = reserveRepository.countReservedPersonSumByTourInfo(tourInfo);
 
 		// assert
 		assertThat(retValue, is(nullValue()));
@@ -212,7 +212,7 @@ public class ReserveRepositoryImplTest {
 
 		// run
 		List<Reserve> reservationList = reserveRepository
-				.findByCustomer(customer);
+				.findAllByCustomer(customer);
 
 		// assert
 		assertThat(reservationList, is(notNullValue()));
@@ -272,7 +272,7 @@ public class ReserveRepositoryImplTest {
 
 		// run
 		List<Reserve> reservationList = reserveRepository
-				.findByCustomer(customer);
+				.findAllByCustomer(customer);
 
 		assertThat(reservationList, is(notNullValue()));
 		assertThat(reservationList.size(), is(0));

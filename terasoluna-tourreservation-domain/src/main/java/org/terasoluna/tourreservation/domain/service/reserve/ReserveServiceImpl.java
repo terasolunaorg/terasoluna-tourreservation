@@ -17,7 +17,6 @@ package org.terasoluna.tourreservation.domain.service.reserve;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -61,7 +60,7 @@ public class ReserveServiceImpl implements ReserveService {
     DateFactory dateFactory;
 
     @Inject
-    Mapper dozerBeanMapper;
+    Mapper beanMapper;
 
     @Inject
     @Named("reserveNoSeq")
@@ -77,23 +76,22 @@ public class ReserveServiceImpl implements ReserveService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<Reserve> findByCustomerCode(String customerCode) {
+    public List<Reserve> findAllByCustomerCode(String customerCode) {
         Customer customer = new Customer(customerCode);
-        List<Reserve> reserves = reserveRepository.findByCustomer(customer);
+        List<Reserve> reserves = reserveRepository.findAllByCustomer(customer);
         return reserves;
     }
 
     @Override
-    public ReserveTourOutput reserveTour(ReserveTourInput input) throws BusinessException {
+    public ReserveTourOutput reserve(ReserveTourInput input) throws BusinessException {
 
         TourInfo tourInfo = tourInfoSharedService.findOneForUpdate(input
                 .getTourCode());
         DateTime today = dateFactory.newDateTime().withTime(0, 0, 0, 0);
 
         // * check date
-        DateTime paymentLimit = tourInfo.getPaymentLimit();
         // error if today is after payment limit
-        if (tourInfoSharedService.isOverPaymentLimitTour(tourInfo)) {
+        if (tourInfoSharedService.isOverPaymentLimit(tourInfo)) {
             ResultMessages message = ResultMessages.error().add(
                     MessageId.E_TR_0004);
             throw new BusinessException(message);
@@ -103,7 +101,7 @@ public class ReserveServiceImpl implements ReserveService {
         int reserveMember = input.getAdultCount() + input.getChildCount();
         int aveRecMax = tourInfo.getAvaRecMax();
         // retrieve the number of current reservations
-        Long sumCount = reserveRepository.findReservedSumByTourInfo(tourInfo);
+        Long sumCount = reserveRepository.countReservedPersonSumByTourInfo(tourInfo);
         if (sumCount == null) {
             sumCount = 0L;
         }
@@ -125,7 +123,7 @@ public class ReserveServiceImpl implements ReserveService {
                         input.getChildCount());
         String reserveNo = reserveNoSeq.getNext();
 
-        Reserve reserve = dozerBeanMapper.map(input, Reserve.class);
+        Reserve reserve = beanMapper.map(input, Reserve.class);
 
         reserve.setTourInfo(tourInfo);
         reserve.setSumPrice(priceCalculateOutput.getSumPrice());
@@ -140,7 +138,7 @@ public class ReserveServiceImpl implements ReserveService {
         tourReserveOutput.setPriceCalculateOutput(priceCalculateOutput);
         tourReserveOutput.setReserve(reserve);
         tourReserveOutput.setTourInfo(tourInfo);
-        tourReserveOutput.setPaymentTimeLimit(paymentLimit.toDate());
+        tourReserveOutput.setPaymentTimeLimit(tourInfo.getPaymentLimit().toDate());
         tourReserveOutput.setCustomer(input.getCustomer());
 
         // fetch to avoid lazy LazyInitializationException
@@ -169,7 +167,7 @@ public class ReserveServiceImpl implements ReserveService {
         // compare system date and payment limit.
         // if the payment limit has been exceeded,
         // navigate to business error screen
-        if (tourInfoSharedService.isOverPaymentLimitTour(info)) {
+        if (tourInfoSharedService.isOverPaymentLimit(info)) {
             ResultMessages message = ResultMessages.error().add(
                     MessageId.E_TR_0002);
             throw new BusinessException(message);
@@ -189,15 +187,10 @@ public class ReserveServiceImpl implements ReserveService {
     }
 
     @Override
-    public void update(Reserve reserve) {
-        reserveRepository.save(reserve);
-    }
-
-    @Override
     public ReservationUpdateOutput update(ReservationUpdateInput input) throws BusinessException {
         Reserve reserve = findOne(input.getReserveNo());
 
-        dozerBeanMapper.map(input, reserve, "reserve_map_nonnull");
+        beanMapper.map(input, reserve, "reserve_map_nonnull");
 
         TourInfo info = reserve.getTourInfo();
         PriceCalculateOutput price = priceCalculateService.calculatePrice(info
