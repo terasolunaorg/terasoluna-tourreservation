@@ -45,7 +45,7 @@
 							var="returnToListScreen" />
 						<input type="submit" value="${returnToListScreen}" tabindex="2" />
 					</form:form></td>
-				<td><form:form
+				<td><form:form id="reservationCanelForm"
 						action="${pageContext.request.contextPath}/managereservation/cancel"
 						method="POST">
 						<input type="hidden" name="reserveNo"
