@@ -116,7 +116,7 @@ public class TourInfoRepositoryImplTest {
         Pageable pageable = new PageRequest(0, 10);
 
         // run
-        Page<TourInfo> page = tourInfoRepository.searchTourInfo(criteria,
+        Page<TourInfo> page = tourInfoRepository.findPageBySearchCriteria(criteria,
                 pageable);
 
         assertThat(page.getTotalPages(), is(1));
@@ -163,7 +163,7 @@ public class TourInfoRepositoryImplTest {
 
         Pageable pageable = new PageRequest(0, 10);
         // run
-        Page<TourInfo> page = tourInfoRepository.searchTourInfo(criteria,
+        Page<TourInfo> page = tourInfoRepository.findPageBySearchCriteria(criteria,
                 pageable);
 
         // assert

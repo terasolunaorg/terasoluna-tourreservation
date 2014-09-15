@@ -45,15 +45,14 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public String register(Customer customer, String rawPassword) {
+    public Customer register(Customer customer, String rawPassword) {
         String customerCode = customerCodeSeq.getNext();
 
         String password = passwordEncoder.encode(rawPassword);
 
         customer.setCustomerCode(customerCode);
         customer.setCustomerPass(password);
-        customerRepository.saveAndFlush(customer);
-        return customerCode;
+        return customerRepository.save(customer);
     }
 
 }
