@@ -68,7 +68,7 @@ public class ReserveServiceImplTest {
 
     Sequencer<String> sequencer;
 
-    DozerBeanMapper dozerBeanMapper;
+    DozerBeanMapper beanMapper;
 
     DateTime now = new DateTime();
 
@@ -82,17 +82,17 @@ public class ReserveServiceImplTest {
         sequencer = mock(Sequencer.class);
         priceCalculateSerivce = mock(PriceCalculateSharedSerivce.class);
 
-        dozerBeanMapper = new DozerBeanMapper();
+        beanMapper = new DozerBeanMapper();
         List<String> mappingFiles = new ArrayList<String>();
         mappingFiles.add("META-INF/dozer/domain-mapping.xml");
-        dozerBeanMapper.setMappingFiles(mappingFiles);
+        beanMapper.setMappingFiles(mappingFiles);
 
         reserveService.reserveRepository = reserveRepository;
         reserveService.tourInfoSharedService = tourInfoSharedService;
         reserveService.dateFactory = dateFactory;
         reserveService.reserveNoSeq = sequencer;
         reserveService.priceCalculateService = priceCalculateSerivce;
-        reserveService.dozerBeanMapper = dozerBeanMapper;
+        reserveService.beanMapper = beanMapper;
 
         when(dateFactory.newDateTime()).thenReturn(now);
     }
@@ -131,13 +131,13 @@ public class ReserveServiceImplTest {
         List<Reserve> reserves = Arrays.asList(reserve1, reserve2);
 
         Customer c = new Customer("xxxx");
-        when(reserveRepository.findByCustomer(c)).thenReturn(reserves);
-        when(tourInfoSharedService.isOverPaymentLimitTour(tour1)).thenReturn(
+        when(reserveRepository.findAllByCustomer(c)).thenReturn(reserves);
+        when(tourInfoSharedService.isOverPaymentLimit(tour1)).thenReturn(
                 false);
-        when(tourInfoSharedService.isOverPaymentLimitTour(tour2)).thenReturn(
+        when(tourInfoSharedService.isOverPaymentLimit(tour2)).thenReturn(
                 true);
 
-        List<Reserve> result = reserveService.findByCustomerCode("xxxx");
+        List<Reserve> result = reserveService.findAllByCustomerCode("xxxx");
         assertThat(result, is(notNullValue()));
         assertThat(result.size(), is(2));
         assertThat(result.get(0), is(reserve1));
@@ -147,9 +147,9 @@ public class ReserveServiceImplTest {
     @Test
     public void testFindByCustomerCode03() {
         Customer c = new Customer("xxxx");
-        when(reserveRepository.findByCustomer(c)).thenReturn(
+        when(reserveRepository.findAllByCustomer(c)).thenReturn(
                 new ArrayList<Reserve>());
-        List<Reserve> result = reserveService.findByCustomerCode("xxxx");
+        List<Reserve> result = reserveService.findAllByCustomerCode("xxxx");
         assertThat(result, is(notNullValue()));
         assertThat(result.size(), is(0));
     }
@@ -169,7 +169,7 @@ public class ReserveServiceImplTest {
         tour.setArrival(new Arrival());
         when(tourInfoSharedService.findOne("01")).thenReturn(tour);
         when(tourInfoSharedService.findOneForUpdate("01")).thenReturn(tour);
-        when(reserveRepository.findReservedSumByTourInfo(tour)).thenReturn(7L); // 1+2+7 <= 10
+        when(reserveRepository.countReservedPersonSumByTourInfo(tour)).thenReturn(7L); // 1+2+7 <= 10
         when(sequencer.getNext()).thenReturn("123456");
 
         ReserveTourInput input = new ReserveTourInput();
@@ -186,7 +186,7 @@ public class ReserveServiceImplTest {
                 priceCalculateOutput);
 
         // normal
-        ReserveTourOutput output = reserveService.reserveTour(input);
+        ReserveTourOutput output = reserveService.reserve(input);
 
         ArgumentCaptor<Reserve> capture = ArgumentCaptor
                 .forClass(Reserve.class);
@@ -214,13 +214,13 @@ public class ReserveServiceImplTest {
         tour.setAccommodation(new Accommodation());
         tour.setDeparture(new Departure());
         tour.setArrival(new Arrival());
-        when(tourInfoSharedService.isOverPaymentLimitTour(tour)).thenReturn(
+        when(tourInfoSharedService.isOverPaymentLimit(tour)).thenReturn(
                 true); // !!today is over limit
         tour.setTourDays(2);
         tour.setAvaRecMax(10);
         when(tourInfoSharedService.findOne("01")).thenReturn(tour);
         when(tourInfoSharedService.findOneForUpdate("01")).thenReturn(tour);
-        when(reserveRepository.findReservedSumByTourInfo(tour)).thenReturn(7L); // 1+2+7 <= 10
+        when(reserveRepository.countReservedPersonSumByTourInfo(tour)).thenReturn(7L); // 1+2+7 <= 10
         when(sequencer.getNext()).thenReturn("123456");
 
         ReserveTourInput input = new ReserveTourInput();
@@ -237,7 +237,7 @@ public class ReserveServiceImplTest {
                 priceCalculateOutput);
 
         try {
-            reserveService.reserveTour(input);
+            reserveService.reserve(input);
             fail("error route");
         } catch (BusinessException e) {
             ResultMessages messages = e.getResultMessages();
@@ -264,7 +264,7 @@ public class ReserveServiceImplTest {
         tour.setAvaRecMax(10);
         when(tourInfoSharedService.findOne("01")).thenReturn(tour);
         when(tourInfoSharedService.findOneForUpdate("01")).thenReturn(tour);
-        when(reserveRepository.findReservedSumByTourInfo(tour)).thenReturn(8L); // !!1+2+8 > 10
+        when(reserveRepository.countReservedPersonSumByTourInfo(tour)).thenReturn(8L); // !!1+2+8 > 10
         when(sequencer.getNext()).thenReturn("123456");
 
         ReserveTourInput input = new ReserveTourInput();
@@ -281,7 +281,7 @@ public class ReserveServiceImplTest {
                 priceCalculateOutput);
 
         try {
-            reserveService.reserveTour(input);
+            reserveService.reserve(input);
             fail("error route");
         } catch (BusinessException e) {
             ResultMessages messages = e.getResultMessages();
@@ -306,7 +306,7 @@ public class ReserveServiceImplTest {
 
         when(reserveRepository.findOne("001")).thenReturn(reserve);
         when(reserveRepository.findOneForUpdate("001")).thenReturn(reserve);
-        when(tourInfoSharedService.isOverPaymentLimitTour(tour)).thenReturn(
+        when(tourInfoSharedService.isOverPaymentLimit(tour)).thenReturn(
                 false); // within limit
 
         reserveService.cancel("001");
@@ -330,7 +330,7 @@ public class ReserveServiceImplTest {
 
         when(reserveRepository.findOne("001")).thenReturn(reserve);
         when(reserveRepository.findOneForUpdate("001")).thenReturn(reserve);
-        when(tourInfoSharedService.isOverPaymentLimitTour(tour)).thenReturn(
+        when(tourInfoSharedService.isOverPaymentLimit(tour)).thenReturn(
                 false); // within limit
 
         try {
@@ -359,7 +359,7 @@ public class ReserveServiceImplTest {
 
         when(reserveRepository.findOne("001")).thenReturn(reserve);
         when(reserveRepository.findOneForUpdate("001")).thenReturn(reserve);
-        when(tourInfoSharedService.isOverPaymentLimitTour(tour)).thenReturn(
+        when(tourInfoSharedService.isOverPaymentLimit(tour)).thenReturn(
                 true); // !!!over limit
 
         try {
@@ -390,7 +390,7 @@ public class ReserveServiceImplTest {
                 (Reserve) null); // !!!return null for second time
         when(reserveRepository.findOneForUpdate("001")).thenReturn(
                 (Reserve) null); // return null
-        when(tourInfoSharedService.isOverPaymentLimitTour(tour)).thenReturn(
+        when(tourInfoSharedService.isOverPaymentLimit(tour)).thenReturn(
                 false); // within limit
 
         try {

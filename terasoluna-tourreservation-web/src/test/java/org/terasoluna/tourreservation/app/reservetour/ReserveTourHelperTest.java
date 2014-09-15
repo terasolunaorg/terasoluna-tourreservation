@@ -167,7 +167,7 @@ public class ReserveTourHelperTest {
 
         ReserveTourForm form = new ReserveTourForm();
         ReserveTourOutput output = new ReserveTourOutput();
-        when(reserveService.reserveTour((ReserveTourInput) anyObject()))
+        when(reserveService.reserve((ReserveTourInput) anyObject()))
                 .thenReturn(output);
 
         // run

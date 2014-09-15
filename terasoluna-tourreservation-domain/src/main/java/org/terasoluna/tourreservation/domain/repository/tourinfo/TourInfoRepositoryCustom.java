@@ -20,6 +20,6 @@ import org.springframework.data.domain.Pageable;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 
 public interface TourInfoRepositoryCustom {
-    Page<TourInfo> searchTourInfo(TourInfoSearchCriteria criteria,
+    Page<TourInfo> findPageBySearchCriteria(TourInfoSearchCriteria criteria,
             Pageable pageable);
 }

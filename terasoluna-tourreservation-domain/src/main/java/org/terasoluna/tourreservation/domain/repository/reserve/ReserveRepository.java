@@ -34,11 +34,11 @@ public interface ReserveRepository extends JpaRepository<Reserve, String> {
     Reserve findOneForUpdate(@Param("reserveNo") String reserveNo);
 
     @Query("SELECT r FROM Reserve AS r LEFT JOIN FETCH r.tourInfo AS t LEFT JOIN FETCH t.departure LEFT JOIN FETCH t.arrival WHERE r.reserveNo = :reserveNo")
-    Reserve findWithDetail(@Param("reserveNo") String reserveNo);
+    Reserve findOneWithDetail(@Param("reserveNo") String reserveNo);
 
     @Query("SELECT SUM(r.adultCount + r.childCount) FROM Reserve r WHERE r.tourInfo = :tourInfo")
-    Long findReservedSumByTourInfo(@Param("tourInfo") TourInfo tourInfo);
+    Long countReservedPersonSumByTourInfo(@Param("tourInfo") TourInfo tourInfo);
 
     @Query("SELECT r FROM Reserve AS r LEFT JOIN FETCH r.tourInfo AS t LEFT JOIN FETCH t.departure LEFT JOIN FETCH t.arrival WHERE r.customer = :customer ORDER BY t.depDay, r.reserveNo")
-    List<Reserve> findByCustomer(@Param("customer") Customer customer);
+    List<Reserve> findAllByCustomer(@Param("customer") Customer customer);
 }
