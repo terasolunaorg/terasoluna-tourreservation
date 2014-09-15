@@ -35,7 +35,7 @@ public class TourInfoRepositoryImpl implements TourInfoRepositoryCustom {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<TourInfo> searchTourInfo(TourInfoSearchCriteria criteria,
+    public Page<TourInfo> findPageBySearchCriteria(TourInfoSearchCriteria criteria,
             Pageable pageable) {
         Date depDate = new DateTime(criteria.getDepYear(),
                 criteria.getDepMonth(), criteria.getDepDay(), 0, 0).toDate();

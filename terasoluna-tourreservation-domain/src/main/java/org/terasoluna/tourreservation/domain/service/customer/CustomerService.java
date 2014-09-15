@@ -20,5 +20,5 @@ import org.terasoluna.tourreservation.domain.model.Customer;
 public interface CustomerService {
 	Customer findOne(String customerCode);
 
-	String register(Customer customer, String rawPassword);
+	Customer register(Customer customer, String rawPassword);
 }

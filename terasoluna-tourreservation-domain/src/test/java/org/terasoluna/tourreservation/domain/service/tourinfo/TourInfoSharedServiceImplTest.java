@@ -71,7 +71,7 @@ public class TourInfoSharedServiceImplTest {
         DateTime depDay = now.withTime(0, 0, 0, 0).plusDays(7); // within limit
         tour.setDepDay(depDay.toDate());
 
-        boolean result = tourInfoSharedService.isOverPaymentLimitTour(tour);
+        boolean result = tourInfoSharedService.isOverPaymentLimit(tour);
         assertThat(result, is(false));
     }
 
@@ -82,7 +82,7 @@ public class TourInfoSharedServiceImplTest {
         DateTime depDay = now.withTime(0, 0, 0, 0).plusDays(6); // over limit
         tour.setDepDay(depDay.toDate());
 
-        boolean result = tourInfoSharedService.isOverPaymentLimitTour(tour);
+        boolean result = tourInfoSharedService.isOverPaymentLimit(tour);
         assertThat(result, is(true));
     }
 
@@ -97,7 +97,7 @@ public class TourInfoSharedServiceImplTest {
         when(dateFactory.newDateTime()).thenReturn(
                 now.withTime(0, 0, 0, 0).plusMillis(1));
 
-        boolean result = tourInfoSharedService.isOverPaymentLimitTour(tour);
+        boolean result = tourInfoSharedService.isOverPaymentLimit(tour);
         assertThat(result, is(false));
     }
 
@@ -113,7 +113,7 @@ public class TourInfoSharedServiceImplTest {
                 now.withTime(0, 0, 0, 0).plusHours(23).plusMinutes(59)
                         .plusSeconds(59).plusMillis(999));
 
-        boolean result = tourInfoSharedService.isOverPaymentLimitTour(tour);
+        boolean result = tourInfoSharedService.isOverPaymentLimit(tour);
         assertThat(result, is(false));
     }
 }
