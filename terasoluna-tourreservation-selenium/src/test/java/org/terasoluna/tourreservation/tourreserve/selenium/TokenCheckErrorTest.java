@@ -193,8 +193,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[2].setAttribute('type', 'text');");
-        driver.findElement(
-                By.xpath("/html/body/div/div/div[3]/table/tbody/tr/td[2]/form/input[2]"))
+        driver.findElement(By.id("reserveTourForm")).findElement(By.name("_TRANSACTION_TOKEN"))
                 .clear();
 
         driver.findElement(
@@ -284,9 +283,8 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[0].setAttribute('type', 'text');");
-        driver.findElement(
-                By.xpath("/html/body/div/div/form/input[4]"))
-                .clear();
+        driver.findElement(By.id("manageReservationForm"))
+                .findElement(By.name("_TRANSACTION_TOKEN")).clear();
 
         driver.findElement(
                 By.xpath("//input[@value='"
@@ -388,9 +386,8 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[1].setAttribute('type', 'text');");
-        driver.findElement(
-                By.xpath("/html/body/div/div/div[3]/table/tbody/tr/td[2]/form/input[3]"))
-                .clear();
+        driver.findElement(By.id("reservationCanelForm"))
+                .findElement(By.name("_TRANSACTION_TOKEN")).clear();
 
         driver.findElement(
                 By.xpath("//input[@value='"

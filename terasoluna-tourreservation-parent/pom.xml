@@ -425,5 +425,6 @@
         <postgresql.version>9.1-901.jdbc4</postgresql.version>
         <tiles.version>2.2.2</tiles.version>
         <tomcat.api.version>7.0.40</tomcat.api.version>
+        <selenium.version>2.43.1</selenium.version>
     </properties>
 </project>
