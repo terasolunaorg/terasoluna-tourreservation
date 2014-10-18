@@ -7,7 +7,7 @@
 		</p>
 	</div>
 	<form:form action="${pageContext.request.contextPath}/" method="get">
-		<input type="submit" name="submit"
+		<input id="goToMenuBtn" type="submit" name="submit"
 			value="<spring:message code="label.tr.common.gotoMenuMessage" />">
 	</form:form>
 </div>

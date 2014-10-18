@@ -1,5 +1,5 @@
 
-<table>
+<table id="paymentTable">
   <caption>
     <spring:message code="label.tr.common.paymentInfo" />
   </caption>

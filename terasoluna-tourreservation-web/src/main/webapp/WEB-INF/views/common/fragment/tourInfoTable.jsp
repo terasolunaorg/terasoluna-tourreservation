@@ -1,5 +1,5 @@
 
-<table summary="Tour Information">
+<table id="tourInfoTable" summary="Tour Information">
     <caption>
         <spring:message code="label.tr.searchtour.tourDetailCaptionMessage" />
     </caption>

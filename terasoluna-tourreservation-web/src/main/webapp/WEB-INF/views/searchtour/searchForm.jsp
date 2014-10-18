@@ -1,7 +1,7 @@
 
 <div class="container">
 	<jsp:include page="../common/top.jsp" />
-	<h2>
+	<h2 id="screenName">
 		<spring:message code="label.tr.searchtour.searchTourMessage" />
 	</h2>
 	<div class="info">
@@ -81,7 +81,7 @@
 					<form:select path="basePrice" items="${CL_BASE_PRICE}" />
 				</div>
 				<div class="span-24 last">
-					<input id="search" type="submit"
+					<input id="searchBtn" type="submit"
 						name="search"
 						value="<spring:message code="label.tr.common.search" />">
 				</div>
@@ -100,7 +100,7 @@
 		<div class="pagination">
 			<t:pagination page="${page}" criteriaQuery="${f:query(tourInfoSearchCriteria)}" />
 		</div>
-		<table>
+		<table id="toursTable">
 			<caption>
 				<spring:message code="label.tr.searchtour.searchTourResultMessage" />
 			</caption>

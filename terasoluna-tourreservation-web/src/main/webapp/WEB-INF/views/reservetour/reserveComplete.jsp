@@ -1,7 +1,7 @@
 
 <div class="container">
 	<!-- begin body-->
-	<h2>
+	<h2 id="screenName">
 		<spring:message code="label.tr.searchtour.reserveScreenTitleMessage" />
 	</h2>
 	<div class="success">

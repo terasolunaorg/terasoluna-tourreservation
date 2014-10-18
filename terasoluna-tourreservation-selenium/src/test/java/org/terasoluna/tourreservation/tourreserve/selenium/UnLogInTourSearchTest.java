@@ -24,6 +24,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
@@ -54,15 +55,15 @@ public class UnLogInTourSearchTest extends FunctionTestSupport {
 
         assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
                 + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
-                driver.findElement(By.cssSelector("p.box")).getText());
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
-                .click();
+                driver.findElement(By.id("messagesArea")).getText());
 
-        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver
-                .findElement(By.cssSelector("p.box")).getText());
+        // go to search tour screen
+        driver.findElement(By.id("searchTourBtn")).click();
 
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE),
+                driver.findElement(By.id("messagesArea")).getText());
+
+        // input search criteria
         DateTime dt = new DateTime();
         DateTime dtPlus = dt.plusDays(8);
 
@@ -75,45 +76,45 @@ public class UnLogInTourSearchTest extends FunctionTestSupport {
         new Select(driver.findElement(By.id("depCode"))).selectByValue("01");
         new Select(driver.findElement(By.id("arrCode"))).selectByValue("01");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
-                .click();
+        // search tour
+        driver.findElement(By.id("searchBtn")).click();
 
+        // paging
         driver.findElement(By.linkText("2")).click();
 
-        String basePrice = driver.findElement(By.xpath("//td[7]")).getText()
+        WebElement toursTable = driver.findElement(By.id("toursTable"));
+
+        String basePrice = toursTable.findElement(By.xpath(".//tr[2]/td[7]")).getText()
                 .replaceAll("[^0-9]", "");
 
-        driver.findElement(
-                By.linkText(driver.findElement(By.xpath("//td[2]")).getText()))
-                .click();
+        // show top tour in table
+        toursTable.findElements(By.tagName("a")).get(0).click();
 
-        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver
-                .findElement(By.cssSelector("p.box")).getText());
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE),
+                driver.findElement(By.id("messagesArea")).getText());
+
         assertEquals(getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_TITLEDETAILSCREENMESSAGE),
-                driver.findElement(By.cssSelector("h2")).getText());
+                driver.findElement(By.id("screenName")).getText());
 
+        WebElement priceTable = driver.findElement(By.id("priceTable"));
         assertEquals(basePrice,
-                driver.findElement(By.xpath("//table[2]/tbody/tr[2]/td[2]"))
+                priceTable.findElement(By.xpath(".//tr[2]/td[2]"))
                         .getText().replaceAll("[^0-9]", ""));
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
-                .click();
+        // go to login screen
+        driver.findElement(By.id("loginBtn")).click();
+
+        // input credential
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys("00000001");
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("password");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
-                .click();
+        // login
+        driver.findElement(By.id("loginBtn")).click();
 
         assertEquals(getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_TITLEDETAILSCREENMESSAGE),
-                driver.findElement(By.cssSelector("h2")).getText());
+                driver.findElement(By.id("screenName")).getText());
     }
 
     @After

@@ -1,6 +1,6 @@
 
 <div class="container">
-	<h2>
+	<h2 id="screenName">
 		<spring:message
 			code="label.tr.managereservation.beforecancelScreenTitleMessage" />
 	</h2>
@@ -43,14 +43,14 @@
 						<spring:message
 							code="label.tr.managereservation.returnToListScreenBtnMessage"
 							var="returnToListScreen" />
-						<input type="submit" value="${returnToListScreen}" tabindex="2" />
+						<input id="backToListBtn" type="submit" value="${returnToListScreen}" tabindex="2" />
 					</form:form></td>
 				<td><form:form id="reservationCanelForm"
 						action="${pageContext.request.contextPath}/managereservation/cancel"
 						method="POST">
 						<input type="hidden" name="reserveNo"
 							value="${f:h(output.reserve.reserveNo)}">
-						<input type="submit"
+						<input id="cancelBtn" type="submit"
 							value="<spring:message code="label.tr.managereservation.cancelReservationBtnMessage"/>">
 					</form:form></td>
 			</tr>
