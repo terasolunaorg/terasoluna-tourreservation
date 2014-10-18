@@ -15,13 +15,16 @@
  */
 package org.terasoluna.tourreservation.tourreserve.common;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -30,6 +33,9 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ApplicationObjectSupport;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public abstract class FunctionTestSupport extends ApplicationObjectSupport {
@@ -96,6 +102,31 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
      */
     protected String getMessage(String code) {
         return messageSource.getMessage(code, null, Locale.getDefault());
+    }
+
+    /**
+     * Assert table contents.
+     *
+     * @param table WebElement of target table
+     * @param expectedContents expected values of table content
+     */
+    protected void assertTableContents(WebElement table, int rowOffset,
+        int cellIndex, ValueEditor valueEditor, String... expectedContents) {
+        List<WebElement> tableRows = table.findElements(By.tagName("tr"));
+        assertThat(tableRows.size(), is(expectedContents.length + rowOffset));
+        for (int i = rowOffset; i < (tableRows.size() - rowOffset); i++) {
+            WebElement row = tableRows.get(i);
+            WebElement contentCell = row.findElements(By.tagName("td")).get(cellIndex);
+            String text = contentCell.getText();
+            if(valueEditor != null){
+                text = valueEditor.edit(text);
+            }
+            assertThat(text, is(expectedContents[i - rowOffset]));
+        }
+    }
+
+    protected interface ValueEditor {
+        String edit(String text);
     }
 
 }

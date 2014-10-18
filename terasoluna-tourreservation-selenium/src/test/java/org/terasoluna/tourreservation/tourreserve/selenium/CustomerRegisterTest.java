@@ -23,6 +23,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
@@ -51,11 +52,10 @@ public class CustomerRegisterTest extends FunctionTestSupport {
     public void testCustomerRegister() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
-                .click();
+        // go to register screen
+        driver.findElement(By.id("customerRegisterBtn")).click();
 
+        // input new customer
         driver.findElement(By.name("customerKana")).sendKeys("テラソルナ");
         driver.findElement(By.name("customerName")).sendKeys("ＴＥＲＡＳＯＬＵＮＡ");
         new Select(driver.findElement(By.id("customerBirthYear")))
@@ -72,84 +72,70 @@ public class CustomerRegisterTest extends FunctionTestSupport {
         driver.findElement(By.name("customerAdd")).sendKeys("tokyo-toyosu");
         driver.findElement(By.name("customerPass")).sendKeys("tera123");
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
-                .click();
+
+        // go to confirm screen
+        driver.findElement(By.id("confirmBtn")).click();
 
         // confirm registration contents
         confirmRegistrationContents();
         
-        // back
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_GOBACKMESSAGE) + "']"))
-                .click();
+        // go back
+        driver.findElement(By.id("backToFormBtn")).click();
         
         // reenter confirm password again
         driver.findElement(By.name("customerPass")).sendKeys("tera123");
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
-        
-        // confirm
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
-                .click();
+
+        // go to confirm screen
+        driver.findElement(By.id("confirmBtn")).click();
         
         // confirm registration contents again
         confirmRegistrationContents();
         
         // Register
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_REGISTER) + "']"))
-                .click();
+        driver.findElement(By.id("registerBtn")).click();
 
         // Retention of ID that are registered
         String loginID = driver.findElement(By.xpath("//strong[2]")).getText();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_GOTOMENUMESSAGE) + "']"))
-                .click();
+        // go to menu screen
+        driver.findElement(By.id("goToMenuBtn")).click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
-                .click();
+        // go to login screen
+        driver.findElement(By.id("loginBtn")).click();
 
+        // input credential
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("tera123");
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys(loginID);
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
-                .click();
+        // login
+        driver.findElement(By.id("loginBtn")).click();
 
         assertEquals(getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
-                driver.findElement(By.cssSelector("p.box")).getText());
+                driver.findElement(By.id("messagesArea")).getText());
     }
 
     private void confirmRegistrationContents() {
-        assertEquals("テラソルナ", driver.findElement(By.xpath("//td[2]")).getText());
-        assertEquals("ＴＥＲＡＳＯＬＵＮＡ", driver
-                .findElement(By.xpath("//tr[2]/td[2]")).getText());
-        assertEquals("2000" + getMessage(MessageKeys.LABEL_TR_COMMON_YEAR) + " 12"
-                + getMessage(MessageKeys.LABEL_TR_COMMON_MONTH) + " 1"
-                + getMessage(MessageKeys.LABEL_TR_COMMON_DAY),
-                driver.findElement(By.xpath("//tr[3]/td[2]")).getText());
-        assertEquals("FW", driver.findElement(By.xpath("//tr[4]/td[2]"))
-                .getText());
-        assertEquals("terasoluna@nttd.co.jp",
-                driver.findElement(By.xpath("//tr[5]/td[2]")).getText());
-        assertEquals("090-99999999",
-                driver.findElement(By.xpath("//tr[6]/td[2]")).getText());
-        assertEquals("333-2222", driver.findElement(By.xpath("//tr[7]/td[2]"))
-                .getText());
-        assertEquals("tokyo-toyosu",
-                driver.findElement(By.xpath("//tr[8]/td[2]")).getText());
+        WebElement customerTable = driver.findElement(By.id("customerTable"));
+        assertTableContents(
+                customerTable,
+                0,
+                1,
+                null,
+                "テラソルナ",
+                "ＴＥＲＡＳＯＬＵＮＡ",
+                ("2000" + getMessage(MessageKeys.LABEL_TR_COMMON_YEAR) +
+                        " 12" + getMessage(MessageKeys.LABEL_TR_COMMON_MONTH) +
+                        " 1" + getMessage(MessageKeys.LABEL_TR_COMMON_DAY)),
+                "FW",
+                "terasoluna@nttd.co.jp",
+                "090-99999999",
+                "333-2222",
+                "tokyo-toyosu",
+                "********"
+        );
     }
 
     @After

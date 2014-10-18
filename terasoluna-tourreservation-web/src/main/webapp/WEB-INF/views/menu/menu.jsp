@@ -1,6 +1,6 @@
 
 <div class="container">
-	<p class="box">
+	<p id="messagesArea" class="box">
 		<sec:authorize ifNotGranted="ROLE_USER">
 			<spring:message code="label.tr.common.notLoginMessage" />
 		</sec:authorize>
@@ -11,7 +11,7 @@
 			method="get">
 			<fieldset class="notice">
 				<div class="span-5">
-					<input style="width: 150px;" type="submit"
+					<input id="searchTourBtn" style="width: 150px;" type="submit"
 						value="<spring:message code="label.tr.menu.searchBtnMessage" />">
 				</div>
 				<div class="span-18 last">
@@ -26,7 +26,7 @@
 			<form action="${pageContext.request.contextPath}/login" method="get">
 				<fieldset class="notice">
 					<div class="span-5">
-						<input style="width: 150px;" type="submit"
+						<input id="loginBtn" style="width: 150px;" type="submit"
 							value="<spring:message code="label.tr.menu.loginBtnMessage" />">
 					</div>
 					<div class="span-18 last">
@@ -42,7 +42,7 @@
 				method="get">
 				<fieldset class="notice">
 					<div class="span-5">
-						<input style="width: 150px;" type="submit"
+						<input id="customerRegisterBtn" style="width: 150px;" type="submit"
 							value="<spring:message code="label.tr.menu.customerRegisterBtnMessage" />">
 					</div>
 					<div class="span-18 last">
@@ -60,7 +60,7 @@
 				method="get">
 				<fieldset class="notice">
 					<div class="span-5">
-						<input style="width: 150px;" type="submit"
+						<input id="reservedToursReferBtn" style="width: 150px;" type="submit"
 							value="<spring:message code="label.tr.menu.referBtnMessage" />">
 					</div>
 					<div class="span-18 last">

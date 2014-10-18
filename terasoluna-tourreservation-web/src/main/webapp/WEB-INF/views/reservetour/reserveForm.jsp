@@ -1,6 +1,6 @@
 <div class="container">
  <jsp:include page="../common/top.jsp" />
-	<h2>
+	<h2 id="screenName">
 		<spring:message code="label.tr.searchtour.titleDetailScreenMessage" />
 	</h2>
 
@@ -59,13 +59,13 @@
 					<form:hidden path="adultCount" />
 				</table>
 				<br />
-				<input type="submit" name="confirm"
+				<input id="confirmBtn" type="submit" name="confirm"
 					value="<spring:message code="label.tr.common.confirm" />" />
 			</form:form>
 			<form:form
 				action="${pageContext.request.contextPath}/searchtour/search"
 				method="get">
-				<input type="submit"
+				<input id="backToToursBtn" type="submit"
 					value="<spring:message code="label.tr.common.goBackMessage"/>"></input>
 				<input type="hidden" name="page"
 					value="${f:h(param['page'])}" />
@@ -77,7 +77,7 @@
 	<sec:authorize ifNotGranted="ROLE_USER">
 		<form:form action="${pageContext.request.contextPath}/login"
 			method="get" cssClass="inline">
-			<input type="submit"
+			<input id="loginBtn" type="submit"
 				value="<spring:message code="label.tr.menu.loginBtnMessage" />">
 			<input type="hidden" name="redirectTo"
 				value="${pageContext.request.contextPath}/reservetour/read?${f:query(reserveTourForm)}&page=${f:h(param['page'])}&size=${f:h(param['size'])}" />
@@ -87,9 +87,9 @@
 			method="get" cssClass="inline">
 			<input type="hidden" name="page"
 					value="${f:h(param['page'])}" />
-				<input type="hidden" name="size"
+			<input type="hidden" name="size"
 					value="${f:h(param['size'])}" />
-			<input type="submit" value="<spring:message code="label.tr.common.goBackMessage"/>"></input>
+			<input id="backToToursBtn" type="submit" value="<spring:message code="label.tr.common.goBackMessage"/>"></input>
 		</form:form>
 	</sec:authorize>
 </div>

@@ -1,5 +1,5 @@
 
-<table>
+<table id="priceTable">
   <caption>
     <spring:message code="label.tr.searchtour.statementOfCharges"></spring:message>
   </caption>

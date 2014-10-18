@@ -118,9 +118,9 @@
 				<form:password path="customerPassConfirm" cssClass="text" />
 			</p>
 			<p>
-				<input type="submit" name="confirm"
+				<input id="confirmBtn" type="submit" name="confirm"
 					value="<spring:message code="label.tr.common.confirm" />">
-				<input type="reset"
+				<input id="resetBtn" type="reset"
 					value="<spring:message code="label.tr.common.reset" />">
 			</p>
 		</fieldset>

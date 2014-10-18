@@ -25,6 +25,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
@@ -62,25 +63,25 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
 
         driver.get(baseUrl + "/terasoluna-tourreservation-web/");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE)
-                        + "']")).click();
+        // go to search tour screen
+        driver.findElement(By.id("searchTourBtn")).click();
+
+        // input search criteria
         new Select(driver.findElement(By.id("depCode"))).selectByValue("01");
         new Select(driver.findElement(By.id("arrCode"))).selectByValue("01");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
-                .click();
 
+        // search tour
+        driver.findElement(By.id("searchBtn")).click();
+
+        // paging
         driver.findElement(By.linkText("3")).click();
 
-        driver.findElement(By.linkText(driver.findElement(By.xpath("//td[2]")).getText())).click();
+        // show top tour in table
+        WebElement toursTable = driver.findElement(By.id("toursTable"));
+        toursTable.findElements(By.tagName("a")).get(0).click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_GOBACKMESSAGE)
-                        + "']")).click();
+        // back to tours
+        driver.findElement(By.id("backToToursBtn")).click();
 
         // currentPage query check
         assertThat(driver.findElement(By.className("active")).getText(), is("3"));
@@ -98,35 +99,37 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
 
         driver.get(baseUrl + "/terasoluna-tourreservation-web/");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE)
-                        + "']")).click();
+        // go to search tour screen
+        driver.findElement(By.id("searchTourBtn")).click();
+
+        // input search criteria
         new Select(driver.findElement(By.id("depCode"))).selectByValue("01");
         new Select(driver.findElement(By.id("arrCode"))).selectByValue("01");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
-                .click();
 
+        // search tour
+        driver.findElement(By.id("searchBtn")).click();
+
+        // paging
         driver.findElement(By.linkText("3")).click();
 
-        driver.findElement(By.linkText(driver.findElement(By.xpath("//td[2]")).getText())).click();
+        // show top tour in table
+        WebElement toursTable = driver.findElement(By.id("toursTable"));
+        toursTable.findElements(By.tagName("a")).get(0).click();
 
-        driver.findElement(By.xpath("//input[@value='"
-                + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE)
-                + "']")).click();
+        // go to login screen
+        driver.findElement(By.id("loginBtn")).click();
+
+        // input credential
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys("00000001");
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("password");
-        driver.findElement(By.xpath("//input[@value='"
-                + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN)
-                + "']")).click();
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_GOBACKMESSAGE)
-                        + "']")).click();
+
+        // login
+        driver.findElement(By.id("loginBtn")).click();
+
+        // back to tours
+        driver.findElement(By.id("backToToursBtn")).click();
 
         // currentPage query check
         assertThat(driver.findElement(By.className("active")).getText(), is("3"));
