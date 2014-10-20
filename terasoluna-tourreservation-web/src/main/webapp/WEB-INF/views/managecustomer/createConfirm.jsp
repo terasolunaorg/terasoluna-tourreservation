@@ -25,9 +25,10 @@
 		<form:hidden path="customerPass" />
 		<form:hidden path="customerPassConfirm" />
 
-		<input type="submit" name="redo"
+		<input id="backToFormBtn" type="submit" name="redo"
 			value="<spring:message code="label.tr.common.goBackMessage" />">
-            &nbsp; <input type="submit"
+            &nbsp;
+        <input id="registerBtn" type="submit"
 			value="<spring:message code="label.tr.common.register" />">
 	</form:form>
 

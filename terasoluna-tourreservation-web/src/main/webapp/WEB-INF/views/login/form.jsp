@@ -22,9 +22,9 @@
             class="text" id="password" name="j_password">
         </p>
         <p>
-          <input type="submit"
-            value="<spring:message code="label.tr.common.login" />"> <input
-            type="reset" value="<spring:message code="label.tr.common.reset" />">
+          <input id="loginBtn" type="submit"
+            value="<spring:message code="label.tr.common.login" />">
+          <input id="resetBtn" type="reset" value="<spring:message code="label.tr.common.reset" />">
           <input type="hidden" name="redirectTo" value="${f:h(param.redirectTo)}" />
         </p>
       </fieldset>
@@ -34,7 +34,7 @@
       <spring:message code="label.tr.login.notCustmerMessage" />
     </p>
     <form action="${pageContext.request.contextPath}/managecustomer/create" method="get">
-      <input type="submit" name="form"
+      <input id="customerRegisterBtn" type="submit" name="form"
         value="<spring:message code="label.tr.common.register" />">
     </form>   
   </div>

@@ -1,7 +1,7 @@
 
 <div class="container">
  <jsp:include page="../common/top.jsp" />
-	<h2>
+	<h2 id="screenName">
 		<spring:message code="label.tr.searchtour.titleConfirmScreenMessage" />
 	</h2>
 
@@ -22,7 +22,7 @@
 		<jsp:include page="../common/fragment/priceTable.jsp" />
 		<br>
 		<hr />
-		<table>
+		<table id="specialNotesTable">
 			<caption>
 				<spring:message code="label.tr.common.specialNotes"></spring:message>
 			</caption>
@@ -36,13 +36,13 @@
 		<table>
 			<tr>
 				<td><form:form action="read" method="POST">
-						<input type="submit" name="redo"
+						<input id="goBackBtn" type="submit" name="redo"
 							value="<spring:message code="label.tr.common.goBackMessage"/>"></input>
 					</form:form></td>
 				<td><form:form
 						action="${pageContext.request.contextPath}/reservetour/reserve"
 						modelAttribute="reserveTourForm" method="POST">
-						<input type="submit"
+						<input id="reserveBtn" type="submit"
 							value="<spring:message code="label.tr.searchtour.confirmedMessage"/>">
 					</form:form></td>
 			</tr>

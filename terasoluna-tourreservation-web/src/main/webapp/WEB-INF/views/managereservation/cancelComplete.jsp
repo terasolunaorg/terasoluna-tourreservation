@@ -1,6 +1,6 @@
 
 <div class="container">
-	<h2>
+	<h2 id="screenName">
 		<spring:message
 			code="label.tr.managereservation.aftercancelScreenTitleMessage" />
 	</h2>

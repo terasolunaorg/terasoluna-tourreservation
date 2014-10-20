@@ -57,43 +57,39 @@ public class TourSearchValidateTest extends FunctionTestSupport {
     public void testRequiredValidate() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE)
-                        + "']")).click();
+        // go to login screen
+        driver.findElement(By.id("loginBtn")).click();
 
+        // input credential
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("password");
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys("00000001");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
-                .click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE)
-                        + "']")).click();
+        // login
+        driver.findElement(By.id("loginBtn")).click();
 
+        // go to search tour screen
+        driver.findElement(By.id("searchTourBtn")).click();
+
+        // input search criteria
         new Select(driver.findElement(By.id("depCode"))).selectByValue("");
         new Select(driver.findElement(By.id("arrCode"))).selectByValue("01");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
-                .click();
+
+        // search tour
+        driver.findElement(By.id("searchBtn")).click();
 
         assertEquals(
                 getMessage(MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(MessageKeys.DEPCODE)),
                 driver.findElement(By.id("tourInfoSearchCriteria.errors"))
                         .getText());
 
+        // input credential
         new Select(driver.findElement(By.id("depCode"))).selectByValue("01");
         new Select(driver.findElement(By.id("arrCode"))).selectByValue("");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
-                .click();
+
+        // search tour
+        driver.findElement(By.id("searchBtn")).click();
 
         assertEquals(
                 getMessage(MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(MessageKeys.ARRCODE)),
@@ -105,11 +101,10 @@ public class TourSearchValidateTest extends FunctionTestSupport {
     public void testDateValidate() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE)
-                        + "']")).click();
+        // go to search tour screen
+        driver.findElement(By.id("searchTourBtn")).click();
 
+        // input credential
         new Select(driver.findElement(By.id("depCode"))).selectByValue("01");
         new Select(driver.findElement(By.id("arrCode"))).selectByValue("01");
 
@@ -120,10 +115,8 @@ public class TourSearchValidateTest extends FunctionTestSupport {
         new Select(driver.findElement(By.id("depMonth"))).selectByValue("2");
         new Select(driver.findElement(By.id("depDay"))).selectByValue("30");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
-                .click();
+        // search tour
+        driver.findElement(By.id("searchBtn")).click();
 
         assertEquals(getMessage(MessageKeys.INCORRECTDATE_INPUTDATE),
                 driver.findElement(By.id("tourInfoSearchCriteria.errors"))

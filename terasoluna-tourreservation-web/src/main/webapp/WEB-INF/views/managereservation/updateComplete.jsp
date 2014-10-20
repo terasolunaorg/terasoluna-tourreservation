@@ -1,9 +1,9 @@
 
 <div class="container">
 
-	<h2>
-		<span><spring:message
-				code="label.tr.managereservation.manageReservationUpdatedScreenTitleMessage" /></span>
+	<h2 id="screenName">
+		<spring:message
+				code="label.tr.managereservation.manageReservationUpdatedScreenTitleMessage" />
 	</h2>
 
 	<!-- end title -->
@@ -159,13 +159,13 @@
 						<spring:message
 							code="label.tr.managereservation.returnToListScreenBtnMessage"
 							var="returnToListScreenButton" />
-						<input type="submit" value="${returnToListScreenButton}">
+						<input id="backToListBtn" type="submit" value="${returnToListScreenButton}">
 					</form:form></td>
 				<td><form:form action="${pageContext.request.contextPath}/"
 						method="GET">
 						<spring:message code="label.tr.common.gotoMenuMessage"
 							var="gotoMenuButton" />
-						<input type="submit" value="${gotoMenuButton}">
+						<input id="goToMenuBtn" type="submit" value="${gotoMenuButton}">
 					</form:form></td>
 			</tr>
 		</table>

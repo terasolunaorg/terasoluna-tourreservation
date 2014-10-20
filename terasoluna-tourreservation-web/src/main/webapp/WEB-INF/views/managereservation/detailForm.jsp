@@ -5,7 +5,7 @@
       <div>
         <div>
           <div>
-            <h1>
+            <h1 id="screenName">
               <span><spring:message code="label.tr.managereservation.manageReservationShowScreenTitleMessage" /></span>
             </h1>
           </div>
@@ -73,19 +73,19 @@
             <tr>
               <td><form:form action="${pageContext.request.contextPath}/managereservation/list" method="GET">
                   <spring:message code="label.tr.managereservation.returnToListScreenBtnMessage" var="returnToListScreen" />
-                  <input type="submit" name="backTolist" value="${returnToListScreen}" tabindex="2" />
+                  <input id="backToListBtn" type="submit" name="backTolist" value="${returnToListScreen}" tabindex="2" />
                 </form:form></td>
               <c:if test="${!f:h(output.limitExceeding)}">
                 <c:if test="${f:h(output.reserve.transfer) == 0}">
                   <td><form:form action="${pageContext.request.contextPath}/managereservation/update/${f:h(output.reserve.reserveNo)}"
                       METHOD="GET">
                       <spring:message code="label.tr.managereservation.changeReservationBtnMessage" var="changeReservation" />
-                      <input type="submit" name="form" value="${changeReservation}" tabindex="3" />
+                      <input id="changeBtn" type="submit" name="form" value="${changeReservation}" tabindex="3" />
                     </form:form></td>
                   <td><form:form action="${pageContext.request.contextPath}/managereservation/cancel" METHOD="POST">
                       <input type="hidden" value="${output.reserve.reserveNo}" name="reserveNo">
                       <spring:message code="label.tr.managereservation.cancelReservationBtnMessage" var="cancelReservation" />
-                      <input type="submit" name="confirm" value="${cancelReservation}" tabindex="3" />
+                      <input id="cancelBtn" type="submit" name="confirm" value="${cancelReservation}" tabindex="3" />
                     </form:form></td>
                 </c:if>
               </c:if>

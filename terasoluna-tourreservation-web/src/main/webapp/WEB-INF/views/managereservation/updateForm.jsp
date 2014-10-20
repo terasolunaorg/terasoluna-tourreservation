@@ -1,8 +1,8 @@
 
 <div class="container">
-	<h2>
-		<span><spring:message
-				code="label.tr.managereservation.manageReservationEditScreenTitle" /></span>
+	<h2 id="screenName">
+		<spring:message
+				code="label.tr.managereservation.manageReservationEditScreenTitle" />
 	</h2>
 
 	<!-- end title -->
@@ -84,7 +84,7 @@
 							<spring:message
 								code="label.tr.managereservation.returnToListScreenBtnMessage"
 								var="returnToListScreen" />
-							<input type="submit" name="backTolist"
+							<input id="backToListBtn" type="submit" name="backTolist"
 								value="${returnToListScreen}" tabindex="2" />
 						</div>
 					</td>
@@ -94,7 +94,7 @@
 								code="label.tr.managereservation.confirmEditBtnMessage"
 								var="changeReservationButton" />
 							<input type="hidden" name="reserveNo"
-								value="${f:h(reserve.reserveNo)}" /> <input type="submit"
+								value="${f:h(reserve.reserveNo)}" /><input id="confirmBtn" type="submit"
 								name="confirm" value="${changeReservationButton}" />
 						</div>
 					</td>
