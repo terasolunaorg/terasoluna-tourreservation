@@ -1,5 +1,5 @@
 
-    <table>
+    <table id="reserveTable">
       <caption>
         <spring:message code="label.tr.searchtour.tourDetailCaptionMessage" />
       </caption>

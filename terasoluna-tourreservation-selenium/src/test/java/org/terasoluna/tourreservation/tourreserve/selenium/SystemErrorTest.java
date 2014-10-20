@@ -50,24 +50,20 @@ public class SystemErrorTest extends FunctionTestSupport {
     public void testSystemError() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
-                .click();
+        // go to login screen
+        driver.findElement(By.id("loginBtn")).click();
 
+        // input credential
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("password");
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys("00000001");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
-                .click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
-                .click();
+        // login
+        driver.findElement(By.id("loginBtn")).click();
+
+        // go to reserved tours list screen
+        driver.findElement(By.id("reservedToursReferBtn")).click();
 
         driver.get(baseUrl
                 + "/terasoluna-tourreservation-web/managereservation/detail/aaaaaa");

@@ -2,7 +2,7 @@
 <!-- begin body-->
 <div class="container">
  <jsp:include page="../common/top.jsp" />
-	<h1>
+	<h1 id="screenName">
 		<span><spring:message
 				code="label.tr.managereservation.manageReservationMessage"></spring:message></span>
 	</h1>
@@ -21,7 +21,7 @@
 	</c:if>
 	<c:if test="${rows.size()
       != 0}">
-		<table>
+		<table id="reservationsTable">
 			<caption>
 				<spring:message code="label.tr.managereservation.ReserveListMessage" />
 			</caption>
@@ -48,7 +48,7 @@
 			<spring:message code="label.tr.common.currencyPattern"
 				var="currencyPattern" />
 
-			<c:forEach items="${rows}" var="row">
+			<c:forEach items="${rows}" var="row" varStatus="rowStatus">
 				<tr>
 					<td>${f:h(row.reserve.reserveNo)}</td>
 					<td>${f:h(row.reserve.tourInfo.tourName)}</td>
@@ -74,7 +74,7 @@
 								<td><form:form
 										action="${pageContext.request.contextPath}/managereservation/detail/${f:h(row.reserve.reserveNo)}"
 										method="GET">
-										<input type="submit" name="form"
+										<input id="showBtn${rowStatus.index}" type="submit" name="form"
 											value="<spring:message code="label.tr.managereservation.showDetailsBtnMessage"/>"
 											tabindex="1" />
 									</form:form> <c:if test="${!f:h(row.limitExceeding)}">
@@ -82,7 +82,7 @@
 											<form:form
 												action="${pageContext.request.contextPath}/managereservation/update/${f:h(row.reserve.reserveNo)}"
 												method="GET">
-												<input type="submit" name="form"
+												<input id="changeBtn${rowStatus.index}" type="submit" name="form"
 													value="<spring:message code="label.tr.managereservation.changeReservationBtnMessage"/>"
 													tabindex="2" />
 											</form:form>
@@ -91,7 +91,7 @@
 												method="POST" modelAttribute="manageReservationForm">
 												<input type="hidden" name="reserveNo"
 													value="${f:h(row.reserve.reserveNo)}" />
-												<input type="submit" name="confirm"
+												<input id="cancelBtn${rowStatus.index}" type="submit" name="confirm"
 													value="<spring:message code="label.tr.managereservation.cancelReservationBtnMessage"/>"
 													tabindex="3" />
 											</form:form>

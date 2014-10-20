@@ -25,6 +25,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
@@ -53,11 +54,10 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
     public void testCustomerRegistToken() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
-                .click();
+        // go to register screen
+        driver.findElement(By.id("customerRegisterBtn")).click();
 
+        // input new customer
         driver.findElement(By.name("customerKana")).sendKeys("テラ");
         driver.findElement(By.name("customerName")).sendKeys("ＴＥＲＡＳＯＬＵＮＡ");
         new Select(driver.findElement(By.id("customerBirthYear")))
@@ -74,20 +74,17 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         driver.findElement(By.name("customerAdd")).sendKeys("tokyo-toyosu");
         driver.findElement(By.name("customerPass")).sendKeys("tera123");
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
-                .click();
 
+        // go to confirm screen
+        driver.findElement(By.id("confirmBtn")).click();
+
+        // falsify transaction token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[0].setAttribute('type', 'text');");
-        driver.findElement(By.xpath("//input[@name='_TRANSACTION_TOKEN']"))
-                .clear();
+        driver.findElement(By.name("_TRANSACTION_TOKEN")).clear();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_REGISTER) + "']"))
-                .click();
+        // register
+        driver.findElement(By.id("registerBtn")).click();
 
         assertEquals(getMessage(MessageKeys.E_TR_FW_0001),
                 driver.findElement(By.cssSelector("p")).getText());
@@ -97,11 +94,10 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
     public void testCustomerRegistCSRFToken() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_CUSTOMERREGISTERBTNMESSAGE) + "']"))
-                .click();
+        // go to register screen
+        driver.findElement(By.id("customerRegisterBtn")).click();
 
+        // input new customer
         driver.findElement(By.name("customerKana")).sendKeys("テラ");
         driver.findElement(By.name("customerName")).sendKeys("ＴＥＲＡＳＯＬＵＮＡ");
         new Select(driver.findElement(By.id("customerBirthYear")))
@@ -118,20 +114,18 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         driver.findElement(By.name("customerAdd")).sendKeys("tokyo-toyosu");
         driver.findElement(By.name("customerPass")).sendKeys("tera123");
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
-                .click();
 
+        // go to confirm screen
+        driver.findElement(By.id("confirmBtn")).click();
+
+        // falsify CSRF token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("document.getElementsByName('_csrf')[0].setAttribute('type', 'text');");
-        driver.findElement(By.xpath("//input[@name='_csrf']"))
-                .clear();
+        driver.findElement(By.name("_csrf")).clear();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_REGISTER) + "']"))
-                .click();
+        // register
+        driver.findElement(By.id("registerBtn")).click();
+
         assertEquals(getMessage(MessageKeys.E_TR_FW_0002),
                 driver.findElement(By.cssSelector("p")).getText());
 
@@ -142,25 +136,22 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
     public void testTourSearchRegistToken() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
-                .click();
+        // go to login screen
+        driver.findElement(By.id("loginBtn")).click();
 
+        // input credential
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("password");
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys("00000001");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
-                .click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
-                .click();
+        // login
+        driver.findElement(By.id("loginBtn")).click();
 
+        // go to search tour screen
+        driver.findElement(By.id("searchTourBtn")).click();
+
+        // input search criteria
         DateTime dt = new DateTime();
         DateTime dtPlus = dt.plusDays(8);
 
@@ -173,33 +164,31 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         new Select(driver.findElement(By.id("depCode"))).selectByValue("01");
         new Select(driver.findElement(By.id("arrCode"))).selectByValue("01");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
-                .click();
+        // search tour
+        driver.findElement(By.id("searchBtn")).click();
 
+        // paging
         driver.findElement(By.linkText("2")).click();
 
-        driver.findElement(
-                By.linkText(driver.findElement(By.xpath("//td[2]")).getText()))
-                .click();
+        // show top tour in table
+        WebElement toursTable = driver.findElement(By.id("toursTable"));
+        toursTable.findElements(By.tagName("a")).get(0).click();
 
+        // input reservation contents
         driver.findElement(By.id("remarks")).sendKeys(
                 "Global TERASOLUNA Framewrok");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
-                .click();
 
+        // go to confirm screen
+        driver.findElement(By.id("confirmBtn")).click();
+
+        // falsify transaction token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[2].setAttribute('type', 'text');");
         driver.findElement(By.id("reserveTourForm")).findElement(By.name("_TRANSACTION_TOKEN"))
                 .clear();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_CONFIRMEDMESSAGE)
-                        + "']")).click();
+        // reserve
+        driver.findElement(By.id("reserveBtn")).click();
 
         assertEquals(getMessage(MessageKeys.E_TR_FW_0001),
                 driver.findElement(By.cssSelector("p")).getText());
@@ -209,25 +198,22 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
     public void testReserveUpdateToken() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
-                .click();
+        // go to login screen
+        driver.findElement(By.id("loginBtn")).click();
 
+        // input credential
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("password");
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys("00000001");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
-                .click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
-                .click();
+        // login
+        driver.findElement(By.id("loginBtn")).click();
 
+        // go to search tour screen
+        driver.findElement(By.id("searchTourBtn")).click();
+
+        // input search criteria
         DateTime dt = new DateTime();
         DateTime dtPlus = dt.plusDays(8);
 
@@ -240,102 +226,84 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         new Select(driver.findElement(By.id("depCode"))).selectByValue("01");
         new Select(driver.findElement(By.id("arrCode"))).selectByValue("01");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
-                .click();
+        // search tour
+        driver.findElement(By.id("searchBtn")).click();
 
+        // paging
         driver.findElement(By.linkText("2")).click();
 
-        driver.findElement(
-                By.linkText(driver.findElement(By.xpath("//td[2]")).getText()))
-                .click();
+        // show top tour in table
+        WebElement toursTable = driver.findElement(By.id("toursTable"));
+        toursTable.findElements(By.tagName("a")).get(0).click();
 
+        // input reservation contents
         driver.findElement(By.id("remarks")).sendKeys(
                 "Global TERASOLUNA Framewrok");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
-                .click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_CONFIRMEDMESSAGE)
-                        + "']")).click();
+        // go to confirm screen
+        driver.findElement(By.id("confirmBtn")).click();
 
-        driver.findElement(By.linkText(getMessage(MessageKeys.TITLE_COMMON)))
-                .click();
+        // reserve
+        driver.findElement(By.id("reserveBtn")).click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
-                .click();
+        // go to top screen(back to top)
+        driver.findElement(By.id("goToTopLink")).click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CHANGERESERVATIONBTNMESSAGE)
-                        + "']")).click();
+        // go to reserved tours list screen
+        driver.findElement(By.id("reservedToursReferBtn")).click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CONFIRMEDITBTNMESSAGE)
-                        + "']")).click();
+        // change top reservation in table
+        driver.findElement(By.id("changeBtn0")).click();
 
+        // go to confirm screen
+        driver.findElement(By.id("confirmBtn")).click();
+
+        // falsify transaction token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[0].setAttribute('type', 'text');");
         driver.findElement(By.id("manageReservationForm"))
                 .findElement(By.name("_TRANSACTION_TOKEN")).clear();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CHANGERESERVATIONFINBTNMESSAGE)
-                        + "']")).click();
+        // change reservation
+        driver.findElement(By.id("changeBtn")).click();
 
         assertEquals(getMessage(MessageKeys.E_TR_FW_0001),
                 driver.findElement(By.cssSelector("p")).getText());
 
-        driver.findElement(By.linkText(getMessage(MessageKeys.TITLE_COMMON)))
-                .click();
+        // go to top screen(back to top)
+        driver.findElement(By.id("goToTopLink")).click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
-                .click();
+        // go to reserved tours list screen
+        driver.findElement(By.id("reservedToursReferBtn")).click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
-                        + "']")).click();
+        // cancel top reservation in table
+        driver.findElement(By.id("cancelBtn0")).click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
-                        + "']")).click();
+        // cancel reservation
+        driver.findElement(By.id("cancelBtn")).click();
+
     }
 
     @Test
     public void testReserveCancelToken() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
-                .click();
+        // go to login screen
+        driver.findElement(By.id("loginBtn")).click();
 
+        // input credential
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("password");
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys("00000001");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
-                .click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
-                .click();
+        // login
+        driver.findElement(By.id("loginBtn")).click();
 
+        // go to search tour screen
+        driver.findElement(By.id("searchTourBtn")).click();
+
+        // input search criteria
         DateTime dt = new DateTime();
         DateTime dtPlus = dt.plusDays(8);
 
@@ -348,72 +316,58 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         new Select(driver.findElement(By.id("depCode"))).selectByValue("01");
         new Select(driver.findElement(By.id("arrCode"))).selectByValue("01");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_SEARCH) + "']"))
-                .click();
+        // search tour
+        driver.findElement(By.id("searchBtn")).click();
 
+        // paging
         driver.findElement(By.linkText("2")).click();
 
-        driver.findElement(
-                By.linkText(driver.findElement(By.xpath("//td[2]")).getText()))
-                .click();
+        // show top tour in table
+        WebElement toursTable = driver.findElement(By.id("toursTable"));
+        toursTable.findElements(By.tagName("a")).get(0).click();
 
+        // input reservation contents
         driver.findElement(By.id("remarks")).sendKeys(
                 "Global TERASOLUNA Framewrok");
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_CONFIRM) + "']"))
-                .click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_CONFIRMEDMESSAGE)
-                        + "']")).click();
+        // go to confirm screen
+        driver.findElement(By.id("confirmBtn")).click();
 
-        driver.findElement(By.linkText(getMessage(MessageKeys.TITLE_COMMON)))
-                .click();
+        // reserve
+        driver.findElement(By.id("reserveBtn")).click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
-                .click();
+        // go to top screen(back to top)
+        driver.findElement(By.id("goToTopLink")).click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
-                        + "']")).click();
+        // go to reserved tours list screen
+        driver.findElement(By.id("reservedToursReferBtn")).click();
 
+        // cancel top reservation in table
+        driver.findElement(By.id("cancelBtn0")).click();
+
+        // falsify transaction token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[1].setAttribute('type', 'text');");
         driver.findElement(By.id("reservationCanelForm"))
                 .findElement(By.name("_TRANSACTION_TOKEN")).clear();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
-                        + "']")).click();
+        // cancel reservation
+        driver.findElement(By.id("cancelBtn")).click();
 
         assertEquals(getMessage(MessageKeys.E_TR_FW_0001),
                 driver.findElement(By.cssSelector("p")).getText());
 
-        driver.findElement(By.linkText(getMessage(MessageKeys.TITLE_COMMON)))
-                .click();
+        // go to top screen(back to top)
+        driver.findElement(By.id("goToTopLink")).click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_REFERBTNMESSAGE) + "']"))
-                .click();
+        // go to reserved tours list screen
+        driver.findElement(By.id("reservedToursReferBtn")).click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
-                        + "']")).click();
+        // cancel top reservation in table
+        driver.findElement(By.id("cancelBtn0")).click();
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_CANCELRESERVATIONBTNMESSAGE)
-                        + "']")).click();
+        // cancel reservation
+        driver.findElement(By.id("cancelBtn")).click();
 
     }
 

@@ -1,5 +1,5 @@
 
-<table>
+<table id="customerTable">
     <caption>
         <spring:message code="label.tr.common.notLoginMessage" />
     </caption>

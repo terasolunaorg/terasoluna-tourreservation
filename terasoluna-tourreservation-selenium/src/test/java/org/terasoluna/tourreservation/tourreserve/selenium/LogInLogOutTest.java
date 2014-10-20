@@ -49,42 +49,38 @@ public class LogInLogOutTest extends FunctionTestSupport {
     @Test
     public void testLoginLogoff() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
+
         assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
                 + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
-                driver.findElement(By.cssSelector("p.box")).getText());
+                driver.findElement(By.id("messagesArea")).getText());
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_LOGINBTNMESSAGE) + "']"))
-                .click();
+        // go to login screen
+        driver.findElement(By.id("loginBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver
-                .findElement(By.cssSelector("p.box")).getText());
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE),
+                driver.findElement(By.id("messagesArea")).getText());
+
+        // input credential
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("password");
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys("00000001");
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGIN) + "']"))
-                .click();
+        // login
+        driver.findElement(By.id("loginBtn")).click();
 
         assertEquals(getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
-                driver.findElement(By.cssSelector("p.box")).getText());
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_MENU_SEARCHBTNMESSAGE) + "']"))
-                .click();
+                driver.findElement(By.id("messagesArea")).getText());
 
-        driver.findElement(
-                By.xpath("//input[@value='"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_LOGOUT) + "']"))
-                .click();
+        // go to search tour screen
+        driver.findElement(By.id("searchTourBtn")).click();
+
+        // logout
+        driver.findElement(By.id("logoutBtn")).click();
 
         assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
                 + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
-                driver.findElement(By.cssSelector("p.box")).getText());
+                driver.findElement(By.id("messagesArea")).getText());
     }
 
     @After

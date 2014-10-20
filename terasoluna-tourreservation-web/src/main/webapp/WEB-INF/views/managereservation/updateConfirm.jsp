@@ -1,9 +1,9 @@
 
 <div class="container">
 
-	<h2>
-		<span><spring:message
-				code="label.tr.managereservation.manageReservationConfirmScreenTitleMessage" /></span>
+	<h2 id="screenName">
+		<spring:message
+				code="label.tr.managereservation.manageReservationConfirmScreenTitleMessage" />
 	</h2>
 
 	<!-- end title -->
@@ -52,7 +52,7 @@
 	<!-- tour-info end -->
 	<br />
 	<hr />
-	<table>
+	<table id="priceTable">
 		<caption>
 			<spring:message code="label.tr.searchtour.statementOfCharges"></spring:message>
 		</caption>
@@ -151,11 +151,11 @@
 				<tr>
 					<td><spring:message
 							code="label.tr.managereservation.changeReservationStaBtnMessage"
-							var="startOverButton" /> <input type="submit" name="redo"
+							var="startOverButton" /> <input id="backToFormBtn" type="submit" name="redo"
 						value="${startOverButton}" />
 					<td><spring:message
 							code="label.tr.managereservation.changeReservationFinBtnMessage"
-							var="finalizeChangeButton" /> <input type="submit"
+							var="finalizeChangeButton" /><input id="changeBtn" type="submit"
 						value="${finalizeChangeButton}" />
 				</tr>
 			</table>
