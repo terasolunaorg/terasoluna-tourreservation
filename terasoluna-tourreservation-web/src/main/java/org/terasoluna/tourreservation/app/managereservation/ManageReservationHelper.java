@@ -23,16 +23,15 @@ import javax.inject.Inject;
 
 import org.dozer.Mapper;
 import org.springframework.context.MessageSource;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import org.terasoluna.tourreservation.app.common.constants.MessageId;
-import org.terasoluna.tourreservation.app.common.security.UserDetailsUtils;
 import org.terasoluna.tourreservation.domain.model.Reserve;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.service.reserve.ReserveService;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateSharedSerivce;
 import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoSharedService;
+import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
 
 @Component
 public class ManageReservationHelper {
@@ -65,9 +64,9 @@ public class ManageReservationHelper {
         return builder.toString();
     }
 
-    public List<ReserveRowOutput> list(Authentication auth) {
+    public List<ReserveRowOutput> list(ReservationUserDetails userDetails) {
         // must be logged in
-        String customerCode = UserDetailsUtils.getUserDetails(auth).getUsername();
+        String customerCode = userDetails.getUsername();
 
         List<Reserve> reserves = reserveService
                 .findAllByCustomerCode(customerCode);

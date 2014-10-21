@@ -7,7 +7,6 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <sec:http auto-config="true">
-        <sec:custom-filter ref="csrfFilter" before="LOGOUT_FILTER" />
         <sec:intercept-url pattern="/tourreserve/confirm"
             access="ROLE_USER" />
         <sec:intercept-url pattern="/tourreserve/reserve"
@@ -30,8 +29,10 @@
         <sec:remember-me key="terasoluna-tourreservation-km/ylnHv"
             token-validity-seconds="2419200" />
 
-        <sec:session-management
-            session-authentication-strategy-ref="sessionAuthenticationStrategy" />
+        <sec:session-management session-fixation-protection="migrateSession" />
+        <sec:csrf />
+        <sec:access-denied-handler ref="accessDeniedHandler"/>
+        <sec:headers />
     </sec:http>
 
 
@@ -61,32 +62,27 @@
 
 
     <!-- CSRF Protection -->
-    <bean id="csrfTokenRepository"
-        class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository" />
-
-    <bean id="csrfFilter" class="org.springframework.security.web.csrf.CsrfFilter">
-        <constructor-arg index="0" ref="csrfTokenRepository" />
-        <property name="accessDeniedHandler">
-            <bean
-                class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-                <property name="errorPage"
-                    value="/WEB-INF/views/common/error/csrf-error.jsp" />
-            </bean>
-        </property>
-    </bean>
-
-    <bean id="sessionAuthenticationStrategy"
-        class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy">
+    <bean id="accessDeniedHandler"
+        class="org.springframework.security.web.access.DelegatingAccessDeniedHandler">
         <constructor-arg index="0">
-            <list>
-                <bean
-                    class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy" />
-                <bean
-                    class="org.springframework.security.web.csrf.CsrfAuthenticationStrategy">
-                    <constructor-arg index="0"
-                        ref="csrfTokenRepository" />
-                </bean>
-            </list>
+            <map>
+                <entry
+                    key="org.springframework.security.web.csrf.InvalidCsrfTokenException">
+                    <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+                        <property name="errorPage" value="/WEB-INF/views/common/error/csrf-error.jsp" />
+                    </bean>
+                </entry>
+                <entry key="org.springframework.security.web.csrf.MissingCsrfTokenException">
+                    <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+                        <property name="errorPage" value="/WEB-INF/views/common/error/csrf-error.jsp" />
+                    </bean>
+                </entry>
+            </map>
+        </constructor-arg>
+        <constructor-arg index="1">
+            <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+                <property name="errorPage" value="/WEB-INF/views/common/error/csrf-error.jsp" /> 
+            </bean>
         </constructor-arg>
     </bean>
 </beans>

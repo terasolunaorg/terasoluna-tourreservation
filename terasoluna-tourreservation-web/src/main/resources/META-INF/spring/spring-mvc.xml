@@ -22,6 +22,8 @@
 				class="org.springframework.data.web.PageableHandlerMethodArgumentResolver" />
 			<bean
 				class="org.terasoluna.gfw.web.token.transaction.TransactionTokenContextHandlerMethodArgumentResolver" />
+			<bean
+				class="org.springframework.security.web.bind.support.AuthenticationPrincipalArgumentResolver" />
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
 

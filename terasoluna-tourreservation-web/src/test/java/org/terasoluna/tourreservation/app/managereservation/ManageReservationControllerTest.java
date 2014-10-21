@@ -33,7 +33,7 @@ import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.web.bind.support.AuthenticationPrincipalArgumentResolver;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
@@ -44,13 +44,12 @@ import org.terasoluna.tourreservation.domain.model.Reserve;
 import org.terasoluna.tourreservation.domain.service.reserve.ReservationUpdateInput;
 import org.terasoluna.tourreservation.domain.service.reserve.ReservationUpdateOutput;
 import org.terasoluna.tourreservation.domain.service.reserve.ReserveService;
+import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
 
 public class ManageReservationControllerTest {
 
     MockMvc mockMvc;
     
-    Authentication auth;
-
     ManageReservationController manageReservationController;
 
     ManageReservationHelper manageReservationHelper;
@@ -58,6 +57,8 @@ public class ManageReservationControllerTest {
     ReserveService reserveService;
 
     Mapper dozerBeanMapper;
+    
+    ReservationUserDetails userDetails;
 
     @Before
     public void setupForm() {
@@ -69,13 +70,13 @@ public class ManageReservationControllerTest {
         manageReservationHelper = mock(ManageReservationHelper.class);
         dozerBeanMapper = new DozerBeanMapper();
         reserveService = mock(ReserveService.class);
-        auth = mock(Authentication.class);
+        userDetails = mock(ReservationUserDetails.class);
         manageReservationController.manageReservationHelper = manageReservationHelper;
         manageReservationController.dozerBeanMapper = dozerBeanMapper;
         manageReservationController.reserveService = reserveService;
 
         // build
-        mockMvc = MockMvcBuilders.standaloneSetup(manageReservationController)
+        mockMvc = MockMvcBuilders.standaloneSetup(manageReservationController).setCustomArgumentResolvers(new AuthenticationPrincipalArgumentResolver())
                 .build();
     }
 
@@ -87,7 +88,7 @@ public class ManageReservationControllerTest {
                 .get("/managereservation/list");
 
         // Set mock behavior for helper method
-        when(manageReservationHelper.list(auth)).thenReturn(
+        when(manageReservationHelper.list(userDetails)).thenReturn(
                 new ArrayList<ReserveRowOutput>());
 
         try {
