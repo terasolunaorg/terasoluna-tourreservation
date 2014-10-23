@@ -266,6 +266,14 @@ public final class MessageId {
      */
     public static final String E_TR_FW_0004 = "e.tr.fw.0004";
     /**
+     * <strong>e.tr.fw.0005 = Expected CSRF token not found. Has your session expired?</strong>
+     */
+    public static final String E_TR_FW_0005 = "e.tr.fw.0005";
+    /**
+     * <strong>e.tr.fw.0006 = Access denied!</strong>
+     */
+    public static final String E_TR_FW_0006 = "e.tr.fw.0006";
+    /**
      * <strong>label.tr.menu.menuMessage = This is a menu screen.</strong>
      */
     public static final String LABEL_TR_MENU_MENUMESSAGE = "label.tr.menu.menuMessage";

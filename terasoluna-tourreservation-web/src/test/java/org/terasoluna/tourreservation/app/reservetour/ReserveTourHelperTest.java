@@ -27,8 +27,6 @@ import org.dozer.Mapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -62,7 +60,7 @@ public class ReserveTourHelperTest {
 
     SecurityContext securityContext;
 
-    Authentication authentication;
+    ReservationUserDetails userDetails;
 
     User user;
 
@@ -112,6 +110,8 @@ public class ReserveTourHelperTest {
                 .thenReturn(priceCalculateOutput);
 
         customer = new Customer("12345678");
+        
+        userDetails = new ReservationUserDetails(customer);
     }
 
     @After
@@ -121,7 +121,6 @@ public class ReserveTourHelperTest {
     @Test
     public void testFindTourDetail01() {
         // test when principal is not null
-        authentication = new UsernamePasswordAuthenticationToken(new ReservationUserDetails(customer), "pass", null);
 
         String tourCode = "xxxxx";
 
@@ -131,7 +130,7 @@ public class ReserveTourHelperTest {
         form.setChildCount(2);
 
         // run
-        TourDetailOutput resultOutput = reserveHelper.findTourDetail(authentication, form);
+        TourDetailOutput resultOutput = reserveHelper.findTourDetail(userDetails, form);
 
         // assert
         assertThat(resultOutput.getCustomer(), is(customer));
@@ -143,8 +142,8 @@ public class ReserveTourHelperTest {
     @Test
     public void testFindTourDetail02() {
         // test when principal is null
-        authentication = null;
-        String tourCode = "xxxxx";
+
+    	String tourCode = "xxxxx";
 
         ReserveTourForm form = new ReserveTourForm();
         form.setTourCode(tourCode);
@@ -152,7 +151,7 @@ public class ReserveTourHelperTest {
         form.setChildCount(2);
 
         // run
-        TourDetailOutput resultOutput = reserveHelper.findTourDetail(authentication, form);
+        TourDetailOutput resultOutput = reserveHelper.findTourDetail(null, form);
 
         // assert
         assertThat(resultOutput.getCustomer(), is(nullValue()));
@@ -163,7 +162,6 @@ public class ReserveTourHelperTest {
 
     @Test
     public void testReserve01() {
-        authentication = new UsernamePasswordAuthenticationToken(new ReservationUserDetails(customer), "pass", null);
 
         ReserveTourForm form = new ReserveTourForm();
         ReserveTourOutput output = new ReserveTourOutput();
@@ -171,7 +169,7 @@ public class ReserveTourHelperTest {
                 .thenReturn(output);
 
         // run
-        ReserveTourOutput result = reserveHelper.reserve(authentication, form);
+        ReserveTourOutput result = reserveHelper.reserve(userDetails, form);
 
         // assert
         assertThat(result, is(output));

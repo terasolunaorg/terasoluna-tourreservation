@@ -20,7 +20,7 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,6 +34,7 @@ import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 import org.terasoluna.tourreservation.domain.service.reserve.ReserveTourOutput;
+import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
 
 /**
  * Handle request of tour searching.
@@ -66,13 +67,13 @@ public class ReserveTourController {
      * @return
      */
     @RequestMapping(value = "read", method = RequestMethod.GET)
-    public String reserveForm(Authentication auth, ReserveTourForm form, Model model,
+    public String reserveForm(@AuthenticationPrincipal ReservationUserDetails userDetails, ReserveTourForm form, Model model,
             SessionStatus status) {
         logger.debug("retieve tour {}", form.getTourCode());
 
         status.setComplete();
 
-        TourDetailOutput output = reserveTourHelper.findTourDetail(auth, form);
+        TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails, form);
 
         model.addAttribute("output", output);
 
@@ -88,7 +89,7 @@ public class ReserveTourController {
      */
     @TransactionTokenCheck(value = "reserve", type = TransactionTokenType.BEGIN)
     @RequestMapping(value = "reserve", method = RequestMethod.POST, params = "confirm")
-    public String confirm(Authentication auth, @Valid ReserveTourForm form,
+    public String confirm(@AuthenticationPrincipal ReservationUserDetails userDetails, @Valid ReserveTourForm form,
             BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "reservetour/reserveForm";
@@ -97,7 +98,7 @@ public class ReserveTourController {
                 "confirm the reservation details for the following tour {}",
                 form.getTourCode());
 
-        TourDetailOutput output = reserveTourHelper.findTourDetail(auth, form);
+        TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails, form);
         model.addAttribute("output", output);
 
         return "reservetour/reserveConfirm";
@@ -112,22 +113,22 @@ public class ReserveTourController {
      */
     @TransactionTokenCheck(value = "reserve", type = TransactionTokenType.IN)
     @RequestMapping(value = "reserve", method = RequestMethod.POST)
-    public String reserve(Authentication auth, @Valid ReserveTourForm form,
+    public String reserve(@AuthenticationPrincipal ReservationUserDetails userDetails, @Valid ReserveTourForm form,
             BindingResult bindingResult, RedirectAttributes redirectAttr,
             Model model) {
         logger.debug("reserve tour {}", form.getTourCode());
 
         if (bindingResult.hasErrors()) {
-            TourDetailOutput output = reserveTourHelper.findTourDetail(auth, form);
+            TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails, form);
             model.addAttribute("output", output);
             return "reservetour/reserveForm";
         }
 
         try {
-            ReserveTourOutput output = reserveTourHelper.reserve(auth, form);
+            ReserveTourOutput output = reserveTourHelper.reserve(userDetails, form);
             redirectAttr.addFlashAttribute("output", output);
         } catch (BusinessException e) {
-            TourDetailOutput output = reserveTourHelper.findTourDetail(auth, form);
+            TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails, form);
             model.addAttribute("output", output);
             model.addAttribute(e.getResultMessages());
             return "reservetour/reserveForm";

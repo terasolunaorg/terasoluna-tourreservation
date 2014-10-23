@@ -39,6 +39,8 @@ public class ManageReservationHelperTest {
 
     Authentication authentication;
     
+    ReservationUserDetails userDetails;
+    
     ManageReservationHelper manageReservationFacade;
 
     ReserveService reserveService;
@@ -53,8 +55,7 @@ public class ManageReservationHelperTest {
 
         securityContext = mock(SecurityContext.class);
         authentication = mock(Authentication.class);
-        when(authentication.getPrincipal()).thenReturn(
-                new ReservationUserDetails(new Customer("xxxx")));
+        userDetails = new ReservationUserDetails(new Customer("xxxx"));
 
         reserveService = mock(ReserveService.class);
         tourInfoSharedService = mock(TourInfoSharedService.class);
@@ -82,7 +83,7 @@ public class ManageReservationHelperTest {
         when(tourInfoSharedService.isOverPaymentLimit(tour2)).thenReturn(
                 true);
 
-        List<ReserveRowOutput> result = manageReservationFacade.list(authentication);
+        List<ReserveRowOutput> result = manageReservationFacade.list(userDetails);
         assertThat(result, is(notNullValue()));
         assertThat(result.size(), is(2));
         ReserveRowOutput o1 = result.get(0);

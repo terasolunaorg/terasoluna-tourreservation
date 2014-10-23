@@ -22,7 +22,7 @@ import javax.inject.Inject;
 import javax.validation.groups.Default;
 
 import org.dozer.Mapper;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,6 +41,7 @@ import org.terasoluna.tourreservation.domain.model.Reserve;
 import org.terasoluna.tourreservation.domain.service.reserve.ReservationUpdateInput;
 import org.terasoluna.tourreservation.domain.service.reserve.ReservationUpdateOutput;
 import org.terasoluna.tourreservation.domain.service.reserve.ReserveService;
+import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
 
 @Controller
 @RequestMapping(value = "managereservation")
@@ -72,8 +73,8 @@ public class ManageReservationController {
      * @return
      */
     @RequestMapping(value = "list", method = RequestMethod.GET)
-    public String list(Authentication auth, Model model) {
-        List<ReserveRowOutput> rows = manageReservationHelper.list(auth);
+    public String list(@AuthenticationPrincipal ReservationUserDetails userDetails ,Model model) {
+        List<ReserveRowOutput> rows = manageReservationHelper.list(userDetails);
 
         model.addAttribute("rows", rows);
         return "managereservation/list";
