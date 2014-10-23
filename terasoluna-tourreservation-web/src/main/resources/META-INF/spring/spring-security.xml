@@ -29,7 +29,7 @@
         <sec:remember-me key="terasoluna-tourreservation-km/ylnHv"
             token-validity-seconds="2419200" />
 
-        <sec:session-management session-fixation-protection="migrateSession" />
+        <sec:session-management />
         <sec:csrf />
         <sec:access-denied-handler ref="accessDeniedHandler"/>
         <sec:headers />
@@ -61,7 +61,6 @@
     </bean>
 
 
-    <!-- CSRF Protection -->
     <bean id="accessDeniedHandler"
         class="org.springframework.security.web.access.DelegatingAccessDeniedHandler">
         <constructor-arg index="0">
@@ -74,14 +73,14 @@
                 </entry>
                 <entry key="org.springframework.security.web.csrf.MissingCsrfTokenException">
                     <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-                        <property name="errorPage" value="/WEB-INF/views/common/error/csrf-error.jsp" />
+                        <property name="errorPage" value="/WEB-INF/views/common/error/missing-csrf-token-error.jsp" />
                     </bean>
                 </entry>
             </map>
         </constructor-arg>
         <constructor-arg index="1">
             <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-                <property name="errorPage" value="/WEB-INF/views/common/error/csrf-error.jsp" /> 
+                <property name="errorPage" value="/WEB-INF/views/common/error/access-denied-error.jsp" /> 
             </bean>
         </constructor-arg>
     </bean>
