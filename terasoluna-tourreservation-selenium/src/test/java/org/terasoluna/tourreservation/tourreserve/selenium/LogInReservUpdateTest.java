@@ -127,6 +127,13 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
 
     @Test
     public void testLogInReservUpdate() {
+
+        String userName = "00000001";
+        String password = "password";
+
+        // register test data
+        reserveTourForRegisterTestData(userName, password);
+
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
         // go to login screen
@@ -134,9 +141,9 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
 
         // input credential
         driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("password");
+        driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("username")).clear();
-        driver.findElement(By.id("username")).sendKeys("00000001");
+        driver.findElement(By.id("username")).sendKeys(userName);
 
         // login
         driver.findElement(By.id("loginBtn")).click();
@@ -240,6 +247,69 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
         assertEquals(
                 getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_AFTERCANCELSCREENTITLEMESSAGE),
                 driver.findElement(By.id("screenName")).getText());
+
+    }
+
+
+    private void reserveTourForRegisterTestData(String userName, String password){
+        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+
+        // go to login screen
+        driver.findElement(By.id("loginBtn")).click();
+
+        // input credential
+        driver.findElement(By.id("password")).clear();
+        driver.findElement(By.id("password")).sendKeys(password);
+        driver.findElement(By.id("username")).clear();
+        driver.findElement(By.id("username")).sendKeys(userName);
+
+        // login
+        driver.findElement(By.id("loginBtn")).click();
+
+        // go to search tour screen
+        driver.findElement(By.id("searchTourBtn")).click();
+
+        // input search criteria
+        DateTime dt = new DateTime();
+        DateTime dtPlus = dt.plusDays(8);
+
+        new Select(driver.findElement(By.id("depYear"))).selectByValue(Integer
+                .toString(dtPlus.getYear()));
+        new Select(driver.findElement(By.id("depMonth"))).selectByValue(Integer
+                .toString(dtPlus.getMonthOfYear()));
+        new Select(driver.findElement(By.id("depDay"))).selectByValue(Integer
+                .toString(dtPlus.getDayOfMonth()));
+        new Select(driver.findElement(By.id("depCode"))).selectByValue("01");
+        new Select(driver.findElement(By.id("arrCode"))).selectByValue("01");
+
+        // search tour
+        driver.findElement(By.id("searchBtn")).click();
+
+        // paging
+        driver.findElement(By.linkText("2")).click();
+
+        // show top tour in table
+        WebElement toursTable = driver.findElement(By.id("toursTable"));
+        toursTable.findElements(By.tagName("a")).get(0).click();
+
+        // input reservation contents
+        driver.findElement(By.id("remarks")).sendKeys(
+                "Global TERASOLUNA Framewrok");
+
+        // go to confirm screen
+        driver.findElement(By.id("confirmBtn")).click();
+
+        // reserve
+        driver.findElement(By.id("reserveBtn")).click();
+
+        // go to top screen
+        driver.findElement(By.id("goToTopLink")).click();
+
+        // go to search tour screen
+        driver.findElement(By.id("searchTourBtn")).click();
+
+        // logout
+        driver.findElement(By.id("logoutBtn")).click();
 
     }
 
