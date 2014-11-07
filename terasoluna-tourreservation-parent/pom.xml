@@ -345,29 +345,7 @@
             </dependency>
             <!-- == End JasperReports == -->
 
-
-            <!-- Servlet API/ JSP API -->
-            <dependency>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>tomcat-servlet-api</artifactId>
-                <version>${tomcat.api.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>tomcat-jsp-api</artifactId>
-                <version>${tomcat.api.version}</version>
-                <scope>provided</scope>
-            </dependency>
-
-
             <!-- == Begin Database == -->
-            <dependency>
-                <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <version>${com.h2database.version}</version>
-                <scope>test</scope>
-            </dependency>
             <dependency>
                 <groupId>postgresql</groupId>
                 <artifactId>postgresql</artifactId>
@@ -394,13 +372,9 @@
     </distributionManagement>
     <properties>
         <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
-        <com.h2database.version>1.3.156</com.h2database.version>
         <encoding>UTF-8</encoding>
         <jasperreports.version>3.5.1</jasperreports.version>
         <java-version>1.6</java-version>
-        <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
-        <junit.version>4.7</junit.version>
-        <ch.qos.logback.version>1.0.13</ch.qos.logback.version>
         <maven-eclipse-plugin.version>2.6</maven-eclipse-plugin.version>
         <maven-jxr-plugin.version>2.1</maven-jxr-plugin.version>
         <net.sourceforge.nekohtml.version>1.9.15</net.sourceforge.nekohtml.version>
@@ -420,11 +394,8 @@
         <org.apache.tomcat.maven.version>2.0-SNAPSHOT</org.apache.tomcat.maven.version>
         <org.codehaus.mojo.emma-maven-plugin.version>1.0-alpha-3</org.codehaus.mojo.emma-maven-plugin.version>
         <org.codehaus.mojo.version>2.5</org.codehaus.mojo.version>
-        <org.mockito.version>1.9.0</org.mockito.version>
         <org.springframework.build.aws.version>3.0.0.RELEASE</org.springframework.build.aws.version>
         <postgresql.version>9.1-901.jdbc4</postgresql.version>
-        <tiles.version>2.2.2</tiles.version>
-        <tomcat.api.version>7.0.40</tomcat.api.version>
         <selenium.version>2.43.1</selenium.version>
     </properties>
 </project>

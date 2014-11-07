@@ -84,11 +84,9 @@
 		<property name="order" value="0" />
 	</bean>
 
-	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver"
-		id="tilesViewResolver">
+	<bean id="tilesViewResolver"
+			class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
 		<property name="order" value="1" />
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.tiles2.TilesView" />
 	</bean>
 
 	<bean id="viewResolver"
@@ -99,7 +97,7 @@
 	</bean>
 
 	<!-- Setting for Tiles -->
-	<bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"
 		id="tilesConfigurer">
 		<property name="definitions">
 			<list>
