@@ -83,11 +83,9 @@
 		<property name="order" value="0" />
 	</bean>
 
-	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver"
-		id="tilesViewResolver">
+	<bean id="tilesViewResolver"
+		  class="org.springframework.web.servlet.view.tiles2.TilesViewResolver">
 		<property name="order" value="1" />
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.tiles2.TilesView" />
 	</bean>
 
 	<bean id="viewResolver"
