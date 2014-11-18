@@ -1,6 +1,6 @@
 
   <div class="container">
-   <jsp:include page="../common/top.jsp"></jsp:include>
+   <jsp:include page="../common/top.jsp" />
     <form:form action="${pageContext.request.contextPath}/j_spring_security_check" method="post">
       <fieldset>
         <legend>

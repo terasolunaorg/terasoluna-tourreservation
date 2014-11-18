@@ -1,6 +1,6 @@
 
 <div class="container">
- <jsp:include page="../common/top.jsp"></jsp:include>
+ <jsp:include page="../common/top.jsp" />
 	<form:form method="post" modelAttribute="customerForm"
 		action="${pageContext.request.contextPath}/managecustomer/create">
 		<fieldset>

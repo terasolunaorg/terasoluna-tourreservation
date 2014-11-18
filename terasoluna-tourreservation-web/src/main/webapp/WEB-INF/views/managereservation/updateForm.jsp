@@ -65,10 +65,10 @@
 		<!-- note start -->
 		<table>
 			<caption>
-				<spring:message code="label.tr.common.specialNotes"></spring:message>
+				<spring:message code="label.tr.common.specialNotes" />
 			</caption>
 			<tr>
-				<td><spring:message code="label.tr.common.opinionSuggestion"></spring:message></td>
+				<td><spring:message code="label.tr.common.opinionSuggestion" /></td>
 				<td colspan="3">${f:h(reserve.remarks)}<br />
 			</tr>
 		</table>

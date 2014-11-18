@@ -39,13 +39,13 @@
 
 <body>
     <div class="container">
-        <jsp:include page="../../layout/header.jsp"></jsp:include>
+        <jsp:include page="../../layout/header.jsp" />
         <div class="error">
             <p>
                 <spring:message code="e.tr.fw.0001" />
             </p>
         </div>
-        <jsp:include page="../../layout/footer.jsp"></jsp:include>
+        <jsp:include page="../../layout/footer.jsp" />
     </div>
 </body>
 </html>
