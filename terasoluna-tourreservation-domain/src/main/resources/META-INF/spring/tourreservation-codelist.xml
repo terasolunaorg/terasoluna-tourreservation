@@ -8,6 +8,16 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd">
 
+    <bean id="jdbcTemplateForCodeList" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource" />
+        <property name="fetchSize" value="${codelist.jdbc.fetchSize:1000}" />
+    </bean>
+
+    <bean id="AbstractJdbcCodeList"
+          class="org.terasoluna.gfw.common.codelist.JdbcCodeList" abstract="true">
+        <property name="jdbcTemplate" ref="jdbcTemplateForCodeList" />
+    </bean>
+
     <!-- defines code lists -->
     <bean id="CL_BIRTH_YEAR"
         class="org.terasoluna.gfw.common.codelist.NumberRangeCodeList">
@@ -107,8 +117,7 @@
         <property name="to" value="5" />
     </bean>
 
-    <bean id="CL_PREF" class="org.terasoluna.gfw.common.codelist.JdbcCodeList">
-        <property name="dataSource" ref="dataSource" />
+    <bean id="CL_PREF" parent="AbstractJdbcCodeList">
         <property name="querySql"
             value="SELECT arr_code, arr_name FROM arrival ORDER BY arr_code" />
         <property name="valueColumn" value="arr_code" />
