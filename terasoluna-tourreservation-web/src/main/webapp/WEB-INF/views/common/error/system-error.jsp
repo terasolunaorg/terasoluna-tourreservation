@@ -33,7 +33,7 @@
 
 <body>
     <div class="container">
-        <jsp:include page="../../layout/header.jsp"></jsp:include>
+        <jsp:include page="../../layout/header.jsp" />
         <div class="error">
             <!-- TODO -->
             <c:if test="${!empty exceptionCode}">
@@ -48,7 +48,7 @@
                 </ul>
             </c:if>
         </div>
-        <jsp:include page="../../layout/footer.jsp"></jsp:include>
+        <jsp:include page="../../layout/footer.jsp" />
     </div>
 </body>
 </html>

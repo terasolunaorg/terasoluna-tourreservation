@@ -39,7 +39,7 @@
 
 <body>
     <div class="container">
-        <jsp:include page="../../layout/header.jsp"></jsp:include>
+        <jsp:include page="../../layout/header.jsp" />
         <h2>${f:h(errorCode)} Error</h2>
         <div class="error">
             <c:forEach items="${errorViewMessage}" var="err">
@@ -53,7 +53,7 @@
             <input type="submit" name="submit"
                 value="<spring:message code="label.tr.common.gotoMenuMessage" />">
         </form:form>
-        <jsp:include page="../../layout/footer.jsp"></jsp:include>
+        <jsp:include page="../../layout/footer.jsp" />
     </div>
 </body>
 </html>
