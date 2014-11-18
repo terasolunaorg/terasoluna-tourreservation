@@ -66,7 +66,7 @@
 				action="${pageContext.request.contextPath}/searchtour/search"
 				method="get">
 				<input id="backToToursBtn" type="submit"
-					value="<spring:message code="label.tr.common.goBackMessage"/>"></input>
+					value="<spring:message code="label.tr.common.goBackMessage"/>">
 				<input type="hidden" name="page"
 					value="${f:h(param['page'])}" />
 				<input type="hidden" name="size"
@@ -89,7 +89,7 @@
 					value="${f:h(param['page'])}" />
 			<input type="hidden" name="size"
 					value="${f:h(param['size'])}" />
-			<input id="backToToursBtn" type="submit" value="<spring:message code="label.tr.common.goBackMessage"/>"></input>
+			<input id="backToToursBtn" type="submit" value="<spring:message code="label.tr.common.goBackMessage"/>">
 		</form:form>
 	</sec:authorize>
 </div>

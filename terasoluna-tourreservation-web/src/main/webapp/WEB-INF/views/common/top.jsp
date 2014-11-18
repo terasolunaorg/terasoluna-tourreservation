@@ -7,6 +7,6 @@
     <form:form action="${pageContext.request.contextPath}/logout" method="POST"
         cssClass="inline">
         <input id="logoutBtn" type="submit" name="logout"
-            value="<spring:message code="label.tr.common.logout"/>"></input>
+            value="<spring:message code="label.tr.common.logout"/>">
     </form:form>
 </sec:authorize>
