@@ -44,15 +44,15 @@
 				<table>
 					<form:errors path="*" cssClass="error" element="div" />
 					<caption>
-						<spring:message code="label.tr.common.specialNotes"></spring:message>
+						<spring:message code="label.tr.common.specialNotes" />
 					</caption>
 					<tr>
-						<td><spring:message code="label.tr.common.opinionSuggestion"></spring:message></td>
+						<td><spring:message code="label.tr.common.opinionSuggestion" /></td>
 						<td><form:textarea path="remarks" tabindex="1" /> <br>
 							<spring:message
-								code="label.tr.searchtour.lessThanEightyCharsMessage"></spring:message>
+								code="label.tr.searchtour.lessThanEightyCharsMessage" />
 							<br> <spring:message
-								code="label.tr.searchtour.opinionSuggestionMessage"></spring:message></td>
+								code="label.tr.searchtour.opinionSuggestionMessage" /></td>
 					</tr>
 					<form:hidden path="tourCode" />
 					<form:hidden path="childCount" />
