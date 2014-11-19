@@ -37,7 +37,7 @@
 			<tr>
 				<td><form:form action="read" method="POST">
 						<input id="goBackBtn" type="submit" name="redo"
-							value="<spring:message code="label.tr.common.goBackMessage"/>"></input>
+							value="<spring:message code="label.tr.common.goBackMessage"/>">
 					</form:form></td>
 				<td><form:form
 						action="${pageContext.request.contextPath}/reservetour/reserve"
