@@ -98,14 +98,14 @@
 	<hr />
 	<table>
 		<caption>
-			<spring:message code="label.tr.searchtour.statementOfCharges"></spring:message>
+			<spring:message code="label.tr.searchtour.statementOfCharges" />
 		</caption>
 		<tr>
 			<td><spring:message
-					code="label.tr.searchtour.classificationOnAge"></spring:message></td>
-			<td><spring:message code="label.tr.searchtour.unitPrice"></spring:message></td>
-			<td><spring:message code="label.tr.searchtour.noOfPeople"></spring:message></td>
-			<td><spring:message code="label.tr.searchtour.charge"></spring:message></td>
+					code="label.tr.searchtour.classificationOnAge" /></td>
+			<td><spring:message code="label.tr.searchtour.unitPrice" /></td>
+			<td><spring:message code="label.tr.searchtour.noOfPeople" /></td>
+			<td><spring:message code="label.tr.searchtour.charge" /></td>
 		</tr>
 		<tr>
 			<td><spring:message code="label.tr.searchtour.adult" /></td>
@@ -127,7 +127,7 @@
 		</tr>
 		<tr>
 			<td colspan="3"><spring:message
-					code="label.tr.searchtour.sumPrice"></spring:message></td>
+					code="label.tr.searchtour.sumPrice" /></td>
 			<td><fmt:formatNumber pattern="${currencyPattern}"
 					value="${f:h(output.priceCalculateOutput.sumPrice)}" /></td>
 		</tr>

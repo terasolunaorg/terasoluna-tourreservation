@@ -4,7 +4,7 @@
  <jsp:include page="../common/top.jsp" />
 	<h1 id="screenName">
 		<span><spring:message
-				code="label.tr.managereservation.manageReservationMessage"></spring:message></span>
+				code="label.tr.managereservation.manageReservationMessage" /></span>
 	</h1>
 	<div class="info">
 		<spring:message
@@ -64,7 +64,7 @@
 					<td><c:if test="${f:h(row.reserve.transfer) == 1}">
 							<spring:message code="label.tr.managereservation.done" />
 						</c:if> <c:if test="${f:h(row.reserve.transfer) == 0}">
-							<spring:message code="label.tr.managereservation.paymentNotDone"></spring:message>
+							<spring:message code="label.tr.managereservation.paymentNotDone" />
 						</c:if></td>
 					<td><fmt:formatNumber pattern="${currencyPattern}"
 							value="${row.reserve.sumPrice}" /></td>
