@@ -44,7 +44,7 @@ Test data is currently available in Japanese only.
 
 #### Install jars
 
-If db user password is not set to 'P0stgres', then go to terasoluna-tourreservation-env/src/main/resources/META-INF/spring/tourreservation-infra.properties and update the password. If it is set to 'POstgres', no changes are required.
+If db user password is not set to 'P0stgres', then go to terasoluna-tourreservation-env/src/main/resources/META-INF/spring/tourreservation-infra.properties and update the password. If it is set to 'P0stgres', no changes are required.
 
 	$ mvn -f terasoluna-tourreservation-parent/pom.xml install
 	$ mvn -f terasoluna-tourreservation-env/pom.xml install
