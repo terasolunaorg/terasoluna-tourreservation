@@ -15,10 +15,14 @@
  */
 package org.terasoluna.tourreservation.app.searchtour;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 import javax.validation.Valid;
 
+import org.dozer.Mapper;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -44,7 +48,7 @@ import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoService;
  */
 @Controller
 @RequestMapping(value = "searchtour")
-@SessionAttributes(types = TourInfoSearchCriteria.class)
+@SessionAttributes(types = SearchTourForm.class)
 public class SearchTourController {
 
     private static final Logger logger = LoggerFactory
@@ -54,12 +58,15 @@ public class SearchTourController {
     TourInfoService tourInfoService;
 
     @Inject
-    TourInfoSearchCriteriaDateValidator validator;
+    SearchTourFormDateValidator validator;
 
     @Inject
     DateFactory dateFactory;
 
-    @InitBinder("tourInfoSearchCriteria")
+    @Inject
+    Mapper beanMapper;
+
+    @InitBinder("searchTourForm")
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.addValidators(validator);
     }
@@ -70,16 +77,16 @@ public class SearchTourController {
      * @return
      */
     @ModelAttribute
-    public TourInfoSearchCriteria setUpTourInfoSearchCriteria() {
-        TourInfoSearchCriteria criteria = new TourInfoSearchCriteria();
+    public SearchTourForm setUpSearchTourForm() {
+    	SearchTourForm searchTourForm = new SearchTourForm();
         DateTime dateTime = dateFactory.newDateTime();
         DateTime nextWeekDate = dateTime.plusWeeks(1);
-        criteria.setDepYear(nextWeekDate.getYear());
-        criteria.setDepMonth(nextWeekDate.getMonthOfYear());
-        criteria.setDepDay(nextWeekDate.getDayOfMonth());
+        searchTourForm.setDepYear(nextWeekDate.getYear());
+        searchTourForm.setDepMonth(nextWeekDate.getMonthOfYear());
+        searchTourForm.setDepDay(nextWeekDate.getDayOfMonth());
 
-        logger.debug("populate form {}", criteria);
-        return criteria;
+        logger.debug("populate form {}", searchTourForm);
+        return searchTourForm;
     }
 
     /**
@@ -102,7 +109,7 @@ public class SearchTourController {
      * @return
      */
     @RequestMapping(value = "search", method = RequestMethod.GET)
-    public String search(@Valid TourInfoSearchCriteria criteria,
+    public String search(@Valid SearchTourForm searchTourForm,
             BindingResult result, Model model,
             @PageableDefault Pageable pageable) {
         if (result.hasErrors()) {
@@ -112,6 +119,11 @@ public class SearchTourController {
         if (logger.isDebugEnabled()) {
             logger.info("pageable={}", pageable);
         }
+        
+        TourInfoSearchCriteria criteria = beanMapper.map(searchTourForm, TourInfoSearchCriteria.class);
+
+        Date depDate = new LocalDate(searchTourForm.getDepYear(), searchTourForm.getDepMonth(), searchTourForm.getDepDay()).toDate();
+        criteria.setDepDate(depDate);
 
         Page<TourInfo> page = tourInfoService.searchTour(criteria, pageable);
         model.addAttribute("page", page);

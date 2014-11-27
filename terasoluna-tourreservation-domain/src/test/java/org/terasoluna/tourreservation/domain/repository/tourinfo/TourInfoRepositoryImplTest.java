@@ -24,6 +24,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -103,9 +104,7 @@ public class TourInfoRepositoryImplTest {
     @Test
     public void testSearchTourInfo01() {
         // search data
-        criteria.setDepDay(depDay.getDayOfMonth());
-        criteria.setDepMonth(depDay.getMonthOfYear());
-        criteria.setDepYear(depDay.getYear());
+        criteria.setDepDate(depDay.toDate());
         criteria.setAdultCount(1);
         criteria.setArrCode("01");
         criteria.setBasePrice(0);
@@ -151,9 +150,7 @@ public class TourInfoRepositoryImplTest {
     @Test
     public void testSearchTourInfo02() {
         // search data
-        criteria.setDepDay(10);
-        criteria.setDepMonth(7);
-        criteria.setDepYear(2012);
+        criteria.setDepDate(new LocalDate(2012,7,10).toDate());
         criteria.setAdultCount(1);
         criteria.setArrCode("01");
         criteria.setBasePrice(10);
