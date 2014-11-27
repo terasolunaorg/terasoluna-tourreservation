@@ -20,23 +20,23 @@ import org.joda.time.IllegalFieldValueException;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoSearchCriteria;
+import org.terasoluna.tourreservation.app.searchtour.SearchTourForm;
 
 @Component
-public class TourInfoSearchCriteriaDateValidator implements Validator {
+public class SearchTourFormDateValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return (TourInfoSearchCriteria.class).isAssignableFrom(clazz);
+		return (SearchTourForm.class).isAssignableFrom(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		TourInfoSearchCriteria criteria = (TourInfoSearchCriteria) target;
+		SearchTourForm searchTourForm = (SearchTourForm) target;
 
 		try {
-			new DateTime(criteria.getDepYear(), criteria.getDepMonth(),
-					criteria.getDepDay(), 0, 0).toDate();
+			new DateTime(searchTourForm.getDepYear(), searchTourForm.getDepMonth(),
+					searchTourForm.getDepDay(), 0, 0).toDate();
 		} catch (IllegalFieldValueException e) {
 			errors.rejectValue("depYear", "IncorrectDate.inputdate",
 					"Incorrect date was entered.");

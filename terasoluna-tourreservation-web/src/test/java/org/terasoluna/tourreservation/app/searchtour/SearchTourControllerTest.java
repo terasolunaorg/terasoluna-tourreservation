@@ -26,7 +26,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.dozer.DozerBeanMapper;
 import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
@@ -55,10 +57,12 @@ public class SearchTourControllerTest {
 
     TourInfoService tourInfoService;
 
-    TourInfoSearchCriteriaDateValidator validator;
+    SearchTourFormDateValidator validator;
 
     DateFactory dateFactory;
 
+    DozerBeanMapper beanMapper;
+    
     @Before
     public void setUp() {
 
@@ -67,13 +71,16 @@ public class SearchTourControllerTest {
 
         // other members instantiation and assignment
         tourInfoService = mock(TourInfoService.class);
-        validator = new TourInfoSearchCriteriaDateValidator();
+        validator = new SearchTourFormDateValidator();
         dateFactory = new DefaultDateFactory();
+
+        beanMapper = new DozerBeanMapper();
 
         searchTourController.tourInfoService = tourInfoService;
         searchTourController.validator = validator;
         searchTourController.dateFactory = dateFactory;
-
+        searchTourController.beanMapper = beanMapper;
+        
         // Assign custom method argument resolver and build
         // This is needed to resolve Pageable method argument
         mockMvc = MockMvcBuilders.standaloneSetup(searchTourController)
@@ -123,11 +130,11 @@ public class SearchTourControllerTest {
             DateTime dateTime = dateFactory.newDateTime();
             DateTime nextWeekDate = dateTime.plusWeeks(1);
 
-            results.andExpect(model().attribute("tourInfoSearchCriteria",
+            results.andExpect(model().attribute("searchTourForm",
                     hasProperty("depYear", is(nextWeekDate.getYear()))));
-            results.andExpect(model().attribute("tourInfoSearchCriteria",
+            results.andExpect(model().attribute("searchTourForm",
                     hasProperty("depMonth", is(nextWeekDate.getMonthOfYear()))));
-            results.andExpect(model().attribute("tourInfoSearchCriteria",
+            results.andExpect(model().attribute("searchTourForm",
                     hasProperty("depDay", is(nextWeekDate.getDayOfMonth()))));
 
             return;
@@ -186,7 +193,7 @@ public class SearchTourControllerTest {
 
     /**
      * This method tests the failure case of Search operation due to validation error. This test case will confirm working of @InitiBinder
-     * and @valid annotations <br>
+     * and @Validated annotations <br>
      * </p>
      */
     @Test
@@ -212,7 +219,7 @@ public class SearchTourControllerTest {
             results.andExpect(view().name("searchtour/searchForm"));
             results.andExpect(model().hasErrors());
             results.andExpect(model().attributeErrorCount(
-                    "tourInfoSearchCriteria", 7));
+                    "searchTourForm", 7));
             return;
 
         } catch (Exception e) {
