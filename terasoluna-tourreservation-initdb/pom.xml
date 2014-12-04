@@ -13,10 +13,6 @@
     <name>TERASOLUNA Global Framework - Tour Reservation Application - DB Init</name>
     <description>Db initialization scripts for Tour Reservation Application using TERASOLUNA Global Framework</description>
 
-    <properties>
-        <postgresql.version>8.3-606.jdbc3</postgresql.version>
-    </properties>
-
     <profiles>
         <profile>
             <id>local-postgres</id>
