@@ -14,7 +14,7 @@
 
     <import resource="classpath:/META-INF/spring/tourreservation-infra.xml" />
 
-    <import resource="classpath:/META-INF/spring/tourreservation-codelist.xml" />
+    <import resource="classpath*:META-INF/spring/**/*-codelist.xml" />
 
     <context:component-scan base-package="org.terasoluna.tourreservation.domain" />
 
