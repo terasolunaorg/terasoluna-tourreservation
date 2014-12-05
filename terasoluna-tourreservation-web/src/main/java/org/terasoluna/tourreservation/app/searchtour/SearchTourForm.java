@@ -1,3 +1,5 @@
+package org.terasoluna.tourreservation.app.searchtour;
+
 /*
  * Copyright (C) 2013-2014 terasoluna.org
  *
@@ -13,38 +15,78 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.terasoluna.tourreservation.domain.repository.tourinfo;
 
 import java.io.Serializable;
-import java.util.Date;
 
-public class TourInfoSearchCriteria implements Serializable {
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+public class SearchTourForm implements Serializable {
 
     /**
      * serialVersion.
      */
-    private static final long serialVersionUID = -4668739317291588721L;
+	private static final long serialVersionUID = 6713033250301914074L;
 
-    private Date depDate;
+    @NotNull
+    private Integer depYear;
 
+    @NotNull
+    @Min(1)
+    @Max(12)
+    private Integer depMonth;
+
+    @NotNull
+    @Min(1)
+    @Max(31)
+    private Integer depDay;
+
+    @NotNull
     private Integer tourDays;
 
+    @NotEmpty
     private String depCode;
 
+    @NotEmpty
     private String arrCode;
 
+    @NotNull
+    @Min(0)
     private Integer adultCount;
 
+    @NotNull
+    @Min(0)
     private Integer childCount;
 
+    @NotNull
+    @Min(0)
     private Integer basePrice;
 
-    public Date getDepDate() {
-        return depDate;
+    public Integer getDepYear() {
+        return depYear;
     }
 
-    public void setDepDate(Date depDate) {
-        this.depDate = depDate;
+    public void setDepYear(Integer depYear) {
+        this.depYear = depYear;
+    }
+
+    public Integer getDepMonth() {
+        return depMonth;
+    }
+
+    public void setDepMonth(Integer depMonth) {
+        this.depMonth = depMonth;
+    }
+
+    public Integer getDepDay() {
+        return depDay;
+    }
+
+    public void setDepDay(Integer depDay) {
+        this.depDay = depDay;
     }
 
     public Integer getTourDays() {
@@ -95,3 +137,4 @@ public class TourInfoSearchCriteria implements Serializable {
         this.basePrice = basePrice;
     }
 }
+

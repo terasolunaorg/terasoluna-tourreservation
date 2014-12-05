@@ -23,26 +23,25 @@ import org.junit.Test;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.DirectFieldBindingResult;
 import org.springframework.validation.FieldError;
-import org.terasoluna.tourreservation.app.searchtour.TourInfoSearchCriteriaDateValidator;
-import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoSearchCriteria;
+import org.terasoluna.tourreservation.app.searchtour.SearchTourFormDateValidator;
 
-public class TourInfoSearchCriteriaDateValidatorTest {
+public class SearchTourFormDateValidatorTest {
 
 	/**
 	 * check validate normal return
 	 */
 	@Test
 	public void testValidate01() {
-		TourInfoSearchCriteriaDateValidator validator = new TourInfoSearchCriteriaDateValidator();
-		TourInfoSearchCriteria criteria = new TourInfoSearchCriteria();
-		BindingResult result = new DirectFieldBindingResult(criteria,
+		SearchTourFormDateValidator validator = new SearchTourFormDateValidator();
+		SearchTourForm searchTourForm = new SearchTourForm();
+		BindingResult result = new DirectFieldBindingResult(searchTourForm,
 				"SearchTourcriteria");
-		criteria.setDepDay(1);
-		criteria.setDepMonth(1);
-		criteria.setDepYear(2000);
+		searchTourForm.setDepDay(1);
+		searchTourForm.setDepMonth(1);
+		searchTourForm.setDepYear(2000);
 
 		// run
-		validator.validate(criteria, result);
+		validator.validate(searchTourForm, result);
 
 		// assert
 		assertThat(result.hasErrors(), is(false));
@@ -53,8 +52,8 @@ public class TourInfoSearchCriteriaDateValidatorTest {
 	 */
 	@Test
 	public void testValidate02() {
-		TourInfoSearchCriteriaDateValidator validator = new TourInfoSearchCriteriaDateValidator();
-		TourInfoSearchCriteria criteria = new TourInfoSearchCriteria();
+		SearchTourFormDateValidator validator = new SearchTourFormDateValidator();
+		SearchTourForm criteria = new SearchTourForm();
 		BindingResult result = new DirectFieldBindingResult(criteria,
 				"SearchTourcriteria");
 		criteria.setDepDay(31);

@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="span-24 last">
-		<form:form method="get" modelAttribute="tourInfoSearchCriteria"
+		<form:form method="get" modelAttribute="searchTourForm"
 			cssClass="inline">
 			<fieldset>
 				<legend>
@@ -98,7 +98,7 @@
 				arguments="${page.totalElements}" />
 		</p>
 		<div class="pagination">
-			<t:pagination page="${page}" criteriaQuery="${f:query(tourInfoSearchCriteria)}" />
+			<t:pagination page="${page}" criteriaQuery="${f:query(searchTourForm)}" />
 		</div>
 		<table id="toursTable">
 			<caption>
@@ -118,7 +118,7 @@
 			<c:forEach var="tourInfo" items="${page.content}" varStatus="sts">
 				<tr>
 					<td>${page.number * page.size + sts.index + 1}</td>
-					<td><a href="${pageContext.request.contextPath}/reservetour/read?tourCode=${f:h(tourInfo.tourCode)}&${f:query(tourInfoSearchCriteria)}&page=${f:h(page.number)}&size=${f:h(page.size)}">
+					<td><a href="${pageContext.request.contextPath}/reservetour/read?tourCode=${f:h(tourInfo.tourCode)}&${f:query(searchTourForm)}&page=${f:h(page.number)}&size=${f:h(page.size)}">
 							${f:h(tourInfo.tourName)} </a></td>
 					<td><fmt:formatDate value="${tourInfo.depDay}"
 							pattern="${datePattern}" /></td>
@@ -131,7 +131,7 @@
 			</c:forEach>
 		</table>
 		<div class="pagination">
-			<t:pagination page="${page}" criteriaQuery="${f:query(tourInfoSearchCriteria)}" />
+			<t:pagination page="${page}" criteriaQuery="${f:query(searchTourForm)}" />
 		</div>
 	</c:if>
 </div>

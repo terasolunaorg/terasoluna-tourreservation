@@ -15,14 +15,12 @@
  */
 package org.terasoluna.tourreservation.domain.repository.tourinfo;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import org.joda.time.DateTime;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -37,18 +35,16 @@ public class TourInfoRepositoryImpl implements TourInfoRepositoryCustom {
     @Transactional(readOnly = true)
     public Page<TourInfo> findPageBySearchCriteria(TourInfoSearchCriteria criteria,
             Pageable pageable) {
-        Date depDate = new DateTime(criteria.getDepYear(),
-                criteria.getDepMonth(), criteria.getDepDay(), 0, 0).toDate();
 
-        List<TourInfo> content = findTourInfo(criteria, depDate, pageable);
-        long total = countSearchTourInfo(criteria, depDate);
+        List<TourInfo> content = findTourInfo(criteria, pageable);
+        long total = countSearchTourInfo(criteria);
 
         Page<TourInfo> page = new PageImpl<TourInfo>(content, pageable, total);
         return page;
     }
 
     protected List<TourInfo> findTourInfo(TourInfoSearchCriteria criteria,
-            Date depDate, Pageable pageable) {
+             Pageable pageable) {
 
         String q = buildJpql(criteria.getTourDays(), criteria.getBasePrice());
         TypedQuery<TourInfo> query = entityManager.createQuery(q,
@@ -56,7 +52,7 @@ public class TourInfoRepositoryImpl implements TourInfoRepositoryCustom {
 
         query.setParameter("adultCount", criteria.getAdultCount());
         query.setParameter("childCount", criteria.getChildCount());
-        query.setParameter("depDay", depDate);
+        query.setParameter("depDay", criteria.getDepDate());
         query.setParameter("depCode", criteria.getDepCode());
         query.setParameter("arrCode", criteria.getArrCode());
         if (criteria.getTourDays() != 0) {
@@ -73,15 +69,14 @@ public class TourInfoRepositoryImpl implements TourInfoRepositoryCustom {
         return tourInfoList;
     }
 
-    protected long countSearchTourInfo(TourInfoSearchCriteria criteria,
-            Date depDate) {
+    protected long countSearchTourInfo(TourInfoSearchCriteria criteria) {
         String q = buildJpqlCount(criteria.getTourDays(),
                 criteria.getBasePrice());
         TypedQuery<Long> query = entityManager.createQuery(q, Long.class);
 
         query.setParameter("adultCount", criteria.getAdultCount());
         query.setParameter("childCount", criteria.getChildCount());
-        query.setParameter("depDay", depDate);
+        query.setParameter("depDay", criteria.getDepDate());
         query.setParameter("depCode", criteria.getDepCode());
         query.setParameter("arrCode", criteria.getArrCode());
         if (criteria.getTourDays() != 0) {
