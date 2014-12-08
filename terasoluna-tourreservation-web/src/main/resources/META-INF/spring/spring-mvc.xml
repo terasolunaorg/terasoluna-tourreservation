@@ -80,32 +80,16 @@
 
 	<!-- View Resovlers -->
 
-	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
-		<property name="order" value="0" />
-	</bean>
+	<mvc:view-resolvers>
+		<mvc:bean-name />
+		<mvc:tiles />
+		<mvc:jsp prefix="/WEB-INF/views/" suffix=".jsp" />
+	</mvc:view-resolvers>
 
-	<bean id="tilesViewResolver"
-			class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
-		<property name="order" value="1" />
-	</bean>
-
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/" />
-		<property name="suffix" value=".jsp" />
-		<property name="order" value="2" />
-	</bean>
-
-	<!-- Setting for Tiles -->
-	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"
-		id="tilesConfigurer">
-		<property name="definitions">
-			<list>
-				<value>/WEB-INF/tiles/tiles-definitions.xml</value>
-			</list>
-		</property>
-	</bean>
-
+	<mvc:tiles-configurer>
+		<mvc:definitions location="/WEB-INF/tiles/tiles-definitions.xml" />
+	</mvc:tiles-configurer>
+	
 	<bean id="reservationReport"
 		class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView">
 		<property name="url" value="/WEB-INF/reports/reservationReportPdf.jrxml"></property>
