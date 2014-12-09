@@ -111,7 +111,7 @@ public class Age implements Serializable {
 
     @Override
     public String toString() {
-        return "jp.terasoluna.tourreserve.app.domain.Age[ ageCode=" + ageCode
+        return "org.terasoluna.tourreservation.domain.model.Age[ ageCode=" + ageCode
                 + " ]";
     }
 

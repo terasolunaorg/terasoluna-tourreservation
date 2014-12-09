@@ -204,7 +204,7 @@ public class Reserve implements Serializable {
 
     @Override
     public String toString() {
-        return "jp.terasoluna.tourreserve.app.domain.Reserve[ reserveNo="
+        return "org.terasoluna.tourreservation.domain.model.Reserve[ reserveNo="
                 + reserveNo + " ]";
     }
 
