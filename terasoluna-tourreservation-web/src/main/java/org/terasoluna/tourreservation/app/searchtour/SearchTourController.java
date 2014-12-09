@@ -18,7 +18,6 @@ package org.terasoluna.tourreservation.app.searchtour;
 import java.util.Date;
 
 import javax.inject.Inject;
-import javax.validation.Valid;
 
 import org.dozer.Mapper;
 import org.joda.time.DateTime;
@@ -31,6 +30,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -109,7 +109,7 @@ public class SearchTourController {
      * @return
      */
     @RequestMapping(value = "search", method = RequestMethod.GET)
-    public String search(@Valid SearchTourForm searchTourForm,
+    public String search(@Validated SearchTourForm searchTourForm,
             BindingResult result, Model model,
             @PageableDefault Pageable pageable) {
         if (result.hasErrors()) {
