@@ -129,7 +129,7 @@ public class Tourcon implements Serializable {
 
     @Override
     public String toString() {
-        return "jp.terasoluna.tourreserve.app.domain.Tourcon[ tourconPK="
+        return "org.terasoluna.tourreservation.domain.model.Tourcon[ tourconPK="
                 + tourconPK + " ]";
     }
 

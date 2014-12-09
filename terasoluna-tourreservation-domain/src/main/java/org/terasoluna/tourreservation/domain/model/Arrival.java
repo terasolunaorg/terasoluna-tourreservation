@@ -112,7 +112,7 @@ public class Arrival implements Serializable {
 
     @Override
     public String toString() {
-        return "jp.terasoluna.tourreserve.app.domain.Arrival[ arrCode="
+        return "org.terasoluna.tourreservation.domain.model.Arrival[ arrCode="
                 + arrCode + " ]";
     }
 

@@ -112,7 +112,7 @@ public class Departure implements Serializable {
 
     @Override
     public String toString() {
-        return "jp.terasoluna.tourreserve.app.domain.Departure[ depCode="
+        return "org.terasoluna.tourreservation.domain.model.Departure[ depCode="
                 + depCode + " ]";
     }
 

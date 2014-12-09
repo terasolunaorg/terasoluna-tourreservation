@@ -291,7 +291,7 @@ public class TourInfo implements Serializable {
 
     @Override
     public String toString() {
-        return "jp.terasoluna.tourreserve.app.domain.TourInfo[ tourCode="
+        return "org.terasoluna.tourreservation.domain.model.TourInfo[ tourCode="
                 + tourCode + " ]";
     }
 
