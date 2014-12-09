@@ -128,7 +128,7 @@ public class Accommodation implements Serializable {
 
     @Override
     public String toString() {
-        return "jp.terasoluna.tourreserve.app.domain.Accommodation[ accomCode="
+        return "org.terasoluna.tourreservation.domain.model.Accommodation[ accomCode="
                 + accomCode + " ]";
     }
 

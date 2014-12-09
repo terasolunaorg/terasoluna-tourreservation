@@ -236,7 +236,7 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return "jp.terasoluna.tourreserve.app.domain.Customer[ customerCode="
+        return "org.terasoluna.tourreservation.domain.model.Customer[ customerCode="
                 + customerCode + " ]";
     }
 
