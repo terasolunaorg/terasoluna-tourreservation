@@ -16,7 +16,6 @@
 package org.terasoluna.tourreservation.app.managecustomer;
 
 import javax.inject.Inject;
-import javax.validation.Valid;
 
 import org.dozer.Mapper;
 import org.joda.time.DateTime;
@@ -25,6 +24,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -114,7 +114,7 @@ public class ManageCustomerController {
      */
     @TransactionTokenCheck(value = "create", type = TransactionTokenType.BEGIN)
     @RequestMapping(value = "create", method = RequestMethod.POST, params = "confirm")
-    public String createConfirm(@Valid CustomerForm form, BindingResult result) {
+    public String createConfirm(@Validated CustomerForm form, BindingResult result) {
         if (result.hasErrors()) {
             return createRedo(form);
         }
@@ -130,7 +130,7 @@ public class ManageCustomerController {
      */
     @TransactionTokenCheck(value = "create", type = TransactionTokenType.IN)
     @RequestMapping(value = "create", method = RequestMethod.POST)
-    public String create(@Valid CustomerForm form, BindingResult result,
+    public String create(@Validated CustomerForm form, BindingResult result,
             RedirectAttributes redirectAttr) {
         if (result.hasErrors()) {
             return createRedo(form);
