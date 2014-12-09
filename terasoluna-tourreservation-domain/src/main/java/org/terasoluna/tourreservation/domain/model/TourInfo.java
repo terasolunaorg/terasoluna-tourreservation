@@ -114,9 +114,6 @@ public class TourInfo implements Serializable {
     private Accommodation accommodation;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tourInfo")
-    private List<Tourcon> tourconList;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tourInfo")
     private List<Reserve> reserveList;
 
     public TourInfo() {
@@ -242,14 +239,6 @@ public class TourInfo implements Serializable {
 
     public void setAccommodation(Accommodation accommodation) {
         this.accommodation = accommodation;
-    }
-
-    public List<Tourcon> getTourconList() {
-        return tourconList;
-    }
-
-    public void setTourconList(List<Tourcon> tourconList) {
-        this.tourconList = tourconList;
     }
 
     public List<Reserve> getReserveList() {
