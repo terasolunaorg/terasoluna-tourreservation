@@ -149,7 +149,7 @@ public class ManageCustomerControllerTest {
         // Prepare form
         CustomerForm form = prepareNewForm();
         // overwrite some values so that validation errors can occur
-        // This will test @InitBinder and @Valid annotations
+        // This will test @InitBinder and @Validated annotations
 
         // entered password and confirm password are different
         // passwordEqualsValidator will report error
@@ -161,7 +161,7 @@ public class ManageCustomerControllerTest {
         form.setCustomerBirthDay(30);
 
         // Set invalid email
-        // This will confirm working of @Valid annotation
+        // This will confirm working of @Validated annotation
         form.setCustomerMail("a.com");
 
         // set form to POST request
