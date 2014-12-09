@@ -16,7 +16,6 @@
 package org.terasoluna.tourreservation.app.reservetour;
 
 import javax.inject.Inject;
-import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +23,7 @@ import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -89,7 +89,7 @@ public class ReserveTourController {
      */
     @TransactionTokenCheck(value = "reserve", type = TransactionTokenType.BEGIN)
     @RequestMapping(value = "reserve", method = RequestMethod.POST, params = "confirm")
-    public String confirm(@AuthenticationPrincipal ReservationUserDetails userDetails, @Valid ReserveTourForm form,
+    public String confirm(@AuthenticationPrincipal ReservationUserDetails userDetails, @Validated ReserveTourForm form,
             BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "reservetour/reserveForm";
@@ -113,7 +113,7 @@ public class ReserveTourController {
      */
     @TransactionTokenCheck(value = "reserve", type = TransactionTokenType.IN)
     @RequestMapping(value = "reserve", method = RequestMethod.POST)
-    public String reserve(@AuthenticationPrincipal ReservationUserDetails userDetails, @Valid ReserveTourForm form,
+    public String reserve(@AuthenticationPrincipal ReservationUserDetails userDetails, @Validated ReserveTourForm form,
             BindingResult bindingResult, RedirectAttributes redirectAttr,
             Model model) {
         logger.debug("reserve tour {}", form.getTourCode());
