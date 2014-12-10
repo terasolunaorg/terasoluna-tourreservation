@@ -396,7 +396,7 @@
         <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
         <encoding>UTF-8</encoding>
         <jasperreports.version>3.5.1</jasperreports.version>
-        <java-version>1.6</java-version>
+        <java-version>1.7</java-version>
         <maven-eclipse-plugin.version>2.6</maven-eclipse-plugin.version>
         <maven-jxr-plugin.version>2.1</maven-jxr-plugin.version>
         <net.sourceforge.nekohtml.version>1.9.15</net.sourceforge.nekohtml.version>
