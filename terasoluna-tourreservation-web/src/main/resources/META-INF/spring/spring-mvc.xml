@@ -83,7 +83,7 @@
 	<mvc:view-resolvers>
 		<mvc:bean-name />
 		<mvc:tiles />
-		<mvc:jsp prefix="/WEB-INF/views/" suffix=".jsp" />
+		<mvc:jsp prefix="/WEB-INF/views/" />
 	</mvc:view-resolvers>
 
 	<mvc:tiles-configurer>
