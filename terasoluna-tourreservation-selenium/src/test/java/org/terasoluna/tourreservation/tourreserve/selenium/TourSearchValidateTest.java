@@ -29,7 +29,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.terasoluna.gfw.common.date.DateFactory;
+import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
@@ -40,7 +40,7 @@ public class TourSearchValidateTest extends FunctionTestSupport {
     WebDriver driver;
 
     @Inject
-    DateFactory dateFactory;
+    JodaTimeDateFactory dateFactory;
 
     @Value("${selenium.baseUrl}")
     String baseUrl;

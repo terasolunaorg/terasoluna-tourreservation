@@ -61,6 +61,10 @@
         </dependency>
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
+            <artifactId>terasoluna-gfw-jodatime</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw</groupId>
             <artifactId>terasoluna-gfw-security-core</artifactId>
         </dependency>
         <dependency>

@@ -18,7 +18,7 @@
 
     <context:component-scan base-package="org.terasoluna.tourreservation.domain" />
 
-    <bean id="dateFactory" class="org.terasoluna.gfw.common.date.DefaultDateFactory" />
+    <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
     <!-- AOP. -->
     <bean id="resultMessagesLoggingInterceptor"

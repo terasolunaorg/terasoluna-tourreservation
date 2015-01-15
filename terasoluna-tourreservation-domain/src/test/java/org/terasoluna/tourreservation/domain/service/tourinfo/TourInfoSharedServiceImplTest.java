@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
-import org.terasoluna.gfw.common.date.DateFactory;
+import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoRepository;
 
@@ -32,7 +32,7 @@ public class TourInfoSharedServiceImplTest {
 
     TourInfoRepository tourInfoRepository;
 
-    DateFactory dateFactory;
+    JodaTimeDateFactory dateFactory;
 
     DateTime now;
 
@@ -40,7 +40,7 @@ public class TourInfoSharedServiceImplTest {
     public void setUp() {
         tourInfoSharedService = new TourInfoSharedServiceImpl();
         tourInfoRepository = mock(TourInfoRepository.class);
-        dateFactory = mock(DateFactory.class);
+        dateFactory = mock(JodaTimeDateFactory.class);
         tourInfoSharedService.tourInfoRepository = tourInfoRepository;
         tourInfoSharedService.dateFactory = dateFactory;
         now = new DateTime();
