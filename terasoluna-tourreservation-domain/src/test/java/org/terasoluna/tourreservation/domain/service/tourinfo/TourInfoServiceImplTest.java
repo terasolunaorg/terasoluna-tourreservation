@@ -29,7 +29,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.terasoluna.gfw.common.date.DateFactory;
+import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.tourreservation.domain.model.Arrival;
 import org.terasoluna.tourreservation.domain.model.Departure;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
@@ -42,7 +42,7 @@ public class TourInfoServiceImplTest {
 
     TourInfoRepository tourInfoRepository;
 
-    DateFactory dateFactory;
+    JodaTimeDateFactory dateFactory;
 
     DateTime now;
 
@@ -50,7 +50,7 @@ public class TourInfoServiceImplTest {
     public void setUp() {
         tourInfoService = new TourInfoServiceImpl();
         tourInfoRepository = mock(TourInfoRepository.class);
-        dateFactory = mock(DateFactory.class);
+        dateFactory = mock(JodaTimeDateFactory.class);
         tourInfoService.tourInfoRepository = tourInfoRepository;
         now = new DateTime();
 

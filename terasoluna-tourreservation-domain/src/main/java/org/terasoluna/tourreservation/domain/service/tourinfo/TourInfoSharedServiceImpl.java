@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import org.terasoluna.gfw.common.date.DateFactory;
+import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoRepository;
 
@@ -37,7 +37,7 @@ public class TourInfoSharedServiceImpl implements TourInfoSharedService {
     TourInfoRepository tourInfoRepository;
 
     @Inject
-    DateFactory dateFactory;
+    JodaTimeDateFactory dateFactory;
 
     @Transactional(readOnly = true)
     @Override

@@ -45,8 +45,8 @@ import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
-import org.terasoluna.gfw.common.date.DateFactory;
-import org.terasoluna.gfw.common.date.DefaultDateFactory;
+import org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory;
+import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoSearchCriteria;
 import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoService;
@@ -59,7 +59,7 @@ public class SearchTourControllerTest {
 
     SearchTourFormDateValidator validator;
 
-    DateFactory dateFactory;
+    JodaTimeDateFactory dateFactory;
 
     DozerBeanMapper beanMapper;
     
@@ -72,7 +72,7 @@ public class SearchTourControllerTest {
         // other members instantiation and assignment
         tourInfoService = mock(TourInfoService.class);
         validator = new SearchTourFormDateValidator();
-        dateFactory = new DefaultDateFactory();
+        dateFactory = new DefaultJodaTimeDateFactory();
 
         beanMapper = new DozerBeanMapper();
 

@@ -38,7 +38,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.terasoluna.gfw.common.date.DateFactory;
+import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoSearchCriteria;
 import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoService;
@@ -61,7 +61,7 @@ public class SearchTourController {
     SearchTourFormDateValidator validator;
 
     @Inject
-    DateFactory dateFactory;
+    JodaTimeDateFactory dateFactory;
 
     @Inject
     Mapper beanMapper;

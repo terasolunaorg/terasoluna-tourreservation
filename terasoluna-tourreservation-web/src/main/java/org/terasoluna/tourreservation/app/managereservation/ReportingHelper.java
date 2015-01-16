@@ -22,7 +22,7 @@ import javax.inject.Inject;
 
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
-import org.terasoluna.gfw.common.date.DateFactory;
+import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.tourreservation.app.common.constants.MessageId;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateSharedSerivce;
@@ -40,7 +40,7 @@ public class ReportingHelper {
     MessageSource messageSource;
 
     @Inject
-    DateFactory dateFactory;
+    JodaTimeDateFactory dateFactory;
 
     public DownloadPDFOutput createPDF(String reserveNo) {
 

@@ -24,13 +24,13 @@ import javax.inject.Inject;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Component;
 import org.terasoluna.gfw.common.codelist.AbstractCodeList;
-import org.terasoluna.gfw.common.date.DateFactory;
+import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 
 @Component("CL_YEAR")
 public class DepYearCodeList extends AbstractCodeList {
 
     @Inject
-    DateFactory dateFactory;
+    JodaTimeDateFactory dateFactory;
 
     @Override
     public Map<String, String> asMap() {
