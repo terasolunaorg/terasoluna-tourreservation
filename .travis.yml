@@ -7,8 +7,8 @@ jdk:
   - oraclejdk7
   
 script: 
-  - mvn sql:execute -f terasoluna-tourreservation-initdb -Ddb.password=
-  - mvn install -f terasoluna-tourreservation-parent/pom.xml
-  - mvn install -f terasoluna-tourreservation-env/pom.xml
-  - mvn install -f terasoluna-tourreservation-domain/pom.xml -Ddatabase.password=
-  - mvn install -f terasoluna-tourreservation-web/pom.xml
+  - mvn -U sql:execute -f terasoluna-tourreservation-initdb -Ddb.password=
+  - mvn -U install -f terasoluna-tourreservation-parent/pom.xml
+  - mvn -U install -f terasoluna-tourreservation-env/pom.xml
+  - mvn -U install -f terasoluna-tourreservation-domain/pom.xml -Ddatabase.password=
+  - mvn -U install -f terasoluna-tourreservation-web/pom.xml
