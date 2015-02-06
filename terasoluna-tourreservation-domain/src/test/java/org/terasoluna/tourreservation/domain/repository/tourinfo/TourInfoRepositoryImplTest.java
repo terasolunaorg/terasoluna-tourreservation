@@ -70,8 +70,8 @@ public class TourInfoRepositoryImplTest {
     public void setUp() {
         criteria = new TourInfoSearchCriteria();
         tourCode = "8888888888";
-        depDay = new DateTime(2016, 2, 2, 0, 0, 0);
-        plannedDay = new DateTime(2015, 12, 31, 0, 0, 0);
+        depDay = new DateTime(2014, 2, 2, 0, 0, 0);
+        plannedDay = new DateTime(2013, 12, 31, 0, 0, 0);
         tourAbs = "wonderful travel !";
         tourName = "test tour";
         basePrice = 20000;
