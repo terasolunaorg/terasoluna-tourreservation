@@ -24,6 +24,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,6 +37,10 @@ import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
 public class TourSearchValidateTest extends FunctionTestSupport {
+
+    private static final int width = 1024;
+
+    private static final int height = 768;
 
     WebDriver driver;
 
@@ -51,6 +56,7 @@ public class TourSearchValidateTest extends FunctionTestSupport {
     @Before
     public void setUp() {
         driver = createDefaultLocaleDriver();
+        driver.manage().window().setSize(new Dimension(width, height));
     }
 
     @Test
