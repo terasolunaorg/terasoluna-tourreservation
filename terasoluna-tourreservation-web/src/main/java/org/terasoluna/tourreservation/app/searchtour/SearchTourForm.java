@@ -1,7 +1,5 @@
-package org.terasoluna.tourreservation.app.searchtour;
-
 /*
- * Copyright (C) 2013-2014 terasoluna.org
+ * Copyright (C) 2013-2015 terasoluna.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +13,7 @@ package org.terasoluna.tourreservation.app.searchtour;
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
+package org.terasoluna.tourreservation.app.searchtour;
 
 import java.io.Serializable;
 
