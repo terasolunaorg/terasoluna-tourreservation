@@ -346,21 +346,6 @@
             </dependency>
             <!-- == End JasperReports == -->
 
-            <!-- == Begin Servlet API/ JSP API == -->
-            <dependency>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>tomcat-jsp-api</artifactId>
-                <version>${tomcat.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.tomcat.embed</groupId>
-                <artifactId>tomcat-embed-el</artifactId>
-                <version>${tomcat.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <!-- == End Servlet API/ JSP API == -->
-
             <!-- == Begin Database == -->
             <dependency>
                 <groupId>org.postgresql</groupId>
