@@ -100,7 +100,7 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
 
         // input reservation contents
         driver.findElement(By.id("remarks")).sendKeys(
-                "Global TERASOLUNA Framewrok");
+                "TERASOLUNA Server Framework for Java (5.x)");
 
         // go to confirm screen
         driver.findElement(By.id("confirmBtn")).click();
@@ -115,7 +115,7 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
                 0,
                 1,
                 null,
-                "Global TERASOLUNA Framewrok");
+                "TERASOLUNA Server Framework for Java (5.x)");
 
         // reserve
         driver.findElement(By.id("reserveBtn")).click();
@@ -294,7 +294,7 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
 
         // input reservation contents
         driver.findElement(By.id("remarks")).sendKeys(
-                "Global TERASOLUNA Framewrok");
+                "TERASOLUNA Server Framework for Java (5.x)");
 
         // go to confirm screen
         driver.findElement(By.id("confirmBtn")).click();

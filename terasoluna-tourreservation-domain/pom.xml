@@ -9,8 +9,8 @@
         <relativePath>../terasoluna-tourreservation-parent/pom.xml</relativePath>
     </parent>
     <artifactId>terasoluna-tourreservation-domain</artifactId>
-    <name>TERASOLUNA Global Framework - Tour Reservation Application - Domain Layer</name>
-    <description>Domain layer of Tour Reservation Application using TERASOLUNA Global Framework</description>
+    <name>TERASOLUNA Server Framework for Java (5.x) - Tour Reservation Application - Domain Layer</name>
+    <description>Domain layer of Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
     <packaging>jar</packaging>
 
     <build>
