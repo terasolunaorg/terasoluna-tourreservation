@@ -176,7 +176,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         // input reservation contents
         driver.findElement(By.id("remarks")).sendKeys(
-                "Global TERASOLUNA Framewrok");
+                "TERASOLUNA Server Framework for Java (5.x)");
 
         // go to confirm screen
         driver.findElement(By.id("confirmBtn")).click();
@@ -238,7 +238,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         // input reservation contents
         driver.findElement(By.id("remarks")).sendKeys(
-                "Global TERASOLUNA Framewrok");
+                "TERASOLUNA Server Framework for Java (5.x)");
 
         // go to confirm screen
         driver.findElement(By.id("confirmBtn")).click();
@@ -328,7 +328,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         // input reservation contents
         driver.findElement(By.id("remarks")).sendKeys(
-                "Global TERASOLUNA Framewrok");
+                "TERASOLUNA Server Framework for Java (5.x)");
 
         // go to confirm screen
         driver.findElement(By.id("confirmBtn")).click();

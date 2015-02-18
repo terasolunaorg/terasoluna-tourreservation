@@ -12,9 +12,9 @@
         <relativePath />
     </parent>
 
-    <name>TERASOLUNA Global Framework - Tour Reservation Application - Parent</name>
+    <name>TERASOLUNA Server Framework for Java (5.x) - Tour Reservation Application - Parent</name>
     <version>5.0.0-SNAPSHOT</version>
-    <description>Parent POM of Tour Reservation Application using TERASOLUNA Global Framework</description>
+    <description>Parent POM of Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
     <url>http://terasoluna.org</url>
     <inceptionYear>2013</inceptionYear>
     <licenses>
