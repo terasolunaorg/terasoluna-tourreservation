@@ -32,7 +32,6 @@ public class TourInfoServiceImpl implements TourInfoService {
     @Inject
     TourInfoRepository tourInfoRepository;
 
-    @Transactional(readOnly = true)
     @Override
     public Page<TourInfo> searchTour(TourInfoSearchCriteria criteria,
             Pageable pageable) {
