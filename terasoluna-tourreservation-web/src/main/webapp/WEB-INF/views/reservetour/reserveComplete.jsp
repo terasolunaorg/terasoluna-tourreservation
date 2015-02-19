@@ -17,7 +17,7 @@
 			code="label.tr.searchtour.searchtourReserveDetailMessage" />
 	</p>
 	<form:form method="get"
-		action="${pageContext.request.contextPath}/reservetour/downloadPDF">
+		action="${pageContext.request.contextPath}/managereservation/downloadPDF">
 		<input type="hidden" name="reserveNo"
 			value="${f:h(output.getReserve().getReserveNo())}" />
 		<input type="submit"

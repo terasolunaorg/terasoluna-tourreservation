@@ -101,6 +101,9 @@ public class ReportingHelper {
                 .getChildCount());
         downloadPDFOutput.setRemarks(reserveDetailOutput.getReserve()
                 .getRemarks());
+        downloadPDFOutput.setPaymentMethod(getMessage(MessageId.LABEL_TR_COMMON_BANKTRANSFER));
+        downloadPDFOutput.setPaymentCompanyName(getMessage(MessageId.LABEL_TR_COMMON_PAYMENTCOMPANYNAME));
+        downloadPDFOutput.setPaymentAccount(getMessage(MessageId.LABEL_TR_COMMON_SAVINGSACCOUNT));
         downloadPDFOutput.setPaymentTimeLimit(paymentTimeLimit);
 
         // 料金を計算するクラス(共通処理：CP0009)を実行する。
@@ -138,6 +141,11 @@ public class ReportingHelper {
                 .getCustomerPost());
         downloadPDFOutput.setCustomerAdd(reserveDetailOutput.getCustomer()
                 .getCustomerAdd());
+
+        //問い合わせ先を設定する。
+        downloadPDFOutput.setReferenceName(getMessage(MessageId.LABEL_TR_COMMON_COMPANYNAME));
+        downloadPDFOutput.setReferenceEmail(getMessage(MessageId.LABEL_TR_COMMON_COMPANYEMAIL));
+        downloadPDFOutput.setReferenceTel(getMessage(MessageId.LABEL_TR_COMMON_COMPANYTEL));
 
         // 印刷日を出力値に設定する。
         downloadPDFOutput.setPrintDay(dateFactory.newDate());

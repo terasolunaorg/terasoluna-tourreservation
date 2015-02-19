@@ -49,6 +49,9 @@ public class ManageReservationHelper {
     ReserveService reserveService;
 
     @Inject
+    ReportingHelper reportingHelper;
+
+    @Inject
     Mapper dozerBeanMapper;
 
     protected String convertNightDays(int days) {
@@ -135,8 +138,7 @@ public class ManageReservationHelper {
     }
 
     public DownloadPDFOutput createPDF(String reserveNo) {
-        DownloadPDFOutput downloadPDFOutput = new DownloadPDFOutput();
-        return downloadPDFOutput;
+        return reportingHelper.createPDF(reserveNo);
     }
 
     /**
