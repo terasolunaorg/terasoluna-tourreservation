@@ -38,7 +38,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Inject
     PasswordEncoder passwordEncoder;
 
-    @Transactional(readOnly = true)
     @Override
     public Customer findOne(String customerCode) {
         return customerRepository.findOne(customerCode);

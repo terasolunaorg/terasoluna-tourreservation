@@ -66,7 +66,6 @@ public class ReserveServiceImpl implements ReserveService {
     @Named("reserveNoSeq")
     Sequencer<String> reserveNoSeq;
 
-    @Transactional(readOnly = true)
     @Override
     public Reserve findOne(String reserveNo) {
         Reserve reserve = reserveRepository.findOne(reserveNo);
@@ -74,7 +73,6 @@ public class ReserveServiceImpl implements ReserveService {
         return reserve;
     }
 
-    @Transactional(readOnly = true)
     @Override
     public List<Reserve> findAllByCustomerCode(String customerCode) {
         Customer customer = new Customer(customerCode);
