@@ -32,7 +32,7 @@ public class TourInfoRepositoryImpl implements TourInfoRepositoryCustom {
     EntityManager entityManager;
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Page<TourInfo> findPageBySearchCriteria(TourInfoSearchCriteria criteria,
             Pageable pageable) {
 
