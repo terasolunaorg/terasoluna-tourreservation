@@ -15,6 +15,7 @@
  */
 package org.terasoluna.tourreservation.app.managereservation;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -25,6 +26,7 @@ import org.dozer.Mapper;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
+import org.terasoluna.gfw.common.date.DateFactory;
 import org.terasoluna.tourreservation.app.common.constants.MessageId;
 import org.terasoluna.tourreservation.app.common.security.UserDetailsUtils;
 import org.terasoluna.tourreservation.domain.model.Reserve;
@@ -48,6 +50,9 @@ public class ManageReservationHelper {
 
     @Inject
     ReserveService reserveService;
+
+    @Inject
+    DateFactory dateFactory;
 
     @Inject
     Mapper dozerBeanMapper;
@@ -136,7 +141,106 @@ public class ManageReservationHelper {
     }
 
     public DownloadPDFOutput createPDF(String reserveNo) {
+        ReservationDetailOutput reserveDetailOutput = findDetail(reserveNo);
+
+        // assigning display string to conductor on the basis of DB value
+        String conductor = null;
+        if ("1".equals(reserveDetailOutput.getReserve().getTourInfo()
+                .getConductor())) {
+            conductor = getMessage(MessageId.LABEL_TR_COMMON_YESMESSAGE);
+        } else {
+            conductor = getMessage(MessageId.LABEL_TR_COMMON_NOMESSAGE);
+        }
+
+        String paymentTimeLimit = null;
+        if ("1".equals(reserveDetailOutput.getReserve().getTransfer())) {
+            paymentTimeLimit = getMessage(MessageId.LABEL_TR_MANAGERESERVATION_DONE);
+        } else {
+            // TODO use propertyUtil to fetch the format
+            SimpleDateFormat sdf = new SimpleDateFormat(getMessage(MessageId.LABEL_TR_COMMON_DATEPATTERN));
+            paymentTimeLimit = sdf.format(reserveDetailOutput
+                    .getPaymentTimeLimit());
+        }
+
         DownloadPDFOutput downloadPDFOutput = new DownloadPDFOutput();
+        downloadPDFOutput.setReserveNo(reserveNo);
+        downloadPDFOutput.setTourName(reserveDetailOutput.getReserve()
+                .getTourInfo().getTourName());
+        downloadPDFOutput.setReservedDay(reserveDetailOutput.getReserve()
+                .getReservedDay());
+        downloadPDFOutput.setDepDay(reserveDetailOutput.getReserve()
+                .getTourInfo().getDepDay());
+
+        // TODO String.valueOf ?
+        downloadPDFOutput.setTourDays(String.valueOf(reserveDetailOutput
+                .getReserve().getTourInfo().getTourDays()));
+        downloadPDFOutput.setDepName(reserveDetailOutput.getReserve()
+                .getTourInfo().getDeparture().getDepName());
+        downloadPDFOutput.setArrName(reserveDetailOutput.getReserve()
+                .getTourInfo().getArrival().getArrName());
+        downloadPDFOutput.setConductor(conductor);
+        downloadPDFOutput.setAccomName(reserveDetailOutput.getReserve()
+                .getTourInfo().getAccommodation().getAccomName());
+        downloadPDFOutput.setAccomTel(reserveDetailOutput.getReserve()
+                .getTourInfo().getAccommodation().getAccomTel());
+        downloadPDFOutput.setTourAbs(reserveDetailOutput.getReserve()
+                .getTourInfo().getTourAbs());
+        downloadPDFOutput.setAdultCount(reserveDetailOutput.getReserve()
+                .getAdultCount());
+        downloadPDFOutput.setChildCount(reserveDetailOutput.getReserve()
+                .getChildCount());
+        downloadPDFOutput.setRemarks(reserveDetailOutput.getReserve()
+                .getRemarks());
+        downloadPDFOutput.setPaymentMethod(getMessage(MessageId.LABEL_TR_COMMON_BANKTRANSFER));
+        downloadPDFOutput.setPaymentCompanyName(getMessage(MessageId.LABEL_TR_COMMON_PAYMENTCOMPANYNAME));
+        downloadPDFOutput.setPaymentAccount(getMessage(MessageId.LABEL_TR_COMMON_SAVINGSACCOUNT));
+        downloadPDFOutput.setPaymentTimeLimit(paymentTimeLimit);
+
+        // 料金を計算するクラス(共通処理：CP0009)を実行する。
+        PriceCalculateOutput priceCalcResult = priceCalculateService
+                .calculatePrice(reserveDetailOutput.getReserve().getTourInfo()
+                        .getBasePrice(), reserveDetailOutput.getReserve()
+                        .getAdultCount(), reserveDetailOutput.getReserve()
+                        .getChildCount());
+
+        // 料金情報を出力値に設定する。
+        downloadPDFOutput
+                .setAdultUnitPrice(priceCalcResult.getAdultUnitPrice());
+        downloadPDFOutput
+                .setChildUnitPrice(priceCalcResult.getChildUnitPrice());
+        downloadPDFOutput.setAdultPrice(priceCalcResult.getAdultPrice());
+        downloadPDFOutput.setChildPrice(priceCalcResult.getChildPrice());
+        downloadPDFOutput.setSumPrice(priceCalcResult.getSumPrice());
+
+        // 顧客情報を出力値に設定する。
+        downloadPDFOutput.setCustomerCode(reserveDetailOutput.getCustomer()
+                .getCustomerCode());
+        downloadPDFOutput.setCustomerKana(reserveDetailOutput.getCustomer()
+                .getCustomerKana());
+        downloadPDFOutput.setCustomerName(reserveDetailOutput.getCustomer()
+                .getCustomerName());
+        downloadPDFOutput.setCustomerBirth(reserveDetailOutput.getCustomer()
+                .getCustomerBirth());
+        downloadPDFOutput.setCustomerJob(reserveDetailOutput.getCustomer()
+                .getCustomerJob());
+        downloadPDFOutput.setCustomerMail(reserveDetailOutput.getCustomer()
+                .getCustomerMail());
+        downloadPDFOutput.setCustomerTel(reserveDetailOutput.getCustomer()
+                .getCustomerTel());
+        downloadPDFOutput.setCustomerPost(reserveDetailOutput.getCustomer()
+                .getCustomerPost());
+        downloadPDFOutput.setCustomerAdd(reserveDetailOutput.getCustomer()
+                .getCustomerAdd());
+
+        //問い合わせ先を設定する。
+        downloadPDFOutput.setReferenceName(getMessage(MessageId.LABEL_TR_COMMON_COMPANYNAME));
+        downloadPDFOutput.setReferenceEmail(getMessage(MessageId.LABEL_TR_COMMON_COMPANYEMAIL));
+        downloadPDFOutput.setReferenceTel(getMessage(MessageId.LABEL_TR_COMMON_COMPANYTEL));
+
+        // 印刷日を出力値に設定する。
+        downloadPDFOutput.setPrintDay(dateFactory.newDate());
+
+        // リストに帳票出力を加える。
         return downloadPDFOutput;
     }
 

@@ -30,6 +30,9 @@
 	<parameter name="paymentCompanyName" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="paymentAccount" isForPrompting="false" class="java.lang.String"/>
 
+	<field name="referenceName" class="java.lang.String"/>
+	<field name="referenceEmail" class="java.lang.String"/>
+	<field name="referenceTel" class="java.lang.String"/>
 	<field name="childCount" class="java.lang.Integer"/>
 	<field name="tourName" class="java.lang.String"/>
 	<field name="accomName" class="java.lang.String">
@@ -61,6 +64,9 @@
 	<field name="adultPrice" class="java.lang.Integer"/>
 	<field name="childPrice" class="java.lang.Integer"/>
 	<field name="sumPrice" class="java.lang.Integer"/>
+	<field name="paymentMethod" class="java.lang.String"/>
+	<field name="paymentCompanyName" class="java.lang.String"/>
+	<field name="paymentAccount" class="java.lang.String"/>
 	<field name="paymentTimeLimit" class="java.lang.String"/>
 
 
@@ -226,7 +232,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="None" lineSpacing="Single">
 						<font fontName="ＭＳ 明朝" pdfFontName="C:\WINDOWS\Fonts\msmincho.ttc,1" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{referenceName}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{referenceName}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
@@ -290,7 +296,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
 						<font fontName="ＭＳ 明朝" pdfFontName="C:\WINDOWS\Fonts\msmincho.ttc,1" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{referenceEmail}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{referenceEmail}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -306,7 +312,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
 						<font fontName="ＭＳ 明朝" pdfFontName="C:\WINDOWS\Fonts\msmincho.ttc,1" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{referenceTel}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{referenceTel}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
@@ -1607,7 +1613,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
 						<font fontName="ＭＳ 明朝" pdfFontName="C:\WINDOWS\Fonts\msmincho.ttc,1" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{paymentMethod}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{paymentMethod}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
@@ -1675,7 +1681,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
 						<font fontName="ＭＳ 明朝" pdfFontName="C:\WINDOWS\Fonts\msmincho.ttc,1" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{paymentCompanyName}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{paymentCompanyName}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -1692,7 +1698,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
 						<font fontName="ＭＳ 明朝" pdfFontName="C:\WINDOWS\Fonts\msmincho.ttc,1" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{paymentAccount}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{paymentAccount}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
