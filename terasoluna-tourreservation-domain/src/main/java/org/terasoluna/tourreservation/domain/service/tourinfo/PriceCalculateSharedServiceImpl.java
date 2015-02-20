@@ -19,6 +19,11 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
+import org.springframework.transaction.support.TransactionTemplate;
 import org.terasoluna.tourreservation.domain.model.Age;
 import org.terasoluna.tourreservation.domain.repository.age.AgeRepository;
 
@@ -27,6 +32,9 @@ public class PriceCalculateSharedServiceImpl implements PriceCalculateSharedSeri
 
     @Inject
     AgeRepository ageRepository;
+
+    @Inject
+    PlatformTransactionManager transactionManager;
 
     private Age adultAge;
 
@@ -58,8 +66,14 @@ public class PriceCalculateSharedServiceImpl implements PriceCalculateSharedSeri
 
     @PostConstruct
     public void loadAges() {
-        this.childAge = ageRepository.findOne("1");
-        this.adultAge = ageRepository.findOne("0");
+        TransactionTemplate transactionTemplate = new TransactionTemplate(transactionManager);
+        transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus status) {
+                childAge = ageRepository.findOne("1");
+                adultAge = ageRepository.findOne("0");
+            }
+        });
     }
 
 }
