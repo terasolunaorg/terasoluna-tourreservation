@@ -3,9 +3,8 @@ This is a reference application built completely using TERASOLUNA Global Framewo
 
 This application shows **how an IDEAL project configuration and package structure must be like.** It also shows working sample of best practices recommended in TERASOLUNA Global Framework Development Guideline.
 
-**This sample uses Spring Data JPA. MyBatis version has not been not created yet.**
+**This sample uses Spring Data JPA.**
 
-* master [![Build Status for master](https://travis-ci.org/terasolunaorg/terasoluna-tourreservation.svg?branch=master)](https://travis-ci.org/terasolunaorg/terasoluna-tourreservation)
 * 1.0.x [![Build Status for 1.0.x](https://travis-ci.org/terasolunaorg/terasoluna-tourreservation.svg?branch=1.0.x)](https://travis-ci.org/terasolunaorg/terasoluna-tourreservation)
 
 ### Getting started
@@ -36,9 +35,11 @@ If it is set to any other password, then update the password in terasoluna-tourr
 
 Execute the below command:
 
-	$ cd terasoluna-tourreservation-initdb
-	$ mvn sql:execute
-	$ cd ..
+```console
+$ cd terasoluna-tourreservation-initdb
+$ mvn sql:execute
+$ cd ..
+```
 
 Test data is currently available in Japanese only.
 
@@ -46,13 +47,17 @@ Test data is currently available in Japanese only.
 
 If db user password is not set to 'P0stgres', then go to terasoluna-tourreservation-env/src/main/resources/META-INF/spring/tourreservation-infra.properties and update the password. If it is set to 'P0stgres', no changes are required.
 
-	$ mvn -f terasoluna-tourreservation-parent/pom.xml install
-	$ mvn -f terasoluna-tourreservation-env/pom.xml install
-	$ mvn -f terasoluna-tourreservation-domain/pom.xml install
+```console
+$ mvn -f terasoluna-tourreservation-parent/pom.xml install
+$ mvn -f terasoluna-tourreservation-env/pom.xml install
+$ mvn -f terasoluna-tourreservation-domain/pom.xml install
+```
 
 #### Build war
 
-	$ mvn -f terasoluna-tourreservation-web/pom.xml package
+```console
+$ mvn -f terasoluna-tourreservation-web/pom.xml package
+```
 
 #### Deploy war
 
@@ -66,6 +71,10 @@ Alternatively, these project can also be imported into Eclipse and application c
 
 #### Test with selenium
 
-Install Firefox
+Install Firefox to run test.
 
-	$ mvn -f terasoluna-tourreservation-selenium/pom.xml test
+Run test.
+
+```console
+$ mvn -f terasoluna-tourreservation-selenium/pom.xml test
+```
