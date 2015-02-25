@@ -17,10 +17,13 @@ package org.terasoluna.tourreservation.domain.service.reserve;
 
 import java.util.Date;
 
+import lombok.Data;
+
 import org.terasoluna.tourreservation.domain.model.Reserve;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
 
 
+@Data
 public class ReservationUpdateOutput {
 
     private PriceCalculateOutput priceCalculateOutput;
@@ -28,30 +31,5 @@ public class ReservationUpdateOutput {
     private Reserve reserve;
 
     private Date paymentTimeLimit;
-
-    public PriceCalculateOutput getPriceCalculateOutput() {
-        return priceCalculateOutput;
-    }
-
-    public void setPriceCalculateOutput(
-            PriceCalculateOutput priceCalculateOutput) {
-        this.priceCalculateOutput = priceCalculateOutput;
-    }
-
-    public Reserve getReserve() {
-        return reserve;
-    }
-
-    public void setReserve(Reserve reserve) {
-        this.reserve = reserve;
-    }
-
-    public Date getPaymentTimeLimit() {
-        return paymentTimeLimit;
-    }
-
-    public void setPaymentTimeLimit(Date paymentTimeLimit) {
-        this.paymentTimeLimit = paymentTimeLimit;
-    }
 
 }

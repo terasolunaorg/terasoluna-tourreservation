@@ -18,6 +18,9 @@ package org.terasoluna.tourreservation.domain.repository.tourinfo;
 import java.io.Serializable;
 import java.util.Date;
 
+import lombok.Data;
+
+@Data
 public class TourInfoSearchCriteria implements Serializable {
 
     /**
@@ -38,60 +41,5 @@ public class TourInfoSearchCriteria implements Serializable {
     private Integer childCount;
 
     private Integer basePrice;
-
-    public Date getDepDate() {
-        return depDate;
-    }
-
-    public void setDepDate(Date depDate) {
-        this.depDate = depDate;
-    }
-
-    public Integer getTourDays() {
-        return tourDays;
-    }
-
-    public void setTourDays(Integer tourDays) {
-        this.tourDays = tourDays;
-    }
-
-    public String getDepCode() {
-        return depCode;
-    }
-
-    public void setDepCode(String depCode) {
-        this.depCode = depCode;
-    }
-
-    public String getArrCode() {
-        return arrCode;
-    }
-
-    public void setArrCode(String arrCode) {
-        this.arrCode = arrCode;
-    }
-
-    public Integer getAdultCount() {
-        return adultCount;
-    }
-
-    public void setAdultCount(Integer adultCount) {
-        this.adultCount = adultCount;
-    }
-
-    public Integer getChildCount() {
-        return childCount;
-    }
-
-    public void setChildCount(Integer childCount) {
-        this.childCount = childCount;
-    }
-
-    public Integer getBasePrice() {
-        return basePrice;
-    }
-
-    public void setBasePrice(Integer basePrice) {
-        this.basePrice = basePrice;
-    }
+    
 }

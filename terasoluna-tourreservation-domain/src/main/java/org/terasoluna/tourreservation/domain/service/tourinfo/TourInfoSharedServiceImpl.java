@@ -17,9 +17,9 @@ package org.terasoluna.tourreservation.domain.service.tourinfo;
 
 import javax.inject.Inject;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.joda.time.DateTime;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -27,11 +27,10 @@ import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoRepository;
 
+@Slf4j
 @Service
 @Transactional
 public class TourInfoSharedServiceImpl implements TourInfoSharedService {
-    private static final Logger logger = LoggerFactory
-            .getLogger(TourInfoSharedServiceImpl.class);
 
     @Inject
     TourInfoRepository tourInfoRepository;
@@ -50,7 +49,7 @@ public class TourInfoSharedServiceImpl implements TourInfoSharedService {
         DateTime today = dateFactory.newDateTime().withTime(0, 0, 0, 0);
         DateTime paymentLimit = tour.getPaymentLimit();
 
-        logger.debug("today={}, paymentLimit={}", today, paymentLimit);
+        log.debug("today={}, paymentLimit={}", today, paymentLimit);
         return today.isAfter(paymentLimit);
     }
 
