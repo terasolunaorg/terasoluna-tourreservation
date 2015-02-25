@@ -21,6 +21,7 @@ package org.terasoluna.tourreservation.domain.model;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -31,6 +32,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@Data
+@ToString (exclude = "tourinfoList")
+@EqualsAndHashCode (exclude = "tourinfoList")
 @Entity
 @Table(name = "accommodation")
 public class Accommodation implements Serializable {
@@ -58,78 +66,5 @@ public class Accommodation implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "accommodation")
     private List<TourInfo> tourinfoList;
 
-    public Accommodation() {
-    }
-
-    public Accommodation(String accomCode) {
-        this.accomCode = accomCode;
-    }
-
-    public Accommodation(String accomCode, String accomName, String accomTel) {
-        this.accomCode = accomCode;
-        this.accomName = accomName;
-        this.accomTel = accomTel;
-    }
-
-    public String getAccomCode() {
-        return accomCode;
-    }
-
-    public void setAccomCode(String accomCode) {
-        this.accomCode = accomCode;
-    }
-
-    public String getAccomName() {
-        return accomName;
-    }
-
-    public void setAccomName(String accomName) {
-        this.accomName = accomName;
-    }
-
-    public String getAccomTel() {
-        return accomTel;
-    }
-
-    public void setAccomTel(String accomTel) {
-        this.accomTel = accomTel;
-    }
-
-    public List<TourInfo> getTourinfoList() {
-        return tourinfoList;
-    }
-
-    public void setTourinfoList(List<TourInfo> tourinfoList) {
-        this.tourinfoList = tourinfoList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (accomCode != null ? accomCode.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are
-        // not set
-        if (!(object instanceof Accommodation)) {
-            return false;
-        }
-        Accommodation other = (Accommodation) object;
-        if ((this.accomCode == null && other.accomCode != null)
-                || (this.accomCode != null && !this.accomCode
-                        .equals(other.accomCode))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "org.terasoluna.tourreservation.domain.model.Accommodation[ accomCode="
-                + accomCode + " ]";
-    }
-
+    
 }
