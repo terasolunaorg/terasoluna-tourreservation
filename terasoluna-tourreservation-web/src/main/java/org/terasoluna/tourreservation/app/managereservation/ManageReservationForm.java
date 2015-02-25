@@ -19,6 +19,9 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+
+@Data
 public class ManageReservationForm {
 
     // validation groups
@@ -41,27 +44,4 @@ public class ManageReservationForm {
     @Max(value = 5, groups = ReservationEdit.class)
     private Integer childCount;
 
-    public String getReserveNo() {
-        return reserveNo;
-    }
-
-    public void setReserveNo(String reserveNo) {
-        this.reserveNo = reserveNo;
-    }
-
-    public Integer getAdultCount() {
-        return adultCount;
-    }
-
-    public void setAdultCount(Integer adultCount) {
-        this.adultCount = adultCount;
-    }
-
-    public Integer getChildCount() {
-        return childCount;
-    }
-
-    public void setChildCount(Integer childCount) {
-        this.childCount = childCount;
-    }
 }

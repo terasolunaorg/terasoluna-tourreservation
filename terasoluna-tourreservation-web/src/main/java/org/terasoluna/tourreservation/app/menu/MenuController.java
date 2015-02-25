@@ -15,18 +15,16 @@
  */
 package org.terasoluna.tourreservation.app.menu;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+@Slf4j
 @Controller
 @RequestMapping("/")
 public class MenuController {
-
-    private static final Logger log = LoggerFactory
-            .getLogger(MenuController.class);
 
     /**
      * forward initial menu view.

@@ -21,8 +21,11 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
+@Data
 public class SearchTourForm implements Serializable {
 
     /**
@@ -63,77 +66,6 @@ public class SearchTourForm implements Serializable {
     @NotNull
     @Min(0)
     private Integer basePrice;
-
-    public Integer getDepYear() {
-        return depYear;
-    }
-
-    public void setDepYear(Integer depYear) {
-        this.depYear = depYear;
-    }
-
-    public Integer getDepMonth() {
-        return depMonth;
-    }
-
-    public void setDepMonth(Integer depMonth) {
-        this.depMonth = depMonth;
-    }
-
-    public Integer getDepDay() {
-        return depDay;
-    }
-
-    public void setDepDay(Integer depDay) {
-        this.depDay = depDay;
-    }
-
-    public Integer getTourDays() {
-        return tourDays;
-    }
-
-    public void setTourDays(Integer tourDays) {
-        this.tourDays = tourDays;
-    }
-
-    public String getDepCode() {
-        return depCode;
-    }
-
-    public void setDepCode(String depCode) {
-        this.depCode = depCode;
-    }
-
-    public String getArrCode() {
-        return arrCode;
-    }
-
-    public void setArrCode(String arrCode) {
-        this.arrCode = arrCode;
-    }
-
-    public Integer getAdultCount() {
-        return adultCount;
-    }
-
-    public void setAdultCount(Integer adultCount) {
-        this.adultCount = adultCount;
-    }
-
-    public Integer getChildCount() {
-        return childCount;
-    }
-
-    public void setChildCount(Integer childCount) {
-        this.childCount = childCount;
-    }
-
-    public Integer getBasePrice() {
-        return basePrice;
-    }
-
-    public void setBasePrice(Integer basePrice) {
-        this.basePrice = basePrice;
-    }
+    
 }
 

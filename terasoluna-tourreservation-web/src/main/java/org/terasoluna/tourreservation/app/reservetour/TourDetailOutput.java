@@ -15,10 +15,17 @@
  */
 package org.terasoluna.tourreservation.app.reservetour;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import org.terasoluna.tourreservation.domain.model.Customer;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class TourDetailOutput {
 
     private TourInfo tourInfo;
@@ -26,29 +33,5 @@ public class TourDetailOutput {
     private PriceCalculateOutput priceCalculateOutput;
 
     private Customer customer;
-
-    public TourInfo getTourInfo() {
-        return tourInfo;
-    }
-
-    public void setTourInfo(TourInfo tourInfo) {
-        this.tourInfo = tourInfo;
-    }
-
-    public PriceCalculateOutput getPriceCalculateOutput() {
-        return priceCalculateOutput;
-    }
-
-    public void setPriceCalculateOutput(
-            PriceCalculateOutput priceCalculateOutput) {
-        this.priceCalculateOutput = priceCalculateOutput;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+    
 }

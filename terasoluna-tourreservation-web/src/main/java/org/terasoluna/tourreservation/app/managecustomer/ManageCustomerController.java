@@ -17,10 +17,10 @@ package org.terasoluna.tourreservation.app.managecustomer;
 
 import javax.inject.Inject;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.dozer.Mapper;
 import org.joda.time.DateTime;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -39,13 +39,11 @@ import org.terasoluna.tourreservation.domain.service.customer.CustomerService;
 /**
  * Handle request of customer register.
  */
+@Slf4j
 @Controller
 @RequestMapping(value = "managecustomer")
 @TransactionTokenCheck(value = "managecustomer")
 public class ManageCustomerController {
-
-    private static final Logger logger = LoggerFactory
-            .getLogger(ManageCustomerController.class);
 
     @Inject
     CustomerService customerService;
@@ -84,7 +82,7 @@ public class ManageCustomerController {
         form.setCustomerBirthYear(initialBirthYear);
         form.setCustomerBirthMonth(initialBirthMonth);
         form.setCustomerBirthDay(initialBirthDay);
-        logger.debug("populate form {}", form);
+        log.debug("populate form {}", form);
         return form;
     }
 

@@ -23,12 +23,15 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import lombok.Data;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Customer form object.
  */
+@Data
 public class CustomerForm implements Serializable {
 
     /**
@@ -88,105 +91,6 @@ public class CustomerForm implements Serializable {
     @NotEmpty
     private String customerAdd;
 
-    public CustomerForm() {
-    }
-
-    public String getCustomerKana() {
-        return customerKana;
-    }
-
-    public void setCustomerKana(String customerKana) {
-        this.customerKana = customerKana;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public Integer getCustomerBirthYear() {
-        return customerBirthYear;
-    }
-
-    public void setCustomerBirthYear(Integer customerBirthYear) {
-        this.customerBirthYear = customerBirthYear;
-    }
-
-    public Integer getCustomerBirthMonth() {
-        return customerBirthMonth;
-    }
-
-    public void setCustomerBirthMonth(Integer customerBirthMonth) {
-        this.customerBirthMonth = customerBirthMonth;
-    }
-
-    public Integer getCustomerBirthDay() {
-        return customerBirthDay;
-    }
-
-    public void setCustomerBirthDay(Integer customerBirthDay) {
-        this.customerBirthDay = customerBirthDay;
-    }
-
-    public String getCustomerJob() {
-        return customerJob;
-    }
-
-    public void setCustomerJob(String customerJob) {
-        this.customerJob = customerJob;
-    }
-
-    public String getCustomerMail() {
-        return customerMail;
-    }
-
-    public void setCustomerMail(String customerMail) {
-        this.customerMail = customerMail;
-    }
-
-    public String getCustomerPass() {
-        return customerPass;
-    }
-
-    public void setCustomerPass(String customerPass) {
-        this.customerPass = customerPass;
-    }
-
-    public String getCustomerPassConfirm() {
-        return customerPassConfirm;
-    }
-
-    public void setCustomerPassConfirm(String customerPassConfirm) {
-        this.customerPassConfirm = customerPassConfirm;
-    }
-
-    public String getCustomerTel() {
-        return customerTel;
-    }
-
-    public void setCustomerTel(String customerTel) {
-        this.customerTel = customerTel;
-    }
-
-    public String getCustomerPost() {
-        return customerPost;
-    }
-
-    public void setCustomerPost(String customerPost) {
-        this.customerPost = customerPost;
-    }
-
-    public String getCustomerAdd() {
-        return customerAdd;
-    }
-
-    public void setCustomerAdd(String customerAdd) {
-        this.customerAdd = customerAdd;
-    }
-
     @Override
     public String toString() {
         return "customerKana=" + customerKana
@@ -198,11 +102,6 @@ public class CustomerForm implements Serializable {
                 + "&customerPassConfirm=" + customerPassConfirm
                 + "&customerTel=" + customerTel + "&customerPost="
                 + customerPost + "&customerAdd=" + customerAdd;
-    }
-    
-    @Override
-    public boolean equals(Object form) {
-        return this.toString().equals(form.toString());
-    }
-    
+    }    
+       
 }

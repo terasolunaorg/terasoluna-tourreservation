@@ -19,11 +19,11 @@ import java.util.Date;
 
 import javax.inject.Inject;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.dozer.Mapper;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -46,13 +46,11 @@ import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoService;
 /**
  * Handle request of tour searching.
  */
+@Slf4j
 @Controller
 @RequestMapping(value = "searchtour")
 @SessionAttributes(types = SearchTourForm.class)
 public class SearchTourController {
-
-    private static final Logger logger = LoggerFactory
-            .getLogger(SearchTourController.class);
 
     @Inject
     TourInfoService tourInfoService;
@@ -85,7 +83,7 @@ public class SearchTourController {
         searchTourForm.setDepMonth(nextWeekDate.getMonthOfYear());
         searchTourForm.setDepDay(nextWeekDate.getDayOfMonth());
 
-        logger.debug("populate form {}", searchTourForm);
+        log.debug("populate form {}", searchTourForm);
         return searchTourForm;
     }
 
@@ -116,8 +114,8 @@ public class SearchTourController {
             return "searchtour/searchForm";
         }
 
-        if (logger.isDebugEnabled()) {
-            logger.info("pageable={}", pageable);
+        if (log.isDebugEnabled()) {
+            log.info("pageable={}", pageable);
         }
         
         TourInfoSearchCriteria criteria = beanMapper.map(searchTourForm, TourInfoSearchCriteria.class);
