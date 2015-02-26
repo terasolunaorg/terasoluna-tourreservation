@@ -20,6 +20,7 @@
 package org.terasoluna.tourreservation.domain.model;
 
 import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,6 +29,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "employee")
 public class Employee implements Serializable {
@@ -57,81 +61,5 @@ public class Employee implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "staff_pass")
     private String staffPass;
-
-    public Employee() {
-    }
-
-    public Employee(String staffCode) {
-        this.staffCode = staffCode;
-    }
-
-    public Employee(String staffCode, String staffName, String staffKana,
-            String staffPass) {
-        this.staffCode = staffCode;
-        this.staffName = staffName;
-        this.staffKana = staffKana;
-        this.staffPass = staffPass;
-    }
-
-    public String getStaffCode() {
-        return staffCode;
-    }
-
-    public void setStaffCode(String staffCode) {
-        this.staffCode = staffCode;
-    }
-
-    public String getStaffName() {
-        return staffName;
-    }
-
-    public void setStaffName(String staffName) {
-        this.staffName = staffName;
-    }
-
-    public String getStaffKana() {
-        return staffKana;
-    }
-
-    public void setStaffKana(String staffKana) {
-        this.staffKana = staffKana;
-    }
-
-    public String getStaffPass() {
-        return staffPass;
-    }
-
-    public void setStaffPass(String staffPass) {
-        this.staffPass = staffPass;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (staffCode != null ? staffCode.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are
-        // not set
-        if (!(object instanceof Employee)) {
-            return false;
-        }
-        Employee other = (Employee) object;
-        if ((this.staffCode == null && other.staffCode != null)
-                || (this.staffCode != null && !this.staffCode
-                        .equals(other.staffCode))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "org.terasoluna.tourreservation.domain.model.Employee[ staffCode="
-                + staffCode + " ]";
-    }
 
 }

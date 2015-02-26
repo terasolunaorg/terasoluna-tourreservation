@@ -17,11 +17,17 @@ package org.terasoluna.tourreservation.app.managereservation;
 
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import org.terasoluna.tourreservation.domain.model.Customer;
 import org.terasoluna.tourreservation.domain.model.Reserve;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
 
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ReservationDetailOutput {
 
     private PriceCalculateOutput priceCalculateOutput;
@@ -33,46 +39,5 @@ public class ReservationDetailOutput {
     private Date paymentTimeLimit;
 
     private Boolean limitExceeding;
-
-    public Boolean getLimitExceeding() {
-        return limitExceeding;
-    }
-
-    public void setLimitExceeding(Boolean limitExceeding) {
-        this.limitExceeding = limitExceeding;
-    }
-
-    public Reserve getReserve() {
-        return reserve;
-    }
-
-    public void setReserve(Reserve reserve) {
-        this.reserve = reserve;
-    }
-
-    public PriceCalculateOutput getPriceCalculateOutput() {
-        return priceCalculateOutput;
-    }
-
-    public void setPriceCalculateOutput(
-            PriceCalculateOutput priceCalculateOutput) {
-        this.priceCalculateOutput = priceCalculateOutput;
-    }
-
-    public Date getPaymentTimeLimit() {
-        return paymentTimeLimit;
-    }
-
-    public void setPaymentTimeLimit(Date paymentTimeLimit) {
-        this.paymentTimeLimit = paymentTimeLimit;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 
 }

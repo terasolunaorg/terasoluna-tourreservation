@@ -20,10 +20,10 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.dozer.Mapper;
 import org.joda.time.DateTime;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
@@ -40,12 +40,10 @@ import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutp
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateSharedSerivce;
 import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoSharedService;
 
+@Slf4j
 @Transactional
 @Service
 public class ReserveServiceImpl implements ReserveService {
-
-    private static final Logger logger = LoggerFactory
-            .getLogger(ReserveServiceImpl.class);
 
     @Inject
     ReserveRepository reserveRepository;
@@ -106,7 +104,7 @@ public class ReserveServiceImpl implements ReserveService {
 
         // calculate vacancy
         long vacantCount = aveRecMax - sumCount;
-        logger.debug("vacantCount({}), reserveMember({})", vacantCount,
+        log.debug("vacantCount({}), reserveMember({})", vacantCount,
                 reserveMember);
         // error if reserved number is larger than available vacancy
         if (vacantCount < reserveMember) {
@@ -129,7 +127,7 @@ public class ReserveServiceImpl implements ReserveService {
         reserve.setReservedDay(today.toDate());
         reserve.setTransfer(Reserve.NOT_TRANSFERED);
         reserveRepository.save(reserve);
-        logger.debug("reserved {}", reserve);
+        log.debug("reserved {}", reserve);
 
         // * create output
         ReserveTourOutput tourReserveOutput = new ReserveTourOutput();
@@ -148,9 +146,9 @@ public class ReserveServiceImpl implements ReserveService {
 
     @Override
     public void cancel(String reserveNo) throws BusinessException {
-        logger.debug("cancel reserveNo={}", reserveNo);
+        log.debug("cancel reserveNo={}", reserveNo);
         Reserve reserve = reserveRepository.findOne(reserveNo);
-        logger.debug("check for cancel {}", reserve);
+        log.debug("check for cancel {}", reserve);
         validateReservation(reserve);
 
         String transfer = reserve.getTransfer();
@@ -181,7 +179,7 @@ public class ReserveServiceImpl implements ReserveService {
                     MessageId.E_TR_0003);
             throw new BusinessException(message);
         }
-        logger.debug("canceled reserveNo={}", reserveNo);
+        log.debug("canceled reserveNo={}", reserveNo);
     }
 
     @Override

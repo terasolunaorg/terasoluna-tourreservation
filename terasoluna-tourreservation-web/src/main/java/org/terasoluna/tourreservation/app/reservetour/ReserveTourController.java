@@ -17,8 +17,8 @@ package org.terasoluna.tourreservation.app.reservetour;
 
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,14 +39,12 @@ import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUser
 /**
  * Handle request of tour searching.
  */
+@Slf4j
 @Controller
 @RequestMapping(value = "reservetour")
 @SessionAttributes(types = ReserveTourForm.class)
 @TransactionTokenCheck(value = "reservetour")
 public class ReserveTourController {
-
-    private static final Logger logger = LoggerFactory
-            .getLogger(ReserveTourController.class);
 
     @Inject
     ReserveTourHelper reserveTourHelper;
@@ -69,7 +67,7 @@ public class ReserveTourController {
     @RequestMapping(value = "read", method = RequestMethod.GET)
     public String reserveForm(@AuthenticationPrincipal ReservationUserDetails userDetails, ReserveTourForm form, Model model,
             SessionStatus status) {
-        logger.debug("retieve tour {}", form.getTourCode());
+        log.debug("retieve tour {}", form.getTourCode());
 
         status.setComplete();
 
@@ -94,7 +92,7 @@ public class ReserveTourController {
         if (bindingResult.hasErrors()) {
             return "reservetour/reserveForm";
         }
-        logger.debug(
+        log.debug(
                 "confirm the reservation details for the following tour {}",
                 form.getTourCode());
 
@@ -116,7 +114,7 @@ public class ReserveTourController {
     public String reserve(@AuthenticationPrincipal ReservationUserDetails userDetails, @Validated ReserveTourForm form,
             BindingResult bindingResult, RedirectAttributes redirectAttr,
             Model model) {
-        logger.debug("reserve tour {}", form.getTourCode());
+        log.debug("reserve tour {}", form.getTourCode());
 
         if (bindingResult.hasErrors()) {
             TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails, form);

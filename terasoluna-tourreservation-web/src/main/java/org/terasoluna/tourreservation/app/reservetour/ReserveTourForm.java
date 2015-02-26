@@ -22,9 +22,12 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import lombok.Data;
+
 /**
  * Tour reserve form object.
  */
+@Data
 public class ReserveTourForm implements Serializable {
 
 	/**
@@ -48,36 +51,5 @@ public class ReserveTourForm implements Serializable {
 	@Size(min = 0, max = 80)
 	private String remarks;
 
-	public String getTourCode() {
-		return tourCode;
-	}
-
-	public void setTourCode(String tourCode) {
-		this.tourCode = tourCode;
-	}
-
-	public Integer getAdultCount() {
-		return adultCount;
-	}
-
-	public void setAdultCount(Integer adultCount) {
-		this.adultCount = adultCount;
-	}
-
-	public Integer getChildCount() {
-		return childCount;
-	}
-
-	public String getRemarks() {
-		return remarks;
-	}
-
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
-
-	public void setChildCount(Integer childCount) {
-		this.childCount = childCount;
-	}
-
+	
 }

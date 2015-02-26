@@ -15,6 +15,9 @@
  */
 package org.terasoluna.tourreservation.domain.service.reserve;
 
+import lombok.Data;
+
+@Data
 public class ReservationUpdateInput {
 
     private String reserveNo;
@@ -23,27 +26,4 @@ public class ReservationUpdateInput {
 
     private Integer childCount;
 
-    public String getReserveNo() {
-        return reserveNo;
-    }
-
-    public void setReserveNo(String reserveNo) {
-        this.reserveNo = reserveNo;
-    }
-
-    public Integer getAdultCount() {
-        return adultCount;
-    }
-
-    public void setAdultCount(Integer adultCount) {
-        this.adultCount = adultCount;
-    }
-
-    public Integer getChildCount() {
-        return childCount;
-    }
-
-    public void setChildCount(Integer childCount) {
-        this.childCount = childCount;
-    }
 }

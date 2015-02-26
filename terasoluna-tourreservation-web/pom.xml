@@ -132,5 +132,12 @@
             <scope>test</scope>
         </dependency>
         <!-- == End Unit Test == -->
+        <!-- == Begin Lombok == -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- == End Lombok == -->
     </dependencies>
 </project>
