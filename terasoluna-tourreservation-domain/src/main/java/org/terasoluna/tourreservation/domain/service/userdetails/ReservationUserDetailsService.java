@@ -31,7 +31,7 @@ public class ReservationUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Customer customer = customerRepository.findOne(username);
         if (customer == null) {
-            throw new UsernameNotFoundException(username + " is not found."); // TODO to property file
+            throw new UsernameNotFoundException(username + " is not found.");
         }
         return new ReservationUserDetails(customer);
     }
