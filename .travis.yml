@@ -4,7 +4,7 @@ addons:
 before_script:
   - psql -c 'create database tourreserve;' -U postgres
 jdk:
-  - oraclejdk7
+  - oraclejdk8
   
 script: 
   - mvn -U sql:execute -f terasoluna-tourreservation-initdb -Ddb.password=
