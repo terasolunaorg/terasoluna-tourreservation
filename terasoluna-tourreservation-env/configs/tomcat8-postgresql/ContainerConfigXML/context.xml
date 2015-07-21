@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- web application context file for tomcat. -->
+<!-- this file should be place at CATALINA_HOME/conf/Catalina/localhost/terasoluna-tourreservation-web.xml -->
+<Context>
+
+    <Resource
+       name="jdbc/dataSource" 
+       type="javax.sql.DataSource"
+       driverClassName="org.postgresql.Driver"
+       username="postgres"
+       password="P0stgres"
+       url="jdbc:postgresql://localhost:5432/tourreserve"
+       maxIdle="16"
+       minIdle="0"
+       maxWait="60000"
+       maxActive="96"/>
+
+    <Resources className="org.apache.catalina.webresources.StandardRoot">
+        <PreResources className="org.apache.catalina.webresources.DirResourceSet"
+                      base="/home/terasoluna/gfw/webapps-env-jars/terasoluna-tourreservation-env-tomcat8-postgresql/"
+                      internalPath="/"
+                      webAppMount="/WEB-INF/lib" />
+    </Resources>
+    <JarScanner scanAllDirectories="true" />
+
+</Context>
+
