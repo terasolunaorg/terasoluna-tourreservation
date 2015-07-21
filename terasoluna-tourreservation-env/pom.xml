@@ -75,13 +75,6 @@
                 <buildFinalName>${project.artifactId}-${project.version}-tomcat8-postgresql</buildFinalName>
             </properties>
         </profile>
-        <profile>
-            <id>resin-postgresql</id>
-            <properties>
-                <resource.directory>${basedir}/configs/resin-postgresql/resources</resource.directory>
-                <buildFinalName>${project.artifactId}-${project.version}-resin-postgresql</buildFinalName>
-            </properties>
-        </profile>
     </profiles>
 
     <properties>
