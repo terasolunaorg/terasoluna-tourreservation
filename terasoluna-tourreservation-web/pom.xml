@@ -13,40 +13,9 @@
     <description>Web layer of Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
     <packaging>war</packaging>
 
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-eclipse-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>com.google.code.maven-license-plugin</groupId>
-                <artifactId>maven-license-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
     <profiles>
         <profile>
-            <id>default</id>
+            <id>local</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -54,13 +23,21 @@
                 <dependency>
                     <groupId>${project.groupId}</groupId>
                     <artifactId>terasoluna-tourreservation-env</artifactId>
-                    <version>${project.version}</version>
                 </dependency>
             </dependencies>
         </profile>
         <profile>
             <id>warpack</id>
             <dependencies>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>warpack-with-env</id>
+            <dependencies>
+                <dependency>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>terasoluna-tourreservation-env</artifactId>
+                </dependency>
             </dependencies>
         </profile>
     </profiles>
@@ -70,7 +47,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>terasoluna-tourreservation-domain</artifactId>
-            <version>${project.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>${project.groupId}</groupId>
