@@ -13,44 +13,11 @@
     <description>Domain layer of Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
     <packaging>jar</packaging>
 
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-eclipse-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>com.google.code.maven-license-plugin</groupId>
-                <artifactId>maven-license-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
         <!-- == Begin TourReservation == -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>terasoluna-tourreservation-env</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <!-- == End TourReservation == -->
 
@@ -80,18 +47,10 @@
 
         <!-- == Begin Database == -->
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
         </dependency>
-        <!-- <dependency> -->
-        <!-- <groupId>com.oracle</groupId> -->
-        <!-- <artifactId>ojdbc6</artifactId> -->
-        <!-- </dependency> -->
-        <!-- == End Database == -->
 
         <!-- == Begin JasperReports == -->
         <dependency>
