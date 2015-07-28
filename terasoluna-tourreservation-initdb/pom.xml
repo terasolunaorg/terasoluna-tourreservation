@@ -21,7 +21,7 @@
             </activation>
             <properties>
                 <db.encoding>UTF8</db.encoding>
-                <db.basedir>src/sqls/postgres</db.basedir>
+                <db.basedir>${project.basedir}/src/sqls/postgres</db.basedir>
                 <db.url>jdbc:postgresql://127.0.0.1:5432/tourreserve</db.url>
                 <db.username>postgres</db.username>
                 <db.password>P0stgres</db.password>
