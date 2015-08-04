@@ -8,12 +8,12 @@
     <parent>
         <groupId>org.terasoluna.gfw</groupId>
         <artifactId>terasoluna-gfw-parent</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
+        <version>1.0.4-SNAPSHOT</version>
         <relativePath />
     </parent>
 
     <name>TERASOLUNA Global Framework - Tour Reservation Application - Parent</name>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.4-SNAPSHOT</version>
     <description>Parent POM of Tour Reservation Application using TERASOLUNA Global Framework</description>
     <url>http://terasoluna.org</url>
     <inceptionYear>2013</inceptionYear>
