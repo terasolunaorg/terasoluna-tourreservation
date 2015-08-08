@@ -33,20 +33,26 @@
 		</table>
 	</div>
 	<div class="span-4 append-20">
-		<table>
-			<tr>
-				<td><form:form action="read" method="POST">
-						<input id="goBackBtn" type="submit" name="redo"
-							value="<spring:message code="label.tr.common.goBackMessage"/>">
-					</form:form></td>
-				<td><form:form
-						action="${pageContext.request.contextPath}/reservetour/reserve"
-						modelAttribute="reserveTourForm" method="POST">
-						<input id="reserveBtn" type="submit"
-							value="<spring:message code="label.tr.searchtour.confirmedMessage"/>">
-					</form:form></td>
-			</tr>
-		</table>
+		<form:form modelAttribute="reserveTourForm" cssClass="inline">
+			<form:hidden path="childCount" />
+			<form:hidden path="adultCount" />
+			<form:hidden path="remarks" />
+			<input type="hidden" name="page" value="${f:h(param['page'])}" />
+			<input type="hidden" name="size" value="${f:h(param['size'])}" />
+			<form:button id="reserveBtn">
+				<spring:message code="label.tr.searchtour.confirmedMessage"/>
+			</form:button>
+		</form:form>
+		<form:form modelAttribute="reserveTourForm">
+			<form:hidden path="childCount" />
+			<form:hidden path="adultCount" />
+			<form:hidden path="remarks" />
+			<input type="hidden" name="page" value="${f:h(param['page'])}" />
+			<input type="hidden" name="size" value="${f:h(param['size'])}" />
+			<form:button id="goBackBtn" name="redo">
+				<spring:message code="label.tr.common.goBackMessage"/>
+			</form:button>
+		</form:form>
 	</div>
 </div>
 

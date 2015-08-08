@@ -114,7 +114,7 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         driver.findElement(By.id("logoutBtn")).click();
 
         driver.get(baseUrl
-                + "/terasoluna-tourreservation-web/managereservation/detail/"
+                + "/terasoluna-tourreservation-web/reservations/"
                 + reserveNumber);
 
         assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver

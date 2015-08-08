@@ -16,21 +16,20 @@
 package org.terasoluna.tourreservation.domain.service.userdetails;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.terasoluna.tourreservation.domain.model.Customer;
 
 public class ReservationUserDetails implements UserDetails {
     private static final long serialVersionUID = 1L;
 
+    private static final List<? extends GrantedAuthority> DEFAULT_AUTHORITIES = AuthorityUtils.createAuthorityList("ROLE_USER");
+
     private final Customer customer;
 
-    private static final List<? extends GrantedAuthority> DEFAULT_AUTHORITIES = Collections
-            .singletonList(new SimpleGrantedAuthority("ROLE_USER"));
 
     public ReservationUserDetails(Customer customer) {
         this.customer = customer;
@@ -49,10 +48,6 @@ public class ReservationUserDetails implements UserDetails {
     @Override
     public String getUsername() {
         return this.customer.getCustomerCode();
-    }
-
-    public String getDisplayName() {
-        return this.customer.getCustomerName();
     }
 
     public Customer getCustomer() {

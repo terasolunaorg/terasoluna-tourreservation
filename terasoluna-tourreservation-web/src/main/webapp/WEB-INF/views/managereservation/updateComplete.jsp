@@ -2,42 +2,34 @@
 <div class="container">
 
 	<h2 id="screenName">
-		<spring:message
-				code="label.tr.managereservation.manageReservationUpdatedScreenTitleMessage" />
+		<spring:message code="label.tr.managereservation.manageReservationUpdatedScreenTitleMessage" />
 	</h2>
 
 	<!-- end title -->
 
 	<!-- begin main -->
 	<div class="success">
-		<spring:message
-			code="label.tr.managereservation.updatedScreenFlowMessage" />
+		<spring:message code="label.tr.managereservation.updatedScreenFlowMessage" />
 	</div>
 	<!-- begin message -->
 	<p>
 		<spring:message code="label.tr.managereservation.updatedFinishMessage" />
 	</p>
 	<p>
-		<spring:message
-			code="label.tr.managereservation.paymentReminderMessage" />
+		<spring:message code="label.tr.managereservation.paymentReminderMessage" />
 	</p>
 	<p>
 		<spring:message code="label.tr.common.pdfdownloadMessage" />
 	</p>
-	<form:form method="GET"
-		action="${f:h(pageContext.request.contextPath)}/managereservation/downloadPDF">
-		<input type="hidden" value="${f:h(output.reserve.reserveNo)}"
-			name="reserveNo" />
-		<spring:message code="label.tr.common.downloadpdfBtnMessage"
-			var="downloadPDFButton" />
-		<input type="submit" value="${f:h(downloadPDFButton)}" />
+	<form:form method="get" action="${f:h(pageContext.request.contextPath)}/reservations/${f:h(output.reserve.reserveNo)}/pdf">
+		<button id="downloadBtn">
+			<spring:message code="label.tr.common.downloadpdfBtnMessage" />
+		</button>
 	</form:form>
 
 	<!-- end message -->
-	<spring:message code="label.tr.common.currencyPattern"
-		var="currencyPattern" />
-	<spring:message code="label.tr.common.personcountPattern"
-		var="personPattern" />
+	<spring:message code="label.tr.common.currencyPattern" var="currencyPattern" />
+	<spring:message code="label.tr.common.personcountPattern" var="personPattern" />
 	<spring:message code="label.tr.common.datePattern" var="datePattern" />
 	<table>
 		<caption>
@@ -45,26 +37,27 @@
 		</caption>
 		<tr>
 			<td><spring:message code="label.tr.common.paymentMethod" /></td>
-			<td colspan="3"><spring:message
-					code="label.tr.common.bankTransfer" /></td>
+			<td colspan="3"><spring:message code="label.tr.common.bankTransfer" /></td>
 		</tr>
 		<tr>
 			<td><spring:message code="label.tr.common.paymentAccount" /></td>
-			<td colspan="3"><spring:message
-					code="label.tr.common.companyName" /> <br /> <spring:message
-					code="label.tr.common.savingsAccount" /></td>
+			<td colspan="3">
+				<spring:message code="label.tr.common.companyName" />
+				<br />
+				<spring:message code="label.tr.common.savingsAccount" />
+			</td>
 		</tr>
 		<tr>
 			<td><spring:message code="label.tr.common.paymentTimeLimit" /></td>
-			<td colspan="3"><fmt:formatDate
-					value="${output.paymentTimeLimit}" pattern="${datePattern}" /></td>
+			<td colspan="3"><fmt:formatDate value="${output.paymentTimeLimit}" pattern="${datePattern}" /></td>
 		</tr>
 		<tr>
 			<td><spring:message code="label.tr.common.paymentInquiry" /></td>
-			<td colspan="3"><spring:message
-					code="label.tr.common.companyName" /> <spring:message
-					code="label.tr.common.companyTel" /> <spring:message
-					code="label.tr.common.companyEmail" /></td>
+			<td colspan="3">
+				<spring:message code="label.tr.common.companyName" />
+				<spring:message code="label.tr.common.companyTel" />
+				<spring:message code="label.tr.common.companyEmail" />
+			</td>
 		</tr>
 	</table>
 	<table>
@@ -101,35 +94,26 @@
 			<spring:message code="label.tr.searchtour.statementOfCharges" />
 		</caption>
 		<tr>
-			<td><spring:message
-					code="label.tr.searchtour.classificationOnAge" /></td>
+			<td><spring:message code="label.tr.searchtour.classificationOnAge" /></td>
 			<td><spring:message code="label.tr.searchtour.unitPrice" /></td>
 			<td><spring:message code="label.tr.searchtour.noOfPeople" /></td>
 			<td><spring:message code="label.tr.searchtour.charge" /></td>
 		</tr>
 		<tr>
 			<td><spring:message code="label.tr.searchtour.adult" /></td>
-			<td><fmt:formatNumber pattern="${currencyPattern}"
-					value="${f:h(output.priceCalculateOutput.adultUnitPrice)}" /></td>
-			<td><fmt:formatNumber pattern="${personPattern}"
-					value="${f:h(output.priceCalculateOutput.adultCount)}" /></td>
-			<td><fmt:formatNumber pattern="${currencyPattern}"
-					value="${f:h(output.priceCalculateOutput.adultPrice)}" /></td>
+			<td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.adultUnitPrice)}" /></td>
+			<td><fmt:formatNumber pattern="${personPattern}" value="${f:h(output.priceCalculateOutput.adultCount)}" /></td>
+			<td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.adultPrice)}" /></td>
 		</tr>
 		<tr>
 			<td><spring:message code="label.tr.searchtour.child" /></td>
-			<td><fmt:formatNumber pattern="${currencyPattern}"
-					value="${f:h(output.priceCalculateOutput.childUnitPrice)}" /></td>
-			<td><fmt:formatNumber pattern="${personPattern}"
-					value="${f:h(output.priceCalculateOutput.childCount)}" /></td>
-			<td><fmt:formatNumber pattern="${currencyPattern}"
-					value="${f:h(output.priceCalculateOutput.childPrice)}" /></td>
+			<td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.childUnitPrice)}" /></td>
+			<td><fmt:formatNumber pattern="${personPattern}" value="${f:h(output.priceCalculateOutput.childCount)}" /></td>
+			<td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.childPrice)}" /></td>
 		</tr>
 		<tr>
-			<td colspan="3"><spring:message
-					code="label.tr.searchtour.sumPrice" /></td>
-			<td><fmt:formatNumber pattern="${currencyPattern}"
-					value="${f:h(output.priceCalculateOutput.sumPrice)}" /></td>
+			<td colspan="3"><spring:message code="label.tr.searchtour.sumPrice" /></td>
+			<td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.sumPrice)}" /></td>
 		</tr>
 	</table>
 	<hr />
@@ -145,28 +129,27 @@
 	</table>
 	<hr />
 	<p>
-		<spring:message
-			code="label.tr.managereservation.updatedCompleteMessage" />
+		<spring:message code="label.tr.managereservation.updatedCompleteMessage" />
 	</p>
 	<hr />
 	<!-- begin buttons -->
-	<div class="span-5 last">
+	<div class="span-8">
 		<table>
 			<tr>
-				<td><form:form
-						action="${pageContext.request.contextPath}/managereservation/list"
-						method="GET">
-						<spring:message
-							code="label.tr.managereservation.returnToListScreenBtnMessage"
-							var="returnToListScreenButton" />
-						<input id="backToListBtn" type="submit" value="${returnToListScreenButton}">
-					</form:form></td>
-				<td><form:form action="${pageContext.request.contextPath}/"
-						method="GET">
-						<spring:message code="label.tr.common.gotoMenuMessage"
-							var="gotoMenuButton" />
-						<input id="goToMenuBtn" type="submit" value="${gotoMenuButton}">
-					</form:form></td>
+				<td>
+					<form:form method="get" action="${pageContext.request.contextPath}/reservations/me">
+						<button id="backToListBtn">
+							<spring:message code="label.tr.managereservation.returnToListScreenBtnMessage" />
+						</button>
+					</form:form>
+				</td>
+				<td>
+					<form:form method="get" action="${pageContext.request.contextPath}/">
+						<button id="goToMenuBtn">
+							<spring:message code="label.tr.common.gotoMenuMessage" />
+						</button>
+					</form:form>
+				</td>
 			</tr>
 		</table>
 	</div>

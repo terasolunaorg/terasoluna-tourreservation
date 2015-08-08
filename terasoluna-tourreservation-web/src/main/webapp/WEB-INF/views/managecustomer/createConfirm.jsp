@@ -6,7 +6,7 @@
 			<spring:message code="label.tr.managecustomer.createConfirmMessage" />
 		</p>
 	</div>
-	<form:form action="create" method="post" modelAttribute="customerForm">
+	<form:form modelAttribute="customerForm">
 		<jsp:include page="fragment/customerTable.jsp" />
 
 		<!-- Include all the hidden items here. 
@@ -25,11 +25,13 @@
 		<form:hidden path="customerPass" />
 		<form:hidden path="customerPassConfirm" />
 
-		<input id="backToFormBtn" type="submit" name="redo"
-			value="<spring:message code="label.tr.common.goBackMessage" />">
+		<form:button id="backToFormBtn" name="redo">
+			<spring:message code="label.tr.common.goBackMessage" />
+		</form:button>
             &nbsp;
-        <input id="registerBtn" type="submit"
-			value="<spring:message code="label.tr.common.register" />">
+		<form:button id="registerBtn">
+			<spring:message code="label.tr.common.register" />
+		</form:button>
 	</form:form>
 
 </div>

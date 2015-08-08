@@ -24,24 +24,15 @@ import lombok.Data;
 @Data
 public class ManageReservationForm {
 
-    // validation groups
-    public static interface ReservationEdit {
-    };
-
-    public static interface ReservationCancel {
-    };
 
     @NotNull
-    private String reserveNo;
-
-    @NotNull(groups = ReservationEdit.class)
-    @Min(value = 0, groups = ReservationEdit.class)
-    @Max(value = 5, groups = ReservationEdit.class)
+    @Min(0)
+    @Max(5)
     private Integer adultCount;
 
-    @NotNull(groups = ReservationEdit.class)
-    @Min(value = 0, groups = ReservationEdit.class)
-    @Max(value = 5, groups = ReservationEdit.class)
+    @NotNull
+    @Min(0)
+    @Max(5)
     private Integer childCount;
 
 }

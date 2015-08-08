@@ -90,7 +90,7 @@
 		<mvc:definitions location="/WEB-INF/tiles/tiles-definitions.xml" />
 	</mvc:tiles-configurer>
 	
-	<bean id="reservationReport"
+	<bean id="managereservation/report"
 		class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView">
 		<property name="url" value="/WEB-INF/reports/reservationReportPdf.jrxml"></property>
 	</bean>
