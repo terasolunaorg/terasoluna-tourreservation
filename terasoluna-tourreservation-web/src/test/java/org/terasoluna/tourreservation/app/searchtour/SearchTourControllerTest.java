@@ -117,7 +117,7 @@ public class SearchTourControllerTest {
     public void testSearchForm() {
 
         MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders.get(
-                "/searchtour/search").param("form", "");
+                "/tours").param("form", "");
 
         try {
             ResultActions results = mockMvc.perform(getRequest);
@@ -153,7 +153,7 @@ public class SearchTourControllerTest {
     @Test
     public void testSearchSuccess() {
         MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders
-                .get("/searchtour/search");
+                .get("/tours");
 
         // Set mock behavior for service method
         when(
@@ -199,7 +199,7 @@ public class SearchTourControllerTest {
     @Test
     public void testSearchFail() {
         MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders
-                .get("/searchtour/search");
+                .get("/tours");
 
         // Set mock behavior for service method
         when(

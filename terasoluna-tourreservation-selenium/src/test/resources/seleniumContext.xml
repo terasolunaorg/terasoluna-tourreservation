@@ -19,7 +19,7 @@
 		</property>
 	</bean>
 
-	<bean id="dateFactory" class="org.terasoluna.gfw.common.date.DefaultDateFactory" />
+	<bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
 
 </beans>

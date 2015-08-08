@@ -2,12 +2,12 @@
 <div class="container">
 	<div class="success">
 		<p>
-			<spring:message code="label.tr.managecustomer.createCompleteMessage"
-				arguments="${f:h(customerCode)}" />
+			<spring:message code="label.tr.managecustomer.createCompleteMessage" arguments="${f:h(customer.customerCode)}" />
 		</p>
 	</div>
-	<form:form action="${pageContext.request.contextPath}/" method="get">
-		<input id="goToMenuBtn" type="submit" name="submit"
-			value="<spring:message code="label.tr.common.gotoMenuMessage" />">
+	<form:form method="get" action="${pageContext.request.contextPath}/">
+		<button id="goToMenuBtn">
+			<spring:message code="label.tr.common.gotoMenuMessage" />
+		</button>
 	</form:form>
 </div>

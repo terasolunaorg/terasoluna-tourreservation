@@ -28,11 +28,14 @@
       </tr>
       <tr>
         <td><spring:message code="label.tr.searchtour.conductor" /></td>
-        <td colspan="3"><c:if test="${f:h(output.reserve.tourInfo.conductor)}">
+        <td colspan="3">
+          <c:if test="${f:h(output.reserve.tourInfo.conductor)}">
             <spring:message code="label.tr.common.yesMessage" />
-          </c:if> <c:if test="${!f:h(output.reserve.tourInfo.conductor)}">
+          </c:if>
+          <c:if test="${!f:h(output.reserve.tourInfo.conductor)}">
             <spring:message code="label.tr.common.noMessage" />
-          </c:if></td>
+          </c:if>
+        </td>
       </tr>
       <tr>
         <td><spring:message code="label.tr.searchtour.accomName" /></td>

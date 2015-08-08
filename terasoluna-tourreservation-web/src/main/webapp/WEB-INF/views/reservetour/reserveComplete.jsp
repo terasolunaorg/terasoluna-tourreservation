@@ -16,12 +16,10 @@
 		<spring:message
 			code="label.tr.searchtour.searchtourReserveDetailMessage" />
 	</p>
-	<form:form method="get"
-		action="${pageContext.request.contextPath}/managereservation/downloadPDF">
-		<input type="hidden" name="reserveNo"
-			value="${f:h(output.getReserve().getReserveNo())}" />
-		<input type="submit"
-			value="<spring:message code="label.tr.common.downloadpdfBtnMessage"/>" />
+	<form:form method="get" action="${pageContext.request.contextPath}/reservations/${f:h(output.getReserve().getReserveNo())}/pdf">
+		<button>
+			<spring:message code="label.tr.common.downloadpdfBtnMessage"/>
+		</button>
 	</form:form>
 
 	<jsp:include page="../common/fragment/paymentTable.jsp" />
@@ -42,9 +40,7 @@
 	<br />
 	<hr />
 	<table>
-		<caption>
-			<spring:message code="label.tr.common.specialNotes" />
-		</caption>
+		<caption><spring:message code="label.tr.common.specialNotes" /></caption>
 		<tr>
 			<td><spring:message code="label.tr.common.opinionSuggestion" /></td>
 			<td>${f:h(output.reserve.remarks)}</td>
@@ -52,17 +48,16 @@
 	</table>
 	<br />
 	<div>
-		<form:form method="GET"
-			action="${pageContext.request.contextPath}/searchtour/search">
-			<input type="submit"
-				value="<spring:message code="label.tr.searchtour.goTourSearchScreenMessage" />"
-				tabindex="1" />
+		<form:form method="get" action="${pageContext.request.contextPath}/tours">
+			<button>
+				<spring:message code="label.tr.searchtour.goTourSearchScreenMessage" />
+			</button>
 		</form:form>
-		<form:form action="${pageContext.request.contextPath}/" method="get">
-			<input type="submit" name="submit"
-				value="<spring:message code="label.tr.common.gotoMenuMessage" />">
+		<form:form method="get" action="${pageContext.request.contextPath}/">
+			<button>
+				<spring:message code="label.tr.common.gotoMenuMessage" />
+			</button>
 		</form:form>
-
 	</div>
 </div>
 <!-- end body-->

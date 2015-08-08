@@ -31,7 +31,7 @@ import org.terasoluna.tourreservation.domain.model.Reserve;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.service.reserve.ReserveService;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
-import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateSharedSerivce;
+import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateSharedService;
 import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoSharedService;
 import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
 
@@ -42,7 +42,7 @@ public class ManageReservationHelper {
     TourInfoSharedService tourInfoSharedService;
 
     @Inject
-    PriceCalculateSharedSerivce priceCalculateService;
+    PriceCalculateSharedService priceCalculateService;
 
     @Inject
     MessageSource messageSource;
@@ -129,8 +129,8 @@ public class ManageReservationHelper {
      * @param form
      * @return
      */
-    public ReservationDetailOutput findDetail(ManageReservationForm form) {
-        ReservationDetailOutput output = findDetail(form.getReserveNo());
+    public ReservationDetailOutput findDetail(String reserveNo, ManageReservationForm form) {
+        ReservationDetailOutput output = findDetail(reserveNo);
         // re-calculate
         TourInfo info = output.getReserve().getTourInfo();
         PriceCalculateOutput price = priceCalculateService.calculatePrice(info
@@ -155,7 +155,6 @@ public class ManageReservationHelper {
         if ("1".equals(reserveDetailOutput.getReserve().getTransfer())) {
             paymentTimeLimit = getMessage(MessageId.LABEL_TR_MANAGERESERVATION_DONE);
         } else {
-            // TODO use propertyUtil to fetch the format
             SimpleDateFormat sdf = new SimpleDateFormat(getMessage(MessageId.LABEL_TR_COMMON_DATEPATTERN));
             paymentTimeLimit = sdf.format(reserveDetailOutput
                     .getPaymentTimeLimit());
@@ -195,14 +194,14 @@ public class ManageReservationHelper {
         downloadPDFOutput.setPaymentAccount(getMessage(MessageId.LABEL_TR_COMMON_SAVINGSACCOUNT));
         downloadPDFOutput.setPaymentTimeLimit(paymentTimeLimit);
 
-        // 料金を計算するクラス(共通処理：CP0009)を実行する。
+        // calculate price
         PriceCalculateOutput priceCalcResult = priceCalculateService
                 .calculatePrice(reserveDetailOutput.getReserve().getTourInfo()
                         .getBasePrice(), reserveDetailOutput.getReserve()
                         .getAdultCount(), reserveDetailOutput.getReserve()
                         .getChildCount());
 
-        // 料金情報を出力値に設定する。
+        // set price information
         downloadPDFOutput
                 .setAdultUnitPrice(priceCalcResult.getAdultUnitPrice());
         downloadPDFOutput
@@ -211,7 +210,7 @@ public class ManageReservationHelper {
         downloadPDFOutput.setChildPrice(priceCalcResult.getChildPrice());
         downloadPDFOutput.setSumPrice(priceCalcResult.getSumPrice());
 
-        // 顧客情報を出力値に設定する。
+        // set customer information
         downloadPDFOutput.setCustomerCode(reserveDetailOutput.getCustomer()
                 .getCustomerCode());
         downloadPDFOutput.setCustomerKana(reserveDetailOutput.getCustomer()
@@ -231,15 +230,14 @@ public class ManageReservationHelper {
         downloadPDFOutput.setCustomerAdd(reserveDetailOutput.getCustomer()
                 .getCustomerAdd());
 
-        //問い合わせ先を設定する。
+        // set reference information
         downloadPDFOutput.setReferenceName(getMessage(MessageId.LABEL_TR_COMMON_COMPANYNAME));
         downloadPDFOutput.setReferenceEmail(getMessage(MessageId.LABEL_TR_COMMON_COMPANYEMAIL));
         downloadPDFOutput.setReferenceTel(getMessage(MessageId.LABEL_TR_COMMON_COMPANYTEL));
 
-        // 印刷日を出力値に設定する。
+        // set print date
         downloadPDFOutput.setPrintDay(dateFactory.newDate());
 
-        // リストに帳票出力を加える。
         return downloadPDFOutput;
     }
 

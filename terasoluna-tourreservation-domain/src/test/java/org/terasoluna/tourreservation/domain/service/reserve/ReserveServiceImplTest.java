@@ -51,7 +51,7 @@ import org.terasoluna.tourreservation.domain.model.Reserve;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.repository.reserve.ReserveRepository;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
-import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateSharedSerivce;
+import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateSharedService;
 import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoSharedService;
 
 public class ReserveServiceImplTest {
@@ -62,7 +62,7 @@ public class ReserveServiceImplTest {
 
     TourInfoSharedService tourInfoSharedService;
 
-    PriceCalculateSharedSerivce priceCalculateSerivce;
+    PriceCalculateSharedService priceCalculateSerivce;
 
     JodaTimeDateFactory dateFactory;
 
@@ -80,7 +80,7 @@ public class ReserveServiceImplTest {
         tourInfoSharedService = mock(TourInfoSharedService.class);
         dateFactory = mock(JodaTimeDateFactory.class);
         sequencer = mock(Sequencer.class);
-        priceCalculateSerivce = mock(PriceCalculateSharedSerivce.class);
+        priceCalculateSerivce = mock(PriceCalculateSharedService.class);
 
         beanMapper = new DozerBeanMapper();
         List<String> mappingFiles = new ArrayList<String>();

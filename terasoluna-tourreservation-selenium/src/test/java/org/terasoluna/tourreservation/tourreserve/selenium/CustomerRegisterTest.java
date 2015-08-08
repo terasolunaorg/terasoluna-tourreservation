@@ -127,8 +127,8 @@ public class CustomerRegisterTest extends FunctionTestSupport {
                 "テラソルナ",
                 "ＴＥＲＡＳＯＬＵＮＡ",
                 ("2000" + getMessage(MessageKeys.LABEL_TR_COMMON_YEAR) +
-                        " 12" + getMessage(MessageKeys.LABEL_TR_COMMON_MONTH) +
-                        " 1" + getMessage(MessageKeys.LABEL_TR_COMMON_DAY)),
+                        "12" + getMessage(MessageKeys.LABEL_TR_COMMON_MONTH) +
+                        "01" + getMessage(MessageKeys.LABEL_TR_COMMON_DAY)),
                 "FW",
                 "terasoluna@nttd.co.jp",
                 "090-99999999",

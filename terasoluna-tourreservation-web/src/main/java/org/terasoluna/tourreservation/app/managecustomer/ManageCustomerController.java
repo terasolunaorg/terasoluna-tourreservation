@@ -41,8 +41,8 @@ import org.terasoluna.tourreservation.domain.service.customer.CustomerService;
  */
 @Slf4j
 @Controller
-@RequestMapping(value = "managecustomer")
-@TransactionTokenCheck(value = "managecustomer")
+@RequestMapping(value = "customers")
+@TransactionTokenCheck(value = "customers")
 public class ManageCustomerController {
 
     @Inject
@@ -55,7 +55,7 @@ public class ManageCustomerController {
     CustomerBirthdayValidator dateValidator;
 
     @Inject
-    Mapper dozerBeanMapper;
+    Mapper beanMapper;
 
     @Value("${customer.initialBirthYear}")
     Integer initialBirthYear;
@@ -91,7 +91,7 @@ public class ManageCustomerController {
      * @return
      */
     @RequestMapping(value = "create", method = RequestMethod.GET, params = "form")
-    public String createForm(CustomerForm form) {
+    public String createForm() {
         return "managecustomer/createForm";
     }
 
@@ -128,13 +128,12 @@ public class ManageCustomerController {
      */
     @TransactionTokenCheck(value = "create", type = TransactionTokenType.IN)
     @RequestMapping(value = "create", method = RequestMethod.POST)
-    public String create(@Validated CustomerForm form, BindingResult result,
-            RedirectAttributes redirectAttr) {
+    public String create(@Validated CustomerForm form, BindingResult result, RedirectAttributes redirectAttr) {
         if (result.hasErrors()) {
             return createRedo(form);
         }
 
-        Customer customer = dozerBeanMapper.map(form, Customer.class);
+        Customer customer = beanMapper.map(form, Customer.class);
 
         customer.setCustomerBirth(new DateTime(form.getCustomerBirthYear(), form
                 .getCustomerBirthMonth(), form.getCustomerBirthDay(), 0, 0, 0)
@@ -142,13 +141,12 @@ public class ManageCustomerController {
 
         Customer registeredCustomer = customerService.register(customer, form
                 .getCustomerPass());
-        redirectAttr.addFlashAttribute("customerCode", registeredCustomer.getCustomerCode());
-        return "redirect:/managecustomer/create?complete";
+        redirectAttr.addFlashAttribute(registeredCustomer);
+        return "redirect:/customers/create?complete";
     }
 
     /**
      * Redirected to the result page after registering a customer
-     * @param status
      * @return
      */
     @RequestMapping(value = "create", method = RequestMethod.GET, params = "complete")

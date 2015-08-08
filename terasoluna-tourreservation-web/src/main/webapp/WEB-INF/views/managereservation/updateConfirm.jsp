@@ -57,35 +57,26 @@
 			<spring:message code="label.tr.searchtour.statementOfCharges" />
 		</caption>
 		<tr>
-			<td><spring:message
-					code="label.tr.searchtour.classificationOnAge" /></td>
+			<td><spring:message code="label.tr.searchtour.classificationOnAge" /></td>
 			<td><spring:message code="label.tr.searchtour.unitPrice" /></td>
 			<td><spring:message code="label.tr.searchtour.noOfPeople" /></td>
 			<td><spring:message code="label.tr.searchtour.charge" /></td>
 		</tr>
 		<tr>
 			<td><spring:message code="label.tr.searchtour.adult" /></td>
-			<td><fmt:formatNumber pattern="${currencyPattern}"
-					value="${f:h(output.priceCalculateOutput.adultUnitPrice)}" /></td>
-			<td><fmt:formatNumber pattern="${personPattern}"
-					value="${f:h(output.priceCalculateOutput.adultCount)}" /></td>
-			<td><fmt:formatNumber pattern="${currencyPattern}"
-					value="${f:h(output.priceCalculateOutput.adultPrice)}" /></td>
+			<td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.adultUnitPrice)}" /></td>
+			<td><fmt:formatNumber pattern="${personPattern}" value="${f:h(output.priceCalculateOutput.adultCount)}" /></td>
+			<td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.adultPrice)}" /></td>
 		</tr>
 		<tr>
 			<td><spring:message code="label.tr.searchtour.child" /></td>
-			<td><fmt:formatNumber pattern="${currencyPattern}"
-					value="${f:h(output.priceCalculateOutput.childUnitPrice)}" /></td>
-			<td><fmt:formatNumber pattern="${personPattern}"
-					value="${f:h(output.priceCalculateOutput.childCount)}" /></td>
-			<td><fmt:formatNumber pattern="${currencyPattern}"
-					value="${f:h(output.priceCalculateOutput.childPrice)}" /></td>
+			<td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.childUnitPrice)}" /></td>
+			<td><fmt:formatNumber pattern="${personPattern}" value="${f:h(output.priceCalculateOutput.childCount)}" /></td>
+			<td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.childPrice)}" /></td>
 		</tr>
 		<tr>
-			<td colspan="3"><spring:message
-					code="label.tr.searchtour.sumPrice" /></td>
-			<td><fmt:formatNumber pattern="${currencyPattern}"
-					value="${f:h(output.priceCalculateOutput.sumPrice)}" /></td>
+			<td colspan="3"><spring:message code="label.tr.searchtour.sumPrice" /></td>
+			<td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.sumPrice)}" /></td>
 		</tr>
 	</table>
 	<br />
@@ -111,52 +102,51 @@
 		</caption>
 		<tr>
 			<td><spring:message code="label.tr.common.paymentMethod" /></td>
-			<td colspan="3"><spring:message
-					code="label.tr.common.bankTransfer" /></td>
+			<td colspan="3"><spring:message code="label.tr.common.bankTransfer" /></td>
 		</tr>
 		<tr>
 			<td><spring:message code="label.tr.common.paymentAccount" /></td>
-			<td colspan="3"><spring:message
-					code="label.tr.common.companyName" /> <br /> <spring:message
-					code="label.tr.common.savingsAccount" /></td>
+			<td colspan="3">
+				<spring:message code="label.tr.common.companyName" />
+				<br />
+				<spring:message code="label.tr.common.savingsAccount" />
+			</td>
 		</tr>
 		<tr>
 			<td><spring:message code="label.tr.common.paymentTimeLimit" /></td>
-			<td colspan="3"><fmt:formatDate
-					value="${output.paymentTimeLimit}" pattern="${datePattern}" /></td>
+			<td colspan="3"><fmt:formatDate value="${output.paymentTimeLimit}" pattern="${datePattern}" /></td>
 		</tr>
 		<tr>
 			<td><spring:message code="label.tr.common.paymentInquiry" /></td>
-			<td colspan="3"><spring:message
-					code="label.tr.common.paymentCompanyname" /> <spring:message
-					code="label.tr.common.companyTel" /> <spring:message
-					code="label.tr.common.companyEmail" /></td>
+			<td colspan="3">
+				<spring:message code="label.tr.common.paymentCompanyname" />
+				<spring:message code="label.tr.common.companyTel" />
+				<spring:message code="label.tr.common.companyEmail" />
+			</td>
 		</tr>
 	</table>
 	<br />
-	<spring:message
-		code="label.tr.managereservation.manageReservationConfirmMessage" />
+	<spring:message code="label.tr.managereservation.manageReservationConfirmMessage" />
 	<br />
 	<!-- begin buttons -->
-	<form:form method="post" modelAttribute="manageReservationForm"
-		cssClass="inline"
-		action="${pageContext.request.contextPath}/managereservation/update">
+	<form:form modelAttribute="manageReservationForm" cssClass="inline">
 
-		<form:hidden path="reserveNo" />
 		<form:hidden path="adultCount" />
 		<form:hidden path="childCount" />
 
-		<div class="span-5">
+		<div class="span-6">
 			<table>
 				<tr>
-					<td><spring:message
-							code="label.tr.managereservation.changeReservationStaBtnMessage"
-							var="startOverButton" /> <input id="backToFormBtn" type="submit" name="redo"
-						value="${startOverButton}" />
-					<td><spring:message
-							code="label.tr.managereservation.changeReservationFinBtnMessage"
-							var="finalizeChangeButton" /><input id="changeBtn" type="submit"
-						value="${finalizeChangeButton}" />
+					<td>
+						<button id="backToFormBtn" name="redo">
+							<spring:message code="label.tr.managereservation.changeReservationStaBtnMessage" />
+						</button>
+					</td>
+					<td>
+						<button id="changeBtn">
+							<spring:message code="label.tr.managereservation.changeReservationFinBtnMessage" />
+						</button>
+					</td>
 				</tr>
 			</table>
 		</div>

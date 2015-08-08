@@ -16,8 +16,8 @@
 	<spring:message
 		code="label.tr.managereservation.manageReservationEditMessage" />
 	<!-- end message -->
-	<form:form method="post" modelAttribute="manageReservationForm"
-		action="${pageContext.request.contextPath}/managereservation/update">
+	<form:form method="post" action="${pageContext.request.contextPath}/reservations/${f:h(reserve.reserveNo)}/update"
+			modelAttribute="manageReservationForm">
 		<table>
 			<caption>
 				<spring:message code="label.tr.searchtour.tourDetailCaptionMessage" />
@@ -27,8 +27,7 @@
 				<th><spring:message code="label.tr.searchtour.reserveNo" /></th>
 				<td>${f:h(reserve.reserveNo)}</td>
 				<th><spring:message code="label.tr.searchtour.reserveDate" /></th>
-				<td><fmt:formatDate value="${reserve.reservedDay}"
-						pattern="${datePattern}" /></td>
+				<td><fmt:formatDate value="${reserve.reservedDay}" pattern="${datePattern}" /></td>
 			</tr>
 			<tr>
 				<th><spring:message code="label.tr.searchtour.tourname" /></th>
@@ -36,8 +35,7 @@
 			</tr>
 			<tr>
 				<th><spring:message code="label.tr.searchtour.depDay" /></th>
-				<td><fmt:formatDate value="${reserve.tourInfo.depDay}"
-						pattern="${datePattern}" /></td>
+				<td><fmt:formatDate value="${reserve.tourInfo.depDay}" pattern="${datePattern}" /></td>
 				<th><spring:message code="label.tr.searchtour.tourDays" /></th>
 				<td>${f:h(reserve.tourInfo.tourDays)}</td>
 			</tr>
@@ -49,13 +47,14 @@
 			</tr>
 			<tr>
 				<th><spring:message code="label.tr.common.persons" /></th>
-				<td colspan="3"><spring:message code="label.tr.common.adult" />
-					<form:select path="adultCount">
-						<form:options items="${CL_ADULT_COUNT}" />
-					</form:select> <spring:message code="label.tr.common.person" /> <spring:message
-						code="label.tr.common.child" /> <form:select path="childCount"
-						items="${CL_CHILD_COUNT}" /> <spring:message
-						code="label.tr.common.person" /></td>
+				<td colspan="3">
+					<spring:message code="label.tr.common.adult" />
+					<form:select path="adultCount" items="${CL_ADULT_COUNT}" />
+					<spring:message code="label.tr.common.person" />
+					<spring:message code="label.tr.common.child" />
+					<form:select path="childCount" items="${CL_CHILD_COUNT}" />
+					<spring:message code="label.tr.common.person" />
+				</td>
 			</tr>
 		</table>
 
@@ -76,26 +75,21 @@
 		<!-- note end -->
 
 		<!-- begin buttons -->
-		<div class="span-4 append-20">
+		<div class="span-9">
 			<table>
 				<tr>
 					<td>
 						<div class="button">
-							<spring:message
-								code="label.tr.managereservation.returnToListScreenBtnMessage"
-								var="returnToListScreen" />
-							<input id="backToListBtn" type="submit" name="backTolist"
-								value="${returnToListScreen}" tabindex="2" />
+							<button id="backToListBtn" name="backTolist">
+								<spring:message code="label.tr.managereservation.returnToListScreenBtnMessage" />
+							</button>
 						</div>
 					</td>
 					<td>
 						<div class="button">
-							<spring:message
-								code="label.tr.managereservation.confirmEditBtnMessage"
-								var="changeReservationButton" />
-							<input type="hidden" name="reserveNo"
-								value="${f:h(reserve.reserveNo)}" /><input id="confirmBtn" type="submit"
-								name="confirm" value="${changeReservationButton}" />
+							<button id="confirmBtn" name="confirm">
+								<spring:message code="label.tr.managereservation.confirmEditBtnMessage" />
+							</button>
 						</div>
 					</td>
 				</tr>

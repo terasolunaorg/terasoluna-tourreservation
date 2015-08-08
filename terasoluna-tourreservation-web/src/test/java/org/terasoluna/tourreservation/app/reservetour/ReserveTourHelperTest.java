@@ -39,7 +39,7 @@ import org.terasoluna.tourreservation.domain.service.reserve.ReserveService;
 import org.terasoluna.tourreservation.domain.service.reserve.ReserveTourInput;
 import org.terasoluna.tourreservation.domain.service.reserve.ReserveTourOutput;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
-import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateSharedSerivce;
+import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateSharedService;
 import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoSharedService;
 import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
 
@@ -50,7 +50,7 @@ public class ReserveTourHelperTest {
 
     ReserveService reserveService;
 
-    PriceCalculateSharedSerivce priceCalculateSharedSerivce;
+    PriceCalculateSharedService priceCalculateSharedService;
 
     TourInfo tourInfo;
 
@@ -58,13 +58,7 @@ public class ReserveTourHelperTest {
 
     PriceCalculateOutput priceCalculateOutput;
 
-    SecurityContext securityContext;
-
     ReservationUserDetails userDetails;
-
-    User user;
-
-    Mapper dozerBeanMapper;
 
     @Before
     public void setUp() throws Exception {
@@ -73,14 +67,14 @@ public class ReserveTourHelperTest {
         reserveHelper = new ReserveTourHelper();
         tourInfoSharedService = mock(TourInfoSharedService.class);
         reserveService = mock(ReserveService.class);
-        priceCalculateSharedSerivce = mock(PriceCalculateSharedSerivce.class);
+        priceCalculateSharedService = mock(PriceCalculateSharedService.class);
 
         DozerBeanMapper dozerBeanMapper = new DozerBeanMapper();
 
         reserveHelper.tourInfoSharedService = tourInfoSharedService;
         reserveHelper.reserveService = reserveService;
-        reserveHelper.priceCalculateService = priceCalculateSharedSerivce;
-        reserveHelper.dozerBeanMapper = dozerBeanMapper;
+        reserveHelper.priceCalculateService = priceCalculateSharedService;
+        reserveHelper.beanMapper = dozerBeanMapper;
 
         // setup mock behavior
         String tourCode = "xxxxx";
@@ -106,7 +100,7 @@ public class ReserveTourHelperTest {
         priceCalculateOutput.setSumPrice(100000);
         priceCalculateOutput.setAdultCount(1);
         priceCalculateOutput.setChildCount(2);
-        when(priceCalculateSharedSerivce.calculatePrice(10000, 1, 2))
+        when(priceCalculateSharedService.calculatePrice(10000, 1, 2))
                 .thenReturn(priceCalculateOutput);
 
         customer = new Customer("12345678");
@@ -125,12 +119,11 @@ public class ReserveTourHelperTest {
         String tourCode = "xxxxx";
 
         ReserveTourForm form = new ReserveTourForm();
-        form.setTourCode(tourCode);
         form.setAdultCount(1);
         form.setChildCount(2);
 
         // run
-        TourDetailOutput resultOutput = reserveHelper.findTourDetail(userDetails, form);
+        TourDetailOutput resultOutput = reserveHelper.findTourDetail(userDetails, tourCode, form);
 
         // assert
         assertThat(resultOutput.getCustomer(), is(customer));
@@ -146,12 +139,11 @@ public class ReserveTourHelperTest {
     	String tourCode = "xxxxx";
 
         ReserveTourForm form = new ReserveTourForm();
-        form.setTourCode(tourCode);
         form.setAdultCount(1);
         form.setChildCount(2);
 
         // run
-        TourDetailOutput resultOutput = reserveHelper.findTourDetail(null, form);
+        TourDetailOutput resultOutput = reserveHelper.findTourDetail(null, tourCode, form);
 
         // assert
         assertThat(resultOutput.getCustomer(), is(nullValue()));
@@ -169,7 +161,7 @@ public class ReserveTourHelperTest {
                 .thenReturn(output);
 
         // run
-        ReserveTourOutput result = reserveHelper.reserve(userDetails, form);
+        ReserveTourOutput result = reserveHelper.reserve(userDetails, "123", form);
 
         // assert
         assertThat(result, is(output));
