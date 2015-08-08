@@ -33,9 +33,6 @@ public class ReserveTourForm implements Serializable {
 	private static final long serialVersionUID = -6732565610738816899L;
 
 	@NotNull
-	private String tourCode;
-
-	@NotNull
 	@Min(0)
 	@Max(5)
 	private Integer adultCount;
@@ -47,14 +44,6 @@ public class ReserveTourForm implements Serializable {
 
 	@Size(min = 0, max = 80)
 	private String remarks;
-
-	public String getTourCode() {
-		return tourCode;
-	}
-
-	public void setTourCode(String tourCode) {
-		this.tourCode = tourCode;
-	}
 
 	public Integer getAdultCount() {
 		return adultCount;

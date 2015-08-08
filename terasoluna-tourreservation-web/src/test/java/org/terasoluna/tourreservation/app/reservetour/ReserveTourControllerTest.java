@@ -16,9 +16,9 @@
 package org.terasoluna.tourreservation.app.reservetour;
 
 import static org.hamcrest.core.IsNull.notNullValue;
-import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.fail;
 import static org.mockito.Matchers.anyObject;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.flash;
@@ -70,10 +70,36 @@ public class ReserveTourControllerTest {
 
         // Prepare get request
         MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders
-                .get("/reservetour/read");
+                .get("/tours/123/reserve").param("form", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((ReservationUserDetails) anyObject(), (ReserveTourForm) anyObject()))
+        when(reserveTourHelper.findTourDetail((ReservationUserDetails) anyObject(), eq("123"), (ReserveTourForm) anyObject()))
+                .thenReturn(new TourDetailOutput());
+
+        try {
+            ResultActions results = mockMvc.perform(getRequest);
+            results.andExpect(status().isOk());
+            results.andExpect(view().name("reservetour/reserveForm"));
+            results.andExpect(model().attribute("output", notNullValue()));
+            return;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        fail(); // FAIL when exception is thrown
+
+    }
+
+    @Test
+    public void testReadFormSuccess() {
+
+        // Prepare get request
+        MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders
+                .get("/tours/123").param("form", "");
+
+        // Set mock behavior for helper method
+        when(reserveTourHelper.findTourDetail((ReservationUserDetails) anyObject(), eq("123"), (ReserveTourForm) anyObject()))
                 .thenReturn(new TourDetailOutput());
 
         try {
@@ -96,14 +122,13 @@ public class ReserveTourControllerTest {
 
         // Prepare POST request
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/reservetour/reserve").param("confirm", "");
+                .post("/tours/123/reserve").param("confirm", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((ReservationUserDetails) anyObject(), (ReserveTourForm) anyObject()))
+        when(reserveTourHelper.findTourDetail((ReservationUserDetails) anyObject(), eq("123"), (ReserveTourForm) anyObject()))
                 .thenReturn(new TourDetailOutput());
 
         // Set form data
-        postRequest.param("tourCode", "2");
         postRequest.param("adultCount", "2");
         postRequest.param("childCount", "2");
 
@@ -127,10 +152,10 @@ public class ReserveTourControllerTest {
     public void testReserveTourConfirmFail() {
         // Prepare POST request
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/reservetour/reserve").param("confirm", "");
+                .post("/tours/123/reserve").param("confirm", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((ReservationUserDetails) anyObject(), (ReserveTourForm) anyObject()))
+        when(reserveTourHelper.findTourDetail((ReservationUserDetails) anyObject(), eq("123"), (ReserveTourForm) anyObject()))
                 .thenReturn(new TourDetailOutput());
 
         // Do not Set any form data so that form validation will fail
@@ -141,8 +166,8 @@ public class ReserveTourControllerTest {
             results.andExpect(status().isOk());
             results.andExpect(view().name("reservetour/reserveForm"));
             results.andExpect(model().hasErrors());
-            results.andExpect(model().attributeErrorCount("reserveTourForm", 3));
-            results.andExpect(model().attribute("output", nullValue()));
+            results.andExpect(model().attributeErrorCount("reserveTourForm", 2));
+            results.andExpect(model().attribute("output", notNullValue()));
             return;
 
         } catch (Exception e) {
@@ -156,19 +181,12 @@ public class ReserveTourControllerTest {
     public void testReserveTourReserveSuccess() {
         // Prepare POST request
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/reservetour/reserve");
+                .post("/tours/123/reserve");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.reserve((ReservationUserDetails) anyObject(), (ReserveTourForm) anyObject()))
+        when(reserveTourHelper.reserve((ReservationUserDetails) anyObject(), eq("123"), (ReserveTourForm) anyObject()))
                 .thenReturn(new ReserveTourOutput());
 
-        // Set form data to session
-        ReserveTourForm reserveTourForm = new ReserveTourForm();
-        reserveTourForm.setTourCode("1");
-        reserveTourForm.setAdultCount(1);
-        reserveTourForm.setChildCount(1);
-
-        postRequest.param("tourCode", "2");
         postRequest.param("adultCount", "2");
         postRequest.param("childCount", "2");
 
@@ -178,7 +196,8 @@ public class ReserveTourControllerTest {
             results.andExpect(model().hasNoErrors());
             results.andExpect(flash().attribute("output", notNullValue()));
             results.andExpect(view().name(
-                    "redirect:/reservetour/reserve?complete"));
+                    "redirect:/tours/{tourCode}/reserve?complete"));
+            results.andExpect(model().attribute("tourCode", "123"));
             return;
 
         } catch (Exception e) {
@@ -192,16 +211,15 @@ public class ReserveTourControllerTest {
     public void testReserveTourReserveFailByBusinessException() {
         // Prepare POST request
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/reservetour/reserve");
+                .post("/tours/123/reserve");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.reserve((ReservationUserDetails) anyObject(), (ReserveTourForm) anyObject()))
+        when(reserveTourHelper.reserve((ReservationUserDetails) anyObject(), eq("123"), (ReserveTourForm) anyObject()))
                 .thenThrow(new BusinessException(""));
-        when(reserveTourHelper.findTourDetail((ReservationUserDetails) anyObject(), (ReserveTourForm) anyObject()))
+        when(reserveTourHelper.findTourDetail((ReservationUserDetails) anyObject(), eq("123"), (ReserveTourForm) anyObject()))
                 .thenReturn(new TourDetailOutput());
 
         // Set form data
-        postRequest.param("tourCode", "2");
         postRequest.param("adultCount", "2");
         postRequest.param("childCount", "2");
 
@@ -226,7 +244,7 @@ public class ReserveTourControllerTest {
     public void testReserveComplete() {
         // Prepare get request
         MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders.get(
-                "/reservetour/reserve").param("complete", "");
+                "/tours/123/reserve").param("complete", "");
 
         // No Logic testing here
         // this will just test the request mapping part
@@ -248,7 +266,7 @@ public class ReserveTourControllerTest {
     public void testReserveRedo() {
         // Prepare get request
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/reservetour/reserve").param("redo", "");
+                .post("/tours/123/reserve").param("redo", "");
 
         // No Logic testing here
         // this will just test the request mapping part

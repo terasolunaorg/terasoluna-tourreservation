@@ -26,7 +26,7 @@ import org.terasoluna.tourreservation.domain.service.reserve.ReserveService;
 import org.terasoluna.tourreservation.domain.service.reserve.ReserveTourInput;
 import org.terasoluna.tourreservation.domain.service.reserve.ReserveTourOutput;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
-import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateSharedSerivce;
+import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateSharedService;
 import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoSharedService;
 import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
 
@@ -34,7 +34,7 @@ import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUser
 public class ReserveTourHelper {
 
 	@Inject
-	PriceCalculateSharedSerivce priceCalculateService;
+	PriceCalculateSharedService priceCalculateService;
 
 	@Inject
 	ReserveService reserveService;
@@ -43,7 +43,7 @@ public class ReserveTourHelper {
 	TourInfoSharedService tourInfoSharedService;
 
 	@Inject
-	Mapper dozerBeanMapper;
+	Mapper beanMapper;
 
 	/**
 	 * Fetches detailed information of a particular tour (associated entities
@@ -52,13 +52,14 @@ public class ReserveTourHelper {
 	 * @param form
 	 * @return
 	 */
-	public TourDetailOutput findTourDetail(ReservationUserDetails userDetails, ReserveTourForm form) {
-		TourDetailOutput output = new TourDetailOutput();
-		TourInfo tourInfo = tourInfoSharedService.findOne(form.getTourCode());
+	public TourDetailOutput findTourDetail(ReservationUserDetails userDetails, String tourCode, ReserveTourForm form) {
+		TourInfo tourInfo = tourInfoSharedService.findOne(tourCode);
 
 		PriceCalculateOutput priceCalculateOutput = priceCalculateService
 				.calculatePrice(tourInfo.getBasePrice(), form.getAdultCount(),
 						form.getChildCount());
+
+		TourDetailOutput output = new TourDetailOutput();
 		output.setTourInfo(tourInfo);
 		output.setPriceCalculateOutput(priceCalculateOutput);
 		
@@ -70,16 +71,18 @@ public class ReserveTourHelper {
 
 	/**
 	 * makes a reservation
-	 * 
-	 * @param tourDetailForm
+	 *
+	 * @param userDetails
+	 * @param tourReserveForm
 	 * @return
 	 * @throws BusinessException
 	 */
-	public ReserveTourOutput reserve(ReservationUserDetails userDetails, ReserveTourForm tourReserveForm)
+	public ReserveTourOutput reserve(ReservationUserDetails userDetails, String tourCode, ReserveTourForm tourReserveForm)
 			throws BusinessException {
 
-		ReserveTourInput input = dozerBeanMapper.map(tourReserveForm,
+		ReserveTourInput input = beanMapper.map(tourReserveForm,
 				ReserveTourInput.class);
+		input.setTourCode(tourCode);
 
 		Customer customer = userDetails.getCustomer();
 		input.setCustomer(customer);

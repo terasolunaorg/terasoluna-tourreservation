@@ -1,18 +1,18 @@
 
 <div class="container">
 	<p id="messagesArea" class="box">
-		<sec:authorize ifNotGranted="ROLE_USER">
+		<sec:authorize access="!hasRole('ROLE_USER')">
 			<spring:message code="label.tr.common.notLoginMessage" />
 		</sec:authorize>
 		<spring:message code="label.tr.menu.menuMessage" />
 	</p>
 	<div class="span-24 last">
-		<form action="${pageContext.request.contextPath}/searchtour/search"
-			method="get">
+		<form:form method="get" action="${pageContext.request.contextPath}/tours">
 			<fieldset class="notice">
 				<div class="span-5">
-					<input id="searchTourBtn" style="width: 150px;" type="submit"
-						value="<spring:message code="label.tr.menu.searchBtnMessage" />">
+					<button id="searchTourBtn" style="width: 150px;">
+						<spring:message code="label.tr.menu.searchBtnMessage" />
+					</button>
 				</div>
 				<div class="span-18 last">
 					<p>
@@ -21,13 +21,14 @@
 				</div>
 				<input type="hidden" name="form" />
 			</fieldset>
-		</form>
-		<sec:authorize ifNotGranted="ROLE_USER">
-			<form action="${pageContext.request.contextPath}/login" method="get">
+		</form:form>
+		<sec:authorize access="!hasRole('ROLE_USER')">
+			<form:form method="get" action="${pageContext.request.contextPath}/login">
 				<fieldset class="notice">
 					<div class="span-5">
-						<input id="loginBtn" style="width: 150px;" type="submit"
-							value="<spring:message code="label.tr.menu.loginBtnMessage" />">
+						<button id="loginBtn" style="width: 150px;">
+							<spring:message code="label.tr.menu.loginBtnMessage" />
+						</button>
 					</div>
 					<div class="span-18 last">
 						<p>
@@ -35,15 +36,14 @@
 						</p>
 					</div>
 				</fieldset>
-			</form>
+			</form:form>
 
-			<form
-				action="${pageContext.request.contextPath}/managecustomer/create"
-				method="get">
+			<form:form method="get" action="${pageContext.request.contextPath}/customers/create">
 				<fieldset class="notice">
 					<div class="span-5">
-						<input id="customerRegisterBtn" style="width: 150px;" type="submit"
-							value="<spring:message code="label.tr.menu.customerRegisterBtnMessage" />">
+						<button id="customerRegisterBtn" style="width: 150px;">
+							<spring:message code="label.tr.menu.customerRegisterBtnMessage" />
+						</button>
 					</div>
 					<div class="span-18 last">
 						<p>
@@ -52,25 +52,23 @@
 					</div>
 					<input type="hidden" name="form" />
 				</fieldset>
-			</form>
+			</form:form>
 		</sec:authorize>
-		<sec:authorize ifAnyGranted="ROLE_USER">
-			<form
-				action="${pageContext.request.contextPath}/managereservation/list"
-				method="get">
+		<sec:authorize access="hasRole('ROLE_USER')">
+			<form:form method="get" action="${pageContext.request.contextPath}/reservations/me">
 				<fieldset class="notice">
 					<div class="span-5">
-						<input id="reservedToursReferBtn" style="width: 150px;" type="submit"
-							value="<spring:message code="label.tr.menu.referBtnMessage" />">
+						<button id="reservedToursReferBtn" style="width: 150px;">
+							<spring:message code="label.tr.menu.referBtnMessage" />
+						</button>
 					</div>
 					<div class="span-18 last">
 						<p>
 							<spring:message code="label.tr.menu.referMessage" />
 						</p>
 					</div>
-					<input type="hidden" name="form" />
 				</fieldset>
-			</form>
+			</form:form>
 		</sec:authorize>
 	</div>
 </div>

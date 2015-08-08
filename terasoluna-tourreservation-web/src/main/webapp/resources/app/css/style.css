@@ -34,6 +34,7 @@
 .pagination {
     height: 36px;
     margin: 18px 0;
+    text-align: center;
 }
 
 .pagination ul {

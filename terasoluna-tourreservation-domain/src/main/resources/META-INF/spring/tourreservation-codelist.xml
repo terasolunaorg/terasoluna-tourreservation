@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
-    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
     xmlns:task="http://www.springframework.org/schema/task"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
-        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
-        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd">
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+    ">
 
     <bean id="jdbcTemplateForCodeList" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource" />
@@ -41,7 +42,7 @@
         <property name="labelFormat" value="%02d" />
     </bean>
 
-    <util:map id="daysMapJa">
+    <util:map id="tourDaysMapJa">
         <entry key="0" value="制限なし" />
         <entry key="1" value="日帰り" />
         <entry key="2" value="1泊以下" />
@@ -51,7 +52,7 @@
         <entry key="6" value="5泊以下" />
     </util:map>
 
-    <bean id="CL_DAYS"
+    <bean id="CL_TOUR_DAYS"
         class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
         <property name="rows">
             <util:map key-type="java.util.Locale" value-type="java.util.LinkedHashMap"
@@ -68,8 +69,8 @@
                         <entry key="6" value="Within five nights" />
                     </util:map>
                 </entry>
-                <entry key="ja" value-ref="daysMapJa" />
-                <entry key="ja_JP" value-ref="daysMapJa" />
+                <entry key="ja" value-ref="tourDaysMapJa" />
+                <entry key="ja_JP" value-ref="tourDaysMapJa" />
             </util:map>
         </property>
     </bean>
@@ -129,6 +130,6 @@
     <task:scheduler id="taskScheduler"/>  
 
     <task:scheduled-tasks scheduler="taskScheduler">
-    <task:scheduled ref="CL_PREF" method="refresh" cron="${cron.codelist.refreshTime}"/>  <!-- (3) -->
+    <task:scheduled ref="CL_PREF" method="refresh" cron="${cron.codelist.refreshTime}"/>
     </task:scheduled-tasks>
 </beans>
