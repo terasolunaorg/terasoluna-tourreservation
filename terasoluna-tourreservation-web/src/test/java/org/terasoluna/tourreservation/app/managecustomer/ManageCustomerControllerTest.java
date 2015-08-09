@@ -15,6 +15,7 @@
  */
 package org.terasoluna.tourreservation.app.managecustomer;
 
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.junit.Assert.assertEquals;
@@ -29,7 +30,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
@@ -46,8 +46,6 @@ public class ManageCustomerControllerTest {
 
     CustomerService customerService;
 
-    Mapper dozerBeanMapper;
-
     @Before
     public void setUp() {
 
@@ -59,7 +57,7 @@ public class ManageCustomerControllerTest {
         CustomerPassEqualsValidator cpev = new CustomerPassEqualsValidator();
         CustomerBirthdayValidator cbv = new CustomerBirthdayValidator();
 
-        DozerBeanMapper dozerBeanMapper = new DozerBeanMapper();
+        DozerBeanMapper beanMapper = new DozerBeanMapper();
 
         // Whenever mapping files are required, can be set as shown below
 
@@ -73,7 +71,7 @@ public class ManageCustomerControllerTest {
         manageCustomerController.initialBirthYear = 2000;
         manageCustomerController.initialBirthMonth = 1;
         manageCustomerController.initialBirthDay = 1;
-        manageCustomerController.dozerBeanMapper = dozerBeanMapper;
+        manageCustomerController.beanMapper = beanMapper;
 
         // build
         mockMvc = MockMvcBuilders.standaloneSetup(manageCustomerController)
@@ -89,7 +87,7 @@ public class ManageCustomerControllerTest {
     public void testCreateForm() {
 
         MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders.get(
-                "/managecustomer/create").param("form", "");
+                "/customers/create").param("form", "");
 
         try {
             ResultActions results = mockMvc.perform(getRequest);
@@ -120,7 +118,7 @@ public class ManageCustomerControllerTest {
 
         // Prepare request
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/managecustomer/create").param("confirm", "");
+                .post("/customers/create").param("confirm", "");
 
         // Prepare form and set to POST request
         CustomerForm form = prepareNewForm();
@@ -144,7 +142,7 @@ public class ManageCustomerControllerTest {
 
         // Prepare request
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/managecustomer/create").param("confirm", "");
+                .post("/customers/create").param("confirm", "");
 
         // Prepare form
         CustomerForm form = prepareNewForm();
@@ -193,7 +191,7 @@ public class ManageCustomerControllerTest {
     @Test
     public void testCreateRedo() {
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/managecustomer/create").param("redo", "");
+                .post("/customers/create").param("redo", "");
 
         // Set form to the request to simulate correct back button behaviour
         // Since the control will be on confirmation screen, form values may be different from the default
@@ -233,7 +231,7 @@ public class ManageCustomerControllerTest {
 
         // Prepare request
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/managecustomer/create");
+                .post("/customers/create");
 
         when(customerService.register((Customer) anyObject(), eq("12345")))
                 .thenReturn(new Customer("12345678"));
@@ -246,8 +244,8 @@ public class ManageCustomerControllerTest {
             // check redirect http status : 302
             results.andExpect(status().isFound());
             results.andExpect(view().name(
-                    "redirect:/managecustomer/create?complete"));
-            results.andExpect(flash().attribute("customerCode", "12345678"));
+                    "redirect:/customers/create?complete"));
+            results.andExpect(flash().attribute("customer", notNullValue()));
             return;
         } catch (Exception e) {
             e.printStackTrace();
@@ -264,7 +262,7 @@ public class ManageCustomerControllerTest {
     public void testCreateFail() {
         // Prepare request
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/managecustomer/create");
+                .post("/customers/create");
 
         when(customerService.register((Customer) anyObject(), eq("12345")))
                 .thenReturn(new Customer("12345678"));
@@ -294,7 +292,7 @@ public class ManageCustomerControllerTest {
     public void testCreateCompleｔe() {
 
         MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders.get(
-                "/managecustomer/create").param("complete", "");
+                "/customers/create").param("complete", "");
 
         try {
             ResultActions results = mockMvc.perform(getRequest);

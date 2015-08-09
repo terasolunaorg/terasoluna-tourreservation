@@ -66,7 +66,7 @@ public class SystemErrorTest extends FunctionTestSupport {
         driver.findElement(By.id("reservedToursReferBtn")).click();
 
         driver.get(baseUrl
-                + "/terasoluna-tourreservation-web/managereservation/detail/aaaaaa");
+                + "/terasoluna-tourreservation-web/reservations/aaaaaa");
 
         assertEquals(getMessage(MessageKeys.E_TR_FW_0003),
                 driver.findElement(By.cssSelector("li")).getText());

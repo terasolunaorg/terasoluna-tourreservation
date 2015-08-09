@@ -15,12 +15,6 @@
  */
 package org.terasoluna.tourreservation.app.managereservation;
 
-import java.util.Arrays;
-import java.util.List;
-
-import javax.inject.Inject;
-import javax.validation.groups.Default;
-
 import org.dozer.Mapper;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -35,17 +29,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
-import org.terasoluna.tourreservation.app.managereservation.ManageReservationForm.ReservationCancel;
-import org.terasoluna.tourreservation.app.managereservation.ManageReservationForm.ReservationEdit;
 import org.terasoluna.tourreservation.domain.model.Reserve;
 import org.terasoluna.tourreservation.domain.service.reserve.ReservationUpdateInput;
 import org.terasoluna.tourreservation.domain.service.reserve.ReservationUpdateOutput;
 import org.terasoluna.tourreservation.domain.service.reserve.ReserveService;
 import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
 
+import javax.inject.Inject;
+import java.util.Arrays;
+import java.util.List;
+
 @Controller
-@RequestMapping(value = "managereservation")
-@TransactionTokenCheck(value = "managereservation")
+@RequestMapping(value = "reservations")
+@TransactionTokenCheck(value = "reservations")
 public class ManageReservationController {
 
     @Inject
@@ -55,7 +51,7 @@ public class ManageReservationController {
     ReserveService reserveService;
 
     @Inject
-    Mapper dozerBeanMapper;
+    Mapper beanMapper;
 
     /**
      * pre-initialization of form backed bean
@@ -72,7 +68,7 @@ public class ManageReservationController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "list", method = RequestMethod.GET)
+    @RequestMapping(value="me", method = RequestMethod.GET)
     public String list(@AuthenticationPrincipal ReservationUserDetails userDetails ,Model model) {
         List<ReserveRowOutput> rows = manageReservationHelper.list(userDetails);
 
@@ -86,7 +82,7 @@ public class ManageReservationController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "detail/{reserveNo}", method = RequestMethod.GET)
+    @RequestMapping(value = "{reserveNo}", method = RequestMethod.GET)
     public String detailForm(@PathVariable("reserveNo") String reserveNo,
             Model model) {
         ReservationDetailOutput output = manageReservationHelper
@@ -103,7 +99,7 @@ public class ManageReservationController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "update/{reserveNo}", method = RequestMethod.GET, params = "form")
+    @RequestMapping(value = "{reserveNo}/update", method = RequestMethod.GET, params = "form")
     public String updateForm(@PathVariable("reserveNo") String reserveNo,
             ManageReservationForm form, Model model) {
 
@@ -111,7 +107,7 @@ public class ManageReservationController {
 
         // Map Model to form
         // This is needed to copy the current values of the reservation into the form
-        dozerBeanMapper.map(reserve, form);
+        beanMapper.map(reserve, form);
 
         model.addAttribute(reserve);
         return "managereservation/updateForm";
@@ -120,36 +116,32 @@ public class ManageReservationController {
     /**
      * Goes back to the edit screen for user to make changes to the reservation.
      * @param reserveNo
-     * @param form
      * @param model
      * @return
      */
-    @RequestMapping(value = "update", method = RequestMethod.POST, params = "redo")
-    public String updateRedo(ManageReservationForm form, Model model) {
-        Reserve reserve = reserveService.findOne(form.getReserveNo());
+    @RequestMapping(value = "{reserveNo}/update", method = RequestMethod.POST, params = "redo")
+    public String updateRedo(@PathVariable("reserveNo") String reserveNo,
+            ManageReservationForm form, Model model) {
+        Reserve reserve = reserveService.findOne(reserveNo);
         model.addAttribute(reserve);
         return "managereservation/updateForm";
     }
 
     /**
      * Shows the confirmation page after user changes edits the reservation info on the edit reservation page
-     * @param reserve
      * @param model
      * @return
      */
     @TransactionTokenCheck(value = "update", type = TransactionTokenType.BEGIN)
-    @RequestMapping(value = "update", method = RequestMethod.POST, params = "confirm")
-    public String updateConfirm(@Validated({ ReservationEdit.class,
-            Default.class }) ManageReservationForm form, BindingResult result,
-            Model model) {
+    @RequestMapping(value = "{reserveNo}/update", method = RequestMethod.POST, params = "confirm")
+    public String updateConfirm(@PathVariable("reserveNo") String reserveNo,
+            @Validated ManageReservationForm form, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            // TODO
-            // return updateRedo(form, model);
-            return "managereservation/updateForm";
+             return updateRedo(reserveNo, form, model);
         }
 
         ReservationDetailOutput output = manageReservationHelper
-                .findDetail(form);
+                .findDetail(reserveNo, form);
         model.addAttribute("output", output);
         return "managereservation/updateConfirm";
     }
@@ -157,91 +149,83 @@ public class ManageReservationController {
     /**
      * Updates the reservation after user changes edits the reservation info on the edit reservation page
      * @param form
-     * @param model
-     * @param model
      * @return
      */
     @TransactionTokenCheck(value = "update", type = TransactionTokenType.IN)
-    @RequestMapping(value = "update", method = RequestMethod.POST)
-    public String update(
-            @Validated({ ReservationEdit.class, Default.class }) ManageReservationForm form,
-            BindingResult result, RedirectAttributes redirectAttr) {
+    @RequestMapping(value = "{reserveNo}/update", method = RequestMethod.POST)
+    public String update(@PathVariable("reserveNo") String reserveNo,
+            @Validated ManageReservationForm form, BindingResult result, Model model, RedirectAttributes redirectAttr) {
         if (result.hasErrors()) {
-            // TODO
-            // return updateRedo(form, model);
-            return "managereservation/updateForm";
+             return updateRedo(reserveNo, form, model);
         }
 
-        ReservationUpdateInput input = dozerBeanMapper.map(form,
+        ReservationUpdateInput input = beanMapper.map(form,
                 ReservationUpdateInput.class);
+        input.setReserveNo(reserveNo);
 
         ReservationUpdateOutput output = reserveService.update(input);
         redirectAttr.addFlashAttribute("output", output);
-        return "redirect:/managereservation/update?complete";
+        redirectAttr.addAttribute("reserveNo", reserveNo);
+        return "redirect:/reservations/{reserveNo}/update?complete";
     }
 
     /**
      * redirects to the update completion page
      * @return
      */
-    @RequestMapping(value = "update", method = RequestMethod.GET, params = "complete")
+    @RequestMapping(value = "{reserveNo}/update", method = RequestMethod.GET, params = "complete")
     public String updateComplete() {
         return "managereservation/updateComplete";
     }
 
+    @RequestMapping(value = "{reserveNo}/update", method = RequestMethod.POST, params = "backTolist")
+    public String updateBackList() {
+        return "redirect:/reservations/me";
+    }
+
     @TransactionTokenCheck(value = "cancel", type = TransactionTokenType.BEGIN)
-    @RequestMapping(value = "cancel", method = RequestMethod.POST, params = "confirm")
-    public String cancelConfirm(ManageReservationForm form, Model model) {
+    @RequestMapping(value = "{reserveNo}/cancel", method = RequestMethod.GET)
+    public String cancelConfirm(@PathVariable("reserveNo") String reserveNo, Model model) {
         ReservationDetailOutput output = manageReservationHelper
-                .findDetail(form.getReserveNo());
+                .findDetail(reserveNo);
         model.addAttribute("output", output);
         return "managereservation/cancelConfirm";
     }
 
     @TransactionTokenCheck(value = "cancel", type = TransactionTokenType.IN)
-    @RequestMapping(value = "cancel", method = RequestMethod.POST)
-    public String cancel(
-            @Validated({ ReservationCancel.class, Default.class }) ManageReservationForm form,
-            Model model) {
-        String reserveNo = form.getReserveNo();
+    @RequestMapping(value = "{reserveNo}/cancel", method = RequestMethod.POST)
+    public String cancel(@PathVariable("reserveNo") String reserveNo, Model model, RedirectAttributes redirectAttr) {
         try {
             reserveService.cancel(reserveNo);
         } catch (BusinessException e) {
-            // TODO
-            ReservationDetailOutput output = manageReservationHelper
-                    .findDetail(reserveNo);
-            model.addAttribute("output", output);
             model.addAttribute(e.getResultMessages());
-            return "managereservation/cancelConfirm";
+            return cancelConfirm(reserveNo, model);
         }
-        model.addAttribute("reserveNo", reserveNo);
-        return "redirect:/managereservation/cancel?complete";
+        redirectAttr.addAttribute("reserveNo", reserveNo);
+        return "redirect:/reservations/{reserveNo}/cancel?complete";
     }
 
     /**
      * redirects to the update completion page
      * @return
      */
-    @RequestMapping(value = "cancel", method = RequestMethod.GET, params = "complete")
-    public String cancelComplete() {
+    @RequestMapping(value = "{reserveNo}/cancel", method = RequestMethod.GET, params = "complete")
+    public String cancelComplete(@PathVariable("reserveNo") String reserveNo, Model model) {
+        model.addAttribute("reserveNo", reserveNo);
         return "managereservation/cancelComplete";
     }
 
-    @RequestMapping(value = "downloadPDF", method = RequestMethod.GET)
-    public String downloadPDF(ManageReservationForm form, Model model) {
-        DownloadPDFOutput downloadPDFOutput = manageReservationHelper
-                .createPDF(form.getReserveNo());
-        model.addAttribute(Arrays.asList(downloadPDFOutput));
-        return "reservationReport";
-    }
-
-    @RequestMapping(value = "list", method = RequestMethod.GET, params = "backTolist")
+    @RequestMapping(value = "{reserveNo}/cancel", method = RequestMethod.POST, params = "backTolist")
     public String backList() {
-        return "redirect:list";
+        return "redirect:/reservations/me";
     }
 
-    @RequestMapping(value = "update", method = RequestMethod.POST, params = "backTolist")
-    public String updateBackList() {
-        return "redirect:list";
+    @RequestMapping(value = "{reserveNo}/pdf", method = RequestMethod.GET)
+    public String downloadPDF(@PathVariable("reserveNo") String reserveNo, Model model) {
+        DownloadPDFOutput downloadPDFOutput = manageReservationHelper
+                .createPDF(reserveNo);
+        model.addAttribute(Arrays.asList(downloadPDFOutput));
+        return "managereservation/report";
     }
+
 }

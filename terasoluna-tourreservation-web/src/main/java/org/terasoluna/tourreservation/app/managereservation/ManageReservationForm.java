@@ -21,33 +21,16 @@ import javax.validation.constraints.NotNull;
 
 public class ManageReservationForm {
 
-    // validation groups
-    public static interface ReservationEdit {
-    };
-
-    public static interface ReservationCancel {
-    };
 
     @NotNull
-    private String reserveNo;
-
-    @NotNull(groups = ReservationEdit.class)
-    @Min(value = 0, groups = ReservationEdit.class)
-    @Max(value = 5, groups = ReservationEdit.class)
+    @Min(0)
+    @Max(5)
     private Integer adultCount;
 
-    @NotNull(groups = ReservationEdit.class)
-    @Min(value = 0, groups = ReservationEdit.class)
-    @Max(value = 5, groups = ReservationEdit.class)
+    @NotNull
+    @Min(0)
+    @Max(5)
     private Integer childCount;
-
-    public String getReserveNo() {
-        return reserveNo;
-    }
-
-    public void setReserveNo(String reserveNo) {
-        this.reserveNo = reserveNo;
-    }
 
     public Integer getAdultCount() {
         return adultCount;

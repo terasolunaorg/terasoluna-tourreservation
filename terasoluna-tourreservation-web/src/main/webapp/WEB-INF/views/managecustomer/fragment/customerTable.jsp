@@ -13,12 +13,14 @@
     </tr>
     <tr>
         <td><spring:message code="label.tr.common.birthday" /></td>
-        <td>${f:h(customerForm.customerBirthYear)}<spring:message
-                code="label.tr.common.year" />
-            ${f:h(customerForm.customerBirthMonth)}<spring:message
-                code="label.tr.common.month" />
-            ${f:h(customerForm.customerBirthDay)}<spring:message
-                code="label.tr.common.day" /></td>
+        <td>
+            <c:set var="customerBirthString">
+                ${f:h(customerForm.customerBirthYear)}/${f:h(customerForm.customerBirthMonth)}/${f:h(customerForm.customerBirthDay)}
+            </c:set>
+            <fmt:parseDate value="${customerBirthString}" pattern="yyyy/M/d" var="customerBirth" />
+            <spring:message code="label.tr.common.datePattern" var="datePattern" />
+            <fmt:formatDate value="${customerBirth}" pattern="${datePattern}" />
+        </td>
     </tr>
     <tr>
         <td><spring:message code="label.tr.common.job" /></td>

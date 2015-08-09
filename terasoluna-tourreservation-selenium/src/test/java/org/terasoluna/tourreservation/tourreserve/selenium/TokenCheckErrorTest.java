@@ -183,7 +183,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         // falsify transaction token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[2].setAttribute('type', 'text');");
+        jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[1].setAttribute('type', 'text');");
         driver.findElement(By.id("reserveTourForm")).findElement(By.name("_TRANSACTION_TOKEN"))
                 .clear();
 
@@ -347,7 +347,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         // falsify transaction token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[1].setAttribute('type', 'text');");
+        jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[0].setAttribute('type', 'text');");
         driver.findElement(By.id("reservationCanelForm"))
                 .findElement(By.name("_TRANSACTION_TOKEN")).clear();
 

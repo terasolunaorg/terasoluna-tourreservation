@@ -47,7 +47,7 @@ import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoService;
  * Handle request of tour searching.
  */
 @Controller
-@RequestMapping(value = "searchtour")
+@RequestMapping(value = "tours")
 @SessionAttributes(types = SearchTourForm.class)
 public class SearchTourController {
 
@@ -73,7 +73,6 @@ public class SearchTourController {
 
     /**
      * pre-initialization of form backed bean
-     * @param model
      * @return
      */
     @ModelAttribute
@@ -93,7 +92,7 @@ public class SearchTourController {
      * shows the search input view
      * @return search input view
      */
-    @RequestMapping(value = "search", method = RequestMethod.GET, params = "form")
+    @RequestMapping(method = RequestMethod.GET, params = "form")
     public String searchForm(SessionStatus status) {
         status.setComplete();
         return "searchtour/searchForm";
@@ -102,13 +101,13 @@ public class SearchTourController {
     /**
      * Searches the tours based on user input. Search result is shown in the form of a List of TourInfo domain objects User
      * input is mapped to form backed bean SearchTourForm
-     * @param form
+     * @param searchTourForm
      * @param result
      * @param model
      * @param pageable
      * @return
      */
-    @RequestMapping(value = "search", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String search(@Validated SearchTourForm searchTourForm,
             BindingResult result, Model model,
             @PageableDefault Pageable pageable) {
@@ -117,7 +116,7 @@ public class SearchTourController {
         }
 
         if (logger.isDebugEnabled()) {
-            logger.info("pageable={}", pageable);
+            logger.debug("pageable={}", pageable);
         }
         
         TourInfoSearchCriteria criteria = beanMapper.map(searchTourForm, TourInfoSearchCriteria.class);

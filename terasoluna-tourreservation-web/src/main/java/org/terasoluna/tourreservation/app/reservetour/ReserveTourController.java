@@ -25,10 +25,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
@@ -40,9 +39,8 @@ import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUser
  * Handle request of tour searching.
  */
 @Controller
-@RequestMapping(value = "reservetour")
-@SessionAttributes(types = ReserveTourForm.class)
-@TransactionTokenCheck(value = "reservetour")
+@RequestMapping(value = "tours")
+@TransactionTokenCheck(value = "tours")
 public class ReserveTourController {
 
     private static final Logger logger = LoggerFactory
@@ -66,14 +64,12 @@ public class ReserveTourController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "read", method = RequestMethod.GET)
-    public String reserveForm(@AuthenticationPrincipal ReservationUserDetails userDetails, ReserveTourForm form, Model model,
-            SessionStatus status) {
-        logger.debug("retieve tour {}", form.getTourCode());
+    @RequestMapping(value = {"{tourCode}", "{tourCode}/reserve"}, method = RequestMethod.GET, params = "form")
+    public String reserveForm(@AuthenticationPrincipal ReservationUserDetails userDetails, @PathVariable("tourCode") String tourCode,
+            ReserveTourForm form, Model model) {
+        logger.debug("retrieve tour {}", tourCode);
 
-        status.setComplete();
-
-        TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails, form);
+        TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails, tourCode, form);
 
         model.addAttribute("output", output);
 
@@ -87,18 +83,18 @@ public class ReserveTourController {
      * @param model
      * @return
      */
-    @TransactionTokenCheck(value = "reserve", type = TransactionTokenType.BEGIN)
-    @RequestMapping(value = "reserve", method = RequestMethod.POST, params = "confirm")
-    public String confirm(@AuthenticationPrincipal ReservationUserDetails userDetails, @Validated ReserveTourForm form,
-            BindingResult bindingResult, Model model) {
+    @TransactionTokenCheck(value="reserve", type = TransactionTokenType.BEGIN)
+    @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.POST, params = "confirm")
+    public String confirm(@AuthenticationPrincipal ReservationUserDetails userDetails, @PathVariable("tourCode") String tourCode,
+            @Validated ReserveTourForm form, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return "reservetour/reserveForm";
+            return reserveForm(userDetails, tourCode, form, model);
         }
         logger.debug(
                 "confirm the reservation details for the following tour {}",
-                form.getTourCode());
+                tourCode);
 
-        TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails, form);
+        TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails, tourCode, form);
         model.addAttribute("output", output);
 
         return "reservetour/reserveConfirm";
@@ -111,44 +107,41 @@ public class ReserveTourController {
      * @param redirectAttr
      * @return
      */
-    @TransactionTokenCheck(value = "reserve", type = TransactionTokenType.IN)
-    @RequestMapping(value = "reserve", method = RequestMethod.POST)
-    public String reserve(@AuthenticationPrincipal ReservationUserDetails userDetails, @Validated ReserveTourForm form,
-            BindingResult bindingResult, RedirectAttributes redirectAttr,
-            Model model) {
-        logger.debug("reserve tour {}", form.getTourCode());
+    @TransactionTokenCheck(value="reserve", type = TransactionTokenType.IN)
+    @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.POST)
+    public String reserve(@AuthenticationPrincipal ReservationUserDetails userDetails, @PathVariable("tourCode") String tourCode,
+            @Validated ReserveTourForm form, BindingResult bindingResult, Model model, RedirectAttributes redirectAttr) {
+        logger.debug("reserve tour {}", tourCode);
 
         if (bindingResult.hasErrors()) {
-            TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails, form);
-            model.addAttribute("output", output);
-            return "reservetour/reserveForm";
+            return reserveForm(userDetails, tourCode, form, model);
         }
 
         try {
-            ReserveTourOutput output = reserveTourHelper.reserve(userDetails, form);
+            ReserveTourOutput output = reserveTourHelper.reserve(userDetails, tourCode, form);
             redirectAttr.addFlashAttribute("output", output);
         } catch (BusinessException e) {
-            TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails, form);
-            model.addAttribute("output", output);
             model.addAttribute(e.getResultMessages());
-            return "reservetour/reserveForm";
+            return reserveForm(userDetails, tourCode, form, model);
         }
 
-        return "redirect:/reservetour/reserve?complete";
+        redirectAttr.addAttribute("tourCode", tourCode);
+        return "redirect:/tours/{tourCode}/reserve?complete";
     }
 
     /**
      * redirects to the reservation completion page
      * @return
      */
-    @RequestMapping(value = "reserve", method = RequestMethod.GET, params = "complete")
-    public String reserveComplete(SessionStatus status) {
-        status.setComplete();
+    @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.GET, params = "complete")
+    public String reserveComplete() {
         return "reservetour/reserveComplete";
     }
 
-    @RequestMapping(value = "read", method = RequestMethod.POST, params = "redo")
-    public String reserveRedo() {
-        return "redirect:/reservetour/read";
+    @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.POST, params = "redo")
+    public String reserveRedo(@AuthenticationPrincipal ReservationUserDetails userDetails, @PathVariable("tourCode") String tourCode,
+            ReserveTourForm form,Model model) {
+        return reserveForm(userDetails, tourCode, form, model);
     }
+
 }
