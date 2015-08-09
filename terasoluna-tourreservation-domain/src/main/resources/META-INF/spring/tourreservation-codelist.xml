@@ -93,11 +93,11 @@
                     <util:map key-type="java.lang.String"
                         value-type="java.lang.String" map-class="java.util.LinkedHashMap">
                         <entry key="0" value="unlimited" />
-                        <entry key="10000" value="Less than $10,000" />
-                        <entry key="20000" value="Less than $20,000" />
-                        <entry key="30000" value="Less than $30,000" />
-                        <entry key="40000" value="Less than $40,000" />
-                        <entry key="50000" value="Less than $50,000" />
+                        <entry key="10000" value="Less than ¥10,000" />
+                        <entry key="20000" value="Less than ¥20,000" />
+                        <entry key="30000" value="Less than ¥30,000" />
+                        <entry key="40000" value="Less than ¥40,000" />
+                        <entry key="50000" value="Less than ¥50,000" />
                     </util:map>
                 </entry>
                 <entry key="ja" value-ref="basePriceMapJa" />
