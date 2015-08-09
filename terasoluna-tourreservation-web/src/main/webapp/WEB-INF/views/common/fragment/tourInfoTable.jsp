@@ -26,7 +26,8 @@
     </tr>
     <tr>
         <td><spring:message code="label.tr.searchtour.conductor" /></td>
-        <td colspan="3">${f:h(output.tourInfo.conductor)}</td>
+        <td colspan="3">${f:h(CL_EXISTENCE[output.tourInfo.conductor])}</td>
+
     </tr>
     <tr>
         <td><spring:message code="label.tr.searchtour.accomName" /></td>

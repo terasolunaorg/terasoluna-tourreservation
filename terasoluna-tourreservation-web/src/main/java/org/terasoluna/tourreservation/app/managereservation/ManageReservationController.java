@@ -38,6 +38,7 @@ import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUser
 import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 @RequestMapping(value = "reservations")
@@ -221,9 +222,9 @@ public class ManageReservationController {
     }
 
     @RequestMapping(value = "{reserveNo}/pdf", method = RequestMethod.GET)
-    public String downloadPDF(@PathVariable("reserveNo") String reserveNo, Model model) {
+    public String downloadPDF(@PathVariable("reserveNo") String reserveNo, Model model, Locale locale) {
         DownloadPDFOutput downloadPDFOutput = manageReservationHelper
-                .createPDF(reserveNo);
+                .createPDF(reserveNo, locale);
         model.addAttribute(Arrays.asList(downloadPDFOutput));
         return "managereservation/report";
     }

@@ -15,16 +15,10 @@
  */
 package org.terasoluna.tourreservation.app.managereservation;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-import javax.inject.Inject;
-
 import org.dozer.Mapper;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
+import org.terasoluna.gfw.common.codelist.i18n.I18nCodeList;
 import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.tourreservation.app.common.constants.MessageId;
 import org.terasoluna.tourreservation.domain.model.Reserve;
@@ -34,6 +28,14 @@ import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutp
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateSharedService;
 import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoSharedService;
 import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 @Component
 public class ManageReservationHelper {
@@ -54,17 +56,21 @@ public class ManageReservationHelper {
     JodaTimeDateFactory dateFactory;
 
     @Inject
+    @Named("CL_EXISTENCE")
+    I18nCodeList existenceCodeList;
+
+    @Inject
     Mapper dozerBeanMapper;
 
-    protected String convertNightDays(int days) {
+    protected String convertNightDays(int days, Locale locale) {
         if (days == 1) {
-            return getMessage(MessageId.LABEL_TR_MANAGERESERVATION_DAYTRIP);
+            return getMessage(MessageId.LABEL_TR_MANAGERESERVATION_DAYTRIP, locale);
         }
         StringBuilder builder = new StringBuilder();
         builder.append(days - 1);
-        builder.append(getMessage(MessageId.LABEL_TR_MANAGERESERVATION_NIGHT));
+        builder.append(getMessage(MessageId.LABEL_TR_MANAGERESERVATION_NIGHT, locale));
         builder.append(days);
-        builder.append(getMessage(MessageId.LABEL_TR_MANAGERESERVATION_DAY));
+        builder.append(getMessage(MessageId.LABEL_TR_MANAGERESERVATION_DAY, locale));
 
         return builder.toString();
     }
@@ -139,23 +145,14 @@ public class ManageReservationHelper {
         return output;
     }
 
-    public DownloadPDFOutput createPDF(String reserveNo) {
+    public DownloadPDFOutput createPDF(String reserveNo, Locale locale) {
         ReservationDetailOutput reserveDetailOutput = findDetail(reserveNo);
-
-        // assigning display string to conductor on the basis of DB value
-        String conductor = null;
-        if ("1".equals(reserveDetailOutput.getReserve().getTourInfo()
-                .getConductor())) {
-            conductor = getMessage(MessageId.LABEL_TR_COMMON_YESMESSAGE);
-        } else {
-            conductor = getMessage(MessageId.LABEL_TR_COMMON_NOMESSAGE);
-        }
 
         String paymentTimeLimit = null;
         if ("1".equals(reserveDetailOutput.getReserve().getTransfer())) {
-            paymentTimeLimit = getMessage(MessageId.LABEL_TR_MANAGERESERVATION_DONE);
+            paymentTimeLimit = getMessage(MessageId.LABEL_TR_MANAGERESERVATION_DONE, locale);
         } else {
-            SimpleDateFormat sdf = new SimpleDateFormat(getMessage(MessageId.LABEL_TR_COMMON_DATEPATTERN));
+            SimpleDateFormat sdf = new SimpleDateFormat(getMessage(MessageId.LABEL_TR_COMMON_DATEPATTERN, locale));
             paymentTimeLimit = sdf.format(reserveDetailOutput
                     .getPaymentTimeLimit());
         }
@@ -176,7 +173,8 @@ public class ManageReservationHelper {
                 .getTourInfo().getDeparture().getDepName());
         downloadPDFOutput.setArrName(reserveDetailOutput.getReserve()
                 .getTourInfo().getArrival().getArrName());
-        downloadPDFOutput.setConductor(conductor);
+        downloadPDFOutput.setConductor(getCodeName(
+                existenceCodeList, reserveDetailOutput.getReserve().getTourInfo().getConductor(), locale));
         downloadPDFOutput.setAccomName(reserveDetailOutput.getReserve()
                 .getTourInfo().getAccommodation().getAccomName());
         downloadPDFOutput.setAccomTel(reserveDetailOutput.getReserve()
@@ -189,9 +187,9 @@ public class ManageReservationHelper {
                 .getChildCount());
         downloadPDFOutput.setRemarks(reserveDetailOutput.getReserve()
                 .getRemarks());
-        downloadPDFOutput.setPaymentMethod(getMessage(MessageId.LABEL_TR_COMMON_BANKTRANSFER));
-        downloadPDFOutput.setPaymentCompanyName(getMessage(MessageId.LABEL_TR_COMMON_PAYMENTCOMPANYNAME));
-        downloadPDFOutput.setPaymentAccount(getMessage(MessageId.LABEL_TR_COMMON_SAVINGSACCOUNT));
+        downloadPDFOutput.setPaymentMethod(getMessage(MessageId.LABEL_TR_COMMON_BANKTRANSFER, locale));
+        downloadPDFOutput.setPaymentCompanyName(getMessage(MessageId.LABEL_TR_COMMON_PAYMENTCOMPANYNAME, locale));
+        downloadPDFOutput.setPaymentAccount(getMessage(MessageId.LABEL_TR_COMMON_SAVINGSACCOUNT, locale));
         downloadPDFOutput.setPaymentTimeLimit(paymentTimeLimit);
 
         // calculate price
@@ -231,9 +229,9 @@ public class ManageReservationHelper {
                 .getCustomerAdd());
 
         // set reference information
-        downloadPDFOutput.setReferenceName(getMessage(MessageId.LABEL_TR_COMMON_COMPANYNAME));
-        downloadPDFOutput.setReferenceEmail(getMessage(MessageId.LABEL_TR_COMMON_COMPANYEMAIL));
-        downloadPDFOutput.setReferenceTel(getMessage(MessageId.LABEL_TR_COMMON_COMPANYTEL));
+        downloadPDFOutput.setReferenceName(getMessage(MessageId.LABEL_TR_COMMON_COMPANYNAME, locale));
+        downloadPDFOutput.setReferenceEmail(getMessage(MessageId.LABEL_TR_COMMON_COMPANYEMAIL, locale));
+        downloadPDFOutput.setReferenceTel(getMessage(MessageId.LABEL_TR_COMMON_COMPANYTEL, locale));
 
         // set print date
         downloadPDFOutput.setPrintDay(dateFactory.newDate());
@@ -245,7 +243,16 @@ public class ManageReservationHelper {
      * @param code
      * @return String
      */
-    private String getMessage(String code) {
-        return messageSource.getMessage(code, null, Locale.getDefault());
+    private String getMessage(String code, Locale locale) {
+        return messageSource.getMessage(code, null, locale);
     }
+
+    private String getCodeName(I18nCodeList i18nCodeList, String code, Locale locale) {
+        Map<String, String> map = i18nCodeList.asMap(locale);
+        if (map.isEmpty()) {
+            map = i18nCodeList.asMap(Locale.ENGLISH);
+        }
+        return map.get(code);
+    }
+
 }
