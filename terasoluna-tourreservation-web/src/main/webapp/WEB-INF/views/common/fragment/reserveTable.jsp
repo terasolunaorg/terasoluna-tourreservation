@@ -28,14 +28,7 @@
       </tr>
       <tr>
         <td><spring:message code="label.tr.searchtour.conductor" /></td>
-        <td colspan="3">
-          <c:if test="${f:h(output.reserve.tourInfo.conductor)}">
-            <spring:message code="label.tr.common.yesMessage" />
-          </c:if>
-          <c:if test="${!f:h(output.reserve.tourInfo.conductor)}">
-            <spring:message code="label.tr.common.noMessage" />
-          </c:if>
-        </td>
+        <td colspan="3">${f:h(CL_EXISTENCE[output.reserve.tourInfo.conductor])}</td>
       </tr>
       <tr>
         <td><spring:message code="label.tr.searchtour.accomName" /></td>

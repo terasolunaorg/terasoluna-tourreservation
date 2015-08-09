@@ -106,6 +106,29 @@
         </property>
     </bean>
 
+    <util:map id="existenceMapJa">
+        <entry key="0" value="無" />
+        <entry key="1" value="有" />
+    </util:map>
+
+    <bean id="CL_EXISTENCE"
+          class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
+        <property name="rows">
+            <util:map key-type="java.util.Locale" value-type="java.util.LinkedHashMap"
+                      map-class="java.util.LinkedHashMap">
+                <entry key="en">
+                    <util:map key-type="java.lang.String"
+                              value-type="java.lang.String" map-class="java.util.LinkedHashMap">
+                        <entry key="0" value="No" />
+                        <entry key="1" value="Yes" />
+                    </util:map>
+                </entry>
+                <entry key="ja" value-ref="existenceMapJa" />
+                <entry key="ja_JP" value-ref="existenceMapJa" />
+            </util:map>
+        </property>
+    </bean>
+
     <bean id="CL_ADULT_COUNT"
         class="org.terasoluna.gfw.common.codelist.NumberRangeCodeList">
         <property name="from" value="1" />
