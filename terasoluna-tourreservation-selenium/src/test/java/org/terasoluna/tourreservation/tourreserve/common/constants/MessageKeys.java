@@ -120,7 +120,7 @@ public class MessageKeys {
     public static final String LABEL_TR_COMMON_YESMESSAGE = "label.tr.common.yesMessage";
     /** label.tr.common.noMessage=No */
     public static final String LABEL_TR_COMMON_NOMESSAGE = "label.tr.common.noMessage";
-    /** label.tr.common.currencyPattern=\\##,### */
+    /** label.tr.common.currencyPattern=&yen##,### */
     public static final String LABEL_TR_COMMON_CURRENCYPATTERN = "label.tr.common.currencyPattern";
     /** label.tr.common.datePattern=yyyy\/MM\/dd */
     public static final String LABEL_TR_COMMON_DATEPATTERN = "label.tr.common.datePattern";
