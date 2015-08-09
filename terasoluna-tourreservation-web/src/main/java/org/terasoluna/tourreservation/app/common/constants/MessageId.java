@@ -214,14 +214,6 @@ public final class MessageId {
      */
     public static final String LABEL_TR_COMMON_BANKTRANSFER = "label.tr.common.bankTransfer";
     /**
-     * <strong>label.tr.common.yesMessage = Yes</strong>
-     */
-    public static final String LABEL_TR_COMMON_YESMESSAGE = "label.tr.common.yesMessage";
-    /**
-     * <strong>label.tr.common.noMessage = No</strong>
-     */
-    public static final String LABEL_TR_COMMON_NOMESSAGE = "label.tr.common.noMessage";
-    /**
      * <strong>label.tr.common.currencyPattern = \##,###</strong>
      */
     public static final String LABEL_TR_COMMON_CURRENCYPATTERN = "label.tr.common.currencyPattern";

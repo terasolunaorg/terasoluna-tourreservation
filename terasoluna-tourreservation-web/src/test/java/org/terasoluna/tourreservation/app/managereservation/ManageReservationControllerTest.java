@@ -27,6 +27,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Locale;
 
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
@@ -40,6 +42,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.terasoluna.gfw.common.codelist.i18n.I18nCodeList;
 import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.tourreservation.domain.model.Reserve;
 import org.terasoluna.tourreservation.domain.service.reserve.ReservationUpdateInput;
@@ -69,6 +72,7 @@ public class ManageReservationControllerTest {
 
         // other members instantiation and assignment
         manageReservationHelper = mock(ManageReservationHelper.class);
+        manageReservationHelper.existenceCodeList = mock(I18nCodeList.class);
         beanMapper = new DozerBeanMapper();
         reserveService = mock(ReserveService.class);
         userDetails = mock(ReservationUserDetails.class);
@@ -335,8 +339,15 @@ public class ManageReservationControllerTest {
                 .get("/reservations/123/pdf");
 
         // Set mock behavior for helper method
-        when(manageReservationHelper.createPDF("123")).thenReturn(
+        when(manageReservationHelper.createPDF("123", Locale.ENGLISH)).thenReturn(
                 new DownloadPDFOutput());
+        when(manageReservationHelper.existenceCodeList.asMap(Locale.ENGLISH)).thenReturn(
+                new LinkedHashMap<String, String>(){
+                    {
+                        put("0","No");
+                        put("1","Yes");
+                    }
+                });
 
         // No Logic testing here
         // this will just test the request mapping part
