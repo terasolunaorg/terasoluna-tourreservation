@@ -24,6 +24,7 @@
         <sec:headers />
     </sec:http>
 
+    <sec:global-method-security pre-post-annotations="enabled" />
 
     <bean id="userDetailsService"
         class="org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetailsService">
