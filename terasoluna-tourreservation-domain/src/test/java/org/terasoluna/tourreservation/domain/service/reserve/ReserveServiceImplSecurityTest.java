@@ -16,7 +16,6 @@
 package org.terasoluna.tourreservation.domain.service.reserve;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.security.access.AccessDeniedException;
@@ -50,13 +49,11 @@ public class ReserveServiceImplSecurityTest {
     @Inject
     JodaTimeDateFactory dateFactory;
 
-    @Before
     @After
     public void clearSecurityContext() {
         SecurityContextHolder.clearContext();
     }
 
-    @Before
     @After
     public void resetMocks() {
         reset(mockReserveRepository);
