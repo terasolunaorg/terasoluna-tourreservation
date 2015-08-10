@@ -112,6 +112,11 @@
 		</property>
 		<property name="defaultStatusCode" value="500" />
 		<property name="exceptionCodeResolver" ref="exceptionCodeResolver" />
+		<property name="excludedExceptions">
+			<array>
+				<value>org.springframework.security.access.AccessDeniedException</value>
+			</array>
+		</property>
 	</bean>
 
 	<!-- AOP. -->
