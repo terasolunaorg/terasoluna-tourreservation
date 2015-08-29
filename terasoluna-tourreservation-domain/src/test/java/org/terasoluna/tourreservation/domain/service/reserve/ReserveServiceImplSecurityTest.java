@@ -15,8 +15,7 @@
  */
 package org.terasoluna.tourreservation.domain.service.reserve;
 
-import org.junit.After;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
@@ -40,6 +39,10 @@ import static org.mockito.Mockito.*;
 @ContextConfiguration
 public class ReserveServiceImplSecurityTest {
 
+    // Customer code of authenticated user.
+    private static final String AUTHENTICATED_CUSTOMER_CODE = "C0000001";
+
+    // Mock repository is define at the default bean definition file for this test case class.
     @Inject
     ReserveRepository mockReserveRepository;
 
@@ -49,12 +52,21 @@ public class ReserveServiceImplSecurityTest {
     @Inject
     JodaTimeDateFactory dateFactory;
 
-    @After
-    public void clearSecurityContext() {
+    @BeforeClass
+    public static void setUpSecurityContext() {
+        Authentication mockAuthentication = mock(Authentication.class);
+        when(mockAuthentication.isAuthenticated()).thenReturn(true);
+        when(mockAuthentication.getPrincipal())
+                .thenReturn(new ReservationUserDetails(new Customer(AUTHENTICATED_CUSTOMER_CODE)));
+        SecurityContextHolder.getContext().setAuthentication(mockAuthentication);
+    }
+
+    @AfterClass
+    public static void cleanupSecurityContext() {
         SecurityContextHolder.clearContext();
     }
 
-    @After
+    @Before
     public void resetMocks() {
         reset(mockReserveRepository);
     }
@@ -64,8 +76,7 @@ public class ReserveServiceImplSecurityTest {
 
         // setup
         {
-            setupMockAuthentication("C0000001");
-            setupMockReserveRepository("C0000001", "R000000001");
+            setUpMockReserveRepository(AUTHENTICATED_CUSTOMER_CODE, "R000000001");
         }
 
         // test
@@ -77,7 +88,7 @@ public class ReserveServiceImplSecurityTest {
         // assert
         {
             assertThat(reserve.getReserveNo(), is("R000000001"));
-            assertThat(reserve.getCustomer().getCustomerCode(), is("C0000001"));
+            assertThat(reserve.getCustomer().getCustomerCode(), is(AUTHENTICATED_CUSTOMER_CODE));
         }
 
     }
@@ -87,7 +98,8 @@ public class ReserveServiceImplSecurityTest {
 
         // setup
         {
-            setupMockAuthentication("C0000001");
+            // Nothing
+            // ReserveRepository#findOne return null.
         }
 
         // test
@@ -98,7 +110,7 @@ public class ReserveServiceImplSecurityTest {
 
         // assert
         {
-            assertThat(reserve, is(nullValue()));
+            assertThat(reserve, nullValue());
         }
 
     }
@@ -108,8 +120,7 @@ public class ReserveServiceImplSecurityTest {
 
         // setup
         {
-            setupMockAuthentication("C0000001");
-            setupMockReserveRepository("C0000002", "R000000001");
+            setUpMockReserveRepository("C0000002", "R000000001");
         }
 
         // test
@@ -124,8 +135,7 @@ public class ReserveServiceImplSecurityTest {
 
         // setup
         {
-            setupMockAuthentication("C0000001");
-            setupMockReserveRepository("C0000001", "R000000001");
+            setUpMockReserveRepository(AUTHENTICATED_CUSTOMER_CODE, "R000000001");
         }
 
         // test
@@ -142,7 +152,7 @@ public class ReserveServiceImplSecurityTest {
         {
             verify(mockReserveRepository, times(1)).save((Reserve) anyObject());
             assertThat(output.getReserve().getReserveNo(), is("R000000001"));
-            assertThat(output.getReserve().getCustomer().getCustomerCode(), is("C0000001"));
+            assertThat(output.getReserve().getCustomer().getCustomerCode(), is(AUTHENTICATED_CUSTOMER_CODE));
         }
 
 
@@ -153,8 +163,7 @@ public class ReserveServiceImplSecurityTest {
 
         // setup
         {
-            setupMockAuthentication("C0000001");
-            setupMockReserveRepository("C0000002", "R000000001");
+            setUpMockReserveRepository("C0000002", "R000000001");
         }
 
         // test
@@ -165,6 +174,7 @@ public class ReserveServiceImplSecurityTest {
                 reserveService.update(input);
                 fail();
             } catch (AccessDeniedException e) {
+                // as expected
             }
         }
 
@@ -179,8 +189,7 @@ public class ReserveServiceImplSecurityTest {
 
         // setup
         {
-            setupMockAuthentication("C0000001");
-            setupMockReserveRepository("C0000001", "R000000001");
+            setUpMockReserveRepository(AUTHENTICATED_CUSTOMER_CODE, "R000000001");
         }
 
         // test
@@ -200,8 +209,7 @@ public class ReserveServiceImplSecurityTest {
 
         // setup
         {
-            setupMockAuthentication("C0000001");
-            setupMockReserveRepository("C0000002", "R000000001");
+            setUpMockReserveRepository("C0000002", "R000000001");
         }
 
         // test
@@ -210,6 +218,7 @@ public class ReserveServiceImplSecurityTest {
                 reserveService.cancel("R000000001");
                 fail();
             } catch (AccessDeniedException e) {
+                // as expected
             }
         }
 
@@ -220,14 +229,19 @@ public class ReserveServiceImplSecurityTest {
 
     }
 
-    private void setupMockAuthentication(String customerCode) {
-        Authentication mockAuthentication = mock(Authentication.class);
-        when(mockAuthentication.isAuthenticated()).thenReturn(true);
-        when(mockAuthentication.getPrincipal()).thenReturn(new ReservationUserDetails(new Customer(customerCode)));
-        SecurityContextHolder.getContext().setAuthentication(mockAuthentication);
-    }
 
-    private void setupMockReserveRepository(String customerCode, String reserveNo) {
+    /**
+     * Set up return object of {@link ReserveRepository}'s method.
+     * <p>
+     * This method set up return object of following methods.
+     * <ul>
+     *     <li>{@link ReserveRepository#findOne}</li>
+     *     <li>{@link ReserveRepository#findOneForUpdate}</li>
+     * </ul>
+     * @param customerCode customer code of reservation owner
+     * @param reserveNo reserve number of reservation
+     */
+    private void setUpMockReserveRepository(String customerCode, String reserveNo) {
         Reserve reserve = new Reserve(reserveNo);
         reserve.setCustomer(new Customer(customerCode));
         TourInfo tourInfo = new TourInfo();
