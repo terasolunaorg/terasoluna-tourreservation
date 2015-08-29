@@ -166,7 +166,6 @@ public class ManageReservationController {
 
         ReservationUpdateOutput output = reserveService.update(input);
         redirectAttr.addFlashAttribute("output", output);
-        redirectAttr.addAttribute("reserveNo", reserveNo);
         return "redirect:/reservations/{reserveNo}/update?complete";
     }
 
@@ -202,7 +201,6 @@ public class ManageReservationController {
             model.addAttribute(e.getResultMessages());
             return cancelConfirm(reserveNo, model);
         }
-        redirectAttr.addAttribute("reserveNo", reserveNo);
         return "redirect:/reservations/{reserveNo}/cancel?complete";
     }
 
