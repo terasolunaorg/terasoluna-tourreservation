@@ -267,7 +267,6 @@ public class ManageReservationControllerTest {
             results.andExpect(status().isFound());
             results.andExpect(view().name(
                     "redirect:/reservations/{reserveNo}/update?complete"));
-            results.andExpect(model().attribute("reserveNo", "123"));
             results.andExpect(flash().attribute("output", notNullValue()));
             return;
 
@@ -473,7 +472,6 @@ public class ManageReservationControllerTest {
             results.andExpect(status().isFound());
             results.andExpect(view().name(
                     "redirect:/reservations/{reserveNo}/cancel?complete"));
-            results.andExpect(model().attribute("reserveNo", "123"));
             return;
 
         } catch (Exception e) {

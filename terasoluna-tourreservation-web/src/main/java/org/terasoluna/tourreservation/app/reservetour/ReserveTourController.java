@@ -125,7 +125,6 @@ public class ReserveTourController {
             return reserveForm(userDetails, tourCode, form, model);
         }
 
-        redirectAttr.addAttribute("tourCode", tourCode);
         return "redirect:/tours/{tourCode}/reserve?complete";
     }
 
