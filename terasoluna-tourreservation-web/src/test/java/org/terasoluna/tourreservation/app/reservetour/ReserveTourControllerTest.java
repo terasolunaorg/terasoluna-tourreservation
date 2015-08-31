@@ -197,7 +197,6 @@ public class ReserveTourControllerTest {
             results.andExpect(flash().attribute("output", notNullValue()));
             results.andExpect(view().name(
                     "redirect:/tours/{tourCode}/reserve?complete"));
-            results.andExpect(model().attribute("tourCode", "123"));
             return;
 
         } catch (Exception e) {
