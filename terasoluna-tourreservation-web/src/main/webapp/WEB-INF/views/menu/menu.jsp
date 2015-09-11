@@ -10,7 +10,7 @@
 		<form:form method="get" action="${pageContext.request.contextPath}/tours">
 			<fieldset class="notice">
 				<div class="span-5">
-					<button id="searchTourBtn" style="width: 150px;">
+					<button id="searchTourBtn" name="initForm" style="width: 150px;">
 						<spring:message code="label.tr.menu.searchBtnMessage" />
 					</button>
 				</div>
@@ -19,7 +19,6 @@
 						<spring:message code="label.tr.menu.tourSearchMessage" />
 					</p>
 				</div>
-				<input type="hidden" name="form" />
 			</fieldset>
 		</form:form>
 		<sec:authorize access="!hasRole('ROLE_USER')">
@@ -41,7 +40,7 @@
 			<form:form method="get" action="${pageContext.request.contextPath}/customers/create">
 				<fieldset class="notice">
 					<div class="span-5">
-						<button id="customerRegisterBtn" style="width: 150px;">
+						<button id="customerRegisterBtn" name="form" style="width: 150px;">
 							<spring:message code="label.tr.menu.customerRegisterBtnMessage" />
 						</button>
 					</div>
@@ -50,7 +49,6 @@
 							<spring:message code="label.tr.menu.customerRegisterMessage" />
 						</p>
 					</div>
-					<input type="hidden" name="form" />
 				</fieldset>
 			</form:form>
 		</sec:authorize>

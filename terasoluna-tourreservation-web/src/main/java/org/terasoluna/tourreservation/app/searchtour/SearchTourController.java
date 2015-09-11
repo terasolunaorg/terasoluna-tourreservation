@@ -75,7 +75,7 @@ public class SearchTourController {
      */
     @ModelAttribute
     public SearchTourForm setUpSearchTourForm() {
-    	SearchTourForm searchTourForm = new SearchTourForm();
+        SearchTourForm searchTourForm = new SearchTourForm();
         DateTime dateTime = dateFactory.newDateTime();
         DateTime nextWeekDate = dateTime.plusWeeks(1);
         searchTourForm.setDepYear(nextWeekDate.getYear());
@@ -87,12 +87,21 @@ public class SearchTourController {
     }
 
     /**
+     * clear session attributes and redirect to the search input view
+     * @return redirect view for show the search input
+     */
+    @RequestMapping(method = RequestMethod.GET, params = "initForm")
+    public String searchInitForm(SessionStatus status) {
+        status.setComplete();
+        return "redirect:/tours?form";
+    }
+
+    /**
      * shows the search input view
      * @return search input view
      */
     @RequestMapping(method = RequestMethod.GET, params = "form")
-    public String searchForm(SessionStatus status) {
-        status.setComplete();
+    public String searchForm() {
         return "searchtour/searchForm";
     }
 
