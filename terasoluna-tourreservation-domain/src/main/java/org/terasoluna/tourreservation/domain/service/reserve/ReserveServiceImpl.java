@@ -28,7 +28,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.gfw.common.exception.BusinessException;
-import org.terasoluna.gfw.common.exception.SystemException;
 import org.terasoluna.gfw.common.message.ResultMessages;
 import org.terasoluna.gfw.common.sequencer.Sequencer;
 import org.terasoluna.tourreservation.domain.common.constants.MessageId;
@@ -51,6 +50,9 @@ public class ReserveServiceImpl implements ReserveService {
     ReserveRepository reserveRepository;
 
     @Inject
+    AuthorizedReserveSharedService authorizedReserveSharedService;
+
+    @Inject
     TourInfoSharedService tourInfoSharedService;
 
     @Inject
@@ -68,9 +70,7 @@ public class ReserveServiceImpl implements ReserveService {
 
     @Override
     public Reserve findOne(String reserveNo) {
-        Reserve reserve = reserveRepository.findOne(reserveNo);
-        validateReservation(reserve);
-        return reserve;
+        return authorizedReserveSharedService.findOne(reserveNo);
     }
 
     @Override
@@ -148,10 +148,7 @@ public class ReserveServiceImpl implements ReserveService {
 
     @Override
     public void cancel(String reserveNo) throws BusinessException {
-        logger.debug("cancel reserveNo={}", reserveNo);
-        Reserve reserve = reserveRepository.findOne(reserveNo);
-        logger.debug("check for cancel {}", reserve);
-        validateReservation(reserve);
+        Reserve reserve = findOne(reserveNo);
 
         String transfer = reserve.getTransfer();
         if (Reserve.TRANSFERED.equals(transfer)) {
@@ -207,28 +204,6 @@ public class ReserveServiceImpl implements ReserveService {
         info.getArrival().getArrCode();
 
         return output;
-    }
-
-    /**
-     * check whether the reservation is reserved by login user.
-     * @param reserve
-     * @throws SystemException
-     */
-    protected void validateReservation(Reserve reserve) throws SystemException {
-        // String loginCustomerCode = authService.getAuthentication().getName();
-        // Customer customer = reserve.getCustomer();
-        // if (customer == null) {
-        // // TODO
-        // throw new SystemException(MessageId.E_TR_9001,
-        // getMessage(MessageId.E_TR_9001));
-        // }
-        //
-        // String targetCustomerCode = customer.getCustomerCode();
-        // if (!loginCustomerCode.equals(targetCustomerCode)) {
-        // // TODO
-        // throw new SystemException(MessageId.E_TR_9002,
-        // getMessage(MessageId.E_TR_9002));
-        // }
     }
 
 }

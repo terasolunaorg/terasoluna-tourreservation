@@ -81,6 +81,8 @@ public class ReserveServiceImplTest {
         dateFactory = mock(JodaTimeDateFactory.class);
         sequencer = mock(Sequencer.class);
         priceCalculateSerivce = mock(PriceCalculateSharedService.class);
+        AuthorizedReserveSharedServiceImpl authorizedReserveSharedService = new AuthorizedReserveSharedServiceImpl();
+        authorizedReserveSharedService.reserveRepository = reserveRepository;
 
         beanMapper = new DozerBeanMapper();
         List<String> mappingFiles = new ArrayList<String>();
@@ -92,6 +94,7 @@ public class ReserveServiceImplTest {
         reserveService.dateFactory = dateFactory;
         reserveService.reserveNoSeq = sequencer;
         reserveService.priceCalculateService = priceCalculateSerivce;
+        reserveService.authorizedReserveSharedService = authorizedReserveSharedService;
         reserveService.beanMapper = beanMapper;
 
         when(dateFactory.newDateTime()).thenReturn(now);

@@ -50,7 +50,7 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
     }
 
     @Test
-    public void testUnloginUnauthorizedAccess() {
+    public void testAccessToSecuredResourceInUnauthorized() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
         // go to login screen
@@ -119,10 +119,26 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
 
         assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver
                 .findElement(By.cssSelector("p.box")).getText());
+
+        // login
+        driver.findElement(By.id("password")).clear();
+        driver.findElement(By.id("password")).sendKeys("password");
+        driver.findElement(By.id("username")).clear();
+        driver.findElement(By.id("username")).sendKeys("00000002");
+        driver.findElement(By.id("loginBtn")).click();
+
+        assertEquals(
+                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONSHOWSCREENTITLEMESSAGE),
+                driver.findElement(By.id("screenName")).getText());
+
+        WebElement reserveTable = driver.findElement(By.id("reserveTable"));
+        assertEquals(
+                reserveTable.findElement(By.xpath(".//tr[1]/td[2]")).getText(),
+                reserveNumber);
     }
 
-    //@Test
-    public void testLoginUnauthorizedAccess() {
+    @Test
+    public void testAccessToOtherOwnerResource() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
         // go to login screen
@@ -161,41 +177,12 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
 
         // show other user's reservation
         driver.get(baseUrl
-                + "/terasoluna-tourreservation-web/managereservation/detail/"
+                + "/terasoluna-tourreservation-web/reservations/"
                 + reserveNumber);
 
-        assertEquals(getMessage(MessageKeys.E_TR_FW_0004),
-                driver.findElement(By.cssSelector("li")).getText());
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0006),
+                driver.findElement(By.cssSelector("p")).getText());
 
-        // go to top screen(back to top)
-        driver.findElement(By.id("goToTopLink")).click();
-
-        // go to reserved tours list screen
-        driver.findElement(By.id("reservedToursReferBtn")).click();
-
-        // logout
-        driver.findElement(By.id("logoutBtn")).click();
-
-        // go to login screen
-        driver.findElement(By.id("loginBtn")).click();
-
-        // input credential
-        driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("password");
-        driver.findElement(By.id("username")).clear();
-        driver.findElement(By.id("username")).sendKeys("00000002");
-
-        // login
-        driver.findElement(By.id("loginBtn")).click();
-
-        // go to reserved tours list screen
-        driver.findElement(By.id("reservedToursReferBtn")).click();
-
-        // cancel top reservation in table
-        driver.findElement(By.id("cancelBtn0")).click();
-
-        // cancel reservation
-        driver.findElement(By.id("cancelBtn")).click();
     }
 
     @After
