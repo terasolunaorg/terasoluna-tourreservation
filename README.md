@@ -32,41 +32,43 @@ create database 'tourreserve'.
 It is assumed that maven is already installed.
 Move to the directory where the downloaded source-code is unzipped.
 If password of db user is set to 'P0stgres' its not required to edit any file and directly execute the below command.
-If it is set to any other password, then update the password in terasoluna-tourreservation-initdb/pom.xml.
+If it is set to any other password, then update the password in `terasoluna-tourreservation-initdb/pom.xml`.
 
 Execute the below command:
 
 ```console
-$ cd terasoluna-tourreservation-initdb
-$ mvn sql:execute
-$ cd ..
+$ mvn -f terasoluna-tourreservation-initdb/pom.xml sql:execute
 ```
 
 Test data is currently available in Japanese only.
 
 #### Install jars
 
-If db user password is not set to 'P0stgres', then go to terasoluna-tourreservation-env/src/main/resources/META-INF/spring/tourreservation-infra.properties and update the password. If it is set to 'P0stgres', no changes are required.
+If db user password is not set to 'P0stgres', then go to `terasoluna-tourreservation-env/src/main/resources/META-INF/spring/tourreservation-infra.properties` and update the password. If it is set to 'P0stgres', no changes are required.
 
 ```console
-$ mvn -f terasoluna-tourreservation-parent/pom.xml install
-$ mvn -f terasoluna-tourreservation-env/pom.xml install
-$ mvn -f terasoluna-tourreservation-domain/pom.xml install
+$ mvn -f terasoluna-tourreservation-parent/pom.xml clean install
+$ mvn -f terasoluna-tourreservation-env/pom.xml clean install
+$ mvn -f terasoluna-tourreservation-domain/pom.xml clean install
 ```
 
 #### Build war
 
 ```console
-$ mvn -f terasoluna-tourreservation-web/pom.xml package
+$ mvn -f terasoluna-tourreservation-web/pom.xml clean package
 ```
 
 #### Deploy war
 
-Deploy `terasoluna-tourreservation-web/target/terasoluna-tourreservation-web.war` to your Application server (e.g. Tomcat7)
+Deploy `terasoluna-tourreservation-web/target/terasoluna-tourreservation-web.war` to your Application server (e.g. Tomcat8)
 
-You can also use `mvn tomcat7:run` to test this application quickly with option `MAVEN_OPTS=-XX:MaxPermSize=256m` in environment variable.
+You can also use `mvn cargo:run` to test this application quickly with option `MAVEN_OPTS=-XX:MaxPermSize=256m` in environment variable.
 
-access http://localhost:8080/terasoluna-tourreservation-web
+```console
+$ mvn -f terasoluna-tourreservation-web/pom.xml cargo:run
+```
+
+access [http://localhost:8080/terasoluna-tourreservation-web/](http://localhost:8080/terasoluna-tourreservation-web/)
 
 Alternatively, these project can also be imported into Eclipse and application can be run using WTP.
 
@@ -77,5 +79,5 @@ Install Firefox to run test.
 Run test.
 
 ```console
-$ mvn -f terasoluna-tourreservation-selenium/pom.xml test
+$ mvn -f terasoluna-tourreservation-selenium/pom.xml clean test
 ```
