@@ -8,7 +8,14 @@ cache:
   directories:
     - $HOME/.m2
 
-install: true
+install:
+  - pushd `pwd`
+  - cd $HOME/build
+  - if [[ -z $GFW_BRANCH ]]; then GFW_BRANCH=1.0.x; fi
+  - git clone --depth=1 --branch=$GFW_BRANCH https://github.com/terasolunaorg/terasoluna-gfw.git terasolunaorg/terasoluna-gfw
+  - cd terasolunaorg/terasoluna-gfw
+  - sh ./mvn-build-all.sh install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dsource.skip=true
+  - popd
 
 before_script:
   - psql -c 'create database tourreserve;' -U postgres
