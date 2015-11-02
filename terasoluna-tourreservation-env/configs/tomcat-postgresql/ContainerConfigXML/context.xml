@@ -4,7 +4,7 @@
 <Context>
 
     <Resource
-       name="jdbc/dataSource" 
+       name="jdbc/tourreservationDataSource"
        type="javax.sql.DataSource"
        driverClassName="org.postgresql.Driver"
        username="postgres"
