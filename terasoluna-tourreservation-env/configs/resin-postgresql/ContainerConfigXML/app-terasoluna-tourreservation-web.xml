@@ -2,7 +2,7 @@
 
   <web-app id="/terasoluna-tourreservation-web" root-directory="webapps/terasoluna-tourreservation-web">
     <!-- settings of DataSource -->
-    <database jndi-name="jdbc/dataSource">
+    <database jndi-name="jdbc/tourreservationDataSource">
       <driver>
         <type>org.postgresql.Driver</type>
         <url>jdbc:postgresql://localhost:5432/tourreserve</url>
