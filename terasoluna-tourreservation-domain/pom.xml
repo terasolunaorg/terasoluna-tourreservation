@@ -75,6 +75,10 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+        </dependency>
         <!-- == End Unit Test == -->
 
         <!-- == Begin Lombok == -->
