@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/blueprint-1.0/950px/print.css" type="text/css" media="print">
 <!--[if lt IE 8]><link rel="stylesheet" href="${pageContext.request.contextPath}/css/blueprint-1.0/950px/ie.css" type="text/css" media="screen, projection"><![endif]-->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/blueprint-1.0/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/css/style.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/css/styles.css" type="text/css" media="screen, projection">
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/js/jquery-1.7.2.js"></script>
 
@@ -31,7 +31,7 @@
         <jsp:include page="../../layout/header.jsp" />
         <div class="error">
             <p>
-                <spring:message code="e.tr.fw.0001" />
+                <spring:message code="label.tr.common.pageNotFoundMessage" />
             </p>
         </div>
         <jsp:include page="../../layout/footer.jsp" />

@@ -1,19 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.terasoluna.app</groupId>
-    <artifactId>terasoluna-tourreservation-parent</artifactId>
+    <artifactId>terasoluna-tourreservation</artifactId>
+    <version>5.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <parent>
         <groupId>org.terasoluna.gfw</groupId>
         <artifactId>terasoluna-gfw-parent</artifactId>
         <version>5.1.0-SNAPSHOT</version>
-        <relativePath />
     </parent>
 
     <name>TERASOLUNA Server Framework for Java (5.x) - Tour Reservation Application - Parent</name>
-    <version>5.1.0-SNAPSHOT</version>
     <description>Parent POM of Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
     <url>http://terasoluna.org</url>
     <inceptionYear>2013</inceptionYear>
@@ -28,11 +26,9 @@
         <name>TERASOLUNA Framework</name>
         <url>http://terasoluna.org</url>
     </organization>
-
     <repositories>
         <repository>
             <releases>
-                <enabled>true</enabled>
             </releases>
             <snapshots>
                 <enabled>false</enabled>
@@ -45,14 +41,12 @@
                 <enabled>false</enabled>
             </releases>
             <snapshots>
-                <enabled>true</enabled>
             </snapshots>
             <id>terasoluna-gfw-snapshots</id>
             <url>http://repo.terasoluna.org/nexus/content/repositories/terasoluna-gfw-snapshots/</url>
         </repository>
         <repository>
             <releases>
-                <enabled>true</enabled>
             </releases>
             <snapshots>
                 <enabled>false</enabled>
@@ -64,6 +58,39 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${org.codehaus.mojo.build-helper-maven-plugi.version}</version>
+                    <executions>
+                        <execution>
+                            <id>add-source</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                            </goals>
+                            <configuration>
+                                <sources>
+                                    <source>src/generated/java</source>
+                                </sources>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>add-resource</id>
+                            <phase>generate-resources</phase>
+                            <goals>
+                                <goal>add-resource</goal>
+                            </goals>
+                            <configuration>
+                                <resources>
+                                    <resource>
+                                        <directory>src/generated/resources</directory>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
                 <plugin>
                     <groupId>org.codehaus.cargo</groupId>
                     <artifactId>cargo-maven2-plugin</artifactId>
@@ -103,18 +130,19 @@
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>terasoluna-tourreservation-domain</artifactId>
-                <version>${project.version}</version>
+                <version>5.1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>terasoluna-tourreservation-web</artifactId>
-                <version>${project.version}</version>
+                <version>5.1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>terasoluna-tourreservation-env</artifactId>
-                <version>${project.version}</version>
+                <version>5.1.0-SNAPSHOT</version>
             </dependency>
+
             <!-- == Begin JasperReports == -->
             <dependency>
                 <groupId>jasperreports</groupId>
@@ -178,20 +206,22 @@
             <!-- == End JasperReports == -->
 
             <!-- == Begin Database == -->
-            <dependency>
-                <groupId>org.postgresql</groupId>
-                <artifactId>postgresql</artifactId>
-                <version>${postgresql.version}</version>
-            </dependency>
+             <dependency>
+                 <groupId>org.postgresql</groupId>
+                 <artifactId>postgresql</artifactId>
+                 <version>${postgresql.version}</version>
+             </dependency>
             <!-- == End Database == -->
+
         </dependencies>
     </dependencyManagement>
-
     <properties>
         <encoding>UTF-8</encoding>
-        <jasperreports.version>3.5.1</jasperreports.version>
         <java-version>1.7</java-version>
+        <org.codehaus.mojo.build-helper-maven-plugi.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugi.version>
         <postgresql.version>9.3-1102-jdbc41</postgresql.version>
+        <jasperreports.version>3.5.1</jasperreports.version>
+        <!-- for cargo -->
         <org.codehaus.cargo.cargo-maven2-plugin.version>1.4.16</org.codehaus.cargo.cargo-maven2-plugin.version>
         <cargo.jvmargs>-Xms512m -Xmx1024m</cargo.jvmargs>
         <cargo.daemon.url>http://localhost:18000</cargo.daemon.url>
@@ -199,5 +229,9 @@
         <cargo.container.url>http://archive.apache.org/dist/tomcat/tomcat-8/v${tomcat8.version}/bin/apache-tomcat-${tomcat8.version}.zip</cargo.container.url>
         <tomcat8.version>8.0.26</tomcat8.version>
     </properties>
-
+  <modules>
+    <module>terasoluna-tourreservation-env</module>
+    <module>terasoluna-tourreservation-domain</module>
+    <module>terasoluna-tourreservation-web</module>
+  </modules>
 </project>
