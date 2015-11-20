@@ -1,26 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.terasoluna.app</groupId>
-        <artifactId>terasoluna-tourreservation-parent</artifactId>
-        <version>5.1.0-SNAPSHOT</version>
-        <relativePath>../terasoluna-tourreservation-parent/pom.xml</relativePath>
-    </parent>
+
     <artifactId>terasoluna-tourreservation-domain</artifactId>
+    <packaging>jar</packaging>
     <name>TERASOLUNA Server Framework for Java (5.x) - Tour Reservation Application - Domain Layer</name>
     <description>Domain layer of Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
-    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>org.terasoluna.app</groupId>
+        <artifactId>terasoluna-tourreservation</artifactId>
+        <version>5.1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
     <dependencies>
-        <!-- == Begin TourReservation == -->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>terasoluna-tourreservation-env</artifactId>
-        </dependency>
-        <!-- == End TourReservation == -->
-
         <!-- == Begin TERASOLUNA == -->
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
@@ -51,6 +45,7 @@
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!-- == End Database == -->
 
         <!-- == Begin JasperReports == -->
         <dependency>
@@ -60,6 +55,13 @@
         <!-- == End JasperReports == -->
 
         <!-- == Begin Unit Test == -->
+        <!-- == Begin TourReservation == -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>terasoluna-tourreservation-env</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- == End TourReservation == -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -76,18 +78,23 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-el</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
         </dependency>
         <!-- == End Unit Test == -->
 
-        <!-- == Begin Lombok == -->
+        <!-- == Begin Coding Support == -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- == End Lombok == -->
+        <!-- == End Coding Support == -->
 
     </dependencies>
 

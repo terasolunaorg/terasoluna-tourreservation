@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- for development environment on local PC -->
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    ">
+
+    <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
     <bean id="realDataSource" class="org.apache.commons.dbcp2.BasicDataSource"
           destroy-method="close">
@@ -21,5 +24,8 @@
         <constructor-arg index="0" ref="realDataSource" />
     </bean>
 
-    <!-- <jee:jndi-lookup id="dataSource" jndi-name="jdbc/tourreservationDataSource"></jee:jndi-lookup> -->
+    <bean id="transactionManager"
+          class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
 </beans>
