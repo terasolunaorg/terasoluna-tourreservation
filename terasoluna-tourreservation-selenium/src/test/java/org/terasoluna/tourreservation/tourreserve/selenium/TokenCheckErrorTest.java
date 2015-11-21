@@ -34,13 +34,13 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
+@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public class TokenCheckErrorTest extends FunctionTestSupport {
 
     WebDriver driver;
 
-    @Value("${selenium.baseUrl}")
-    String baseUrl;
+    @Value("${selenium.applicationContextUrl}")
+    String applicationContextUrl;
 
     public TokenCheckErrorTest() {
     }
@@ -52,7 +52,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
     @Test
     public void testCustomerRegistToken() {
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         // go to register screen
         driver.findElement(By.id("customerRegisterBtn")).click();
@@ -92,7 +92,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
     @Test
     public void testCustomerRegistCSRFToken() {
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         // go to register screen
         driver.findElement(By.id("customerRegisterBtn")).click();
@@ -134,7 +134,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
     
     @Test
     public void testTourSearchRegistToken() {
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();
@@ -196,7 +196,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
     @Test
     public void testReserveUpdateToken() {
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();
@@ -286,7 +286,7 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
     @Test
     public void testReserveCancelToken() {
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();

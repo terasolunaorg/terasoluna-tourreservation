@@ -33,13 +33,13 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
+@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public class UnLogInTourSearchTest extends FunctionTestSupport {
 
     WebDriver driver;
 
-    @Value("${selenium.baseUrl}")
-    String baseUrl;
+    @Value("${selenium.applicationContextUrl}")
+    String applicationContextUrl;
 
     public UnLogInTourSearchTest() {
     }
@@ -51,7 +51,7 @@ public class UnLogInTourSearchTest extends FunctionTestSupport {
 
     @Test
     public void testUnLogInTourSearch() {
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
                 + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),

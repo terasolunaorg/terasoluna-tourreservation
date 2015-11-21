@@ -33,13 +33,13 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
+@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public class LogInReservUpdateTest extends FunctionTestSupport {
 
     WebDriver driver;
 
-    @Value("${selenium.baseUrl}")
-    String baseUrl;
+    @Value("${selenium.applicationContextUrl}")
+    String applicationContextUrl;
 
     public LogInReservUpdateTest() {
     }
@@ -51,7 +51,7 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
 
     @Test
     public void testLogInTourSearchRegist() {
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();
@@ -134,7 +134,7 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
         // register test data
         reserveTourForRegisterTestData(userName, password);
 
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();
@@ -252,7 +252,7 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
 
 
     private void reserveTourForRegisterTestData(String userName, String password){
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();

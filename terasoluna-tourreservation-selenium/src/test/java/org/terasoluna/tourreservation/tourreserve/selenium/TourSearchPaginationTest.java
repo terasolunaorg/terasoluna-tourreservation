@@ -31,16 +31,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
-import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
+@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public class TourSearchPaginationTest extends FunctionTestSupport {
 
     WebDriver driver;
 
-    @Value("${selenium.baseUrl}")
-    String baseUrl;
+    @Value("${selenium.applicationContextUrl}")
+    String applicationContextUrl;
 
     public TourSearchPaginationTest() {
     }
@@ -61,7 +60,7 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
     @Test
     public void testTourSearchPagination1() {
 
-        driver.get(baseUrl + "/terasoluna-tourreservation-web/");
+        driver.get(applicationContextUrl);
 
         // go to search tour screen
         driver.findElement(By.id("searchTourBtn")).click();
@@ -97,7 +96,7 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
     @Test
     public void testTourSearchPagination2() {
 
-        driver.get(baseUrl + "/terasoluna-tourreservation-web/");
+        driver.get(applicationContextUrl);
 
         // go to search tour screen
         driver.findElement(By.id("searchTourBtn")).click();

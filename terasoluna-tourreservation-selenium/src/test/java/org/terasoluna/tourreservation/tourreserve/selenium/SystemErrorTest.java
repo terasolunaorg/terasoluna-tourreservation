@@ -30,13 +30,13 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
+@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public class SystemErrorTest extends FunctionTestSupport {
 
     WebDriver driver;
 
-    @Value("${selenium.baseUrl}")
-    String baseUrl;
+    @Value("${selenium.applicationContextUrl}")
+    String applicationContextUrl;
 
     public SystemErrorTest() {
     }
@@ -48,7 +48,7 @@ public class SystemErrorTest extends FunctionTestSupport {
 
     @Test
     public void testSystemError() {
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();
@@ -65,8 +65,7 @@ public class SystemErrorTest extends FunctionTestSupport {
         // go to reserved tours list screen
         driver.findElement(By.id("reservedToursReferBtn")).click();
 
-        driver.get(baseUrl
-                + "/terasoluna-tourreservation-web/reservations/aaaaaa");
+        driver.get(applicationContextUrl+"/reservations/aaaaaa");
 
         assertEquals(getMessage(MessageKeys.E_TR_FW_0003),
                 driver.findElement(By.cssSelector("li")).getText());

@@ -33,13 +33,13 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
+@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public class UnauthorizedAccessTest extends FunctionTestSupport {
 
     WebDriver driver;
 
-    @Value("${selenium.baseUrl}")
-    String baseUrl;
+    @Value("${selenium.applicationContextUrl}")
+    String applicationContextUrl;
 
     public UnauthorizedAccessTest() {
     }
@@ -51,7 +51,7 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
 
     @Test
     public void testAccessToSecuredResourceInUnauthorized() {
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();
@@ -113,9 +113,7 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         // logout
         driver.findElement(By.id("logoutBtn")).click();
 
-        driver.get(baseUrl
-                + "/terasoluna-tourreservation-web/reservations/"
-                + reserveNumber);
+        driver.get(applicationContextUrl+ "/reservations/" + reserveNumber);
 
         assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver
                 .findElement(By.cssSelector("p.box")).getText());
@@ -139,7 +137,7 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
 
     @Test
     public void testAccessToOtherOwnerResource() {
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();
@@ -176,9 +174,7 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         driver.findElement(By.id("loginBtn")).click();
 
         // show other user's reservation
-        driver.get(baseUrl
-                + "/terasoluna-tourreservation-web/reservations/"
-                + reserveNumber);
+        driver.get(applicationContextUrl+ "/reservations/" + reserveNumber);
 
         assertEquals(getMessage(MessageKeys.E_TR_FW_0006),
                 driver.findElement(By.cssSelector("p")).getText());

@@ -35,7 +35,7 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
+@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public class TourSearchValidateTest extends FunctionTestSupport {
 
     private static final int width = 1024;
@@ -47,8 +47,8 @@ public class TourSearchValidateTest extends FunctionTestSupport {
     @Inject
     JodaTimeDateFactory dateFactory;
 
-    @Value("${selenium.baseUrl}")
-    String baseUrl;
+    @Value("${selenium.applicationContextUrl}")
+    String applicationContextUrl;
 
     public TourSearchValidateTest() {
     }
@@ -61,7 +61,7 @@ public class TourSearchValidateTest extends FunctionTestSupport {
 
     @Test
     public void testRequiredValidate() {
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();
@@ -105,7 +105,7 @@ public class TourSearchValidateTest extends FunctionTestSupport {
 
     @Test
     public void testDateValidate() {
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         // go to search tour screen
         driver.findElement(By.id("searchTourBtn")).click();
