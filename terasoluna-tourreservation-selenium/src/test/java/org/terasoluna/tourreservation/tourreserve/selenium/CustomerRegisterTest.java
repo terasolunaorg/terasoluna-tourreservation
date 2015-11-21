@@ -25,7 +25,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
@@ -37,20 +36,16 @@ public class CustomerRegisterTest extends FunctionTestSupport {
 
     WebDriver driver;
 
-    @Value("${selenium.applicationContextUrl}")
-    String applicationContextUrl;
-
     public CustomerRegisterTest() {
     }
 
     @Before
     public void setUp() {
-        driver = createDefaultLocaleDriver();
+        driver = createWebDriver();
     }
 
     @Test
     public void testCustomerRegister() {
-        driver.get(applicationContextUrl);
 
         // go to register screen
         driver.findElement(By.id("customerRegisterBtn")).click();

@@ -27,7 +27,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
@@ -47,21 +46,17 @@ public class TourSearchValidateTest extends FunctionTestSupport {
     @Inject
     JodaTimeDateFactory dateFactory;
 
-    @Value("${selenium.applicationContextUrl}")
-    String applicationContextUrl;
-
     public TourSearchValidateTest() {
     }
 
     @Before
     public void setUp() {
-        driver = createDefaultLocaleDriver();
+        driver = createWebDriver();
         driver.manage().window().setSize(new Dimension(width, height));
     }
 
     @Test
     public void testRequiredValidate() {
-        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();
@@ -105,7 +100,6 @@ public class TourSearchValidateTest extends FunctionTestSupport {
 
     @Test
     public void testDateValidate() {
-        driver.get(applicationContextUrl);
 
         // go to search tour screen
         driver.findElement(By.id("searchTourBtn")).click();

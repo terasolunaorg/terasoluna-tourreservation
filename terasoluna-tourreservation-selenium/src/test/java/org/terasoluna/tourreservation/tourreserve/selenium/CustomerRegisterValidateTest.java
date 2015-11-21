@@ -28,7 +28,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
@@ -40,20 +39,16 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
 
     WebDriver driver;
 
-    @Value("${selenium.applicationContextUrl}")
-    String applicationContextUrl;
-
     public CustomerRegisterValidateTest() {
     }
 
     @Before
     public void setUp() {
-        driver = createDefaultLocaleDriver();
+        driver = createWebDriver();
     }
 
     @Test
     public void testCustomerRegisterRequiredValidate() {
-        driver.get(applicationContextUrl);
 
         // go to register screen
         driver.findElement(By.id("customerRegisterBtn")).click();
@@ -291,7 +286,6 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
 
     @Test
     public void testCustomerRegisterFormatValidate() {
-        driver.get(applicationContextUrl);
 
         // go to register screen
         driver.findElement(By.id("customerRegisterBtn")).click();
@@ -354,7 +348,6 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
 
     @Test
     public void testCustomerRegisterDateValidate() {
-        driver.get(applicationContextUrl);
 
         // go to register screen
         driver.findElement(By.id("customerRegisterBtn")).click();
@@ -394,7 +387,6 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
 
     @Test
     public void testCustomerRegisterNumberValidate() {
-        driver.get(applicationContextUrl);
 
         // go to register screen
         driver.findElement(By.id("customerRegisterBtn")).click();
@@ -497,7 +489,6 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
 
     @Test
     public void testCustomerRegisterTypeValidate() {
-        driver.get(applicationContextUrl);
 
         // go to register screen
         driver.findElement(By.id("customerRegisterBtn")).click();
