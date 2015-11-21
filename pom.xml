@@ -213,7 +213,7 @@
         <encoding>UTF-8</encoding>
         <java-version>1.7</java-version>
         <org.codehaus.mojo.build-helper-maven-plugi.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugi.version>
-        <postgresql.version>9.3-1102-jdbc41</postgresql.version>
+        <postgresql.version>9.4-1205-jdbc41</postgresql.version>
         <jasperreports.version>3.5.1</jasperreports.version>
         <!-- for cargo -->
         <org.codehaus.cargo.cargo-maven2-plugin.version>1.4.16</org.codehaus.cargo.cargo-maven2-plugin.version>
