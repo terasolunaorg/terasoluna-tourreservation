@@ -42,23 +42,15 @@ $ mvn -f terasoluna-tourreservation-initdb/pom.xml sql:execute
 
 Test data is currently available in Japanese only.
 
-#### Install jars
+#### Install jars and build war
 
-If db user password is not set to 'P0stgres', then go to `terasoluna-tourreservation-env/src/main/resources/META-INF/spring/tourreservation-infra.properties` and update the password. If it is set to 'P0stgres', no changes are required.
-
-```console
-$ mvn -f terasoluna-tourreservation-parent/pom.xml clean install
-$ mvn -f terasoluna-tourreservation-env/pom.xml clean install
-$ mvn -f terasoluna-tourreservation-domain/pom.xml clean install
-```
-
-#### Build war
+If db user password is not set to 'P0stgres', then go to `terasoluna-tourreservation-env/src/main/resources/META-INF/spring/terasoluna-tourreservation-infra.properties` and update the password. If it is set to 'P0stgres', no changes are required.
 
 ```console
-$ mvn -f terasoluna-tourreservation-web/pom.xml clean package
+$ mvn clean install
 ```
 
-#### Deploy war
+#### Run server and deploy war
 
 Deploy `terasoluna-tourreservation-web/target/terasoluna-tourreservation-web.war` to your Application server (e.g. Tomcat8)
 

@@ -36,15 +36,15 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:seleniumContext.xml" })
+@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
 public class TourSearchRegistValidateTest extends FunctionTestSupport {
     @Inject
     MessageSource messageSource;
 
     WebDriver driver;
 
-    @Value("${selenium.baseUrl}")
-    String baseUrl;
+    @Value("${selenium.applicationContextUrl}")
+    String applicationContextUrl;
 
     public TourSearchRegistValidateTest() {
     }
@@ -56,7 +56,7 @@ public class TourSearchRegistValidateTest extends FunctionTestSupport {
 
     @Test
     public void testTourSearchRegistValidate() {
-        driver.get(baseUrl + "/terasoluna-tourreservation-web");
+        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();

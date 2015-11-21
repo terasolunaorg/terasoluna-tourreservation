@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
 
+    <!-- Listeners -->
     <listener>
-        <listener-class>org.terasoluna.gfw.web.logging.HttpSessionEventLoggingListener</listener-class>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
-    <!-- The definition of the Root Spring Container shared by all Servlets 
-        and Filters -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -17,23 +15,17 @@
         </param-value>
     </context-param>
 
+    <listener>
+        <listener-class>org.terasoluna.gfw.web.logging.HttpSessionEventLoggingListener</listener-class>
+    </listener>
+
+    <!-- Filters -->
     <filter>
         <filter-name>MDCClearFilter</filter-name>
         <filter-class>org.terasoluna.gfw.web.logging.mdc.MDCClearFilter</filter-class>
     </filter>
-
     <filter-mapping>
         <filter-name>MDCClearFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-    <filter>
-        <filter-name>XTrackMDCPutFilter</filter-name>
-        <filter-class>org.terasoluna.gfw.web.logging.mdc.XTrackMDCPutFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>XTrackMDCPutFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
@@ -41,9 +33,17 @@
         <filter-name>exceptionLoggingFilter</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     </filter>
-
     <filter-mapping>
         <filter-name>exceptionLoggingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>XTrackMDCPutFilter</filter-name>
+        <filter-class>org.terasoluna.gfw.web.logging.mdc.XTrackMDCPutFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>XTrackMDCPutFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
@@ -59,7 +59,6 @@
             <param-value>true</param-value>
         </init-param>
     </filter>
-
     <filter-mapping>
         <filter-name>CharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -85,22 +84,7 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <filter>
-        <filter-name>UserIdMDCPutFilter</filter-name>
-        <filter-class>org.terasoluna.gfw.security.web.logging.UserIdMDCPutFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>UserIdMDCPutFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-    <!-- Creates the Spring Container shared by all Servlets and Filters -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
-    <!-- Processes application requests -->
+    <!-- Servlets -->
     <servlet>
         <servlet-name>appServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -110,12 +94,12 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>appServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- JSP Configs -->
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
@@ -126,16 +110,17 @@
         </jsp-property-group>
     </jsp-config>
 
+    <!-- Error Pages -->
     <error-page>
         <error-code>404</error-code>
-        <location>/WEB-INF/views/common/error/not-found-error.jsp</location>
+        <location>/WEB-INF/views/common/error/resourceNotFoundError.jsp</location>
     </error-page>
-
     <error-page>
         <exception-type>java.lang.Exception</exception-type>
-        <location>/WEB-INF/views/common/error/system-error.jsp</location>
+        <location>/WEB-INF/views/common/error/systemError.jsp</location>
     </error-page>
 
+    <!-- Session Configs -->
     <session-config>
         <session-timeout>30</session-timeout>
         <cookie-config>
@@ -145,4 +130,3 @@
     </session-config>
 
 </web-app>
-
