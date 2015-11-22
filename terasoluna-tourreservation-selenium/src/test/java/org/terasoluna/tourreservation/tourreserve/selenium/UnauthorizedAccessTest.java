@@ -26,7 +26,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
@@ -38,20 +37,16 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
 
     WebDriver driver;
 
-    @Value("${selenium.applicationContextUrl}")
-    String applicationContextUrl;
-
     public UnauthorizedAccessTest() {
     }
 
     @Before
     public void setUp() {
-        driver = createDefaultLocaleDriver();
+        driver = createWebDriver();
     }
 
     @Test
     public void testAccessToSecuredResourceInUnauthorized() {
-        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();
@@ -137,7 +132,6 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
 
     @Test
     public void testAccessToOtherOwnerResource() {
-        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();

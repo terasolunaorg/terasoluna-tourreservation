@@ -28,7 +28,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -43,20 +42,16 @@ public class TourSearchRegistValidateTest extends FunctionTestSupport {
 
     WebDriver driver;
 
-    @Value("${selenium.applicationContextUrl}")
-    String applicationContextUrl;
-
     public TourSearchRegistValidateTest() {
     }
 
     @Before
     public void setUp() {
-        driver = createDefaultLocaleDriver();
+        driver = createWebDriver();
     }
 
     @Test
     public void testTourSearchRegistValidate() {
-        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();

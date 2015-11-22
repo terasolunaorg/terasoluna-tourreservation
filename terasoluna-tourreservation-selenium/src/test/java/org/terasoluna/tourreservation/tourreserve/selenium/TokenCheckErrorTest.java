@@ -27,7 +27,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
@@ -39,20 +38,16 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
     WebDriver driver;
 
-    @Value("${selenium.applicationContextUrl}")
-    String applicationContextUrl;
-
     public TokenCheckErrorTest() {
     }
 
     @Before
     public void setUp() {
-        driver = createDefaultLocaleDriver();
+        driver = createWebDriver();
     }
 
     @Test
     public void testCustomerRegistToken() {
-        driver.get(applicationContextUrl);
 
         // go to register screen
         driver.findElement(By.id("customerRegisterBtn")).click();
@@ -92,7 +87,6 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
     @Test
     public void testCustomerRegistCSRFToken() {
-        driver.get(applicationContextUrl);
 
         // go to register screen
         driver.findElement(By.id("customerRegisterBtn")).click();
@@ -134,7 +128,6 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
     
     @Test
     public void testTourSearchRegistToken() {
-        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();
@@ -196,7 +189,6 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
     @Test
     public void testReserveUpdateToken() {
-        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();
@@ -286,7 +278,6 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
     @Test
     public void testReserveCancelToken() {
-        driver.get(applicationContextUrl);
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();

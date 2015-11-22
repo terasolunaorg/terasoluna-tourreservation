@@ -26,10 +26,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ApplicationObjectSupport;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -41,58 +40,42 @@ import static org.junit.Assert.assertThat;
 public abstract class FunctionTestSupport extends ApplicationObjectSupport {
 
     @Inject
-    MessageSource messageSource;
+    protected MessageSource messageSource;
+
+    @Value("${selenium.applicationContextUrl}")
+    protected String applicationContextUrl;
+
+    @Value("${selenium.locale:en}")
+    protected Locale locale;
 
     /**
-     * Starts a WebDriver using specified Locale information<br>
-     * <p>
-     * Only FireFox and Chrome are supported<br>
-     * If "en" is specified in arguments, English locale is used<br>
-     * If "" is specified, then WebDriver is started without any specific locale
+     * Starts a WebDriver<br>
      * </p>
-     * @param localeStr
      * @return WebDriver web driver
      */
-    protected WebDriver createLocaleSpecifiedDriver(String localeStr) {
+    protected WebDriver createWebDriver() {
         WebDriver driver = null;
         for (String activeProfile : getApplicationContext().getEnvironment()
                 .getActiveProfiles()) {
             if ("chrome".equals(activeProfile)) {
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("--lang=" + localeStr);
-                driver = new ChromeDriver(options);
+                driver = new ChromeDriver();
                 break;
             } else if ("firefox".equals(activeProfile)) {
                 break;
             } else if ("ie".equals(activeProfile)) {
-                logger.warn("Cannot use Internet explorer if specifying locale. Startup the browser without any specific locale.");
                 driver = new InternetExplorerDriver();
                 break;
             }
         }
 
         if (driver == null) {
-            // firefox is default browser
-            FirefoxProfile profile = new FirefoxProfile();
-            profile.setPreference("intl.accept_languages", localeStr);
-            driver = new FirefoxDriver(profile);
+            driver = new FirefoxDriver();
         }
 
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.get(applicationContextUrl + "?locale=" + locale.getLanguage());
 
         return driver;
-    }
-
-    /**
-     * Starts a WebDriver using default Locale<br>
-     * <p>
-     * Only FireFox and Chrome are supported<br>
-     * </p>
-     * @return WebDriver web driver
-     */
-    protected WebDriver createDefaultLocaleDriver() {
-        String localeStr = Locale.getDefault().getLanguage();
-        return createLocaleSpecifiedDriver(localeStr);
     }
 
     /**
@@ -101,7 +84,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
      * @return localized message
      */
     protected String getMessage(String code) {
-        return messageSource.getMessage(code, null, Locale.getDefault());
+        return messageSource.getMessage(code, null, locale);
     }
 
     /**

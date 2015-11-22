@@ -1,4 +1,3 @@
-
 <div class="container">
 	<p id="messagesArea" class="box">
 		<sec:authorize access="!hasRole('ROLE_USER')">
@@ -68,5 +67,16 @@
 				</fieldset>
 			</form:form>
 		</sec:authorize>
+	</div>
+	<div id="languageSwitcher" class="right">
+		<spring:eval expression="@localeResolver.resolveLocale(pageContext.request)" var="currentLocale"/>
+		<c:choose>
+			<c:when test="${currentLocale == 'ja'}">
+				<a id="switchEn" href="?locale=en">English</a>
+			</c:when>
+			<c:otherwise>
+				<a id="switchJa" href="?locale=ja">日本語</a>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </div>

@@ -27,7 +27,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
@@ -38,15 +37,12 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
 
     WebDriver driver;
 
-    @Value("${selenium.applicationContextUrl}")
-    String applicationContextUrl;
-
     public TourSearchPaginationTest() {
     }
 
     @Before
     public void setUp() {
-        driver = createDefaultLocaleDriver();
+        driver = createWebDriver();
     }
 
     /**
@@ -59,8 +55,6 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
      */
     @Test
     public void testTourSearchPagination1() {
-
-        driver.get(applicationContextUrl);
 
         // go to search tour screen
         driver.findElement(By.id("searchTourBtn")).click();
@@ -95,8 +89,6 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
      */
     @Test
     public void testTourSearchPagination2() {
-
-        driver.get(applicationContextUrl);
 
         // go to search tour screen
         driver.findElement(By.id("searchTourBtn")).click();
