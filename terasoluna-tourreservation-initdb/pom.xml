@@ -55,7 +55,6 @@
                     <encoding>${db.encoding}</encoding>
                     <autocommit>false</autocommit>
                     <delimiterType>${db.delimiterType}</delimiterType>
-                    <onError>continue</onError>
                     <skip>false</skip>
                     <fileset>
                         <basedir>${db.basedir}</basedir>
