@@ -26,7 +26,7 @@
                 <db.username>postgres</db.username>
                 <db.password>P0stgres</db.password>
                 <db.driver>org.postgresql.Driver</db.driver>
-                <db.groupId>postgresql</db.groupId>
+                <db.groupId>org.postgresql</db.groupId>
                 <db.artifactId>postgresql</db.artifactId>
                 <db.version>${postgresql.version}</db.version>
                 <db.delimiterType>row</db.delimiterType>
