@@ -191,7 +191,7 @@
         <encoding>UTF-8</encoding>
         <jasperreports.version>3.5.1</jasperreports.version>
         <java-version>1.7</java-version>
-        <postgresql.version>9.3-1102-jdbc41</postgresql.version>
+        <postgresql.version>9.4-1205-jdbc41</postgresql.version>
         <org.codehaus.cargo.cargo-maven2-plugin.version>1.4.16</org.codehaus.cargo.cargo-maven2-plugin.version>
         <cargo.jvmargs>-Xms512m -Xmx1024m</cargo.jvmargs>
         <cargo.daemon.url>http://localhost:18000</cargo.daemon.url>
