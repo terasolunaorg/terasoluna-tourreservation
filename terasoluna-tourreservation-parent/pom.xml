@@ -400,7 +400,7 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>postgresql</groupId>
+                <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${postgresql.version}</version>
                 <!-- <scope>provided</scope> -->
@@ -453,7 +453,7 @@
         <org.codehaus.mojo.version>2.5</org.codehaus.mojo.version>
         <org.mockito.version>1.9.0</org.mockito.version>
         <org.springframework.build.aws.version>3.0.0.RELEASE</org.springframework.build.aws.version>
-        <postgresql.version>9.1-901.jdbc4</postgresql.version>
+        <postgresql.version>9.4-1205-jdbc41</postgresql.version>
         <tiles.version>2.2.2</tiles.version>
         <tomcat.api.version>7.0.40</tomcat.api.version>
         <org.codehaus.cargo.cargo-maven2-plugin.version>1.4.16</org.codehaus.cargo.cargo-maven2-plugin.version>
