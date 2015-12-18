@@ -5,14 +5,14 @@
     <database jndi-name="jdbc/tourreservationDataSource">
       <driver>
         <type>org.postgresql.Driver</type>
-        <url>jdbc:postgresql://localhost:5432/tourreserve</url>
+        <url>jdbc:postgresql://${HOST_IP!'localhost'}:${DBSRV_DB_PORT!'5432'}/tourreserve</url>
         <user>postgres</user>
         <password>P0stgres</password>
       </driver>
     </database>
     <!-- settings of class loader for web application -->
     <class-loader>
-      <library-loader path="/opt/resin/resin/webapps-env-jars/terasoluna-tourreservation-env-resin-postgresql" />
+      <library-loader path="${VM_TOMCAT_ENV_JAR_DIR!'/opt/resin/resin/webapps-env-jars/terasoluna-tourreservation-env-resin-postgresql'}" />
     </class-loader>
   </web-app>
 
