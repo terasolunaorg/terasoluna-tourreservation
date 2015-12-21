@@ -22,7 +22,7 @@ before_script:
   - psql -c 'create database tourreserve;' -U postgres
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  - export CARGO_DAEMON_WEBAPP_VERSION=1.4.16
+  - export CARGO_DAEMON_WEBAPP_VERSION=1.4.17
   - mvn dependency:copy -Dartifact=org.codehaus.cargo:cargo-daemon-webapp:${CARGO_DAEMON_WEBAPP_VERSION}:war -DoutputDirectory=./target/.
   - java -jar ./target/cargo-daemon-webapp-${CARGO_DAEMON_WEBAPP_VERSION}.war &
 
