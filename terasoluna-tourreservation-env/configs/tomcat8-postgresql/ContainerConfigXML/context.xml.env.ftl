@@ -9,7 +9,7 @@
        driverClassName="org.postgresql.Driver"
        username="postgres"
        password="P0stgres"
-       url="jdbc:postgresql://localhost:5432/tourreserve"
+       url="jdbc:postgresql://${HOST_IP!'localhost'}:${DBSRV_DB_PORT!'5432'}/tourreserve"
        maxIdle="16"
        minIdle="0"
        maxWait="60000"
@@ -17,7 +17,7 @@
 
     <Resources className="org.apache.catalina.webresources.StandardRoot">
         <PreResources className="org.apache.catalina.webresources.DirResourceSet"
-                      base="/opt/tomcat/tomcat/webapps-env-jars/terasoluna-tourreservation-env-tomcat8-postgresql/"
+                      base="${VM_TOMCAT_ENV_JAR_DIR!'/opt/tomcat/tomcat/webapps-env-jars/terasoluna-tourreservation-env-tomcat8-postgresql'}/"
                       internalPath="/"
                       webAppMount="/WEB-INF/lib" />
     </Resources>
