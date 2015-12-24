@@ -16,7 +16,7 @@
 package org.terasoluna.tourreservation.app.managereservation;
 
 import org.dozer.Mapper;
-import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

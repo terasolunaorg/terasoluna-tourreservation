@@ -1,6 +1,6 @@
 <div class="container">
 	<p id="messagesArea" class="box">
-		<sec:authorize access="!hasRole('ROLE_USER')">
+		<sec:authorize access="!hasRole('USER')">
 			<spring:message code="label.tr.common.notLoginMessage" />
 		</sec:authorize>
 		<spring:message code="label.tr.menu.menuMessage" />
@@ -20,7 +20,7 @@
 				</div>
 			</fieldset>
 		</form:form>
-		<sec:authorize access="!hasRole('ROLE_USER')">
+		<sec:authorize access="!hasRole('USER')">
 			<form:form method="get" action="${pageContext.request.contextPath}/login">
 				<fieldset class="notice">
 					<div class="span-5">
@@ -51,7 +51,7 @@
 				</fieldset>
 			</form:form>
 		</sec:authorize>
-		<sec:authorize access="hasRole('ROLE_USER')">
+		<sec:authorize access="hasRole('USER')">
 			<form:form method="get" action="${pageContext.request.contextPath}/reservations/me">
 				<fieldset class="notice">
 					<div class="span-5">

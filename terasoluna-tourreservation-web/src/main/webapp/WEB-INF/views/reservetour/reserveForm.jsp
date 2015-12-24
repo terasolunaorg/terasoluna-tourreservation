@@ -8,12 +8,12 @@
 		<spring:message code="label.tr.searchtour.detailScreenFlowMessage" />
 	</div>
 
-	<sec:authorize access="!hasRole('ROLE_USER')">
+	<sec:authorize access="!hasRole('USER')">
 		<p>
 			<spring:message code="label.tr.searchtour.loginToReserveMessage" />
 		</p>
 	</sec:authorize>
-	<sec:authorize access="hasRole('ROLE_USER')">
+	<sec:authorize access="hasRole('USER')">
 		<p>
 			<spring:message code="label.tr.searchtour.pressReserveBtnMessage" />
 		</p>
@@ -24,14 +24,14 @@
 		<br>
 		<jsp:include page="../common/fragment/tourInfoTable.jsp" />
 		<br>
-		<sec:authorize access="hasRole('ROLE_USER')">
+		<sec:authorize access="hasRole('USER')">
 			<br>
 			<jsp:include page="../common/fragment/customerTable.jsp" />
 		</sec:authorize>
 		<br>
 		<jsp:include page="../common/fragment/priceTable.jsp" />
 	</div>
-	<sec:authorize access="hasRole('ROLE_USER')">
+	<sec:authorize access="hasRole('USER')">
 		<br>
 		<table>
 			<tr>
@@ -70,7 +70,7 @@
 			</form:form>
 		</table>
 	</sec:authorize>
-	<sec:authorize access="!hasRole('ROLE_USER')">
+	<sec:authorize access="!hasRole('USER')">
 		<form:form method="get" action="${pageContext.request.contextPath}/login"
 			cssClass="inline">
 			<input type="hidden" name="redirectTo" value="${pageContext.request.contextPath}/tours/${f:h(output.tourInfo.tourCode)}/reserve?form&${f:query(reserveTourForm)}&page=${f:h(param['page'])}&size=${f:h(param['size'])}" />

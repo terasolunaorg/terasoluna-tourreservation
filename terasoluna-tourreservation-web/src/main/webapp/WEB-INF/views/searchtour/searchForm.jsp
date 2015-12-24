@@ -105,7 +105,7 @@
 					<td>${(page.number * page.size) + rowStatus.index + 1}</td>
 					<td>
 						<c:set var="operationPath"></c:set>
-						<sec:authorize access="hasRole('ROLE_USER')">
+						<sec:authorize access="hasRole('USER')">
 							<c:set var="operationPath">/reserve</c:set>
 						</sec:authorize>
 						<a href="${pageContext.request.contextPath}/tours/${f:h(tourInfo.tourCode)}${operationPath}?form&${f:query(searchTourForm)}&page=${f:h(page.number)}&size=${f:h(page.size)}">
