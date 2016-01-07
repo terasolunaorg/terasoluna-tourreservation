@@ -25,6 +25,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -158,9 +159,10 @@ public class ReserveRepositoryImplTest {
 	@Test
 	public void testFindByCustomer01() {
 		String tourCode = "8888888888";
-		DateTime reservedDay = new DateTime(2016, 1, 1, 0, 0, 0);
-		DateTime depDay = new DateTime(2016, 2, 2, 0, 0, 0);
-		DateTime plannedDay = new DateTime(2015, 12, 31, 0, 0, 0);
+		LocalDate today = LocalDate.now();
+		LocalDate reservedDay = today;
+		LocalDate depDay = today.plusDays(32);
+		LocalDate plannedDay = today.minusDays(1);
 		String tourAbs = "wonderful travel !";
 		String tourName = "test tour";
 		String customerCode = "00000001";
@@ -221,7 +223,7 @@ public class ReserveRepositoryImplTest {
 																		// inserted
 		assertThat(r.getAdultCount(), is(1));
 		assertThat(r.getChildCount(), is(1));
-		assertThat(r.getReservedDay().getTime(), is(reservedDay.getMillis()));
+		assertThat(r.getReservedDay(), is(reservedDay.toDate()));
 		assertThat(r.getRemarks(), is("TEST"));
 		assertThat(r.getReserveNo(), is("00000000"));
 		assertThat(r.getSumPrice(), is(1000));
@@ -244,10 +246,10 @@ public class ReserveRepositoryImplTest {
 		assertThat(r.getTourInfo().getAvaRecMax(), is(2147483647));
 		assertThat(r.getTourInfo().getBasePrice(), is(20000));
 		assertThat(r.getTourInfo().getConductor(), is("1"));
-		assertThat(r.getTourInfo().getDepDay().getTime(),
-				is(depDay.getMillis()));
-		assertThat(r.getTourInfo().getPlannedDay().getTime(),
-				is(plannedDay.getMillis()));
+		assertThat(r.getTourInfo().getDepDay(),
+				is(depDay.toDate()));
+		assertThat(r.getTourInfo().getPlannedDay(),
+				is(plannedDay.toDate()));
 		assertThat(r.getTourInfo().getTourAbs(), is(tourAbs));
 		assertThat(r.getTourInfo().getTourCode(), is(tourCode));
 		assertThat(r.getTourInfo().getTourDays(), is(1));
