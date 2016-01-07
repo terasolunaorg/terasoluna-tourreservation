@@ -1,7 +1,7 @@
 
   <div class="container">
    <jsp:include page="../common/top.jsp" />
-    <form:form action="${pageContext.request.contextPath}/authenticate">
+    <form:form action="${pageContext.request.contextPath}/login">
       <fieldset>
         <legend>
           <spring:message code="label.tr.login.loginFormMessage" />
