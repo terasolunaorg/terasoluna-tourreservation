@@ -73,7 +73,7 @@
 	<sec:authorize access="!hasRole('USER')">
 		<form:form method="get" action="${pageContext.request.contextPath}/login"
 			cssClass="inline">
-			<input type="hidden" name="redirectTo" value="${pageContext.request.contextPath}/tours/${f:h(output.tourInfo.tourCode)}/reserve?form&${f:query(reserveTourForm)}&page=${f:h(param['page'])}&size=${f:h(param['size'])}" />
+			<input type="hidden" name="redirectTo" value="/tours/${f:h(output.tourInfo.tourCode)}/reserve?form&${f:query(reserveTourForm)}&page=${f:h(param['page'])}&size=${f:h(param['size'])}" />
 			<button id="loginBtn">
 				<spring:message code="label.tr.menu.loginBtnMessage" />
 			</button>

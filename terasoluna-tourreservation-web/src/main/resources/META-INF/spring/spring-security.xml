@@ -33,8 +33,10 @@
 
     <bean id="userDetailsService" class="org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetailsService" />
 
-    <bean id="redirectHandler" class="org.terasoluna.gfw.security.web.redirect.RedirectAuthenticationHandler">
+    <bean id="redirectHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+        <property name="targetUrlParameter" value="redirectTo"/>
     </bean>
+
     <bean id="redirectErrorHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
         <property name="defaultFailureUrl" value="/login?error=true" />
         <property name="useForward" value="true" />
