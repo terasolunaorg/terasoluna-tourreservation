@@ -7,6 +7,8 @@
            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        ">
 
+    <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
+
     <jee:jndi-lookup
             id="realDataSource"
             jndi-name="jdbc/tourreservationDataSource"
@@ -14,6 +16,10 @@
 
     <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
         <constructor-arg index="0" ref="realDataSource" />
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
 
 </beans>
