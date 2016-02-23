@@ -5,7 +5,7 @@
     <parent>
         <artifactId>terasoluna-tourreservation-parent</artifactId>
         <groupId>org.terasoluna.app</groupId>
-        <version>1.0.4-SNAPSHOT</version>
+        <version>1.0.4.RELEASE</version>
         <relativePath>../terasoluna-tourreservation-parent/pom.xml</relativePath>
     </parent>
     <artifactId>terasoluna-tourreservation-selenium</artifactId>
