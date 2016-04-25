@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013-2016 terasoluna.org
+ * Copyright (C) 2013-2016 NTT DATA Corporation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ public class MessageKeysGen {
 
         try {
             pw.println("/*");
-            pw.println(" * Copyright (C) 2013 terasoluna.org");
+            pw.println(" * Copyright (C) 2013-2016 NTT DATA Corporation");
             pw.println(" *");
             pw.println(" * Licensed under the Apache License, Version 2.0 (the \"License\");"); 
             pw.println(" * you may not use this file except in compliance with the License."); 
