@@ -18,20 +18,22 @@
         <!-- == Begin TERASOLUNA == -->
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-jodatime</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-security-core</artifactId>
+            <artifactId>terasoluna-gfw-common-dependencies</artifactId>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-jpa</artifactId>
+            <artifactId>terasoluna-gfw-jodatime-dependencies</artifactId>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw</groupId>
+            <artifactId>terasoluna-gfw-security-core-dependencies</artifactId>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.terasoluna.gfw</groupId>
+            <artifactId>terasoluna-gfw-jpa-dependencies</artifactId>
             <type>pom</type>
         </dependency>
         <dependency>
@@ -100,5 +102,9 @@
         <!-- == End Coding Support == -->
 
     </dependencies>
+
+    <properties>
+        <project.root.basedir>${project.parent.basedir}</project.root.basedir>
+    </properties>
 
 </project>
