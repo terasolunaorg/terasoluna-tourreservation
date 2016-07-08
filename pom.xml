@@ -226,17 +226,18 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <!-- == Maven Plugins == -->
+        <!-- == Maven Plugin Versions == -->
         <org.codehaus.mojo.build-helper-maven-plugi.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugi.version>
         <maven-war-plugin.version>2.5</maven-war-plugin.version>
         <formatter-maven-plugin.version>0.5.2</formatter-maven-plugin.version>
         <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
-        <!-- == Other Properties== -->
-        <encoding>UTF-8</encoding>
-        <java-version>1.8</java-version>
+        <!-- == Dependency Versions == -->
         <postgresql.version>9.4-1206-jdbc41</postgresql.version>
         <jasperreports.version>3.5.1</jasperreports.version>
         <selenium.version>2.46.0</selenium.version>
+        <!-- == Project Properties == -->
+        <encoding>UTF-8</encoding>
+        <java-version>1.8</java-version>
         <project.root.basedir>${project.basedir}</project.root.basedir>
     </properties>
     <modules>
