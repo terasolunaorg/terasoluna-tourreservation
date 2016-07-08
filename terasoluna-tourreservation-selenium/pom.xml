@@ -43,7 +43,6 @@
     </dependencies>
 
     <properties>
-        <!-- == Project Properties == -->
         <project.root.basedir>${project.parent.basedir}</project.root.basedir>
     </properties>
 </project>
