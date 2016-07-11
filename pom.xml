@@ -85,6 +85,45 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven-war-plugin.version}</version>
+                    <configuration>
+                        <warName>${project.artifactId}</warName>
+                        <archive>
+                            <addMavenDescriptor>false</addMavenDescriptor>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>net.revelc.code</groupId>
+                    <artifactId>formatter-maven-plugin</artifactId>
+                    <version>${formatter-maven-plugin.version}</version>
+                    <configuration>
+                        <configFile>${project.root.basedir}/eclipse/formatter.xml
+                        </configFile>
+                        <lineEnding>CRLF</lineEnding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.google.code.maven-license-plugin</groupId>
+                    <artifactId>maven-license-plugin</artifactId>
+                    <version>${com.google.code.maven-license-plugin.version}</version>
+                    <configuration>
+                        <header>${project.root.basedir}/license/header.txt</header>
+                        <includes>
+                            <include>src/**/*.java</include>
+                        </includes>
+                        <encoding>${encoding}</encoding>
+                        <headerDefinitions>
+                            <headerDefinition>${project.root.basedir}/license/header-definition.xml</headerDefinition>
+                        </headerDefinitions>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -176,18 +215,34 @@
             </dependency>
             <!-- == End Database == -->
 
+            <!-- == Begin Test == -->
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-java</artifactId>
+                <version>${selenium.version}</version>
+            </dependency>
+            <!-- == End Test == -->
+
         </dependencies>
     </dependencyManagement>
     <properties>
-        <encoding>UTF-8</encoding>
-        <java-version>1.8</java-version>
+        <!-- == Maven Plugin Versions == -->
         <org.codehaus.mojo.build-helper-maven-plugi.version>1.9.1</org.codehaus.mojo.build-helper-maven-plugi.version>
+        <maven-war-plugin.version>2.5</maven-war-plugin.version>
+        <formatter-maven-plugin.version>0.5.2</formatter-maven-plugin.version>
+        <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
+        <!-- == Dependency Versions == -->
         <postgresql.version>9.4-1206-jdbc41</postgresql.version>
         <jasperreports.version>3.5.1</jasperreports.version>
+        <selenium.version>2.46.0</selenium.version>
+        <!-- == Project Properties == -->
+        <encoding>UTF-8</encoding>
+        <java-version>1.8</java-version>
+        <project.root.basedir>${project.basedir}</project.root.basedir>
     </properties>
-  <modules>
-    <module>terasoluna-tourreservation-env</module>
-    <module>terasoluna-tourreservation-domain</module>
-    <module>terasoluna-tourreservation-web</module>
-  </modules>
+    <modules>
+        <module>terasoluna-tourreservation-env</module>
+        <module>terasoluna-tourreservation-domain</module>
+        <module>terasoluna-tourreservation-web</module>
+    </modules>
 </project>
