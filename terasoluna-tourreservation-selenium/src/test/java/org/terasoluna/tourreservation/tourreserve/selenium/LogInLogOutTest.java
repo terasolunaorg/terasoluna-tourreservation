@@ -15,7 +15,10 @@
  */
 package org.terasoluna.tourreservation.tourreserve.selenium;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.openqa.selenium.By.id;
 
 import org.junit.After;
 import org.junit.Before;
@@ -76,6 +79,39 @@ public class LogInLogOutTest extends FunctionTestSupport {
         assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
                 + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
                 driver.findElement(By.id("messagesArea")).getText());
+    }
+    
+    @Test
+    public void testLoginFailure() {
+
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
+                + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
+                driver.findElement(By.id("messagesArea")).getText());
+
+        // go to login screen
+        driver.findElement(By.id("loginBtn")).click();
+
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE),
+                driver.findElement(By.id("messagesArea")).getText());
+
+        // input credential
+        driver.findElement(By.id("password")).clear();
+        driver.findElement(By.id("password")).sendKeys("password1234");
+        driver.findElement(By.id("username")).clear();
+        driver.findElement(By.id("username")).sendKeys("00000001");
+
+        // login
+        driver.findElement(By.id("loginBtn")).click();
+        
+        // login failure default message
+        assertThat(driver.findElement(By.id("loginError")).getText(),
+                is("Bad credentials"));
+        
+        // go to login screen
+        driver.get(applicationContextUrl + "/login");
+        
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE),
+                driver.findElement(By.id("messagesArea")).getText());  
     }
 
     @After
