@@ -18,7 +18,6 @@ package org.terasoluna.tourreservation.tourreserve.selenium;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-import static org.openqa.selenium.By.id;
 
 import org.junit.After;
 import org.junit.Before;
