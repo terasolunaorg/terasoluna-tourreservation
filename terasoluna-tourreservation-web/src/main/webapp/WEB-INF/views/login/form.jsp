@@ -6,9 +6,11 @@
         <legend>
           <spring:message code="label.tr.login.loginFormMessage" />
         </legend>
-
-        <c:if test="${param.error == true}">
-          <t:messagesPanel messagesAttributeName="SPRING_SECURITY_LAST_EXCEPTION"/>
+        
+        <c:if test="${param.containsKey('error')}">
+	        <span id="loginError"> 
+	          <t:messagesPanel messagesAttributeName="SPRING_SECURITY_LAST_EXCEPTION"/>
+	        </span>
         </c:if>
 
         <p>
