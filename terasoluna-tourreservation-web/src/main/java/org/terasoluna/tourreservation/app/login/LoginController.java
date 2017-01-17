@@ -23,12 +23,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 
     /**
-     * forward login view.
-     * 
-     * @return login view
+     * Shows the login view.
+     * @return
      */
     @RequestMapping
-    public String login() {
+    public String loginForm() {
         return "login/form";
     }
 }
