@@ -80,13 +80,6 @@
         <mvc:definitions location="/WEB-INF/tiles/tiles-definitions.xml" />
     </mvc:tiles-configurer>
 
-    <mvc:view-controller path="/login" view-name="login/form" />
-    <mvc:view-controller path="/error/accessDeniedError" view-name="common/error/accessDeniedError" />
-    <mvc:view-controller path="/error/resourceNotFoundError" view-name="common/error/resourceNotFoundError" />
-    <mvc:view-controller path="/error/systemError" view-name="common/error/systemError" />
-    <mvc:view-controller path="/error/invalidCsrfTokenError" view-name="common/error/invalidCsrfTokenError" />
-    <mvc:view-controller path="/error/missingCsrfTokenError" view-name="common/error/missingCsrfTokenError" />
-
 
     <bean id="managereservation/report" class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView">
         <property name="url" value="/WEB-INF/reports/reservationReportPdf.jrxml" />

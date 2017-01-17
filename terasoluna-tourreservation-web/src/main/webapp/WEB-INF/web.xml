@@ -113,11 +113,11 @@
     <!-- Error Pages -->
     <error-page>
         <error-code>404</error-code>
-        <location>/error/resourceNotFoundError</location>
+        <location>/WEB-INF/views/common/error/resourceNotFoundError.jsp</location>
     </error-page>
     <error-page>
         <exception-type>java.lang.Exception</exception-type>
-        <location>/error/systemError</location>
+        <location>/WEB-INF/views/common/error/systemError.jsp</location>
     </error-page>
 
     <!-- Session Configs -->
