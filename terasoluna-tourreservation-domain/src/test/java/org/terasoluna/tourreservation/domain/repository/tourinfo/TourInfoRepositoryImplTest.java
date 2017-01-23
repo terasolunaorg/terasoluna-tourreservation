@@ -32,18 +32,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoSearchCriteria;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
-import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:test-context.xml" })
 @Transactional
-@TransactionConfiguration(defaultRollback = true)
+@Rollback
 public class TourInfoRepositoryImplTest {
 
     @Inject
