@@ -267,7 +267,7 @@
         <formatter-maven-plugin.version>0.5.2</formatter-maven-plugin.version>
         <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
         <!-- == Dependency Versions == -->
-        <postgresql.version>9.4-1206-jdbc41</postgresql.version>
+        <postgresql.version>9.4.1212</postgresql.version>
         <jasperreports.version>3.5.1</jasperreports.version>
         <selenium.version>2.46.0</selenium.version>
         <!-- == Project Properties == -->
