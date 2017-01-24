@@ -154,7 +154,7 @@
         <encoding>UTF-8</encoding>
         <jasperreports.version>3.5.1</jasperreports.version>
         <java-version>1.7</java-version>
-        <postgresql.version>9.4-1206-jdbc41</postgresql.version>
+        <postgresql.version>9.4.1212.jre7</postgresql.version>
     </properties>
 
 </project>
