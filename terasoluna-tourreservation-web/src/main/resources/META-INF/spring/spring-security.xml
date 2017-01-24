@@ -49,19 +49,19 @@
             <map>
                 <entry key="org.springframework.security.web.csrf.InvalidCsrfTokenException">
                     <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-                        <property name="errorPage" value="/WEB-INF/views/common/error/invalidCsrfTokenError.jsp" />
+                        <property name="errorPage" value="/error/invalidCsrfTokenError" />
                     </bean>
                 </entry>
                 <entry key="org.springframework.security.web.csrf.MissingCsrfTokenException">
                     <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-                        <property name="errorPage" value="/WEB-INF/views/common/error/missingCsrfTokenError.jsp" />
+                        <property name="errorPage" value="/error/missingCsrfTokenError" />
                     </bean>
                 </entry>
             </map>
         </constructor-arg>
         <constructor-arg index="1">
             <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-                <property name="errorPage" value="/WEB-INF/views/common/error/accessDeniedError.jsp" />
+                <property name="errorPage" value="/error/accessDeniedError" />
             </bean>
         </constructor-arg>
     </bean>
