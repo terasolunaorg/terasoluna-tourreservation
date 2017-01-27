@@ -1,7 +1,7 @@
 sudo: false
 language: java
 jdk:
-  - oraclejdk7
+  - oraclejdk8
 addons:
   postgresql: "9.4"
 cache:
