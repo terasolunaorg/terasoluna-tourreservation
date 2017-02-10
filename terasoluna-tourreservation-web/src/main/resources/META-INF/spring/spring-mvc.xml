@@ -112,6 +112,7 @@
         <property name="excludedExceptions">
             <array>
                 <value>org.springframework.security.access.AccessDeniedException</value>
+                <value>org.springframework.web.util.NestedServletException</value>
             </array>
         </property>
     </bean>
