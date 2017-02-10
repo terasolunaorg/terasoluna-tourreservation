@@ -107,13 +107,14 @@
                 <entry key="common/error/transactionTokenError" value="409" />
             </map>
         </property>
-        <property name="defaultErrorView" value="common/error/systemError" />
-        <property name="defaultStatusCode" value="500" />
         <property name="excludedExceptions">
             <array>
                 <value>org.springframework.security.access.AccessDeniedException</value>
+                <value>org.springframework.web.util.NestedServletException</value>
             </array>
         </property>
+        <property name="defaultErrorView" value="common/error/systemError" />
+        <property name="defaultStatusCode" value="500" />
     </bean>
 
     <bean id="handlerExceptionResolverLoggingInterceptor"
