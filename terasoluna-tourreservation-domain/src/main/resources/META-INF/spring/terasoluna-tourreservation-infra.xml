@@ -51,8 +51,8 @@
     <bean id="reserveNoSeq" class="org.terasoluna.gfw.common.sequencer.JdbcSequencer">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
         <property name="sequenceClass" value="java.lang.String" />
-        <property name="nextValueQuery" value="SELECT TO_CHAR(nextval('RESERVE_NO_SEQ'),'FM00000000') AS customerCode" />
-        <property name="currentValueQuery" value="SELECT TO_CHAR(currval('RESERVE_NO_SEQ'),'FM00000000') AS customerCode" />
+        <property name="nextValueQuery" value="SELECT TO_CHAR(nextval('RESERVE_NO_SEQ'),'FM00000000') AS reserveNo" />
+        <property name="currentValueQuery" value="SELECT TO_CHAR(currval('RESERVE_NO_SEQ'),'FM00000000') AS reserveNo" />
     </bean>
 
 </beans>
