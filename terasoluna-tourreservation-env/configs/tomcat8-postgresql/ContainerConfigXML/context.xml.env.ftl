@@ -10,7 +10,6 @@
        username="postgres"
        password="P0stgres"
        url="jdbc:postgresql://${HOST_IP!'localhost'}:${DBSRV_DB_PORT!'5432'}/tourreserve"
-       defaultAutoCommit="false"
        maxIdle="16"
        minIdle="0"
        maxWaitMillis="60000"
