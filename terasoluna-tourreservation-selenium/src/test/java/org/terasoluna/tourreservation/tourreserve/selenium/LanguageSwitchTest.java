@@ -32,7 +32,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
+@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
 public class LanguageSwitchTest extends FunctionTestSupport {
 
     WebDriver driver;
@@ -49,8 +49,10 @@ public class LanguageSwitchTest extends FunctionTestSupport {
     public void testSwitchLanguage() {
 
         boolean isEn = locale.getLanguage().equalsIgnoreCase("en");
-        String jaTitle = messageSource.getMessage(MessageKeys.TITLE_COMMON, null, Locale.JAPANESE);
-        String enTitle = messageSource.getMessage(MessageKeys.TITLE_COMMON, null, Locale.ENGLISH);
+        String jaTitle = messageSource.getMessage(MessageKeys.TITLE_COMMON,
+                null, Locale.JAPANESE);
+        String enTitle = messageSource.getMessage(MessageKeys.TITLE_COMMON,
+                null, Locale.ENGLISH);
         String jaSwitchLinkName = "日本語";
         String jaSwitchLinkId = "switchJa";
         String enSwitchLinkName = "English";
@@ -61,26 +63,32 @@ public class LanguageSwitchTest extends FunctionTestSupport {
             String beforeTitle = driver.getTitle();
 
             // switch
-            driver.findElement(By.id(isEn ? jaSwitchLinkId : enSwitchLinkId)).click();
+            driver.findElement(By.id(isEn ? jaSwitchLinkId : enSwitchLinkId))
+                    .click();
 
             String afterTitle = driver.getTitle();
-            String switchLinkName = driver.findElement(By.id(isEn ? enSwitchLinkId : jaSwitchLinkId)).getText();
+            String switchLinkName = driver.findElement(
+                    By.id(isEn ? enSwitchLinkId : jaSwitchLinkId)).getText();
 
             assertThat(beforeTitle, is(isEn ? enTitle : jaTitle));
             assertThat(afterTitle, is(isEn ? jaTitle : enTitle));
-            assertThat(switchLinkName, is(isEn ? enSwitchLinkName : jaSwitchLinkName));
+            assertThat(switchLinkName, is(isEn ? enSwitchLinkName
+                    : jaSwitchLinkName));
         }
 
         // switch language (default : ja -> en)
         {
             // switch
-            driver.findElement(By.id(isEn ? enSwitchLinkId : jaSwitchLinkId)).click();
+            driver.findElement(By.id(isEn ? enSwitchLinkId : jaSwitchLinkId))
+                    .click();
 
             String afterTitle = driver.getTitle();
-            String switchLinkName = driver.findElement(By.id(isEn ? jaSwitchLinkId : enSwitchLinkId)).getText();
+            String switchLinkName = driver.findElement(
+                    By.id(isEn ? jaSwitchLinkId : enSwitchLinkId)).getText();
 
             assertThat(afterTitle, is(isEn ? enTitle : jaTitle));
-            assertThat(switchLinkName, is(isEn ? jaSwitchLinkName : enSwitchLinkName));
+            assertThat(switchLinkName, is(isEn ? jaSwitchLinkName
+                    : enSwitchLinkName));
         }
 
     }

@@ -47,8 +47,9 @@ import lombok.ToString;
 import org.joda.time.DateTime;
 
 @Data
-@ToString (exclude = {"reserveList","accommodation","arrival","departure"})
-@EqualsAndHashCode (exclude = {"reserveList","accommodation","arrival","departure"})
+@ToString(exclude = { "reserveList", "accommodation", "arrival", "departure" })
+@EqualsAndHashCode(exclude = { "reserveList", "accommodation", "arrival",
+        "departure" })
 @NoArgsConstructor
 @Entity
 @Table(name = "tourinfo")

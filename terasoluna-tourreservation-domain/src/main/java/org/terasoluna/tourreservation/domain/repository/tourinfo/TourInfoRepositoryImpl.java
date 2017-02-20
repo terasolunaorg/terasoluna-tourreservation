@@ -33,8 +33,8 @@ public class TourInfoRepositoryImpl implements TourInfoRepositoryCustom {
 
     @Override
     @Transactional
-    public Page<TourInfo> findPageBySearchCriteria(TourInfoSearchCriteria criteria,
-            Pageable pageable) {
+    public Page<TourInfo> findPageBySearchCriteria(
+            TourInfoSearchCriteria criteria, Pageable pageable) {
 
         List<TourInfo> content = findTourInfo(criteria, pageable);
         long total = countSearchTourInfo(criteria);
@@ -44,7 +44,7 @@ public class TourInfoRepositoryImpl implements TourInfoRepositoryCustom {
     }
 
     protected List<TourInfo> findTourInfo(TourInfoSearchCriteria criteria,
-             Pageable pageable) {
+            Pageable pageable) {
 
         String q = buildJpql(criteria.getTourDays(), criteria.getBasePrice());
         TypedQuery<TourInfo> query = entityManager.createQuery(q,
@@ -70,8 +70,8 @@ public class TourInfoRepositoryImpl implements TourInfoRepositoryCustom {
     }
 
     protected long countSearchTourInfo(TourInfoSearchCriteria criteria) {
-        String q = buildJpqlCount(criteria.getTourDays(),
-                criteria.getBasePrice());
+        String q = buildJpqlCount(criteria.getTourDays(), criteria
+                .getBasePrice());
         TypedQuery<Long> query = entityManager.createQuery(q, Long.class);
 
         query.setParameter("adultCount", criteria.getAdultCount());
