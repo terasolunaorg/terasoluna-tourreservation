@@ -24,7 +24,6 @@ import lombok.Data;
 @Data
 public class ManageReservationForm {
 
-
     @NotNull
     @Min(0)
     @Max(5)

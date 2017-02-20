@@ -243,8 +243,8 @@ public class ManageCustomerControllerTest {
             ResultActions results = mockMvc.perform(postRequest);
             // check redirect http status : 302
             results.andExpect(status().isFound());
-            results.andExpect(view().name(
-                    "redirect:/customers/create?complete"));
+            results.andExpect(view()
+                    .name("redirect:/customers/create?complete"));
             results.andExpect(flash().attribute("customer", notNullValue()));
             return;
         } catch (Exception e) {
