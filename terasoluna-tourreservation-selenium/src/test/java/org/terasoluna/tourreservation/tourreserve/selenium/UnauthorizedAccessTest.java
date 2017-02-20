@@ -71,7 +71,7 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         // input search criteria
         DateTime dt = new DateTime();
         DateTime dtPlus = dt.plusDays(8);
-        
+
         new Select(driver.findElement(By.id("depYear"))).selectByValue(Integer
                 .toString(dtPlus.getYear()));
         new Select(driver.findElement(By.id("depMonth"))).selectByValue(Integer
@@ -106,9 +106,10 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         // go to reserved tours list screen
         driver.findElement(By.id("reservedToursReferBtn")).click();
 
-        WebElement reservationsTable = driver.findElement(By.id("reservationsTable"));
-        String reserveNumber = reservationsTable.findElement(By.xpath(".//tr[2]/td[1]"))
-                .getText();
+        WebElement reservationsTable = driver.findElement(By
+                .id("reservationsTable"));
+        String reserveNumber = reservationsTable.findElement(
+                By.xpath(".//tr[2]/td[1]")).getText();
 
         // logout
         driver.findElement(By.id("logoutBtn")).click();
@@ -117,11 +118,11 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
                 + "/terasoluna-tourreservation-web/managereservation/detail/"
                 + reserveNumber);
 
-        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE), driver
-                .findElement(By.cssSelector("p.box")).getText());
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE),
+                driver.findElement(By.cssSelector("p.box")).getText());
     }
 
-    //@Test
+    // @Test
     public void testLoginUnauthorizedAccess() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
@@ -140,9 +141,10 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         // go to reserved tours list screen
         driver.findElement(By.id("reservedToursReferBtn")).click();
 
-        WebElement reservationsTable = driver.findElement(By.id("reservationsTable"));
-        String reserveNumber = reservationsTable.findElement(By.xpath(".//tr[2]/td[1]"))
-                .getText();
+        WebElement reservationsTable = driver.findElement(By
+                .id("reservationsTable"));
+        String reserveNumber = reservationsTable.findElement(
+                By.xpath(".//tr[2]/td[1]")).getText();
 
         // logout
         driver.findElement(By.id("logoutBtn")).click();
@@ -164,8 +166,8 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
                 + "/terasoluna-tourreservation-web/managereservation/detail/"
                 + reserveNumber);
 
-        assertEquals(getMessage(MessageKeys.E_TR_FW_0004),
-                driver.findElement(By.cssSelector("li")).getText());
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0004), driver.findElement(
+                By.cssSelector("li")).getText());
 
         // go to top screen(back to top)
         driver.findElement(By.id("goToTopLink")).click();

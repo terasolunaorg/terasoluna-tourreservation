@@ -22,7 +22,6 @@ import org.terasoluna.tourreservation.domain.model.Reserve;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
 
-
 public class ReserveTourOutput {
     private PriceCalculateOutput priceCalculateOutput;
 
