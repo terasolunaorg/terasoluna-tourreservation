@@ -38,8 +38,7 @@ public class CustomerPassEqualsValidatorTest {
         customer.setCustomerPass("12345");
         customer.setCustomerPassConfirm("12345");
 
-        BindingResult result = new DirectFieldBindingResult(customer,
-                "CustomerForm");
+        BindingResult result = new DirectFieldBindingResult(customer, "CustomerForm");
 
         // run
         validator.validate(customer, result);
@@ -59,8 +58,7 @@ public class CustomerPassEqualsValidatorTest {
         customer.setCustomerPass("12345");
         customer.setCustomerPassConfirm("1234");
 
-        BindingResult result = new DirectFieldBindingResult(customer,
-                "CustomerForm");
+        BindingResult result = new DirectFieldBindingResult(customer, "CustomerForm");
 
         // run
         validator.validate(customer, result);
@@ -89,8 +87,7 @@ public class CustomerPassEqualsValidatorTest {
         CustomerForm customer = new CustomerForm();
         customer.setCustomerPass("12345");
 
-        BindingResult result = new DirectFieldBindingResult(customer,
-                "CustomerForm");
+        BindingResult result = new DirectFieldBindingResult(customer, "CustomerForm");
 
         // run
         validator.validate(customer, result);
@@ -109,8 +106,7 @@ public class CustomerPassEqualsValidatorTest {
         CustomerForm customer = new CustomerForm();
         customer.setCustomerPassConfirm("12345");
 
-        BindingResult result = new DirectFieldBindingResult(customer,
-                "CustomerForm");
+        BindingResult result = new DirectFieldBindingResult(customer, "CustomerForm");
 
         // run
         validator.validate(customer, result);

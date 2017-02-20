@@ -61,12 +61,15 @@ public class ReserveTourController {
      * @param model
      * @return
      */
-    @RequestMapping(value = {"{tourCode}", "{tourCode}/reserve"}, method = RequestMethod.GET, params = "form")
-    public String reserveForm(@AuthenticationPrincipal ReservationUserDetails userDetails, @PathVariable("tourCode") String tourCode,
-            ReserveTourForm form, Model model) {
+    @RequestMapping(value = { "{tourCode}", "{tourCode}/reserve" }, method = RequestMethod.GET, params = "form")
+    public String reserveForm(
+            @AuthenticationPrincipal ReservationUserDetails userDetails,
+            @PathVariable("tourCode") String tourCode, ReserveTourForm form,
+            Model model) {
         log.debug("retrieve tour {}", tourCode);
 
-        TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails, tourCode, form);
+        TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails,
+                tourCode, form);
 
         model.addAttribute("output", output);
 
@@ -80,18 +83,21 @@ public class ReserveTourController {
      * @param model
      * @return
      */
-    @TransactionTokenCheck(value="reserve", type = TransactionTokenType.BEGIN)
+    @TransactionTokenCheck(value = "reserve", type = TransactionTokenType.BEGIN)
     @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.POST, params = "confirm")
-    public String confirm(@AuthenticationPrincipal ReservationUserDetails userDetails, @PathVariable("tourCode") String tourCode,
-            @Validated ReserveTourForm form, BindingResult bindingResult, Model model) {
+    public String confirm(
+            @AuthenticationPrincipal ReservationUserDetails userDetails,
+            @PathVariable("tourCode") String tourCode,
+            @Validated ReserveTourForm form, BindingResult bindingResult,
+            Model model) {
         if (bindingResult.hasErrors()) {
             return reserveForm(userDetails, tourCode, form, model);
         }
-        log.debug(
-                "confirm the reservation details for the following tour {}",
+        log.debug("confirm the reservation details for the following tour {}",
                 tourCode);
 
-        TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails, tourCode, form);
+        TourDetailOutput output = reserveTourHelper.findTourDetail(userDetails,
+                tourCode, form);
         model.addAttribute("output", output);
 
         return "reservetour/reserveConfirm";
@@ -104,10 +110,13 @@ public class ReserveTourController {
      * @param redirectAttr
      * @return
      */
-    @TransactionTokenCheck(value="reserve", type = TransactionTokenType.IN)
+    @TransactionTokenCheck(value = "reserve", type = TransactionTokenType.IN)
     @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.POST)
-    public String reserve(@AuthenticationPrincipal ReservationUserDetails userDetails, @PathVariable("tourCode") String tourCode,
-            @Validated ReserveTourForm form, BindingResult bindingResult, Model model, RedirectAttributes redirectAttr) {
+    public String reserve(
+            @AuthenticationPrincipal ReservationUserDetails userDetails,
+            @PathVariable("tourCode") String tourCode,
+            @Validated ReserveTourForm form, BindingResult bindingResult,
+            Model model, RedirectAttributes redirectAttr) {
         log.debug("reserve tour {}", tourCode);
 
         if (bindingResult.hasErrors()) {
@@ -115,7 +124,8 @@ public class ReserveTourController {
         }
 
         try {
-            ReserveTourOutput output = reserveTourHelper.reserve(userDetails, tourCode, form);
+            ReserveTourOutput output = reserveTourHelper.reserve(userDetails,
+                    tourCode, form);
             redirectAttr.addFlashAttribute("output", output);
         } catch (BusinessException e) {
             model.addAttribute(e.getResultMessages());
@@ -135,8 +145,10 @@ public class ReserveTourController {
     }
 
     @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.POST, params = "redo")
-    public String reserveRedo(@AuthenticationPrincipal ReservationUserDetails userDetails, @PathVariable("tourCode") String tourCode,
-            ReserveTourForm form,Model model) {
+    public String reserveRedo(
+            @AuthenticationPrincipal ReservationUserDetails userDetails,
+            @PathVariable("tourCode") String tourCode, ReserveTourForm form,
+            Model model) {
         return reserveForm(userDetails, tourCode, form, model);
     }
 

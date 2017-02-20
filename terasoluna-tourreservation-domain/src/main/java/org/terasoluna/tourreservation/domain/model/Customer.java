@@ -41,8 +41,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
-@ToString (exclude = "reserveList")
-@EqualsAndHashCode (exclude = "reserveList")
+@ToString(exclude = "reserveList")
+@EqualsAndHashCode(exclude = "reserveList")
 @NoArgsConstructor
 @Entity
 @Table(name = "customer")

@@ -97,7 +97,8 @@ public class ReserveServiceImpl implements ReserveService {
         int reserveMember = input.getAdultCount() + input.getChildCount();
         int aveRecMax = tourInfo.getAvaRecMax();
         // retrieve the number of current reservations
-        Long sumCount = reserveRepository.countReservedPersonSumByTourInfo(tourInfo);
+        Long sumCount = reserveRepository
+                .countReservedPersonSumByTourInfo(tourInfo);
         if (sumCount == null) {
             sumCount = 0L;
         }
@@ -134,7 +135,8 @@ public class ReserveServiceImpl implements ReserveService {
         tourReserveOutput.setPriceCalculateOutput(priceCalculateOutput);
         tourReserveOutput.setReserve(reserve);
         tourReserveOutput.setTourInfo(tourInfo);
-        tourReserveOutput.setPaymentTimeLimit(tourInfo.getPaymentLimit().toDate());
+        tourReserveOutput.setPaymentTimeLimit(tourInfo.getPaymentLimit()
+                .toDate());
         tourReserveOutput.setCustomer(input.getCustomer());
 
         // fetch to avoid lazy LazyInitializationException
