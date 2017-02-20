@@ -112,7 +112,8 @@ public class ManageCustomerController {
      */
     @TransactionTokenCheck(value = "create", type = TransactionTokenType.BEGIN)
     @RequestMapping(value = "create", method = RequestMethod.POST, params = "confirm")
-    public String createConfirm(@Validated CustomerForm form, BindingResult result) {
+    public String createConfirm(@Validated CustomerForm form,
+            BindingResult result) {
         if (result.hasErrors()) {
             return createRedo(form);
         }
@@ -128,7 +129,8 @@ public class ManageCustomerController {
      */
     @TransactionTokenCheck(value = "create", type = TransactionTokenType.IN)
     @RequestMapping(value = "create", method = RequestMethod.POST)
-    public String create(@Validated CustomerForm form, BindingResult result, RedirectAttributes redirectAttr) {
+    public String create(@Validated CustomerForm form, BindingResult result,
+            RedirectAttributes redirectAttr) {
         if (result.hasErrors()) {
             return createRedo(form);
         }

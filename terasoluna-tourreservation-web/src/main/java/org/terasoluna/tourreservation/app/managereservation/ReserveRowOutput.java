@@ -25,11 +25,11 @@ import org.terasoluna.tourreservation.domain.model.Reserve;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReserveRowOutput {
-    
+
     private Reserve reserve;
 
     private Boolean limitExceeding;
 
     private String tourDays;
-    
+
 }

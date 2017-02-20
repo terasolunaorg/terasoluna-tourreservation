@@ -21,7 +21,6 @@ import lombok.Data;
 
 /**
  * Output of Price Calculation.<br>
- * 
  */
 @Data
 public class PriceCalculateOutput implements Serializable {

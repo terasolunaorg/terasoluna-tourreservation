@@ -30,23 +30,22 @@ import lombok.Data;
 @Data
 public class ReserveTourForm implements Serializable {
 
-	/**
-	 * serialVersion.
-	 */
-	private static final long serialVersionUID = -6732565610738816899L;
+    /**
+     * serialVersion.
+     */
+    private static final long serialVersionUID = -6732565610738816899L;
 
-	@NotNull
-	@Min(0)
-	@Max(5)
-	private Integer adultCount;
+    @NotNull
+    @Min(0)
+    @Max(5)
+    private Integer adultCount;
 
-	@NotNull
-	@Min(0)
-	@Max(5)
-	private Integer childCount;
+    @NotNull
+    @Min(0)
+    @Max(5)
+    private Integer childCount;
 
-	@Size(min = 0, max = 80)
-	private String remarks;
+    @Size(min = 0, max = 80)
+    private String remarks;
 
-	
 }
