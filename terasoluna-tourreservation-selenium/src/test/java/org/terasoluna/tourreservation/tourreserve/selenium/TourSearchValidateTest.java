@@ -86,9 +86,10 @@ public class TourSearchValidateTest extends FunctionTestSupport {
         driver.findElement(By.id("searchBtn")).click();
 
         assertEquals(
-                getMessage(MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(MessageKeys.DEPCODE)),
-                driver.findElement(By.id("searchTourForm.errors"))
-                        .getText());
+                getMessage(
+                        MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE)
+                        .replace("{0}", getMessage(MessageKeys.DEPCODE)),
+                driver.findElement(By.id("searchTourForm.errors")).getText());
 
         // input credential
         new Select(driver.findElement(By.id("depCode"))).selectByValue("01");
@@ -98,9 +99,10 @@ public class TourSearchValidateTest extends FunctionTestSupport {
         driver.findElement(By.id("searchBtn")).click();
 
         assertEquals(
-                getMessage(MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE).replace("{0}", getMessage(MessageKeys.ARRCODE)),
-                driver.findElement(By.id("searchTourForm.errors"))
-                        .getText());
+                getMessage(
+                        MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE)
+                        .replace("{0}", getMessage(MessageKeys.ARRCODE)),
+                driver.findElement(By.id("searchTourForm.errors")).getText());
     }
 
     @Test
@@ -124,9 +126,8 @@ public class TourSearchValidateTest extends FunctionTestSupport {
         // search tour
         driver.findElement(By.id("searchBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.INCORRECTDATE_INPUTDATE),
-                driver.findElement(By.id("searchTourForm.errors"))
-                        .getText());
+        assertEquals(getMessage(MessageKeys.INCORRECTDATE_INPUTDATE), driver
+                .findElement(By.id("searchTourForm.errors")).getText());
     }
 
     @After

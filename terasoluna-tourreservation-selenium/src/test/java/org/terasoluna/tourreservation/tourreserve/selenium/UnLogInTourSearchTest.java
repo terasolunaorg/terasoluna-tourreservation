@@ -53,8 +53,8 @@ public class UnLogInTourSearchTest extends FunctionTestSupport {
     public void testUnLogInTourSearch() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
-        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
-                + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE)
+                + " " + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
                 driver.findElement(By.id("messagesArea")).getText());
 
         // go to search tour screen
@@ -84,8 +84,8 @@ public class UnLogInTourSearchTest extends FunctionTestSupport {
 
         WebElement toursTable = driver.findElement(By.id("toursTable"));
 
-        String basePrice = toursTable.findElement(By.xpath(".//tr[2]/td[7]")).getText()
-                .replaceAll("[^0-9]", "");
+        String basePrice = toursTable.findElement(By.xpath(".//tr[2]/td[7]"))
+                .getText().replaceAll("[^0-9]", "");
 
         // show top tour in table
         toursTable.findElements(By.tagName("a")).get(0).click();
@@ -93,13 +93,13 @@ public class UnLogInTourSearchTest extends FunctionTestSupport {
         assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE),
                 driver.findElement(By.id("messagesArea")).getText());
 
-        assertEquals(getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_TITLEDETAILSCREENMESSAGE),
+        assertEquals(
+                getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_TITLEDETAILSCREENMESSAGE),
                 driver.findElement(By.id("screenName")).getText());
 
         WebElement priceTable = driver.findElement(By.id("priceTable"));
-        assertEquals(basePrice,
-                priceTable.findElement(By.xpath(".//tr[2]/td[2]"))
-                        .getText().replaceAll("[^0-9]", ""));
+        assertEquals(basePrice, priceTable.findElement(
+                By.xpath(".//tr[2]/td[2]")).getText().replaceAll("[^0-9]", ""));
 
         // go to login screen
         driver.findElement(By.id("loginBtn")).click();
@@ -113,7 +113,8 @@ public class UnLogInTourSearchTest extends FunctionTestSupport {
         // login
         driver.findElement(By.id("loginBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_TITLEDETAILSCREENMESSAGE),
+        assertEquals(
+                getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_TITLEDETAILSCREENMESSAGE),
                 driver.findElement(By.id("screenName")).getText());
     }
 

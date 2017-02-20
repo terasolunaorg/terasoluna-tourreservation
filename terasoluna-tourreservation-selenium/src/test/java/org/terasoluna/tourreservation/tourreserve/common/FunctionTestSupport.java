@@ -106,19 +106,19 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
 
     /**
      * Assert table contents.
-     *
      * @param table WebElement of target table
      * @param expectedContents expected values of table content
      */
     protected void assertTableContents(WebElement table, int rowOffset,
-        int cellIndex, ValueEditor valueEditor, String... expectedContents) {
+            int cellIndex, ValueEditor valueEditor, String... expectedContents) {
         List<WebElement> tableRows = table.findElements(By.tagName("tr"));
         assertThat(tableRows.size(), is(expectedContents.length + rowOffset));
         for (int i = rowOffset; i < (tableRows.size() - rowOffset); i++) {
             WebElement row = tableRows.get(i);
-            WebElement contentCell = row.findElements(By.tagName("td")).get(cellIndex);
+            WebElement contentCell = row.findElements(By.tagName("td")).get(
+                    cellIndex);
             String text = contentCell.getText();
-            if(valueEditor != null){
+            if (valueEditor != null) {
                 text = valueEditor.edit(text);
             }
             assertThat(text, is(expectedContents[i - rowOffset]));

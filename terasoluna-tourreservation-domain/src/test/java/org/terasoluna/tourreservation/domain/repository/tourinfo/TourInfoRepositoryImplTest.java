@@ -115,8 +115,8 @@ public class TourInfoRepositoryImplTest {
         Pageable pageable = new PageRequest(0, 10);
 
         // run
-        Page<TourInfo> page = tourInfoRepository.findPageBySearchCriteria(criteria,
-                pageable);
+        Page<TourInfo> page = tourInfoRepository.findPageBySearchCriteria(
+                criteria, pageable);
 
         assertThat(page.getTotalPages(), is(1));
         assertThat(page.getNumber(), is(0));
@@ -150,7 +150,7 @@ public class TourInfoRepositoryImplTest {
     @Test
     public void testSearchTourInfo02() {
         // search data
-        criteria.setDepDate(new LocalDate(2012,7,10).toDate());
+        criteria.setDepDate(new LocalDate(2012, 7, 10).toDate());
         criteria.setAdultCount(1);
         criteria.setArrCode("01");
         criteria.setBasePrice(10);
@@ -160,8 +160,8 @@ public class TourInfoRepositoryImplTest {
 
         Pageable pageable = new PageRequest(0, 10);
         // run
-        Page<TourInfo> page = tourInfoRepository.findPageBySearchCriteria(criteria,
-                pageable);
+        Page<TourInfo> page = tourInfoRepository.findPageBySearchCriteria(
+                criteria, pageable);
 
         // assert
         assertThat(page.getTotalPages(), is(0));
