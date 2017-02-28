@@ -70,16 +70,16 @@ public class CustomerForm implements Serializable {
 
     @NotEmpty
     @Pattern(regexp = "[0-9a-zA-Z]+")
-    @Size(min = 4,max = 20)
+    @Size(min = 4, max = 20)
     private String customerPass;
 
     @NotEmpty
     @Pattern(regexp = "[0-9a-zA-Z]+")
-    @Size(min = 4,max = 20)
+    @Size(min = 4, max = 20)
     private String customerPassConfirm;
 
     @Pattern(regexp = "[0-9-]+")
-    @Size(min = 10,max = 13)
+    @Size(min = 10, max = 13)
     private String customerTel;
 
     @Pattern(regexp = "[0-9]{3}-[0-9]{4}")
@@ -189,20 +189,20 @@ public class CustomerForm implements Serializable {
 
     @Override
     public String toString() {
-        return "customerKana=" + customerKana
-                + "&customerName=" + customerName + "&customerBirthYear="
-                + customerBirthYear + "&customerBirthMonth="
-                + customerBirthMonth + "&customerBirthDay=" + customerBirthDay
-                + "&customerJob=" + customerJob + "&customerMail="
-                + customerMail + "&customerPass=" + customerPass
-                + "&customerPassConfirm=" + customerPassConfirm
-                + "&customerTel=" + customerTel + "&customerPost="
-                + customerPost + "&customerAdd=" + customerAdd;
+        return "customerKana=" + customerKana + "&customerName=" + customerName
+                + "&customerBirthYear=" + customerBirthYear
+                + "&customerBirthMonth=" + customerBirthMonth
+                + "&customerBirthDay=" + customerBirthDay + "&customerJob="
+                + customerJob + "&customerMail=" + customerMail
+                + "&customerPass=" + customerPass + "&customerPassConfirm="
+                + customerPassConfirm + "&customerTel=" + customerTel
+                + "&customerPost=" + customerPost + "&customerAdd="
+                + customerAdd;
     }
-    
+
     @Override
     public boolean equals(Object form) {
         return this.toString().equals(form.toString());
     }
-    
+
 }

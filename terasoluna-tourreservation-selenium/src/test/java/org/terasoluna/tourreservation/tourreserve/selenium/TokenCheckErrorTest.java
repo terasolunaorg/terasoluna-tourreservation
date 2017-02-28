@@ -86,8 +86,8 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         // register
         driver.findElement(By.id("registerBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.E_TR_FW_0001),
-                driver.findElement(By.cssSelector("p")).getText());
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0001), driver.findElement(
+                By.cssSelector("p")).getText());
     }
 
     @Test
@@ -126,12 +126,11 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         // register
         driver.findElement(By.id("registerBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.E_TR_FW_0002),
-                driver.findElement(By.cssSelector("p")).getText());
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0002), driver.findElement(
+                By.cssSelector("p")).getText());
 
     }
 
-    
     @Test
     public void testTourSearchRegistToken() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
@@ -184,14 +183,14 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         // falsify transaction token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[1].setAttribute('type', 'text');");
-        driver.findElement(By.id("reserveTourForm")).findElement(By.name("_TRANSACTION_TOKEN"))
-                .clear();
+        driver.findElement(By.id("reserveTourForm")).findElement(
+                By.name("_TRANSACTION_TOKEN")).clear();
 
         // reserve
         driver.findElement(By.id("reserveBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.E_TR_FW_0001),
-                driver.findElement(By.cssSelector("p")).getText());
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0001), driver.findElement(
+                By.cssSelector("p")).getText());
     }
 
     @Test
@@ -261,14 +260,14 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         // falsify transaction token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[0].setAttribute('type', 'text');");
-        driver.findElement(By.id("manageReservationForm"))
-                .findElement(By.name("_TRANSACTION_TOKEN")).clear();
+        driver.findElement(By.id("manageReservationForm")).findElement(
+                By.name("_TRANSACTION_TOKEN")).clear();
 
         // change reservation
         driver.findElement(By.id("changeBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.E_TR_FW_0001),
-                driver.findElement(By.cssSelector("p")).getText());
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0001), driver.findElement(
+                By.cssSelector("p")).getText());
 
         // go to top screen(back to top)
         driver.findElement(By.id("goToTopLink")).click();
@@ -348,14 +347,14 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         // falsify transaction token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[0].setAttribute('type', 'text');");
-        driver.findElement(By.id("reservationCanelForm"))
-                .findElement(By.name("_TRANSACTION_TOKEN")).clear();
+        driver.findElement(By.id("reservationCanelForm")).findElement(
+                By.name("_TRANSACTION_TOKEN")).clear();
 
         // cancel reservation
         driver.findElement(By.id("cancelBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.E_TR_FW_0001),
-                driver.findElement(By.cssSelector("p")).getText());
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0001), driver.findElement(
+                By.cssSelector("p")).getText());
 
         // go to top screen(back to top)
         driver.findElement(By.id("goToTopLink")).click();

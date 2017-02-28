@@ -27,7 +27,8 @@ import org.terasoluna.tourreservation.domain.model.Age;
 import org.terasoluna.tourreservation.domain.repository.age.AgeRepository;
 
 @Service
-public class PriceCalculateSharedServiceImpl implements PriceCalculateSharedService {
+public class PriceCalculateSharedServiceImpl implements
+                                            PriceCalculateSharedService {
 
     @Inject
     AgeRepository ageRepository;

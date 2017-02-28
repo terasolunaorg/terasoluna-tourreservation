@@ -127,10 +127,12 @@ public class SearchTourController {
         if (logger.isDebugEnabled()) {
             logger.debug("pageable={}", pageable);
         }
-        
-        TourInfoSearchCriteria criteria = beanMapper.map(searchTourForm, TourInfoSearchCriteria.class);
 
-        Date depDate = new LocalDate(searchTourForm.getDepYear(), searchTourForm.getDepMonth(), searchTourForm.getDepDay()).toDate();
+        TourInfoSearchCriteria criteria = beanMapper.map(searchTourForm,
+                TourInfoSearchCriteria.class);
+
+        Date depDate = new LocalDate(searchTourForm.getDepYear(), searchTourForm
+                .getDepMonth(), searchTourForm.getDepDay()).toDate();
         criteria.setDepDate(depDate);
 
         Page<TourInfo> page = tourInfoService.searchTour(criteria, pageable);

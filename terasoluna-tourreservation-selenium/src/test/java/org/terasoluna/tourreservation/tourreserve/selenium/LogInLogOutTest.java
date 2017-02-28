@@ -50,8 +50,8 @@ public class LogInLogOutTest extends FunctionTestSupport {
     public void testLoginLogoff() {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
-        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
-                + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE)
+                + " " + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
                 driver.findElement(By.id("messagesArea")).getText());
 
         // go to login screen
@@ -69,8 +69,8 @@ public class LogInLogOutTest extends FunctionTestSupport {
         // login
         driver.findElement(By.id("loginBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
-                driver.findElement(By.id("messagesArea")).getText());
+        assertEquals(getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE), driver
+                .findElement(By.id("messagesArea")).getText());
 
         // go to search tour screen
         driver.findElement(By.id("searchTourBtn")).click();
@@ -78,8 +78,8 @@ public class LogInLogOutTest extends FunctionTestSupport {
         // logout
         driver.findElement(By.id("logoutBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE) + " "
-                + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_NOTLOGINMESSAGE)
+                + " " + getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
                 driver.findElement(By.id("messagesArea")).getText());
     }
 

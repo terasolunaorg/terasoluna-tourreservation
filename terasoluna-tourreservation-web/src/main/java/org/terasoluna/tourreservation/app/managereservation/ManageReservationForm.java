@@ -21,7 +21,6 @@ import javax.validation.constraints.NotNull;
 
 public class ManageReservationForm {
 
-
     @NotNull
     @Min(0)
     @Max(5)

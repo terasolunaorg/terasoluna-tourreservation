@@ -30,7 +30,6 @@ public class MenuController {
 
     /**
      * forward initial menu view.
-     * 
      * @return menu view
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
