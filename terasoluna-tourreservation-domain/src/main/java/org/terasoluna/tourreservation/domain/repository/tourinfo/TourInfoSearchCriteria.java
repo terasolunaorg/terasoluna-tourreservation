@@ -41,5 +41,5 @@ public class TourInfoSearchCriteria implements Serializable {
     private Integer childCount;
 
     private Integer basePrice;
-    
+
 }

@@ -32,7 +32,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
+@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
 public class TourSearchPaginationTest extends FunctionTestSupport {
 
     WebDriver driver;
@@ -46,12 +46,9 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
     }
 
     /**
-     * 
      * Pagination tag related test about usage of page and size parameters (without login). <br>
-     * Tests the use of page
-     * On returning from a detail screen, tests whether the page number is the same the one selected before 
-     * going to the detail page.<br> 
-     * 
+     * Tests the use of page On returning from a detail screen, tests whether the page number is the same the one selected
+     * before going to the detail page.<br>
      */
     @Test
     public void testTourSearchPagination1() {
@@ -77,15 +74,14 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
         driver.findElement(By.id("backToToursBtn")).click();
 
         // currentPage query check
-        assertThat(driver.findElement(By.className("active")).getText(), is("3"));
+        assertThat(driver.findElement(By.className("active")).getText(),
+                is("3"));
     }
-    
+
     /**
-     * 
-     *  Pagination tag related test about usage of page and size parameters (with login). <br>
-     * On returning from a detail screen, tests whether the page number is the same the one selected before 
-     * going to the detail page.<br> 
-     * 
+     * Pagination tag related test about usage of page and size parameters (with login). <br>
+     * On returning from a detail screen, tests whether the page number is the same the one selected before going to the detail
+     * page.<br>
      */
     @Test
     public void testTourSearchPagination2() {
@@ -123,10 +119,10 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
         driver.findElement(By.id("backToToursBtn")).click();
 
         // currentPage query check
-        assertThat(driver.findElement(By.className("active")).getText(), is("3"));
+        assertThat(driver.findElement(By.className("active")).getText(),
+                is("3"));
     }
-    
-    
+
     @After
     public void tearDown() {
         driver.quit();

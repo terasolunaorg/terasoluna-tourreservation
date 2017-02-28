@@ -22,7 +22,6 @@ import lombok.Data;
 import org.terasoluna.tourreservation.domain.model.Reserve;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
 
-
 @Data
 public class ReservationUpdateOutput {
 

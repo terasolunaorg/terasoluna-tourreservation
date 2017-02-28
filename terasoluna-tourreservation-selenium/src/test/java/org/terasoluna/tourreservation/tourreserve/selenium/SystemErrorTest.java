@@ -29,7 +29,7 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
+@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
 public class SystemErrorTest extends FunctionTestSupport {
 
     WebDriver driver;
@@ -60,10 +60,10 @@ public class SystemErrorTest extends FunctionTestSupport {
         // go to reserved tours list screen
         driver.findElement(By.id("reservedToursReferBtn")).click();
 
-        driver.get(applicationContextUrl+"/reservations/aaaaaa");
+        driver.get(applicationContextUrl + "/reservations/aaaaaa");
 
-        assertEquals(getMessage(MessageKeys.E_TR_FW_0003),
-                driver.findElement(By.cssSelector("li")).getText());
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0003), driver.findElement(
+                By.cssSelector("li")).getText());
     }
 
     @After

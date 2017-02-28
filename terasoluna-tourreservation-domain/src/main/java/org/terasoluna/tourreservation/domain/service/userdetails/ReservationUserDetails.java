@@ -26,10 +26,10 @@ import org.terasoluna.tourreservation.domain.model.Customer;
 public class ReservationUserDetails implements UserDetails {
     private static final long serialVersionUID = 1L;
 
-    private static final List<? extends GrantedAuthority> DEFAULT_AUTHORITIES = AuthorityUtils.createAuthorityList("ROLE_USER");
+    private static final List<? extends GrantedAuthority> DEFAULT_AUTHORITIES = AuthorityUtils
+            .createAuthorityList("ROLE_USER");
 
     private final Customer customer;
-
 
     public ReservationUserDetails(Customer customer) {
         this.customer = customer;

@@ -31,7 +31,7 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
+@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
 public class CustomerRegisterTest extends FunctionTestSupport {
 
     WebDriver driver;
@@ -73,20 +73,20 @@ public class CustomerRegisterTest extends FunctionTestSupport {
 
         // confirm registration contents
         confirmRegistrationContents();
-        
+
         // go back
         driver.findElement(By.id("backToFormBtn")).click();
-        
+
         // reenter confirm password again
         driver.findElement(By.name("customerPass")).sendKeys("tera123");
         driver.findElement(By.name("customerPassConfirm")).sendKeys("tera123");
 
         // go to confirm screen
         driver.findElement(By.id("confirmBtn")).click();
-        
+
         // confirm registration contents again
         confirmRegistrationContents();
-        
+
         // Register
         driver.findElement(By.id("registerBtn")).click();
 
@@ -108,8 +108,8 @@ public class CustomerRegisterTest extends FunctionTestSupport {
         // login
         driver.findElement(By.id("loginBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
-                driver.findElement(By.id("messagesArea")).getText());
+        assertEquals(getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE), driver
+                .findElement(By.id("messagesArea")).getText());
     }
 
     private void confirmRegistrationContents() {
@@ -121,16 +121,10 @@ public class CustomerRegisterTest extends FunctionTestSupport {
                 null,
                 "テラソルナ",
                 "ＴＥＲＡＳＯＬＵＮＡ",
-                ("2000" + getMessage(MessageKeys.LABEL_TR_COMMON_YEAR) +
-                        "12" + getMessage(MessageKeys.LABEL_TR_COMMON_MONTH) +
-                        "01" + getMessage(MessageKeys.LABEL_TR_COMMON_DAY)),
-                "FW",
-                "terasoluna@nttd.co.jp",
-                "090-99999999",
-                "333-2222",
-                "tokyo-toyosu",
-                "********"
-        );
+                ("2000" + getMessage(MessageKeys.LABEL_TR_COMMON_YEAR) + "12"
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_MONTH) + "01" + getMessage(MessageKeys.LABEL_TR_COMMON_DAY)),
+                "FW", "terasoluna@nttd.co.jp", "090-99999999", "333-2222",
+                "tokyo-toyosu", "********");
     }
 
     @After

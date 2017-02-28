@@ -47,6 +47,7 @@ import static org.mockito.Mockito.*;
 public class ReserveServiceImplSecurityTest {
 
     private static final String CUSTOMER_A = "C0000001";
+
     private static final String CUSTOMER_B = "C0000002";
 
     // Mock repository is define at the default bean definition file for this test case class.
@@ -149,9 +150,9 @@ public class ReserveServiceImplSecurityTest {
         {
             verify(mockReserveRepository, times(1)).save((Reserve) anyObject());
             assertThat(output.getReserve().getReserveNo(), is("R000000001"));
-            assertThat(output.getReserve().getCustomer().getCustomerCode(), is(CUSTOMER_A));
+            assertThat(output.getReserve().getCustomer().getCustomerCode(),
+                    is(CUSTOMER_A));
         }
-
 
     }
 
@@ -229,19 +230,19 @@ public class ReserveServiceImplSecurityTest {
 
     }
 
-
     /**
      * Set up return object of {@link ReserveRepository}'s method.
      * <p>
      * This method set up return object of following methods.
      * <ul>
-     *     <li>{@link ReserveRepository#findOne}</li>
-     *     <li>{@link ReserveRepository#findOneForUpdate}</li>
+     * <li>{@link ReserveRepository#findOne}</li>
+     * <li>{@link ReserveRepository#findOneForUpdate}</li>
      * </ul>
      * @param customerCode customer code of reservation owner
      * @param reserveNo reserve number of reservation
      */
-    private void setUpMockReserveRepository(String customerCode, String reserveNo) {
+    private void setUpMockReserveRepository(String customerCode,
+            String reserveNo) {
         Reserve reserve = new Reserve(reserveNo);
         reserve.setCustomer(new Customer(customerCode));
         TourInfo tourInfo = new TourInfo();
@@ -251,7 +252,8 @@ public class ReserveServiceImplSecurityTest {
         reserve.setTourInfo(tourInfo);
 
         when(mockReserveRepository.findOne(reserveNo)).thenReturn(reserve);
-        when(mockReserveRepository.findOneForUpdate(reserveNo)).thenReturn(reserve);
+        when(mockReserveRepository.findOneForUpdate(reserveNo)).thenReturn(
+                reserve);
     }
 
     @WithSecurityContext(factory = WithMockCustomerSecurityContextFactory.class)
@@ -260,12 +262,18 @@ public class ReserveServiceImplSecurityTest {
         String customerCode();
     }
 
-    static class WithMockCustomerSecurityContextFactory implements WithSecurityContextFactory<WithMockCustomer> {
+    static class WithMockCustomerSecurityContextFactory
+                                                       implements
+                                                       WithSecurityContextFactory<WithMockCustomer> {
         @Override
-        public SecurityContext createSecurityContext(WithMockCustomer mockCustomer) {
-            SecurityContext context = SecurityContextHolder.createEmptyContext();
-            ReservationUserDetails userDetails = new ReservationUserDetails(new Customer(mockCustomer.customerCode()));
-            Authentication auth = new UsernamePasswordAuthenticationToken(userDetails, "dummyPassword", userDetails.getAuthorities());
+        public SecurityContext createSecurityContext(
+                WithMockCustomer mockCustomer) {
+            SecurityContext context = SecurityContextHolder
+                    .createEmptyContext();
+            ReservationUserDetails userDetails = new ReservationUserDetails(new Customer(mockCustomer
+                    .customerCode()));
+            Authentication auth = new UsernamePasswordAuthenticationToken(userDetails, "dummyPassword", userDetails
+                    .getAuthorities());
             context.setAuthentication(auth);
             return context;
         }

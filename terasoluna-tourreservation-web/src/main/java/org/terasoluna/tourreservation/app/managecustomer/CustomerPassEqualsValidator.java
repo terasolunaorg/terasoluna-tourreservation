@@ -15,7 +15,6 @@
  */
 package org.terasoluna.tourreservation.app.managecustomer;
 
-
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;

@@ -25,14 +25,15 @@ import javax.inject.Inject;
 
 @Transactional
 @Service
-public class AuthorizedReserveSharedServiceImpl implements AuthorizedReserveSharedService {
+public class AuthorizedReserveSharedServiceImpl implements
+                                               AuthorizedReserveSharedService {
 
     @Inject
     ReserveRepository reserveRepository;
 
     @PostAuthorize("returnObject == null or returnObject.customer.customerCode == principal.customer.customerCode")
     @Override
-    public Reserve findOne(String reserveNo){
+    public Reserve findOne(String reserveNo) {
         return reserveRepository.findOne(reserveNo);
     }
 
