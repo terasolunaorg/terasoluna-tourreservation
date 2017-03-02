@@ -62,7 +62,7 @@ public class SearchTourControllerTest {
     JodaTimeDateFactory dateFactory;
 
     DozerBeanMapper beanMapper;
-    
+
     @Before
     public void setUp() {
 
@@ -80,7 +80,7 @@ public class SearchTourControllerTest {
         searchTourController.validator = validator;
         searchTourController.dateFactory = dateFactory;
         searchTourController.beanMapper = beanMapper;
-        
+
         // Assign custom method argument resolver and build
         // This is needed to resolve Pageable method argument
         mockMvc = MockMvcBuilders.standaloneSetup(searchTourController)
@@ -218,8 +218,7 @@ public class SearchTourControllerTest {
             results.andExpect(status().isOk());
             results.andExpect(view().name("searchtour/searchForm"));
             results.andExpect(model().hasErrors());
-            results.andExpect(model().attributeErrorCount(
-                    "searchTourForm", 7));
+            results.andExpect(model().attributeErrorCount("searchTourForm", 7));
             return;
 
         } catch (Exception e) {

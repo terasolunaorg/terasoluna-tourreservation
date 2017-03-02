@@ -28,7 +28,7 @@ public class SearchTourForm implements Serializable {
     /**
      * serialVersion.
      */
-	private static final long serialVersionUID = 6713033250301914074L;
+    private static final long serialVersionUID = 6713033250301914074L;
 
     @NotNull
     private Integer depYear;
@@ -136,4 +136,3 @@ public class SearchTourForm implements Serializable {
         this.basePrice = basePrice;
     }
 }
-

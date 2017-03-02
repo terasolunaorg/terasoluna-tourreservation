@@ -20,7 +20,6 @@ import java.util.Date;
 import org.terasoluna.tourreservation.domain.model.Reserve;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
 
-
 public class ReservationUpdateOutput {
 
     private PriceCalculateOutput priceCalculateOutput;

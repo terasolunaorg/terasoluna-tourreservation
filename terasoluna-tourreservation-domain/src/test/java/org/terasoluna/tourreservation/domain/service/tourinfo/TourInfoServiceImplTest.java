@@ -82,8 +82,8 @@ public class TourInfoServiceImplTest {
 
         Page<TourInfo> page = new PageImpl<TourInfo>(mockedList);
 
-        when(tourInfoRepository.findPageBySearchCriteria(criteria, pageable)).thenReturn(
-                page);
+        when(tourInfoRepository.findPageBySearchCriteria(criteria, pageable))
+                .thenReturn(page);
 
         // run
         Page<TourInfo> result = tourInfoService.searchTour(criteria, pageable);

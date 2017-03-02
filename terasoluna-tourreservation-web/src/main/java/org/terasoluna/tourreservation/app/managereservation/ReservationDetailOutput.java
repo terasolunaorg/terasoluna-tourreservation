@@ -21,13 +21,12 @@ import org.terasoluna.tourreservation.domain.model.Customer;
 import org.terasoluna.tourreservation.domain.model.Reserve;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
 
-
 public class ReservationDetailOutput {
 
     private PriceCalculateOutput priceCalculateOutput;
 
     private Reserve reserve;
-    
+
     private Customer customer;
 
     private Date paymentTimeLimit;

@@ -19,7 +19,6 @@ import java.io.Serializable;
 
 /**
  * Output of Price Calculation.<br>
- * 
  */
 public class PriceCalculateOutput implements Serializable {
 
@@ -65,7 +64,6 @@ public class PriceCalculateOutput implements Serializable {
 
     /**
      * returns adult count.
-     * 
      * @return adult count
      */
     public Integer getAdultCount() {
@@ -75,7 +73,6 @@ public class PriceCalculateOutput implements Serializable {
 
     /**
      * set adult count.
-     * 
      * @param adultCount adult count
      */
     public void setAdultCount(Integer adultCount) {
@@ -85,7 +82,6 @@ public class PriceCalculateOutput implements Serializable {
 
     /**
      * returns adult price.
-     * 
      * @return adult price
      */
     public Integer getAdultPrice() {
@@ -95,7 +91,6 @@ public class PriceCalculateOutput implements Serializable {
 
     /**
      * set adult price.
-     * 
      * @param adultPrice adult price
      */
     public void setAdultPrice(Integer adultPrice) {
@@ -105,7 +100,6 @@ public class PriceCalculateOutput implements Serializable {
 
     /**
      * returns adult price.
-     * 
      * @return adult price
      */
     public Integer getAdultUnitPrice() {
@@ -115,7 +109,6 @@ public class PriceCalculateOutput implements Serializable {
 
     /**
      * set adult price.
-     * 
      * @param adultUnitPrice adult price
      */
     public void setAdultUnitPrice(Integer adultUnitPrice) {
@@ -125,7 +118,6 @@ public class PriceCalculateOutput implements Serializable {
 
     /**
      * returns child count.
-     * 
      * @return child count
      */
     public Integer getChildCount() {
@@ -135,7 +127,6 @@ public class PriceCalculateOutput implements Serializable {
 
     /**
      * set child count.
-     * 
      * @param childCount child count
      */
     public void setChildCount(Integer childCount) {
@@ -145,7 +136,6 @@ public class PriceCalculateOutput implements Serializable {
 
     /**
      * returns child price.
-     * 
      * @return child price
      */
     public Integer getChildPrice() {
@@ -155,7 +145,6 @@ public class PriceCalculateOutput implements Serializable {
 
     /**
      * set child price.
-     * 
      * @param childPrice child price
      */
     public void setChildPrice(Integer childPrice) {
@@ -165,7 +154,6 @@ public class PriceCalculateOutput implements Serializable {
 
     /**
      * returns child price.
-     * 
      * @return child price
      */
     public Integer getChildUnitPrice() {
@@ -175,7 +163,6 @@ public class PriceCalculateOutput implements Serializable {
 
     /**
      * set child price.
-     * 
      * @param childUnitPrice child price
      */
     public void setChildUnitPrice(Integer childUnitPrice) {
@@ -185,7 +172,6 @@ public class PriceCalculateOutput implements Serializable {
 
     /**
      * returns sum of price.
-     * 
      * @return sum of price
      */
     public Integer getSumPrice() {
@@ -195,7 +181,6 @@ public class PriceCalculateOutput implements Serializable {
 
     /**
      * set sum of price.
-     * 
      * @param sumPrice sum of price
      */
     public void setSumPrice(Integer sumPrice) {

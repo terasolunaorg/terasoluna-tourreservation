@@ -42,7 +42,7 @@ import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUser
 public class ReserveTourControllerTest {
 
     ReservationUserDetails userDetails;
-    
+
     MockMvc mockMvc;
 
     ReserveTourHelper reserveTourHelper;
@@ -61,20 +61,24 @@ public class ReserveTourControllerTest {
         reserveTourController.reserveTourHelper = reserveTourHelper;
 
         // build
-        mockMvc = MockMvcBuilders.standaloneSetup(reserveTourController).setCustomArgumentResolvers(new AuthenticationPrincipalArgumentResolver())
-                .build();
+        mockMvc = MockMvcBuilders.standaloneSetup(reserveTourController)
+                .setCustomArgumentResolvers(
+                        new AuthenticationPrincipalArgumentResolver()).build();
     }
 
     @Test
     public void testReserveFormSuccess() {
 
         // Prepare get request
-        MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders
-                .get("/tours/123/reserve").param("form", "");
+        MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders.get(
+                "/tours/123/reserve").param("form", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((ReservationUserDetails) anyObject(), eq("123"), (ReserveTourForm) anyObject()))
-                .thenReturn(new TourDetailOutput());
+        when(
+                reserveTourHelper.findTourDetail(
+                        (ReservationUserDetails) anyObject(), eq("123"),
+                        (ReserveTourForm) anyObject())).thenReturn(
+                new TourDetailOutput());
 
         try {
             ResultActions results = mockMvc.perform(getRequest);
@@ -95,12 +99,15 @@ public class ReserveTourControllerTest {
     public void testReadFormSuccess() {
 
         // Prepare get request
-        MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders
-                .get("/tours/123").param("form", "");
+        MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders.get(
+                "/tours/123").param("form", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((ReservationUserDetails) anyObject(), eq("123"), (ReserveTourForm) anyObject()))
-                .thenReturn(new TourDetailOutput());
+        when(
+                reserveTourHelper.findTourDetail(
+                        (ReservationUserDetails) anyObject(), eq("123"),
+                        (ReserveTourForm) anyObject())).thenReturn(
+                new TourDetailOutput());
 
         try {
             ResultActions results = mockMvc.perform(getRequest);
@@ -125,8 +132,11 @@ public class ReserveTourControllerTest {
                 .post("/tours/123/reserve").param("confirm", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((ReservationUserDetails) anyObject(), eq("123"), (ReserveTourForm) anyObject()))
-                .thenReturn(new TourDetailOutput());
+        when(
+                reserveTourHelper.findTourDetail(
+                        (ReservationUserDetails) anyObject(), eq("123"),
+                        (ReserveTourForm) anyObject())).thenReturn(
+                new TourDetailOutput());
 
         // Set form data
         postRequest.param("adultCount", "2");
@@ -155,8 +165,11 @@ public class ReserveTourControllerTest {
                 .post("/tours/123/reserve").param("confirm", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((ReservationUserDetails) anyObject(), eq("123"), (ReserveTourForm) anyObject()))
-                .thenReturn(new TourDetailOutput());
+        when(
+                reserveTourHelper.findTourDetail(
+                        (ReservationUserDetails) anyObject(), eq("123"),
+                        (ReserveTourForm) anyObject())).thenReturn(
+                new TourDetailOutput());
 
         // Do not Set any form data so that form validation will fail
         // Just perform the request
@@ -184,8 +197,10 @@ public class ReserveTourControllerTest {
                 .post("/tours/123/reserve");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.reserve((ReservationUserDetails) anyObject(), eq("123"), (ReserveTourForm) anyObject()))
-                .thenReturn(new ReserveTourOutput());
+        when(
+                reserveTourHelper.reserve((ReservationUserDetails) anyObject(),
+                        eq("123"), (ReserveTourForm) anyObject())).thenReturn(
+                new ReserveTourOutput());
 
         postRequest.param("adultCount", "2");
         postRequest.param("childCount", "2");
@@ -213,10 +228,15 @@ public class ReserveTourControllerTest {
                 .post("/tours/123/reserve");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.reserve((ReservationUserDetails) anyObject(), eq("123"), (ReserveTourForm) anyObject()))
-                .thenThrow(new BusinessException(""));
-        when(reserveTourHelper.findTourDetail((ReservationUserDetails) anyObject(), eq("123"), (ReserveTourForm) anyObject()))
-                .thenReturn(new TourDetailOutput());
+        when(
+                reserveTourHelper.reserve((ReservationUserDetails) anyObject(),
+                        eq("123"), (ReserveTourForm) anyObject())).thenThrow(
+                new BusinessException(""));
+        when(
+                reserveTourHelper.findTourDetail(
+                        (ReservationUserDetails) anyObject(), eq("123"),
+                        (ReserveTourForm) anyObject())).thenReturn(
+                new TourDetailOutput());
 
         // Set form data
         postRequest.param("adultCount", "2");
