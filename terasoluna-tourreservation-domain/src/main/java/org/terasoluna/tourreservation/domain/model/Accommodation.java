@@ -37,8 +37,8 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Data
-@ToString (exclude = "tourinfoList")
-@EqualsAndHashCode (exclude = "tourinfoList")
+@ToString(exclude = "tourinfoList")
+@EqualsAndHashCode(exclude = "tourinfoList")
 @Entity
 @Table(name = "accommodation")
 public class Accommodation implements Serializable {
@@ -66,5 +66,4 @@ public class Accommodation implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "accommodation")
     private List<TourInfo> tourinfoList;
 
-    
 }

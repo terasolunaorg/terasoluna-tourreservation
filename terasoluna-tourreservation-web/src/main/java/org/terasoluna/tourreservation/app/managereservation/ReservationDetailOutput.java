@@ -33,7 +33,7 @@ public class ReservationDetailOutput {
     private PriceCalculateOutput priceCalculateOutput;
 
     private Reserve reserve;
-    
+
     private Customer customer;
 
     private Date paymentTimeLimit;

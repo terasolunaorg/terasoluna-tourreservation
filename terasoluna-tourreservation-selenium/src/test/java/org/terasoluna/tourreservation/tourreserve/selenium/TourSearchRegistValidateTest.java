@@ -35,7 +35,7 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
+@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
 public class TourSearchRegistValidateTest extends FunctionTestSupport {
     @Inject
     MessageSource messageSource;
@@ -71,7 +71,7 @@ public class TourSearchRegistValidateTest extends FunctionTestSupport {
         // input search criteria
         DateTime dt = new DateTime();
         DateTime dtPlus = dt.plusDays(8);
-        
+
         new Select(driver.findElement(By.id("depYear"))).selectByValue(Integer
                 .toString(dtPlus.getYear()));
         new Select(driver.findElement(By.id("depMonth"))).selectByValue(Integer
@@ -99,10 +99,11 @@ public class TourSearchRegistValidateTest extends FunctionTestSupport {
         // go to confirm screen
         driver.findElement(By.id("confirmBtn")).click();
 
-        assertEquals(
-                getMessage(MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE)
-                        .replace("{0}", getMessage(MessageKeys.REMARKS)).replace("{max}", "80").replace("{min}", "0"), driver
-                        .findElement(By.id("reserveTourForm.errors")).getText());
+        assertEquals(getMessage(
+                MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE).replace(
+                "{0}", getMessage(MessageKeys.REMARKS)).replace("{max}", "80")
+                .replace("{min}", "0"), driver.findElement(
+                By.id("reserveTourForm.errors")).getText());
     }
 
     @After

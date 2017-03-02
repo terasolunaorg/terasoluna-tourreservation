@@ -32,7 +32,7 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:META-INF/spring/seleniumContext.xml"})
+@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
 public class LogInReservUpdateTest extends FunctionTestSupport {
 
     WebDriver driver;
@@ -60,8 +60,8 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
         // login
         driver.findElement(By.id("loginBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE),
-                driver.findElement(By.id("messagesArea")).getText());
+        assertEquals(getMessage(MessageKeys.LABEL_TR_MENU_MENUMESSAGE), driver
+                .findElement(By.id("messagesArea")).getText());
 
         // go to search tour screen
         driver.findElement(By.id("searchTourBtn")).click();
@@ -104,12 +104,9 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
                 getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_TITLECONFIRMSCREENMESSAGE),
                 driver.findElement(By.id("screenName")).getText());
 
-        WebElement specialNotesTable = driver.findElement(By.id("specialNotesTable"));
-        assertTableContents(
-                specialNotesTable,
-                0,
-                1,
-                null,
+        WebElement specialNotesTable = driver.findElement(By
+                .id("specialNotesTable"));
+        assertTableContents(specialNotesTable, 0, 1, null,
                 "TERASOLUNA Server Framework for Java (5.x)");
 
         // reserve
@@ -183,20 +180,12 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
 
         // assert Price
         WebElement priceTable = driver.findElement(By.id("priceTable"));
-        assertTableContents(
-                priceTable,
-                1,
-                3,
-                new ValueEditor() {
-                    @Override
-                    public String edit(String text) {
-                        return text.replaceAll("[^0-9]", "");
-                    }
-                },
-                "54000",
-                "27000",
-                "81000"
-        );
+        assertTableContents(priceTable, 1, 3, new ValueEditor() {
+            @Override
+            public String edit(String text) {
+                return text.replaceAll("[^0-9]", "");
+            }
+        }, "54000", "27000", "81000");
 
         // change reservation
         driver.findElement(By.id("changeBtn")).click();
@@ -208,7 +197,8 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
         // back to reserved tours list screen
         driver.findElement(By.id("backToListBtn")).click();
 
-        WebElement reservationsTable = driver.findElement(By.id("reservationsTable"));
+        WebElement reservationsTable = driver.findElement(By
+                .id("reservationsTable"));
 
         assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_ADULT)
                 + getMessage(MessageKeys.LABEL_TR_COMMON_PERSONCOUNTPATTERN)
@@ -219,8 +209,8 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
                         .replace("##", " 2"), reservationsTable.findElement(
                 By.xpath(".//tr[2]/td[7]")).getText());
 
-        assertEquals("81000", reservationsTable.findElement(By.xpath(".//tr[2]/td[9]"))
-                .getText().replaceAll("[^0-9]", ""));
+        assertEquals("81000", reservationsTable.findElement(
+                By.xpath(".//tr[2]/td[9]")).getText().replaceAll("[^0-9]", ""));
 
         // show top reservation in table
         driver.findElement(By.id("showBtn0")).click();
@@ -245,8 +235,7 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
 
     }
 
-
-    private void reserveTourForRegisterTestData(String userName, String password){
+    private void reserveTourForRegisterTestData(String userName, String password) {
         driver.get(applicationContextUrl);
 
         // go to login screen

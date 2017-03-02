@@ -37,8 +37,8 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Data
-@ToString (exclude = "tourinfoList")
-@EqualsAndHashCode (exclude = "tourinfoList")
+@ToString(exclude = "tourinfoList")
+@EqualsAndHashCode(exclude = "tourinfoList")
 @Entity
 @Table(name = "arrival")
 public class Arrival implements Serializable {

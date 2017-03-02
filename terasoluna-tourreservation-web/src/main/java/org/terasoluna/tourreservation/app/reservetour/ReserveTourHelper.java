@@ -33,61 +33,59 @@ import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUser
 @Component
 public class ReserveTourHelper {
 
-	@Inject
-	PriceCalculateSharedService priceCalculateService;
+    @Inject
+    PriceCalculateSharedService priceCalculateService;
 
-	@Inject
-	ReserveService reserveService;
+    @Inject
+    ReserveService reserveService;
 
-	@Inject
-	TourInfoSharedService tourInfoSharedService;
+    @Inject
+    TourInfoSharedService tourInfoSharedService;
 
-	@Inject
-	Mapper beanMapper;
+    @Inject
+    Mapper beanMapper;
 
-	/**
-	 * Fetches detailed information of a particular tour (associated entities
-	 * are also fetched)
-	 * 
-	 * @param form
-	 * @return
-	 */
-	public TourDetailOutput findTourDetail(ReservationUserDetails userDetails, String tourCode, ReserveTourForm form) {
-		TourInfo tourInfo = tourInfoSharedService.findOne(tourCode);
+    /**
+     * Fetches detailed information of a particular tour (associated entities are also fetched)
+     * @param form
+     * @return
+     */
+    public TourDetailOutput findTourDetail(ReservationUserDetails userDetails,
+            String tourCode, ReserveTourForm form) {
+        TourInfo tourInfo = tourInfoSharedService.findOne(tourCode);
 
-		PriceCalculateOutput priceCalculateOutput = priceCalculateService
-				.calculatePrice(tourInfo.getBasePrice(), form.getAdultCount(),
-						form.getChildCount());
+        PriceCalculateOutput priceCalculateOutput = priceCalculateService
+                .calculatePrice(tourInfo.getBasePrice(), form.getAdultCount(),
+                        form.getChildCount());
 
-		TourDetailOutput output = new TourDetailOutput();
-		output.setTourInfo(tourInfo);
-		output.setPriceCalculateOutput(priceCalculateOutput);
-		
-		if (userDetails != null) {
-			output.setCustomer(userDetails.getCustomer());
-		}
-		return output;
-	}
+        TourDetailOutput output = new TourDetailOutput();
+        output.setTourInfo(tourInfo);
+        output.setPriceCalculateOutput(priceCalculateOutput);
 
-	/**
-	 * makes a reservation
-	 *
-	 * @param userDetails
-	 * @param tourReserveForm
-	 * @return
-	 * @throws BusinessException
-	 */
-	public ReserveTourOutput reserve(ReservationUserDetails userDetails, String tourCode, ReserveTourForm tourReserveForm)
-			throws BusinessException {
+        if (userDetails != null) {
+            output.setCustomer(userDetails.getCustomer());
+        }
+        return output;
+    }
 
-		ReserveTourInput input = beanMapper.map(tourReserveForm,
-				ReserveTourInput.class);
-		input.setTourCode(tourCode);
+    /**
+     * makes a reservation
+     * @param userDetails
+     * @param tourReserveForm
+     * @return
+     * @throws BusinessException
+     */
+    public ReserveTourOutput reserve(ReservationUserDetails userDetails,
+            String tourCode, ReserveTourForm tourReserveForm) throws BusinessException {
 
-		Customer customer = userDetails.getCustomer();
-		input.setCustomer(customer);
-		ReserveTourOutput tourReserveOutput = reserveService.reserve(input);
-		return tourReserveOutput;
-	}
+        ReserveTourInput input = beanMapper.map(tourReserveForm,
+                ReserveTourInput.class);
+        input.setTourCode(tourCode);
+
+        Customer customer = userDetails.getCustomer();
+        input.setCustomer(customer);
+        ReserveTourOutput tourReserveOutput = reserveService.reserve(input);
+        return tourReserveOutput;
+    }
 
 }

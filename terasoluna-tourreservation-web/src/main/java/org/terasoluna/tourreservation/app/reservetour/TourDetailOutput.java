@@ -33,5 +33,5 @@ public class TourDetailOutput {
     private PriceCalculateOutput priceCalculateOutput;
 
     private Customer customer;
-    
+
 }
