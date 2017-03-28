@@ -5,7 +5,7 @@ This application shows **how an IDEAL project configuration and package structur
 
 **This sample uses Spring Data JPA.**
 
-* 1.0.x [![Build Status for 1.0.x](https://travis-ci.org/terasolunaorg/terasoluna-tourreservation.svg?branch=1.0.x)](https://travis-ci.org/terasolunaorg/terasoluna-tourreservation)
+[![Build Status for 1.0.x](https://travis-ci.org/terasolunaorg/terasoluna-tourreservation.svg?branch=1.0.x)](https://travis-ci.org/terasolunaorg/terasoluna-tourreservation)
 
 ### Getting started
 
