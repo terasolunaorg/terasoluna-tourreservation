@@ -33,8 +33,8 @@ public class CustomerBirthdayValidator implements Validator {
         CustomerForm customer = (CustomerForm) target;
         try {
             new DateTime(customer.getCustomerBirthYear(), customer
-                    .getCustomerBirthMonth(), customer.getCustomerBirthDay(), 0, 0)
-                    .toDate();
+                    .getCustomerBirthMonth(), customer
+                            .getCustomerBirthDay(), 0, 0).toDate();
         } catch (IllegalArgumentException e) {
             errors.rejectValue("customerBirthYear",
                     "IncorrectDate.customerBirth",

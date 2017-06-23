@@ -32,7 +32,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {
+        "classpath:META-INF/spring/seleniumContext.xml" })
 public class TourSearchPaginationTest extends FunctionTestSupport {
 
     WebDriver driver;
@@ -74,8 +75,8 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
         driver.findElement(By.id("backToToursBtn")).click();
 
         // currentPage query check
-        assertThat(driver.findElement(By.className("active")).getText(),
-                is("3"));
+        assertThat(driver.findElement(By.className("active")).getText(), is(
+                "3"));
     }
 
     /**
@@ -119,8 +120,8 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
         driver.findElement(By.id("backToToursBtn")).click();
 
         // currentPage query check
-        assertThat(driver.findElement(By.className("active")).getText(),
-                is("3"));
+        assertThat(driver.findElement(By.className("active")).getText(), is(
+                "3"));
     }
 
     @After

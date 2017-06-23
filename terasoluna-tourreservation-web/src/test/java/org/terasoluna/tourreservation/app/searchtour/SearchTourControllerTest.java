@@ -130,12 +130,12 @@ public class SearchTourControllerTest {
             DateTime dateTime = dateFactory.newDateTime();
             DateTime nextWeekDate = dateTime.plusWeeks(1);
 
-            results.andExpect(model().attribute("searchTourForm",
-                    hasProperty("depYear", is(nextWeekDate.getYear()))));
-            results.andExpect(model().attribute("searchTourForm",
-                    hasProperty("depMonth", is(nextWeekDate.getMonthOfYear()))));
-            results.andExpect(model().attribute("searchTourForm",
-                    hasProperty("depDay", is(nextWeekDate.getDayOfMonth()))));
+            results.andExpect(model().attribute("searchTourForm", hasProperty(
+                    "depYear", is(nextWeekDate.getYear()))));
+            results.andExpect(model().attribute("searchTourForm", hasProperty(
+                    "depMonth", is(nextWeekDate.getMonthOfYear()))));
+            results.andExpect(model().attribute("searchTourForm", hasProperty(
+                    "depDay", is(nextWeekDate.getDayOfMonth()))));
 
             return;
 
@@ -152,15 +152,13 @@ public class SearchTourControllerTest {
      */
     @Test
     public void testSearchSuccess() {
-        MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders
-                .get("/tours");
+        MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders.get(
+                "/tours");
 
         // Set mock behavior for service method
-        when(
-                tourInfoService.searchTour(
-                        (TourInfoSearchCriteria) anyObject(),
-                        (Pageable) anyObject())).thenReturn(
-                new PageImpl<TourInfo>(new ArrayList<TourInfo>()));
+        when(tourInfoService.searchTour((TourInfoSearchCriteria) anyObject(),
+                (Pageable) anyObject())).thenReturn(
+                        new PageImpl<TourInfo>(new ArrayList<TourInfo>()));
 
         DateTime dateTime = dateFactory.newDateTime();
         DateTime nextWeekDate = dateTime.plusWeeks(1);
@@ -168,8 +166,8 @@ public class SearchTourControllerTest {
         getRequest.param("depYear", String.valueOf(nextWeekDate.getYear()));
         getRequest.param("depMonth", String.valueOf(nextWeekDate
                 .getMonthOfYear()));
-        getRequest
-                .param("depDay", String.valueOf(nextWeekDate.getDayOfMonth()));
+        getRequest.param("depDay", String.valueOf(nextWeekDate
+                .getDayOfMonth()));
         getRequest.param("tourDays", "2");
         getRequest.param("adultCount", "2");
         getRequest.param("childCount", "2");
@@ -198,15 +196,13 @@ public class SearchTourControllerTest {
      */
     @Test
     public void testSearchFail() {
-        MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders
-                .get("/tours");
+        MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders.get(
+                "/tours");
 
         // Set mock behavior for service method
-        when(
-                tourInfoService.searchTour(
-                        (TourInfoSearchCriteria) anyObject(),
-                        (Pageable) anyObject())).thenReturn(
-                new PageImpl<TourInfo>(new ArrayList<TourInfo>()));
+        when(tourInfoService.searchTour((TourInfoSearchCriteria) anyObject(),
+                (Pageable) anyObject())).thenReturn(
+                        new PageImpl<TourInfo>(new ArrayList<TourInfo>()));
 
         // Set invalid date such that custom date validator will fail
         getRequest.param("depYear", "2000");

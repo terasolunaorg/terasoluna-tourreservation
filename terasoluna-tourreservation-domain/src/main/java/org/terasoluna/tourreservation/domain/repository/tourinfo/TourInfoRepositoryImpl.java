@@ -100,9 +100,12 @@ public class TourInfoRepositoryImpl implements TourInfoRepositoryCustom {
         StringBuilder sb = new StringBuilder();
 
         sb.append("SELECT x FROM TourInfo x ");
-        sb.append("LEFT JOIN x.departure dep LEFT JOIN x.arrival arr WHERE (EXISTS (SELECT res.tourInfo.tourCode FROM Reserve res WHERE res.tourInfo.tourCode = x.tourCode ");
-        sb.append("AND (res.adultCount + res.childCount + :adultCount + :childCount) <= x.avaRecMax ) OR NOT EXISTS(SELECT res.tourInfo.tourCode FROM Reserve res WHERE res.tourInfo.tourCode = x.tourCode)) ");
-        sb.append("AND x.depDay = :depDay AND dep.depCode = :depCode AND arr.arrCode = :arrCode ");
+        sb.append(
+                "LEFT JOIN x.departure dep LEFT JOIN x.arrival arr WHERE (EXISTS (SELECT res.tourInfo.tourCode FROM Reserve res WHERE res.tourInfo.tourCode = x.tourCode ");
+        sb.append(
+                "AND (res.adultCount + res.childCount + :adultCount + :childCount) <= x.avaRecMax ) OR NOT EXISTS(SELECT res.tourInfo.tourCode FROM Reserve res WHERE res.tourInfo.tourCode = x.tourCode)) ");
+        sb.append(
+                "AND x.depDay = :depDay AND dep.depCode = :depCode AND arr.arrCode = :arrCode ");
         if (tourDays != 0) {
             sb.append("AND x.tourDays <= :tourDays ");
         }
@@ -121,9 +124,12 @@ public class TourInfoRepositoryImpl implements TourInfoRepositoryCustom {
     protected String buildJpqlCount(int tourDays, int basePrice) {
         StringBuilder sb = new StringBuilder();
         sb.append("SELECT COUNT(x) from TourInfo x ");
-        sb.append("LEFT JOIN x.departure dep LEFT JOIN x.arrival arr WHERE (EXISTS (SELECT res.tourInfo.tourCode FROM Reserve res WHERE res.tourInfo.tourCode = x.tourCode ");
-        sb.append("AND (res.adultCount + res.childCount + :adultCount + :childCount) <= x.avaRecMax ) OR NOT EXISTS(SELECT res.tourInfo.tourCode FROM Reserve res WHERE res.tourInfo.tourCode = x.tourCode)) ");
-        sb.append("AND x.depDay = :depDay AND dep.depCode = :depCode AND arr.arrCode = :arrCode ");
+        sb.append(
+                "LEFT JOIN x.departure dep LEFT JOIN x.arrival arr WHERE (EXISTS (SELECT res.tourInfo.tourCode FROM Reserve res WHERE res.tourInfo.tourCode = x.tourCode ");
+        sb.append(
+                "AND (res.adultCount + res.childCount + :adultCount + :childCount) <= x.avaRecMax ) OR NOT EXISTS(SELECT res.tourInfo.tourCode FROM Reserve res WHERE res.tourInfo.tourCode = x.tourCode)) ");
+        sb.append(
+                "AND x.depDay = :depDay AND dep.depCode = :depCode AND arr.arrCode = :arrCode ");
         if (tourDays != 0) {
             sb.append("AND x.tourDays <= :tourDays ");
         }

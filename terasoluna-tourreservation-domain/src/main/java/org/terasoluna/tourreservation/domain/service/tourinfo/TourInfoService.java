@@ -21,5 +21,6 @@ import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoSearchCriteria;
 
 public interface TourInfoService {
-    Page<TourInfo> searchTour(TourInfoSearchCriteria criteria, Pageable pageable);
+    Page<TourInfo> searchTour(TourInfoSearchCriteria criteria,
+            Pageable pageable);
 }
