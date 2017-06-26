@@ -77,8 +77,8 @@ public class CustomerServiceImplTest {
         when(sequencer.getNext()).thenReturn("12345678");
         customerService.register(c, "foo");
 
-        ArgumentCaptor<Customer> customerArg = ArgumentCaptor
-                .forClass(Customer.class);
+        ArgumentCaptor<Customer> customerArg = ArgumentCaptor.forClass(
+                Customer.class);
 
         verify(customerRepository, times(1)).save(customerArg.capture());
         assertThat(customerArg.getValue(), is(c));

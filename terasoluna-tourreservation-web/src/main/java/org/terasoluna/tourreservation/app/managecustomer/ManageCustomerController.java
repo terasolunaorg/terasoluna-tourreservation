@@ -139,7 +139,7 @@ public class ManageCustomerController {
 
         customer.setCustomerBirth(new DateTime(form.getCustomerBirthYear(), form
                 .getCustomerBirthMonth(), form.getCustomerBirthDay(), 0, 0, 0)
-                .toDate());
+                        .toDate());
 
         Customer registeredCustomer = customerService.register(customer, form
                 .getCustomerPass());
