@@ -93,7 +93,8 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
      * @param expectedContents expected values of table content
      */
     protected void assertTableContents(WebElement table, int rowOffset,
-            int cellIndex, ValueEditor valueEditor, String... expectedContents) {
+            int cellIndex, ValueEditor valueEditor,
+            String... expectedContents) {
         List<WebElement> tableRows = table.findElements(By.tagName("tr"));
         assertThat(tableRows.size(), is(expectedContents.length + rowOffset));
         for (int i = rowOffset; i < (tableRows.size() - rowOffset); i++) {

@@ -26,7 +26,7 @@ import javax.inject.Inject;
 @Transactional
 @Service
 public class AuthorizedReserveSharedServiceImpl implements
-                                               AuthorizedReserveSharedService {
+                                                AuthorizedReserveSharedService {
 
     @Inject
     ReserveRepository reserveRepository;
