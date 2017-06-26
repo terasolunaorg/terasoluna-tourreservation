@@ -28,6 +28,8 @@ before_script:
 
 script: 
   - mvn xml:check-format
+  - mvn xml:check-format -f terasoluna-tourreservation-initdb/pom.xml
+  - mvn xml:check-format -f terasoluna-tourreservation-selenium/pom.xml
   - mvn formatter:validate
   - mvn -U sql:execute -f terasoluna-tourreservation-initdb/pom.xml -Ddb.password=
   - mvn -U install
