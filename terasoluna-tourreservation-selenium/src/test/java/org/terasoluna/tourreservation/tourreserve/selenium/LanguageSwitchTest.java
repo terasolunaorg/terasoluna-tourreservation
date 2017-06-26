@@ -32,7 +32,8 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {
+        "classpath:META-INF/spring/seleniumContext.xml" })
 public class LanguageSwitchTest extends FunctionTestSupport {
 
     WebDriver driver;
@@ -67,8 +68,8 @@ public class LanguageSwitchTest extends FunctionTestSupport {
                     .click();
 
             String afterTitle = driver.getTitle();
-            String switchLinkName = driver.findElement(
-                    By.id(isEn ? enSwitchLinkId : jaSwitchLinkId)).getText();
+            String switchLinkName = driver.findElement(By.id(isEn
+                    ? enSwitchLinkId : jaSwitchLinkId)).getText();
 
             assertThat(beforeTitle, is(isEn ? enTitle : jaTitle));
             assertThat(afterTitle, is(isEn ? jaTitle : enTitle));
@@ -83,8 +84,8 @@ public class LanguageSwitchTest extends FunctionTestSupport {
                     .click();
 
             String afterTitle = driver.getTitle();
-            String switchLinkName = driver.findElement(
-                    By.id(isEn ? jaSwitchLinkId : enSwitchLinkId)).getText();
+            String switchLinkName = driver.findElement(By.id(isEn
+                    ? jaSwitchLinkId : enSwitchLinkId)).getText();
 
             assertThat(afterTitle, is(isEn ? enTitle : jaTitle));
             assertThat(switchLinkName, is(isEn ? jaSwitchLinkName

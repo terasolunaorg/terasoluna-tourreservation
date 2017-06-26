@@ -82,8 +82,8 @@ public class ManageReservationHelper {
         // must be logged in
         String customerCode = userDetails.getUsername();
 
-        List<Reserve> reserves = reserveService
-                .findAllByCustomerCode(customerCode);
+        List<Reserve> reserves = reserveService.findAllByCustomerCode(
+                customerCode);
 
         List<ReserveRowOutput> rows = new ArrayList<ReserveRowOutput>();
         for (Reserve reservation : reserves) {
@@ -125,7 +125,8 @@ public class ManageReservationHelper {
 
         // payment related
         output.setPaymentTimeLimit(info.getPaymentLimit().toDate());
-        output.setLimitExceeding(tourInfoSharedService.isOverPaymentLimit(info));
+        output.setLimitExceeding(tourInfoSharedService.isOverPaymentLimit(
+                info));
 
         return output;
 
@@ -205,14 +206,14 @@ public class ManageReservationHelper {
         PriceCalculateOutput priceCalcResult = priceCalculateService
                 .calculatePrice(reserveDetailOutput.getReserve().getTourInfo()
                         .getBasePrice(), reserveDetailOutput.getReserve()
-                        .getAdultCount(), reserveDetailOutput.getReserve()
-                        .getChildCount());
+                                .getAdultCount(), reserveDetailOutput
+                                        .getReserve().getChildCount());
 
         // set price information
-        downloadPDFOutput
-                .setAdultUnitPrice(priceCalcResult.getAdultUnitPrice());
-        downloadPDFOutput
-                .setChildUnitPrice(priceCalcResult.getChildUnitPrice());
+        downloadPDFOutput.setAdultUnitPrice(priceCalcResult
+                .getAdultUnitPrice());
+        downloadPDFOutput.setChildUnitPrice(priceCalcResult
+                .getChildUnitPrice());
         downloadPDFOutput.setAdultPrice(priceCalcResult.getAdultPrice());
         downloadPDFOutput.setChildPrice(priceCalcResult.getChildPrice());
         downloadPDFOutput.setSumPrice(priceCalcResult.getSumPrice());

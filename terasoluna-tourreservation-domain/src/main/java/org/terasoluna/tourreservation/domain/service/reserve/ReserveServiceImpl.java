@@ -79,7 +79,8 @@ public class ReserveServiceImpl implements ReserveService {
     }
 
     @Override
-    public ReserveTourOutput reserve(ReserveTourInput input) throws BusinessException {
+    public ReserveTourOutput reserve(
+            ReserveTourInput input) throws BusinessException {
 
         TourInfo tourInfo = tourInfoSharedService.findOneForUpdate(input
                 .getTourCode());
@@ -97,8 +98,8 @@ public class ReserveServiceImpl implements ReserveService {
         int reserveMember = input.getAdultCount() + input.getChildCount();
         int aveRecMax = tourInfo.getAvaRecMax();
         // retrieve the number of current reservations
-        Long sumCount = reserveRepository
-                .countReservedPersonSumByTourInfo(tourInfo);
+        Long sumCount = reserveRepository.countReservedPersonSumByTourInfo(
+                tourInfo);
         if (sumCount == null) {
             sumCount = 0L;
         }
@@ -182,7 +183,8 @@ public class ReserveServiceImpl implements ReserveService {
     }
 
     @Override
-    public ReservationUpdateOutput update(ReservationUpdateInput input) throws BusinessException {
+    public ReservationUpdateOutput update(
+            ReservationUpdateInput input) throws BusinessException {
         Reserve reserve = findOne(input.getReserveNo());
 
         beanMapper.map(input, reserve, "reserve_map_nonnull");

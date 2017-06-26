@@ -31,7 +31,8 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {
+        "classpath:META-INF/spring/seleniumContext.xml" })
 public class CustomerRegisterTest extends FunctionTestSupport {
 
     WebDriver driver;
@@ -55,8 +56,8 @@ public class CustomerRegisterTest extends FunctionTestSupport {
         driver.findElement(By.name("customerName")).sendKeys("ＴＥＲＡＳＯＬＵＮＡ");
         new Select(driver.findElement(By.id("customerBirthYear")))
                 .selectByValue("2000");
-        new Select(driver.findElement(By.id("customerBirthDay")))
-                .selectByValue("1");
+        new Select(driver.findElement(By.id("customerBirthDay"))).selectByValue(
+                "1");
         new Select(driver.findElement(By.id("customerBirthMonth")))
                 .selectByValue("12");
         driver.findElement(By.name("customerJob")).sendKeys("FW");
@@ -114,16 +115,11 @@ public class CustomerRegisterTest extends FunctionTestSupport {
 
     private void confirmRegistrationContents() {
         WebElement customerTable = driver.findElement(By.id("customerTable"));
-        assertTableContents(
-                customerTable,
-                0,
-                1,
-                null,
-                "テラソルナ",
-                "ＴＥＲＡＳＯＬＵＮＡ",
+        assertTableContents(customerTable, 0, 1, null, "テラソルナ", "ＴＥＲＡＳＯＬＵＮＡ",
                 ("2000" + getMessage(MessageKeys.LABEL_TR_COMMON_YEAR) + "12"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_MONTH) + "01" + getMessage(MessageKeys.LABEL_TR_COMMON_DAY)),
-                "FW", "terasoluna@nttd.co.jp", "090-99999999", "333-2222",
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_MONTH) + "01"
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_DAY)), "FW",
+                "terasoluna@nttd.co.jp", "090-99999999", "333-2222",
                 "tokyo-toyosu", "********");
     }
 

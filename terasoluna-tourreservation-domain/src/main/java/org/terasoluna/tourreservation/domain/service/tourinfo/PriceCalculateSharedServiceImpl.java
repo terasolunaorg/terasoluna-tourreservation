@@ -28,7 +28,7 @@ import org.terasoluna.tourreservation.domain.repository.age.AgeRepository;
 
 @Service
 public class PriceCalculateSharedServiceImpl implements
-                                            PriceCalculateSharedService {
+                                             PriceCalculateSharedService {
 
     @Inject
     AgeRepository ageRepository;
@@ -71,7 +71,8 @@ public class PriceCalculateSharedServiceImpl implements
         TransactionTemplate transactionTemplate = new TransactionTemplate(transactionManager);
         transactionTemplate.execute(new TransactionCallbackWithoutResult() {
             @Override
-            protected void doInTransactionWithoutResult(TransactionStatus status) {
+            protected void doInTransactionWithoutResult(
+                    TransactionStatus status) {
                 childAge = ageRepository.findOne("1");
                 adultAge = ageRepository.findOne("0");
             }

@@ -70,8 +70,8 @@ public class CustomerPassEqualsValidatorTest {
 
         if (error != null) {
             assertThat(error.getCode(), is("NotEquals.customerPass"));
-            assertThat(error.getDefaultMessage(),
-                    is("Password and password confirm is not same."));
+            assertThat(error.getDefaultMessage(), is(
+                    "Password and password confirm is not same."));
         } else {
             fail("error");
         }

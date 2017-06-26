@@ -35,7 +35,8 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {
+        "classpath:META-INF/spring/seleniumContext.xml" })
 public class TourSearchRegistValidateTest extends FunctionTestSupport {
     @Inject
     MessageSource messageSource;
@@ -92,18 +93,18 @@ public class TourSearchRegistValidateTest extends FunctionTestSupport {
         toursTable.findElements(By.tagName("a")).get(0).click();
 
         // input reservation contents
-        driver.findElement(By.id("remarks"))
-                .sendKeys(
-                        "111111111111111111111111111111111111111111111111111111111111111111111111111111111");
+        driver.findElement(By.id("remarks")).sendKeys(
+                "111111111111111111111111111111111111111111111111111111111111111111111111111111111");
 
         // go to confirm screen
         driver.findElement(By.id("confirmBtn")).click();
 
         assertEquals(getMessage(
                 MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE).replace(
-                "{0}", getMessage(MessageKeys.REMARKS)).replace("{max}", "80")
-                .replace("{min}", "0"), driver.findElement(
-                By.id("reserveTourForm.errors")).getText());
+                        "{0}", getMessage(MessageKeys.REMARKS)).replace("{max}",
+                                "80").replace("{min}", "0"), driver.findElement(
+                                        By.id("reserveTourForm.errors"))
+                                        .getText());
     }
 
     @After
