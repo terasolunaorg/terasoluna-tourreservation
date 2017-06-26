@@ -7,7 +7,7 @@
     <copy-by-references>
       <copy-by-reference>
 		org.terasoluna.tourreservation.domain.model.*
-			</copy-by-reference>
+      </copy-by-reference>
     </copy-by-references>
   </configuration>
 
