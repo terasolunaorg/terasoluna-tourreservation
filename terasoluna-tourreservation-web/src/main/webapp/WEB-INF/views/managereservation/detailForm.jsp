@@ -1,12 +1,13 @@
 
 <div class="container">
- <jsp:include page="../common/top.jsp" />
+  <jsp:include page="../common/top.jsp" />
   <div>
     <div>
       <div>
         <div>
           <h1 id="screenName">
-            <span><spring:message code="label.tr.managereservation.manageReservationShowScreenTitleMessage" /></span>
+            <span><spring:message
+                code="label.tr.managereservation.manageReservationShowScreenTitleMessage" /></span>
           </h1>
         </div>
       </div>
@@ -32,7 +33,8 @@
       <spring:message code="label.tr.common.pdfdownloadMessage" />
       <br />
       <div>
-        <form:form method="get" action="${pageContext.request.contextPath}/reservations/${output.reserve.reserveNo}/pdf">
+        <form:form method="get"
+          action="${pageContext.request.contextPath}/reservations/${output.reserve.reserveNo}/pdf">
           <button id="downloadBtn">
             <spring:message code="label.tr.common.downloadpdfBtnMessage" />
           </button>
@@ -67,41 +69,36 @@
         </tr>
       </table>
       <!-- comment end -->
-      <br />
-      <br />
+      <br /> <br />
       <div class="span-12">
         <table>
           <tr>
-            <td>
-              <form:form method="get" action="${pageContext.request.contextPath}/reservations/me">
+            <td><form:form method="get"
+                action="${pageContext.request.contextPath}/reservations/me">
                 <button id="backToListBtn" name="backTolist">
                   <spring:message code="label.tr.managereservation.returnToListScreenBtnMessage" />
                 </button>
-              </form:form>
-            </td>
+              </form:form></td>
             <c:if test="${!output.limitExceeding}">
               <c:if test="${output.reserve.transfer == 0}">
-                <td>
-                  <form:form method="get" action="${pageContext.request.contextPath}/reservations/${f:h(output.reserve.reserveNo)}/update">
+                <td><form:form method="get"
+                    action="${pageContext.request.contextPath}/reservations/${f:h(output.reserve.reserveNo)}/update">
                     <button id="changeBtn" name="form">
                       <spring:message code="label.tr.managereservation.changeReservationBtnMessage" />
                     </button>
-                  </form:form>
-                </td>
-                <td>
-                  <form:form method="get" action="${pageContext.request.contextPath}/reservations/${f:h(output.reserve.reserveNo)}/cancel">
+                  </form:form></td>
+                <td><form:form method="get"
+                    action="${pageContext.request.contextPath}/reservations/${f:h(output.reserve.reserveNo)}/cancel">
                     <button id="cancelBtn">
                       <spring:message code="label.tr.managereservation.cancelReservationBtnMessage" />
                     </button>
-                  </form:form>
-                </td>
+                  </form:form></td>
               </c:if>
             </c:if>
           </tr>
         </table>
       </div>
-      <br />
-      <br />
+      <br /> <br />
     </div>
   </div>
 </div>

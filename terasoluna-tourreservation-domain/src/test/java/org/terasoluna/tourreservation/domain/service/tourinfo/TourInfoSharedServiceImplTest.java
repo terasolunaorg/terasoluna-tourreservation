@@ -94,8 +94,8 @@ public class TourInfoSharedServiceImplTest {
         tour.setDepDay(depDay.toDate());
 
         // check whether hh:mm:ss.SSS is ignored
-        when(dateFactory.newDateTime()).thenReturn(
-                now.withTime(0, 0, 0, 0).plusMillis(1));
+        when(dateFactory.newDateTime()).thenReturn(now.withTime(0, 0, 0, 0)
+                .plusMillis(1));
 
         boolean result = tourInfoSharedService.isOverPaymentLimit(tour);
         assertThat(result, is(false));
@@ -109,9 +109,8 @@ public class TourInfoSharedServiceImplTest {
         tour.setDepDay(depDay.toDate());
 
         // check whether hh:mm:ss.SSS is ignored
-        when(dateFactory.newDateTime()).thenReturn(
-                now.withTime(0, 0, 0, 0).plusHours(23).plusMinutes(59)
-                        .plusSeconds(59).plusMillis(999));
+        when(dateFactory.newDateTime()).thenReturn(now.withTime(0, 0, 0, 0)
+                .plusHours(23).plusMinutes(59).plusSeconds(59).plusMillis(999));
 
         boolean result = tourInfoSharedService.isOverPaymentLimit(tour);
         assertThat(result, is(false));
