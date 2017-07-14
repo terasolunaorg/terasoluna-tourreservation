@@ -94,8 +94,8 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
         WebElement toursTable = driver.findElement(By.id("toursTable"));
         toursTable.findElements(By.tagName("a")).get(0).click();
 
-        assertEquals(
-                getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_TITLEDETAILSCREENMESSAGE),
+        assertEquals(getMessage(
+                MessageKeys.LABEL_TR_SEARCHTOUR_TITLEDETAILSCREENMESSAGE),
                 driver.findElement(By.id("screenName")).getText());
 
         // input reservation contents
@@ -105,20 +105,20 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
         // go to confirm screen
         driver.findElement(By.id("confirmBtn")).click();
 
-        assertEquals(
-                getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_TITLECONFIRMSCREENMESSAGE),
+        assertEquals(getMessage(
+                MessageKeys.LABEL_TR_SEARCHTOUR_TITLECONFIRMSCREENMESSAGE),
                 driver.findElement(By.id("screenName")).getText());
 
-        WebElement specialNotesTable = driver.findElement(By
-                .id("specialNotesTable"));
+        WebElement specialNotesTable = driver.findElement(By.id(
+                "specialNotesTable"));
         assertTableContents(specialNotesTable, 0, 1, null,
                 "TERASOLUNA Server Framework for Java (5.x)");
 
         // reserve
         driver.findElement(By.id("reserveBtn")).click();
 
-        assertEquals(
-                getMessage(MessageKeys.LABEL_TR_SEARCHTOUR_RESERVESCREENTITLEMESSAGE),
+        assertEquals(getMessage(
+                MessageKeys.LABEL_TR_SEARCHTOUR_RESERVESCREENTITLEMESSAGE),
                 driver.findElement(By.id("screenName")).getText());
     }
 
@@ -148,22 +148,22 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
         // go to reserved tours list screen
         driver.findElement(By.id("reservedToursReferBtn")).click();
 
-        assertEquals(
-                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONMESSAGE),
+        assertEquals(getMessage(
+                MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONMESSAGE),
                 driver.findElement(By.id("screenName")).getText());
 
         // change top reservation in table
         driver.findElement(By.id("changeBtn0")).click();
 
-        assertEquals(
-                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONEDITSCREENTITLE),
+        assertEquals(getMessage(
+                MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONEDITSCREENTITLE),
                 driver.findElement(By.id("screenName")).getText());
 
         // change person count
-        new Select(driver.findElement(By.id("adultCount")))
-                .selectByVisibleText("2");
-        new Select(driver.findElement(By.id("childCount")))
-                .selectByVisibleText("2");
+        new Select(driver.findElement(By.id("adultCount"))).selectByVisibleText(
+                "2");
+        new Select(driver.findElement(By.id("childCount"))).selectByVisibleText(
+                "2");
 
         // go to confirm screen
         driver.findElement(By.id("confirmBtn")).click();
@@ -179,8 +179,8 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
         // go to confirm screen
         driver.findElement(By.id("confirmBtn")).click();
 
-        assertEquals(
-                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONCONFIRMSCREENTITLEMESSAGE),
+        assertEquals(getMessage(
+                MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONCONFIRMSCREENTITLEMESSAGE),
                 driver.findElement(By.id("screenName")).getText());
 
         // assert Price
@@ -195,52 +195,53 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
         // change reservation
         driver.findElement(By.id("changeBtn")).click();
 
-        assertEquals(
-                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONUPDATEDSCREENTITLEMESSAGE),
+        assertEquals(getMessage(
+                MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONUPDATEDSCREENTITLEMESSAGE),
                 driver.findElement(By.id("screenName")).getText());
 
         // back to reserved tours list screen
         driver.findElement(By.id("backToListBtn")).click();
 
-        WebElement reservationsTable = driver.findElement(By
-                .id("reservationsTable"));
+        WebElement reservationsTable = driver.findElement(By.id(
+                "reservationsTable"));
 
-        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_ADULT)
-                + getMessage(MessageKeys.LABEL_TR_COMMON_PERSONCOUNTPATTERN)
-                        .replace("##", " 2")
-                + "\n"
-                + getMessage(MessageKeys.LABEL_TR_COMMON_CHILD)
-                + getMessage(MessageKeys.LABEL_TR_COMMON_PERSONCOUNTPATTERN)
-                        .replace("##", " 2"), reservationsTable.findElement(
-                By.xpath(".//tr[2]/td[7]")).getText());
+        assertEquals(getMessage(MessageKeys.LABEL_TR_COMMON_ADULT) + getMessage(
+                MessageKeys.LABEL_TR_COMMON_PERSONCOUNTPATTERN).replace("##",
+                        " 2") + "\n" + getMessage(
+                                MessageKeys.LABEL_TR_COMMON_CHILD) + getMessage(
+                                        MessageKeys.LABEL_TR_COMMON_PERSONCOUNTPATTERN)
+                                                .replace("##", " 2"),
+                reservationsTable.findElement(By.xpath(".//tr[2]/td[7]"))
+                        .getText());
 
-        assertEquals("81000", reservationsTable.findElement(
-                By.xpath(".//tr[2]/td[9]")).getText().replaceAll("[^0-9]", ""));
+        assertEquals("81000", reservationsTable.findElement(By.xpath(
+                ".//tr[2]/td[9]")).getText().replaceAll("[^0-9]", ""));
 
         // show top reservation in table
         driver.findElement(By.id("showBtn0")).click();
 
-        assertEquals(
-                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONSHOWSCREENTITLEMESSAGE),
+        assertEquals(getMessage(
+                MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONSHOWSCREENTITLEMESSAGE),
                 driver.findElement(By.id("screenName")).getText());
 
         // go to cancel screen
         driver.findElement(By.id("cancelBtn")).click();
 
-        assertEquals(
-                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_BEFORECANCELSCREENTITLEMESSAGE),
+        assertEquals(getMessage(
+                MessageKeys.LABEL_TR_MANAGERESERVATION_BEFORECANCELSCREENTITLEMESSAGE),
                 driver.findElement(By.id("screenName")).getText());
 
         // cancel reservation
         driver.findElement(By.id("cancelBtn")).click();
 
-        assertEquals(
-                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_AFTERCANCELSCREENTITLEMESSAGE),
+        assertEquals(getMessage(
+                MessageKeys.LABEL_TR_MANAGERESERVATION_AFTERCANCELSCREENTITLEMESSAGE),
                 driver.findElement(By.id("screenName")).getText());
 
     }
 
-    private void reserveTourForRegisterTestData(String userName, String password) {
+    private void reserveTourForRegisterTestData(String userName,
+            String password) {
         driver.get(baseUrl + "/terasoluna-tourreservation-web");
 
         // go to login screen

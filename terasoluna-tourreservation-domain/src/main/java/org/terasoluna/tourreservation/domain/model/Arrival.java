@@ -104,7 +104,8 @@ public class Arrival implements Serializable {
         }
         Arrival other = (Arrival) object;
         if ((this.arrCode == null && other.arrCode != null)
-                || (this.arrCode != null && !this.arrCode.equals(other.arrCode))) {
+                || (this.arrCode != null && !this.arrCode.equals(
+                        other.arrCode))) {
             return false;
         }
         return true;

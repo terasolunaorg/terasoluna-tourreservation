@@ -41,8 +41,8 @@ public class MenuControllerTest {
 
         // Prepare get request
         try {
-            mockMvc.perform(MockMvcRequestBuilders.get("/")).andExpect(
-                    view().name(MENU));
+            mockMvc.perform(MockMvcRequestBuilders.get("/")).andExpect(view()
+                    .name(MENU));
             return;
         } catch (Exception e) {
 

@@ -119,8 +119,8 @@ public class Accommodation implements Serializable {
         }
         Accommodation other = (Accommodation) object;
         if ((this.accomCode == null && other.accomCode != null)
-                || (this.accomCode != null && !this.accomCode
-                        .equals(other.accomCode))) {
+                || (this.accomCode != null && !this.accomCode.equals(
+                        other.accomCode))) {
             return false;
         }
         return true;

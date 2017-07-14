@@ -88,8 +88,8 @@ public class ManageReservationController {
     @RequestMapping(value = "{reserveNo}", method = RequestMethod.GET)
     public String detailForm(@PathVariable("reserveNo") String reserveNo,
             Model model) {
-        ReservationDetailOutput output = manageReservationHelper
-                .findDetail(reserveNo);
+        ReservationDetailOutput output = manageReservationHelper.findDetail(
+                reserveNo);
         model.addAttribute("output", output);
         return "managereservation/detailForm";
     }
@@ -191,8 +191,8 @@ public class ManageReservationController {
     @RequestMapping(value = "{reserveNo}/cancel", method = RequestMethod.GET)
     public String cancelConfirm(@PathVariable("reserveNo") String reserveNo,
             Model model) {
-        ReservationDetailOutput output = manageReservationHelper
-                .findDetail(reserveNo);
+        ReservationDetailOutput output = manageReservationHelper.findDetail(
+                reserveNo);
         model.addAttribute("output", output);
         return "managereservation/cancelConfirm";
     }
@@ -229,8 +229,8 @@ public class ManageReservationController {
     @RequestMapping(value = "{reserveNo}/pdf", method = RequestMethod.GET)
     public String downloadPDF(@PathVariable("reserveNo") String reserveNo,
             Model model, Locale locale) {
-        DownloadPDFOutput downloadPDFOutput = manageReservationHelper
-                .createPDF(reserveNo, locale);
+        DownloadPDFOutput downloadPDFOutput = manageReservationHelper.createPDF(
+                reserveNo, locale);
         model.addAttribute(Arrays.asList(downloadPDFOutput));
         return "managereservation/report";
     }

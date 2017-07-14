@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class MenuController {
 
-    private static final Logger log = LoggerFactory
-            .getLogger(MenuController.class);
+    private static final Logger log = LoggerFactory.getLogger(
+            MenuController.class);
 
     /**
      * forward initial menu view.
