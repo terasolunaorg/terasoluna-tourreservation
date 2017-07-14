@@ -97,12 +97,12 @@ public class ManageCustomerControllerTest {
             // Also check the default data set in setupForm method
             // this will test the @ModelAttribute annotation
 
-            results.andExpect(model().attribute("customerForm",
-                    hasProperty("customerBirthYear", is(2000))));
-            results.andExpect(model().attribute("customerForm",
-                    hasProperty("customerBirthMonth", is(1))));
-            results.andExpect(model().attribute("customerForm",
-                    hasProperty("customerBirthDay", is(1))));
+            results.andExpect(model().attribute("customerForm", hasProperty(
+                    "customerBirthYear", is(2000))));
+            results.andExpect(model().attribute("customerForm", hasProperty(
+                    "customerBirthMonth", is(1))));
+            results.andExpect(model().attribute("customerForm", hasProperty(
+                    "customerBirthDay", is(1))));
 
             return;
 
@@ -117,8 +117,8 @@ public class ManageCustomerControllerTest {
     public void testCreateConfirmSuccess() {
 
         // Prepare request
-        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/customers/create").param("confirm", "");
+        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
+                "/customers/create").param("confirm", "");
 
         // Prepare form and set to POST request
         CustomerForm form = prepareNewForm();
@@ -141,8 +141,8 @@ public class ManageCustomerControllerTest {
     public void testCreateConfirmFail() {
 
         // Prepare request
-        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/customers/create").param("confirm", "");
+        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
+                "/customers/create").param("confirm", "");
 
         // Prepare form
         CustomerForm form = prepareNewForm();
@@ -190,8 +190,8 @@ public class ManageCustomerControllerTest {
      */
     @Test
     public void testCreateRedo() {
-        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/customers/create").param("redo", "");
+        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
+                "/customers/create").param("redo", "");
 
         // Set form to the request to simulate correct back button behaviour
         // Since the control will be on confirmation screen, form values may be different from the default
@@ -230,8 +230,8 @@ public class ManageCustomerControllerTest {
     public void testCreateSuccess() {
 
         // Prepare request
-        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/customers/create");
+        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
+                "/customers/create");
 
         when(customerService.register((Customer) anyObject(), eq("12345")))
                 .thenReturn(new Customer("12345678"));
@@ -243,8 +243,8 @@ public class ManageCustomerControllerTest {
             ResultActions results = mockMvc.perform(postRequest);
             // check redirect http status : 302
             results.andExpect(status().isFound());
-            results.andExpect(view()
-                    .name("redirect:/customers/create?complete"));
+            results.andExpect(view().name(
+                    "redirect:/customers/create?complete"));
             results.andExpect(flash().attribute("customer", notNullValue()));
             return;
         } catch (Exception e) {
@@ -261,8 +261,8 @@ public class ManageCustomerControllerTest {
     @Test
     public void testCreateFail() {
         // Prepare request
-        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/customers/create");
+        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
+                "/customers/create");
 
         when(customerService.register((Customer) anyObject(), eq("12345")))
                 .thenReturn(new Customer("12345678"));

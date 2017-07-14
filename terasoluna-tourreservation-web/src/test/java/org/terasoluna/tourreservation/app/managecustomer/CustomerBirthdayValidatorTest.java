@@ -73,8 +73,8 @@ public class CustomerBirthdayValidatorTest {
 
         if (error != null) {
             assertThat(error.getCode(), is("IncorrectDate.customerBirth"));
-            assertThat(error.getDefaultMessage(),
-                    is("Incorrect date was entered."));
+            assertThat(error.getDefaultMessage(), is(
+                    "Incorrect date was entered."));
 
         } else {
             fail("error");
