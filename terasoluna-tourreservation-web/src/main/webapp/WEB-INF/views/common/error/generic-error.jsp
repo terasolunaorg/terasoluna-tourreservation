@@ -29,7 +29,7 @@
 <body>
     <div class="container">
         <jsp:include page="../../layout/header.jsp" />
-        <h2>${f:h(errorCode)} Error</h2>
+        <h2>${f:h(errorCode)}&nbsp;Error</h2>
         <div class="error">
             <c:forEach items="${errorViewMessage}" var="err">
                 <ul>
