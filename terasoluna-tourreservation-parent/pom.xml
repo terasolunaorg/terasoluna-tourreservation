@@ -81,6 +81,14 @@
                         </includes>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>xml-maven-plugin</artifactId>
+                    <version>${xml-maven-plugin.version}</version>
+                    <configuration>
+                        <indentSize>2</indentSize>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -179,6 +187,7 @@
         <java-version>1.8</java-version>
         <project.root.basedir>${project.basedir}</project.root.basedir>
         <formatter-maven-plugin.version>2.0.1</formatter-maven-plugin.version>
+        <xml-maven-plugin.version>1.0.1</xml-maven-plugin.version>
         <postgresql.version>9.4.1212.jre7</postgresql.version>
     </properties>
 

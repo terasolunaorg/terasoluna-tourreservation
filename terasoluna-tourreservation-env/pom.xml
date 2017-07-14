@@ -19,6 +19,23 @@
                 <directory>${resource.directory}</directory>
             </resource>
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+                <configuration>
+                    <formatFileSets>
+                        <formatFileSet>
+                            <directory>${project.basedir}</directory>
+                            <includes>
+                                <include>configs/**/*.xml</include>
+                                <include>configs/**/*.xml.env.ftl</include>
+                            </includes>
+                        </formatFileSet>
+                    </formatFileSets>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <profiles>
