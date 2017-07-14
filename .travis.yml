@@ -26,6 +26,7 @@ before_script:
   - java -jar ./target/cargo-daemon-webapp-${CARGO_DAEMON_WEBAPP_VERSION}.war &
 
 script: 
+  - find ./ -name "pom.xml" -type f -exec mvn formatter:validate -f {} \;
   - mvn -U sql:execute -f terasoluna-tourreservation-initdb/pom.xml -Ddb.password=
   - mvn -U install -f terasoluna-tourreservation-parent/pom.xml
   - mvn -U install -f terasoluna-tourreservation-env/pom.xml
