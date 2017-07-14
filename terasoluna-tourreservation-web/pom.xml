@@ -1,129 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>terasoluna-tourreservation-web</artifactId>
-    <packaging>war</packaging>
-    <name>TERASOLUNA Server Framework for Java (5.x) - Tour Reservation Application - Web Layer</name>
-    <description>Web layer of Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>terasoluna-tourreservation-web</artifactId>
+  <packaging>war</packaging>
+  <name>TERASOLUNA Server Framework for Java (5.x) - Tour Reservation Application - Web Layer</name>
+  <description>Web layer of Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
 
-    <parent>
-        <groupId>org.terasoluna.app</groupId>
-        <artifactId>terasoluna-tourreservation</artifactId>
-        <version>5.1.2-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
+  <parent>
+    <groupId>org.terasoluna.app</groupId>
+    <artifactId>terasoluna-tourreservation</artifactId>
+    <version>5.1.2-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
 
-    <!--
-      Please generate the war file using following Maven command.
-
-        * Generate for local development environment
-             mvn clean package
-
-        * Generate for test or production environment (exclude the projectName-env.jar)
-             mvn -P warpack clean package
-
-        * Generate for test or production environment (include the projectName-env.jar)
-             mvn -P warpack-with-env clean package
-
-      Details of Maven profile refer to http://maven.apache.org/guides/introduction/introduction-to-profiles.html .
-    -->
-    <profiles>
-        <profile>
-            <id>local</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>${project.groupId}</groupId>
-                    <artifactId>terasoluna-tourreservation-env</artifactId>
-                </dependency>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>warpack</id>
-        </profile>
-        <profile>
-            <id>warpack-with-env</id>
-            <dependencies>
-                <dependency>
-                    <groupId>${project.groupId}</groupId>
-                    <artifactId>terasoluna-tourreservation-env</artifactId>
-                </dependency>
-            </dependencies>
-        </profile>
-    </profiles>
-
-    <dependencies>
+  <!-- Please generate the war file using following Maven command. * Generate for local development environment 
+    mvn clean package * Generate for test or production environment (exclude the projectName-env.jar) mvn 
+    -P warpack clean package * Generate for test or production environment (include the projectName-env.jar) 
+    mvn -P warpack-with-env clean package Details of Maven profile refer to http://maven.apache.org/guides/introduction/introduction-to-profiles.html 
+    . -->
+  <profiles>
+    <profile>
+      <id>local</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>terasoluna-tourreservation-domain</artifactId>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>terasoluna-tourreservation-env</artifactId>
         </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>warpack</id>
+    </profile>
+    <profile>
+      <id>warpack-with-env</id>
+      <dependencies>
+        <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>terasoluna-tourreservation-env</artifactId>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
 
-        <!-- == Begin TERASOLUNA == -->
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-web-jsp</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-security-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-recommended-web-dependencies</artifactId>
-            <type>pom</type>
-        </dependency>
-        <!-- == End TERASOLUNA == -->
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>terasoluna-tourreservation-domain</artifactId>
+    </dependency>
 
-        <!-- == Begin Tomcat == -->
-        <!-- Servlet API 3.0 & JSP API 2.2 -->
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jsp-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <!-- == End Tomcat == -->
+    <!-- == Begin TERASOLUNA == -->
+    <dependency>
+      <groupId>org.terasoluna.gfw</groupId>
+      <artifactId>terasoluna-gfw-web-jsp</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.terasoluna.gfw</groupId>
+      <artifactId>terasoluna-gfw-security-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.terasoluna.gfw</groupId>
+      <artifactId>terasoluna-gfw-recommended-web-dependencies</artifactId>
+      <type>pom</type>
+    </dependency>
+    <!-- == End TERASOLUNA == -->
 
-        <!-- == Begin Unit Test == -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-el</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- == End Unit Test == -->
+    <!-- == Begin Tomcat == -->
+    <!-- Servlet API 3.0 & JSP API 2.2 -->
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jsp-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <!-- == End Tomcat == -->
 
-        <!-- == Begin Coding Support == -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <!-- == End Coding Support == -->
+    <!-- == Begin Unit Test == -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-library</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-el</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- == End Unit Test == -->
 
-    </dependencies>
+    <!-- == Begin Coding Support == -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <!-- == End Coding Support == -->
 
-    <properties>
-        <project.root.basedir>${project.parent.basedir}</project.root.basedir>
-    </properties>
+  </dependencies>
+
+  <properties>
+    <project.root.basedir>${project.parent.basedir}</project.root.basedir>
+  </properties>
 </project>
