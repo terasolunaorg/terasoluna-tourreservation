@@ -31,7 +31,8 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/seleniumContext.xml" })
+@ContextConfiguration(locations = {
+        "classpath:META-INF/spring/seleniumContext.xml" })
 public class LogInLogOutTest extends FunctionTestSupport {
 
     WebDriver driver;
@@ -103,8 +104,8 @@ public class LogInLogOutTest extends FunctionTestSupport {
         driver.findElement(By.id("loginBtn")).click();
 
         // login failure default message
-        assertThat(driver.findElement(By.id("loginError")).getText(),
-                is("Bad credentials"));
+        assertThat(driver.findElement(By.id("loginError")).getText(), is(
+                "Bad credentials"));
 
         // go to login screen
         driver.get(applicationContextUrl + "/login");

@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:sec="http://www.springframework.org/schema/security"
-       xsi:schemaLocation="
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:sec="http://www.springframework.org/schema/security"
+  xsi:schemaLocation="
            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
            http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
        ">
 
-    <!-- Import test components -->
-    <import resource="classpath:test-context.xml" />
+  <!-- Import test components -->
+  <import resource="classpath:test-context.xml" />
 
-    <!-- Replace to mock repository for testing -->
-    <bean id="reserveRepository" class="org.mockito.Mockito" factory-method="mock">
-        <constructor-arg value="org.terasoluna.tourreservation.domain.repository.reserve.ReserveRepository" />
-    </bean>
+  <!-- Replace to mock repository for testing -->
+  <bean id="reserveRepository" class="org.mockito.Mockito" factory-method="mock">
+    <constructor-arg value="org.terasoluna.tourreservation.domain.repository.reserve.ReserveRepository" />
+  </bean>
 
-    <!-- Integrate with Spring Security for method security -->
-    <sec:global-method-security pre-post-annotations="enabled" />
-    <sec:authentication-manager>
-        <sec:authentication-provider>
-            <sec:user-service>
-                <sec:user name="dummy" authorities="ROLE_USER"/>
-            </sec:user-service>
-        </sec:authentication-provider>
-    </sec:authentication-manager>
+  <!-- Integrate with Spring Security for method security -->
+  <sec:global-method-security pre-post-annotations="enabled" />
+  <sec:authentication-manager>
+    <sec:authentication-provider>
+      <sec:user-service>
+        <sec:user name="dummy" authorities="ROLE_USER" />
+      </sec:user-service>
+    </sec:authentication-provider>
+  </sec:authentication-manager>
 
 </beans>

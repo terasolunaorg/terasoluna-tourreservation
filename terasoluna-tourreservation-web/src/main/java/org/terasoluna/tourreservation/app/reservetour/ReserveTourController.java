@@ -61,7 +61,8 @@ public class ReserveTourController {
      * @param model
      * @return
      */
-    @RequestMapping(value = { "{tourCode}", "{tourCode}/reserve" }, method = RequestMethod.GET, params = "form")
+    @RequestMapping(value = { "{tourCode}",
+            "{tourCode}/reserve" }, method = RequestMethod.GET, params = "form")
     public String reserveForm(
             @AuthenticationPrincipal ReservationUserDetails userDetails,
             @PathVariable("tourCode") String tourCode, ReserveTourForm form,

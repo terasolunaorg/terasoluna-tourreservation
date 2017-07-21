@@ -17,10 +17,8 @@
   </tr>
   <tr>
     <td colspan="2"><spring:message code="label.tr.searchtour.customerBirth" /></td>
-    <td colspan="3">
-      <spring:message code="label.tr.common.datePattern" var="datePattern" />
-      <fmt:formatDate value="${output.customer.customerBirth}" pattern="${datePattern}" />
-    </td>
+    <td colspan="3"><spring:message code="label.tr.common.datePattern" var="datePattern" /> <fmt:formatDate
+        value="${output.customer.customerBirth}" pattern="${datePattern}" /></td>
   </tr>
   <tr>
     <td colspan="2"><spring:message code="label.tr.searchtour.customerJob" /></td>

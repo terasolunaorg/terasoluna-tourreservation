@@ -139,8 +139,8 @@ public class ReserveRepositoryImplTest {
         }
 
         // run
-        Long retValue = reserveRepository
-                .countReservedPersonSumByTourInfo(tourInfo);
+        Long retValue = reserveRepository.countReservedPersonSumByTourInfo(
+                tourInfo);
 
         // assert
         assertThat(retValue, is(7L));
@@ -152,8 +152,8 @@ public class ReserveRepositoryImplTest {
         tourInfo.setTourCode("xxxxx");
 
         // run
-        Long retValue = reserveRepository
-                .countReservedPersonSumByTourInfo(tourInfo);
+        Long retValue = reserveRepository.countReservedPersonSumByTourInfo(
+                tourInfo);
 
         // assert
         assertThat(retValue, is(nullValue()));
@@ -216,8 +216,8 @@ public class ReserveRepositoryImplTest {
         customer.setCustomerCode(customerCode);
 
         // run
-        List<Reserve> reservationList = reserveRepository
-                .findAllByCustomer(customer);
+        List<Reserve> reservationList = reserveRepository.findAllByCustomer(
+                customer);
 
         // assert
         assertThat(reservationList, is(notNullValue()));
@@ -240,9 +240,8 @@ public class ReserveRepositoryImplTest {
         assertThat(r.getCustomer().getCustomerKana(), is("キムラ　タロウ"));
         assertThat(r.getCustomer().getCustomerMail(), is("tarou@example.com"));
         assertThat(r.getCustomer().getCustomerName(), is("木村　太郎"));
-        assertThat(
-                r.getCustomer().getCustomerPass(),
-                is("$2a$12$Jfwcv/ZpfE0QjVlLT9CB9eqTLrYdAsvfGxXKvRMlpkfEn.9Uirgou"));
+        assertThat(r.getCustomer().getCustomerPass(), is(
+                "$2a$12$Jfwcv/ZpfE0QjVlLT9CB9eqTLrYdAsvfGxXKvRMlpkfEn.9Uirgou"));
         assertThat(r.getCustomer().getCustomerPost(), is("276-0022"));
         assertThat(r.getCustomer().getCustomerTel(), is("111-1111-1111"));
 
@@ -255,12 +254,12 @@ public class ReserveRepositoryImplTest {
         assertThat(r.getTourInfo().getTourCode(), is(tourCode));
         assertThat(r.getTourInfo().getTourDays(), is(1));
         assertThat(r.getTourInfo().getTourName(), is(tourName));
-        assertThat(r.getTourInfo().getAccommodation().getAccomCode(),
-                is("0001"));
-        assertThat(r.getTourInfo().getAccommodation().getAccomName(),
-                is("TERASOLUNAホテル第一荘"));
-        assertThat(r.getTourInfo().getAccommodation().getAccomTel(),
-                is("018-123-4567"));
+        assertThat(r.getTourInfo().getAccommodation().getAccomCode(), is(
+                "0001"));
+        assertThat(r.getTourInfo().getAccommodation().getAccomName(), is(
+                "TERASOLUNAホテル第一荘"));
+        assertThat(r.getTourInfo().getAccommodation().getAccomTel(), is(
+                "018-123-4567"));
 
         assertThat(r.getTourInfo().getDeparture().getDepCode(), is("01"));
         assertThat(r.getTourInfo().getDeparture().getDepName(), is("北海道"));
@@ -274,8 +273,8 @@ public class ReserveRepositoryImplTest {
         customer.setCustomerCode(customerCode);
 
         // run
-        List<Reserve> reservationList = reserveRepository
-                .findAllByCustomer(customer);
+        List<Reserve> reservationList = reserveRepository.findAllByCustomer(
+                customer);
 
         assertThat(reservationList, is(notNullValue()));
         assertThat(reservationList.size(), is(0));

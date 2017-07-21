@@ -128,8 +128,8 @@ public class ReserveTourHelperTest {
 
         // assert
         assertThat(resultOutput.getCustomer(), is(customer));
-        assertThat(resultOutput.getPriceCalculateOutput(),
-                is(priceCalculateOutput));
+        assertThat(resultOutput.getPriceCalculateOutput(), is(
+                priceCalculateOutput));
         assertThat(resultOutput.getTourInfo(), is(tourInfo));
     }
 
@@ -149,8 +149,8 @@ public class ReserveTourHelperTest {
 
         // assert
         assertThat(resultOutput.getCustomer(), is(nullValue()));
-        assertThat(resultOutput.getPriceCalculateOutput(),
-                is(priceCalculateOutput));
+        assertThat(resultOutput.getPriceCalculateOutput(), is(
+                priceCalculateOutput));
         assertThat(resultOutput.getTourInfo(), is(tourInfo));
     }
 
@@ -159,8 +159,8 @@ public class ReserveTourHelperTest {
 
         ReserveTourForm form = new ReserveTourForm();
         ReserveTourOutput output = new ReserveTourOutput();
-        when(reserveService.reserve((ReserveTourInput) anyObject()))
-                .thenReturn(output);
+        when(reserveService.reserve((ReserveTourInput) anyObject())).thenReturn(
+                output);
 
         // run
         ReserveTourOutput result = reserveHelper.reserve(userDetails, "123",
