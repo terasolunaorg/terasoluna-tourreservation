@@ -18,11 +18,6 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>terasoluna-tourreservation-env</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>terasoluna-tourreservation-domain</artifactId>
             <scope>test</scope>
         </dependency>
