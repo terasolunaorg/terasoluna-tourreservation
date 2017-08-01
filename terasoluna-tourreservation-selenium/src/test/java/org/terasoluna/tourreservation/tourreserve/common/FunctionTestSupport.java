@@ -65,7 +65,8 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
             } else if ("firefox".equals(activeProfile)) {
                 break;
             } else if ("ie".equals(activeProfile)) {
-                logger.warn("Cannot use Internet explorer if specifying locale. Startup the browser without any specific locale.");
+                logger.warn(
+                        "Cannot use Internet explorer if specifying locale. Startup the browser without any specific locale.");
                 driver = new InternetExplorerDriver();
                 break;
             }
@@ -110,7 +111,8 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
      * @param expectedContents expected values of table content
      */
     protected void assertTableContents(WebElement table, int rowOffset,
-            int cellIndex, ValueEditor valueEditor, String... expectedContents) {
+            int cellIndex, ValueEditor valueEditor,
+            String... expectedContents) {
         List<WebElement> tableRows = table.findElements(By.tagName("tr"));
         assertThat(tableRows.size(), is(expectedContents.length + rowOffset));
         for (int i = rowOffset; i < (tableRows.size() - rowOffset); i++) {

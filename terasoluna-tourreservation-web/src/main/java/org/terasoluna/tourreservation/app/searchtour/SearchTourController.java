@@ -51,8 +51,8 @@ import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoService;
 @SessionAttributes(types = SearchTourForm.class)
 public class SearchTourController {
 
-    private static final Logger logger = LoggerFactory
-            .getLogger(SearchTourController.class);
+    private static final Logger logger = LoggerFactory.getLogger(
+            SearchTourController.class);
 
     @Inject
     TourInfoService tourInfoService;

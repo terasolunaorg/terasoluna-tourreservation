@@ -1,44 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <version>5.0.3-SNAPSHOT</version>
-        <artifactId>terasoluna-tourreservation-parent</artifactId>
-        <groupId>org.terasoluna.app</groupId>
-        <relativePath>../terasoluna-tourreservation-parent/pom.xml</relativePath>
-    </parent>
-    <artifactId>terasoluna-tourreservation-selenium</artifactId>
-    <name>TERASOLUNA Server Framework for Java (5.x) - Tour Reservation Application - Selenium</name>
-    <description>Selenium tests for Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
-    <packaging>jar</packaging>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <version>5.0.3-SNAPSHOT</version>
+    <artifactId>terasoluna-tourreservation-parent</artifactId>
+    <groupId>org.terasoluna.app</groupId>
+    <relativePath>../terasoluna-tourreservation-parent/pom.xml</relativePath>
+  </parent>
+  <artifactId>terasoluna-tourreservation-selenium</artifactId>
+  <name>TERASOLUNA Server Framework for Java (5.x) - Tour Reservation Application - Selenium</name>
+  <description>Selenium tests for Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
+  <packaging>jar</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>terasoluna-tourreservation-domain</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>terasoluna-tourreservation-domain</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
+  <properties>
+    <project.root.basedir>${project.parent.basedir}</project.root.basedir>
+  </properties>
 </project>

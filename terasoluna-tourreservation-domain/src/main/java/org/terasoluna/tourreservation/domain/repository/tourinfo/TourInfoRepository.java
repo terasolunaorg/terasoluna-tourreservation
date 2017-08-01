@@ -24,7 +24,7 @@ import org.springframework.data.repository.query.Param;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 
 public interface TourInfoRepository extends JpaRepository<TourInfo, String>,
-                                   TourInfoRepositoryCustom {
+                                    TourInfoRepositoryCustom {
 
     @Query("SELECT t FROM TourInfo t WHERE t.tourCode = :tourCode")
     @Lock(LockModeType.PESSIMISTIC_WRITE)
