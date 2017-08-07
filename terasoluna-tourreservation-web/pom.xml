@@ -47,11 +47,6 @@
         <!-- == Begin TourReservation == -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>terasoluna-tourreservation-env</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>terasoluna-tourreservation-domain</artifactId>
         </dependency>
         <!-- == End TourReservation == -->
