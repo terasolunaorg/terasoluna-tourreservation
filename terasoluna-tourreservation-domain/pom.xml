@@ -20,6 +20,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>terasoluna-tourreservation-env</artifactId>
+            <scope>test</scope>
         </dependency>
         <!-- == End TourReservation == -->
 
