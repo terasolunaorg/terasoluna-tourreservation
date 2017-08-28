@@ -1,16 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.terasoluna.app</groupId>
-        <artifactId>terasoluna-tourreservation-parent</artifactId>
-        <version>5.0.3-SNAPSHOT</version>
-        <relativePath>../terasoluna-tourreservation-parent/pom.xml</relativePath>
-    </parent>
+
     <artifactId>terasoluna-tourreservation-env</artifactId>
+    <packaging>jar</packaging>
     <name>TERASOLUNA Server Framework for Java (5.x) - Tour Reservation Application - Environment Layer</name>
     <description>Environment dependent settings of Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
-    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>org.terasoluna.app</groupId>
+        <artifactId>terasoluna-tourreservation</artifactId>
+        <version>5.0.3-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
     <build>
         <finalName>${buildFinalName}</finalName>

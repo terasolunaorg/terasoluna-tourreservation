@@ -2,18 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.terasoluna.app</groupId>
-    <artifactId>terasoluna-tourreservation-parent</artifactId>
-    <packaging>pom</packaging>
-    <parent>
-        <groupId>org.terasoluna.gfw</groupId>
-        <artifactId>terasoluna-gfw-parent</artifactId>
-        <version>5.0.3-SNAPSHOT</version>
-        <relativePath />
-    </parent>
 
-    <name>TERASOLUNA Server Framework for Java (5.x) - Tour Reservation Application - Parent</name>
+    <groupId>org.terasoluna.app</groupId>
+    <artifactId>terasoluna-tourreservation</artifactId>
     <version>5.0.3-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>TERASOLUNA Server Framework for Java (5.x) - Tour Reservation Application - Parent</name>
     <description>Parent POM of Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
     <url>http://terasoluna.org</url>
     <inceptionYear>2013</inceptionYear>
@@ -28,6 +22,13 @@
         <name>TERASOLUNA Framework</name>
         <url>http://terasoluna.org</url>
     </organization>
+
+    <parent>
+        <groupId>org.terasoluna.gfw</groupId>
+        <artifactId>terasoluna-gfw-parent</artifactId>
+        <version>5.0.3-SNAPSHOT</version>
+        <relativePath />
+    </parent>
 
     <repositories>
         <repository>
@@ -156,5 +157,9 @@
         <java-version>1.8</java-version>
         <postgresql.version>9.4.1212.jre7</postgresql.version>
     </properties>
-
+  <modules>
+    <module>terasoluna-tourreservation-env</module>
+    <module>terasoluna-tourreservation-domain</module>
+    <module>terasoluna-tourreservation-web</module>
+  </modules>
 </project>
