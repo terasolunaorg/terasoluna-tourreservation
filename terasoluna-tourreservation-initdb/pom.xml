@@ -2,16 +2,16 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.terasoluna.app</groupId>
-        <artifactId>terasoluna-tourreservation-parent</artifactId>
-        <version>1.0.7-SNAPSHOT</version>
-        <relativePath>../terasoluna-tourreservation-parent/pom.xml</relativePath>
-    </parent>
-
     <artifactId>terasoluna-tourreservation-initdb</artifactId>
     <name>TERASOLUNA Global Framework - Tour Reservation Application - DB Init</name>
     <description>Db initialization scripts for Tour Reservation Application using TERASOLUNA Global Framework</description>
+
+    <parent>
+        <groupId>org.terasoluna.app</groupId>
+        <artifactId>terasoluna-tourreservation</artifactId>
+        <version>1.0.7-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
     <profiles>
         <profile>

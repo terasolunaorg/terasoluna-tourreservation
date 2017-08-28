@@ -2,16 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <artifactId>terasoluna-tourreservation-parent</artifactId>
-        <groupId>org.terasoluna.app</groupId>
-        <version>1.0.7-SNAPSHOT</version>
-        <relativePath>../terasoluna-tourreservation-parent/pom.xml</relativePath>
-    </parent>
+
     <artifactId>terasoluna-tourreservation-selenium</artifactId>
+    <packaging>jar</packaging>
     <name>TERASOLUNA Global Framework - Tour Reservation Application - Selenium</name>
     <description>Selenium tests for Tour Reservation Application using TERASOLUNA Global Framework</description>
-    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>org.terasoluna.app</groupId>
+        <artifactId>terasoluna-tourreservation</artifactId>
+        <version>1.0.7-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
     <build>
         <plugins>
@@ -50,7 +52,11 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>terasoluna-tourreservation-domain</artifactId>
-            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>terasoluna-tourreservation-env</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>

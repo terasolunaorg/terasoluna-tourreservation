@@ -28,8 +28,6 @@ before_script:
 
 script:
   - mvn -U sql:execute -f terasoluna-tourreservation-initdb/pom.xml -Ddb.password=
-  - mvn -U install -f terasoluna-tourreservation-parent/pom.xml
-  - mvn -U install -f terasoluna-tourreservation-env/pom.xml
-  - mvn -U install -f terasoluna-tourreservation-domain/pom.xml -Ddatabase.password=
-  - mvn -U install cargo:daemon-start -f terasoluna-tourreservation-web/pom.xml
+  - mvn -U install
+  - mvn -U cargo:daemon-start -f terasoluna-tourreservation-web/pom.xml
   - mvn -U test -f terasoluna-tourreservation-selenium/pom.xml
