@@ -95,6 +95,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${org.apache.maven.plugins.maven-dependency-plugin.version}</version>
                     <executions>
                         <execution>
                             <id>install</id>
@@ -423,7 +424,7 @@
         <org.apache.maven.archetype.version>2.2</org.apache.maven.archetype.version>
         <org.apache.maven.plugins.maven-checkstyle-plugin.version>2.9.1</org.apache.maven.plugins.maven-checkstyle-plugin.version>
         <org.apache.maven.plugins.maven-compiler-plugin.version>2.5.1</org.apache.maven.plugins.maven-compiler-plugin.version>
-        <org.apache.maven.plugins.maven-dependency-plugin.version>2.5</org.apache.maven.plugins.maven-dependency-plugin.version>
+        <org.apache.maven.plugins.maven-dependency-plugin.version>2.9</org.apache.maven.plugins.maven-dependency-plugin.version>
         <org.apache.maven.plugins.maven-javadoc-plugin.version>2.8.1</org.apache.maven.plugins.maven-javadoc-plugin.version>
         <org.apache.maven.plugins.maven-project-info-reports-plugin.version>2.5.1</org.apache.maven.plugins.maven-project-info-reports-plugin.version>
         <org.apache.maven.plugins.maven-resources-plugin.version>2.6</org.apache.maven.plugins.maven-resources-plugin.version>
