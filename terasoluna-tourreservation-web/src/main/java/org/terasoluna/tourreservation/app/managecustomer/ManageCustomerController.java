@@ -44,8 +44,8 @@ import org.terasoluna.tourreservation.domain.service.customer.CustomerService;
 @TransactionTokenCheck(value = "customers")
 public class ManageCustomerController {
 
-    private static final Logger logger = LoggerFactory
-            .getLogger(ManageCustomerController.class);
+    private static final Logger logger = LoggerFactory.getLogger(
+            ManageCustomerController.class);
 
     @Inject
     CustomerService customerService;
@@ -141,7 +141,7 @@ public class ManageCustomerController {
 
         customer.setCustomerBirth(new DateTime(form.getCustomerBirthYear(), form
                 .getCustomerBirthMonth(), form.getCustomerBirthDay(), 0, 0, 0)
-                .toDate());
+                        .toDate());
 
         Customer registeredCustomer = customerService.register(customer, form
                 .getCustomerPass());

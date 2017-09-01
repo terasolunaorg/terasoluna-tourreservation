@@ -30,8 +30,8 @@ import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoReposit
 @Service
 @Transactional
 public class TourInfoSharedServiceImpl implements TourInfoSharedService {
-    private static final Logger logger = LoggerFactory
-            .getLogger(TourInfoSharedServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(
+            TourInfoSharedServiceImpl.class);
 
     @Inject
     TourInfoRepository tourInfoRepository;

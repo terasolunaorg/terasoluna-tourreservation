@@ -106,10 +106,10 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         // go to reserved tours list screen
         driver.findElement(By.id("reservedToursReferBtn")).click();
 
-        WebElement reservationsTable = driver.findElement(By
-                .id("reservationsTable"));
-        String reserveNumber = reservationsTable.findElement(
-                By.xpath(".//tr[2]/td[1]")).getText();
+        WebElement reservationsTable = driver.findElement(By.id(
+                "reservationsTable"));
+        String reserveNumber = reservationsTable.findElement(By.xpath(
+                ".//tr[2]/td[1]")).getText();
 
         // logout
         driver.findElement(By.id("logoutBtn")).click();
@@ -127,8 +127,8 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         driver.findElement(By.id("username")).sendKeys("00000002");
         driver.findElement(By.id("loginBtn")).click();
 
-        assertEquals(
-                getMessage(MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONSHOWSCREENTITLEMESSAGE),
+        assertEquals(getMessage(
+                MessageKeys.LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONSHOWSCREENTITLEMESSAGE),
                 driver.findElement(By.id("screenName")).getText());
 
         WebElement reserveTable = driver.findElement(By.id("reserveTable"));
@@ -155,10 +155,10 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         // go to reserved tours list screen
         driver.findElement(By.id("reservedToursReferBtn")).click();
 
-        WebElement reservationsTable = driver.findElement(By
-                .id("reservationsTable"));
-        String reserveNumber = reservationsTable.findElement(
-                By.xpath(".//tr[2]/td[1]")).getText();
+        WebElement reservationsTable = driver.findElement(By.id(
+                "reservationsTable"));
+        String reserveNumber = reservationsTable.findElement(By.xpath(
+                ".//tr[2]/td[1]")).getText();
 
         // logout
         driver.findElement(By.id("logoutBtn")).click();
@@ -179,8 +179,8 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
         driver.get(baseUrl + "/terasoluna-tourreservation-web/reservations/"
                 + reserveNumber);
 
-        assertEquals(getMessage(MessageKeys.E_TR_FW_0006), driver.findElement(
-                By.cssSelector("p")).getText());
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0006), driver.findElement(By
+                .cssSelector("p")).getText());
 
     }
 
