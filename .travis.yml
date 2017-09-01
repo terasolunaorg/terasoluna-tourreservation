@@ -22,14 +22,13 @@ before_script:
   - psql -c 'create database tourreserve;' -U postgres
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
+  - export MAVEN_DEPENDENCY_PLUGIN_VERSION=2.8
   - export CARGO_DAEMON_WEBAPP_VERSION=1.4.17
-  - mvn dependency:copy -Dartifact=org.codehaus.cargo:cargo-daemon-webapp:${CARGO_DAEMON_WEBAPP_VERSION}:war -DoutputDirectory=./target/.
+  - mvn org.apache.maven.plugins:maven-dependency-plugin:${MAVEN_DEPENDENCY_PLUGIN_VERSION}:copy -Dartifact=org.codehaus.cargo:cargo-daemon-webapp:${CARGO_DAEMON_WEBAPP_VERSION}:war -DoutputDirectory=./target/.
   - java -jar ./target/cargo-daemon-webapp-${CARGO_DAEMON_WEBAPP_VERSION}.war &
 
 script:
   - mvn -U sql:execute -f terasoluna-tourreservation-initdb/pom.xml -Ddb.password=
-  - mvn -U install -f terasoluna-tourreservation-parent/pom.xml
-  - mvn -U install -f terasoluna-tourreservation-env/pom.xml
-  - mvn -U install -f terasoluna-tourreservation-domain/pom.xml -Ddatabase.password=
-  - mvn -U install cargo:daemon-start -f terasoluna-tourreservation-web/pom.xml
+  - mvn -U install
+  - mvn -U cargo:daemon-start -f terasoluna-tourreservation-web/pom.xml
   - mvn -U test -f terasoluna-tourreservation-selenium/pom.xml
