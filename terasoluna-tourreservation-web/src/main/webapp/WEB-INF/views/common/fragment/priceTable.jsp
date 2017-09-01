@@ -13,18 +13,25 @@
   </tr>
   <tr>
     <td><spring:message code="label.tr.searchtour.adult" /></td>
-    <td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.adultUnitPrice)}" /></td>
-    <td><fmt:formatNumber pattern="${personPattern}" value="${f:h(output.priceCalculateOutput.adultCount)}" /></td>
-    <td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.adultPrice)}" /></td>
+    <td><fmt:formatNumber pattern="${currencyPattern}"
+        value="${f:h(output.priceCalculateOutput.adultUnitPrice)}" /></td>
+    <td><fmt:formatNumber pattern="${personPattern}"
+        value="${f:h(output.priceCalculateOutput.adultCount)}" /></td>
+    <td><fmt:formatNumber pattern="${currencyPattern}"
+        value="${f:h(output.priceCalculateOutput.adultPrice)}" /></td>
   </tr>
   <tr>
     <td><spring:message code="label.tr.searchtour.child" /></td>
-    <td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.childUnitPrice)}" /></td>
-    <td><fmt:formatNumber pattern="${personPattern}" value="${f:h(output.priceCalculateOutput.childCount)}" /></td>
-    <td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.childPrice)}" /></td>
+    <td><fmt:formatNumber pattern="${currencyPattern}"
+        value="${f:h(output.priceCalculateOutput.childUnitPrice)}" /></td>
+    <td><fmt:formatNumber pattern="${personPattern}"
+        value="${f:h(output.priceCalculateOutput.childCount)}" /></td>
+    <td><fmt:formatNumber pattern="${currencyPattern}"
+        value="${f:h(output.priceCalculateOutput.childPrice)}" /></td>
   </tr>
   <tr>
     <td colspan="3"><spring:message code="label.tr.searchtour.sumPrice" /></td>
-    <td><fmt:formatNumber pattern="${currencyPattern}" value="${f:h(output.priceCalculateOutput.sumPrice)}" /></td>
+    <td><fmt:formatNumber pattern="${currencyPattern}"
+        value="${f:h(output.priceCalculateOutput.sumPrice)}" /></td>
   </tr>
 </table>
