@@ -42,7 +42,7 @@ import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUser
 public class ReserveTourControllerTest {
 
     Authentication authentication;
-    
+
     MockMvc mockMvc;
 
     ReserveTourHelper reserveTourHelper;
@@ -71,12 +71,13 @@ public class ReserveTourControllerTest {
     public void testReserveFormSuccess() {
 
         // Prepare get request
-        MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders
-                .get("/reservetour/read");
+        MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders.get(
+                "/reservetour/read");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((Authentication) anyObject(), (ReserveTourForm) anyObject()))
-                .thenReturn(new TourDetailOutput());
+        when(reserveTourHelper.findTourDetail((Authentication) anyObject(),
+                (ReserveTourForm) anyObject())).thenReturn(
+                        new TourDetailOutput());
 
         try {
             ResultActions results = mockMvc.perform(getRequest);
@@ -97,12 +98,13 @@ public class ReserveTourControllerTest {
     public void testReserveTourConfirmSuccess() {
 
         // Prepare POST request
-        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/reservetour/reserve").param("confirm", "");
+        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
+                "/reservetour/reserve").param("confirm", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((Authentication) anyObject(), (ReserveTourForm) anyObject()))
-                .thenReturn(new TourDetailOutput());
+        when(reserveTourHelper.findTourDetail((Authentication) anyObject(),
+                (ReserveTourForm) anyObject())).thenReturn(
+                        new TourDetailOutput());
 
         // Set form data
         postRequest.param("tourCode", "2");
@@ -128,12 +130,13 @@ public class ReserveTourControllerTest {
     @Test
     public void testReserveTourConfirmFail() {
         // Prepare POST request
-        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/reservetour/reserve").param("confirm", "");
+        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
+                "/reservetour/reserve").param("confirm", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((Authentication) anyObject(), (ReserveTourForm) anyObject()))
-                .thenReturn(new TourDetailOutput());
+        when(reserveTourHelper.findTourDetail((Authentication) anyObject(),
+                (ReserveTourForm) anyObject())).thenReturn(
+                        new TourDetailOutput());
 
         // Do not Set any form data so that form validation will fail
         // Just perform the request
@@ -143,7 +146,8 @@ public class ReserveTourControllerTest {
             results.andExpect(status().isOk());
             results.andExpect(view().name("reservetour/reserveForm"));
             results.andExpect(model().hasErrors());
-            results.andExpect(model().attributeErrorCount("reserveTourForm", 3));
+            results.andExpect(model().attributeErrorCount("reserveTourForm",
+                    3));
             results.andExpect(model().attribute("output", nullValue()));
             return;
 
@@ -157,12 +161,13 @@ public class ReserveTourControllerTest {
     @Test
     public void testReserveTourReserveSuccess() {
         // Prepare POST request
-        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/reservetour/reserve");
+        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
+                "/reservetour/reserve");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.reserve((Authentication) anyObject(), (ReserveTourForm) anyObject()))
-                .thenReturn(new ReserveTourOutput());
+        when(reserveTourHelper.reserve((Authentication) anyObject(),
+                (ReserveTourForm) anyObject())).thenReturn(
+                        new ReserveTourOutput());
 
         // Set form data to session
         ReserveTourForm reserveTourForm = new ReserveTourForm();
@@ -193,14 +198,16 @@ public class ReserveTourControllerTest {
     @Test
     public void testReserveTourReserveFailByBusinessException() {
         // Prepare POST request
-        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/reservetour/reserve");
+        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
+                "/reservetour/reserve");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.reserve((Authentication) anyObject(), (ReserveTourForm) anyObject()))
-                .thenThrow(new BusinessException(""));
-        when(reserveTourHelper.findTourDetail((Authentication) anyObject(), (ReserveTourForm) anyObject()))
-                .thenReturn(new TourDetailOutput());
+        when(reserveTourHelper.reserve((Authentication) anyObject(),
+                (ReserveTourForm) anyObject())).thenThrow(
+                        new BusinessException(""));
+        when(reserveTourHelper.findTourDetail((Authentication) anyObject(),
+                (ReserveTourForm) anyObject())).thenReturn(
+                        new TourDetailOutput());
 
         // Set form data
         postRequest.param("tourCode", "2");
@@ -249,8 +256,8 @@ public class ReserveTourControllerTest {
     @Test
     public void testReserveRedo() {
         // Prepare get request
-        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders
-                .post("/reservetour/reserve").param("redo", "");
+        MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
+                "/reservetour/reserve").param("redo", "");
 
         // No Logic testing here
         // this will just test the request mapping part

@@ -62,8 +62,8 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         driver.findElement(By.name("customerName")).sendKeys("ＴＥＲＡＳＯＬＵＮＡ");
         new Select(driver.findElement(By.id("customerBirthYear")))
                 .selectByValue("2000");
-        new Select(driver.findElement(By.id("customerBirthDay")))
-                .selectByValue("1");
+        new Select(driver.findElement(By.id("customerBirthDay"))).selectByValue(
+                "1");
         new Select(driver.findElement(By.id("customerBirthMonth")))
                 .selectByValue("12");
         driver.findElement(By.name("customerJob")).sendKeys("FW");
@@ -80,14 +80,15 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         // falsify transaction token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[0].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_TRANSACTION_TOKEN')[0].setAttribute('type', 'text');");
         driver.findElement(By.name("_TRANSACTION_TOKEN")).clear();
 
         // register
         driver.findElement(By.id("registerBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.E_TR_FW_0001), driver.findElement(
-                By.cssSelector("p")).getText());
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0001), driver.findElement(By
+                .cssSelector("p")).getText());
     }
 
     @Test
@@ -102,8 +103,8 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         driver.findElement(By.name("customerName")).sendKeys("ＴＥＲＡＳＯＬＵＮＡ");
         new Select(driver.findElement(By.id("customerBirthYear")))
                 .selectByValue("2000");
-        new Select(driver.findElement(By.id("customerBirthDay")))
-                .selectByValue("1");
+        new Select(driver.findElement(By.id("customerBirthDay"))).selectByValue(
+                "1");
         new Select(driver.findElement(By.id("customerBirthMonth")))
                 .selectByValue("12");
         driver.findElement(By.name("customerJob")).sendKeys("FW");
@@ -120,14 +121,15 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         // falsify CSRF token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("document.getElementsByName('_csrf')[0].setAttribute('type', 'text');");
+        jse.executeScript(
+                "document.getElementsByName('_csrf')[0].setAttribute('type', 'text');");
         driver.findElement(By.name("_csrf")).clear();
 
         // register
         driver.findElement(By.id("registerBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.E_TR_FW_0002), driver.findElement(
-                By.cssSelector("p")).getText());
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0002), driver.findElement(By
+                .cssSelector("p")).getText());
 
     }
 
@@ -182,15 +184,16 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         // falsify transaction token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[2].setAttribute('type', 'text');");
-        driver.findElement(By.id("reserveTourForm")).findElement(
-                By.name("_TRANSACTION_TOKEN")).clear();
+        jse.executeScript(
+                "document.getElementsByName('_TRANSACTION_TOKEN')[2].setAttribute('type', 'text');");
+        driver.findElement(By.id("reserveTourForm")).findElement(By.name(
+                "_TRANSACTION_TOKEN")).clear();
 
         // reserve
         driver.findElement(By.id("reserveBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.E_TR_FW_0001), driver.findElement(
-                By.cssSelector("p")).getText());
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0001), driver.findElement(By
+                .cssSelector("p")).getText());
     }
 
     @Test
@@ -259,15 +262,16 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         // falsify transaction token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[0].setAttribute('type', 'text');");
-        driver.findElement(By.id("manageReservationForm")).findElement(
-                By.name("_TRANSACTION_TOKEN")).clear();
+        jse.executeScript(
+                "document.getElementsByName('_TRANSACTION_TOKEN')[0].setAttribute('type', 'text');");
+        driver.findElement(By.id("manageReservationForm")).findElement(By.name(
+                "_TRANSACTION_TOKEN")).clear();
 
         // change reservation
         driver.findElement(By.id("changeBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.E_TR_FW_0001), driver.findElement(
-                By.cssSelector("p")).getText());
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0001), driver.findElement(By
+                .cssSelector("p")).getText());
 
         // go to top screen(back to top)
         driver.findElement(By.id("goToTopLink")).click();
@@ -346,15 +350,16 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
         // falsify transaction token
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("document.getElementsByName('_TRANSACTION_TOKEN')[1].setAttribute('type', 'text');");
-        driver.findElement(By.id("reservationCanelForm")).findElement(
-                By.name("_TRANSACTION_TOKEN")).clear();
+        jse.executeScript(
+                "document.getElementsByName('_TRANSACTION_TOKEN')[1].setAttribute('type', 'text');");
+        driver.findElement(By.id("reservationCanelForm")).findElement(By.name(
+                "_TRANSACTION_TOKEN")).clear();
 
         // cancel reservation
         driver.findElement(By.id("cancelBtn")).click();
 
-        assertEquals(getMessage(MessageKeys.E_TR_FW_0001), driver.findElement(
-                By.cssSelector("p")).getText());
+        assertEquals(getMessage(MessageKeys.E_TR_FW_0001), driver.findElement(By
+                .cssSelector("p")).getText());
 
         // go to top screen(back to top)
         driver.findElement(By.id("goToTopLink")).click();

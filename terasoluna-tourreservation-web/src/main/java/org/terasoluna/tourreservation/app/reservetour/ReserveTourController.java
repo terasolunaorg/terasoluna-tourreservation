@@ -44,8 +44,8 @@ import org.terasoluna.tourreservation.domain.service.reserve.ReserveTourOutput;
 @TransactionTokenCheck(value = "reservetour")
 public class ReserveTourController {
 
-    private static final Logger logger = LoggerFactory
-            .getLogger(ReserveTourController.class);
+    private static final Logger logger = LoggerFactory.getLogger(
+            ReserveTourController.class);
 
     @Inject
     ReserveTourHelper reserveTourHelper;
@@ -66,8 +66,8 @@ public class ReserveTourController {
      * @return
      */
     @RequestMapping(value = "read", method = RequestMethod.GET)
-    public String reserveForm(Authentication auth, ReserveTourForm form, Model model,
-            SessionStatus status) {
+    public String reserveForm(Authentication auth, ReserveTourForm form,
+            Model model, SessionStatus status) {
         logger.debug("retieve tour {}", form.getTourCode());
 
         status.setComplete();
@@ -118,7 +118,8 @@ public class ReserveTourController {
         logger.debug("reserve tour {}", form.getTourCode());
 
         if (bindingResult.hasErrors()) {
-            TourDetailOutput output = reserveTourHelper.findTourDetail(auth, form);
+            TourDetailOutput output = reserveTourHelper.findTourDetail(auth,
+                    form);
             model.addAttribute("output", output);
             return "reservetour/reserveForm";
         }
@@ -127,7 +128,8 @@ public class ReserveTourController {
             ReserveTourOutput output = reserveTourHelper.reserve(auth, form);
             redirectAttr.addFlashAttribute("output", output);
         } catch (BusinessException e) {
-            TourDetailOutput output = reserveTourHelper.findTourDetail(auth, form);
+            TourDetailOutput output = reserveTourHelper.findTourDetail(auth,
+                    form);
             model.addAttribute("output", output);
             model.addAttribute(e.getResultMessages());
             return "reservetour/reserveForm";

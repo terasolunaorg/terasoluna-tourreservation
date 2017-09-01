@@ -38,7 +38,7 @@ import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUser
 public class ManageReservationHelperTest {
 
     Authentication authentication;
-    
+
     ManageReservationHelper manageReservationFacade;
 
     ReserveService reserveService;
@@ -77,12 +77,11 @@ public class ManageReservationHelperTest {
         List<Reserve> reserves = Arrays.asList(reserve1, reserve2);
 
         when(reserveService.findAllByCustomerCode("xxxx")).thenReturn(reserves);
-        when(tourInfoSharedService.isOverPaymentLimit(tour1)).thenReturn(
-                false);
-        when(tourInfoSharedService.isOverPaymentLimit(tour2)).thenReturn(
-                true);
+        when(tourInfoSharedService.isOverPaymentLimit(tour1)).thenReturn(false);
+        when(tourInfoSharedService.isOverPaymentLimit(tour2)).thenReturn(true);
 
-        List<ReserveRowOutput> result = manageReservationFacade.list(authentication);
+        List<ReserveRowOutput> result = manageReservationFacade.list(
+                authentication);
         assertThat(result, is(notNullValue()));
         assertThat(result.size(), is(2));
         ReserveRowOutput o1 = result.get(0);

@@ -27,57 +27,57 @@ import javax.validation.constraints.Size;
  */
 public class ReserveTourForm implements Serializable {
 
-	/**
-	 * serialVersion.
-	 */
-	private static final long serialVersionUID = -6732565610738816899L;
+    /**
+     * serialVersion.
+     */
+    private static final long serialVersionUID = -6732565610738816899L;
 
-	@NotNull
-	private String tourCode;
+    @NotNull
+    private String tourCode;
 
-	@NotNull
-	@Min(0)
-	@Max(5)
-	private Integer adultCount;
+    @NotNull
+    @Min(0)
+    @Max(5)
+    private Integer adultCount;
 
-	@NotNull
-	@Min(0)
-	@Max(5)
-	private Integer childCount;
+    @NotNull
+    @Min(0)
+    @Max(5)
+    private Integer childCount;
 
-	@Size(min = 0, max = 80)
-	private String remarks;
+    @Size(min = 0, max = 80)
+    private String remarks;
 
-	public String getTourCode() {
-		return tourCode;
-	}
+    public String getTourCode() {
+        return tourCode;
+    }
 
-	public void setTourCode(String tourCode) {
-		this.tourCode = tourCode;
-	}
+    public void setTourCode(String tourCode) {
+        this.tourCode = tourCode;
+    }
 
-	public Integer getAdultCount() {
-		return adultCount;
-	}
+    public Integer getAdultCount() {
+        return adultCount;
+    }
 
-	public void setAdultCount(Integer adultCount) {
-		this.adultCount = adultCount;
-	}
+    public void setAdultCount(Integer adultCount) {
+        this.adultCount = adultCount;
+    }
 
-	public Integer getChildCount() {
-		return childCount;
-	}
+    public Integer getChildCount() {
+        return childCount;
+    }
 
-	public String getRemarks() {
-		return remarks;
-	}
+    public String getRemarks() {
+        return remarks;
+    }
 
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 
-	public void setChildCount(Integer childCount) {
-		this.childCount = childCount;
-	}
+    public void setChildCount(Integer childCount) {
+        this.childCount = childCount;
+    }
 
 }
