@@ -50,4 +50,7 @@
         </profile>
     </profiles>
 
+    <properties>
+        <project.root.basedir>${project.parent.basedir}</project.root.basedir>
+    </properties>
 </project>

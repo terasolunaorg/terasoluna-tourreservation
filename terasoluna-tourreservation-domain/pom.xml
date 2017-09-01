@@ -82,4 +82,8 @@
 
     </dependencies>
 
+    <properties>
+        <project.root.basedir>${project.parent.basedir}</project.root.basedir>
+    </properties>
+
 </project>
