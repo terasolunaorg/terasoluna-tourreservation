@@ -1,73 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:sec="http://www.springframework.org/schema/security"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:sec="http://www.springframework.org/schema/security"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
     ">
 
-    <sec:http auto-config="true" use-expressions="true">
-        <sec:intercept-url pattern="/tours/*/reserve" access="hasRole('ROLE_USER')" />
-        <sec:intercept-url pattern="/reservations/**" access="hasRole('ROLE_USER')" />
+  <sec:http auto-config="true" use-expressions="true">
+    <sec:intercept-url pattern="/tours/*/reserve" access="hasRole('ROLE_USER')" />
+    <sec:intercept-url pattern="/reservations/**" access="hasRole('ROLE_USER')" />
 
-        <sec:form-login login-page="/login" login-processing-url="/authenticate"
-            username-parameter="username" password-parameter="password"
-            authentication-failure-handler-ref="redirectErrorHandler"
-            authentication-success-handler-ref="redirectHandler" />
+    <sec:form-login login-page="/login" login-processing-url="/authenticate"
+      username-parameter="username" password-parameter="password"
+      authentication-failure-handler-ref="redirectErrorHandler" authentication-success-handler-ref="redirectHandler" />
 
-        <sec:logout logout-url="/logout" logout-success-url="/" delete-cookies="JSESSIONID" />
+    <sec:logout logout-url="/logout" logout-success-url="/" delete-cookies="JSESSIONID" />
 
-        <sec:session-management />
-        <sec:csrf />
-        <sec:access-denied-handler ref="accessDeniedHandler"/>
-        <sec:headers />
-    </sec:http>
+    <sec:session-management />
+    <sec:csrf />
+    <sec:access-denied-handler ref="accessDeniedHandler" />
+    <sec:headers />
+  </sec:http>
 
-    <sec:global-method-security pre-post-annotations="enabled" />
+  <sec:global-method-security pre-post-annotations="enabled" />
 
-    <bean id="userDetailsService"
-        class="org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetailsService">
-    </bean>
+  <bean id="userDetailsService"
+    class="org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetailsService">
+  </bean>
 
-    <sec:authentication-manager>
-        <sec:authentication-provider user-service-ref="userDetailsService">
-            <sec:password-encoder ref="passwordEncoder" />
-        </sec:authentication-provider>
-    </sec:authentication-manager>
+  <sec:authentication-manager>
+    <sec:authentication-provider user-service-ref="userDetailsService">
+      <sec:password-encoder ref="passwordEncoder" />
+    </sec:authentication-provider>
+  </sec:authentication-manager>
 
-    <bean id="redirectHandler"
-        class="org.terasoluna.gfw.security.web.redirect.RedirectAuthenticationHandler">
-    </bean>
+  <bean id="redirectHandler" class="org.terasoluna.gfw.security.web.redirect.RedirectAuthenticationHandler">
+  </bean>
 
-    <bean id="redirectErrorHandler"
-        class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
-        <property name="defaultFailureUrl" value="/login?error=true" />
-        <property name="useForward" value="true" />
-    </bean>
+  <bean id="redirectErrorHandler"
+    class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+    <property name="defaultFailureUrl" value="/login?error=true" />
+    <property name="useForward" value="true" />
+  </bean>
 
 
-    <bean id="accessDeniedHandler"
-        class="org.springframework.security.web.access.DelegatingAccessDeniedHandler">
-        <constructor-arg index="0">
-            <map>
-                <entry
-                    key="org.springframework.security.web.csrf.InvalidCsrfTokenException">
-                    <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-                        <property name="errorPage" value="/WEB-INF/views/common/error/csrf-error.jsp" />
-                    </bean>
-                </entry>
-                <entry key="org.springframework.security.web.csrf.MissingCsrfTokenException">
-                    <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-                        <property name="errorPage" value="/WEB-INF/views/common/error/missing-csrf-token-error.jsp" />
-                    </bean>
-                </entry>
-            </map>
-        </constructor-arg>
-        <constructor-arg index="1">
-            <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-                <property name="errorPage" value="/WEB-INF/views/common/error/access-denied-error.jsp" /> 
-            </bean>
-        </constructor-arg>
-    </bean>
+  <bean id="accessDeniedHandler" class="org.springframework.security.web.access.DelegatingAccessDeniedHandler">
+    <constructor-arg index="0">
+      <map>
+        <entry key="org.springframework.security.web.csrf.InvalidCsrfTokenException">
+          <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+            <property name="errorPage" value="/WEB-INF/views/common/error/csrf-error.jsp" />
+          </bean>
+        </entry>
+        <entry key="org.springframework.security.web.csrf.MissingCsrfTokenException">
+          <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+            <property name="errorPage" value="/WEB-INF/views/common/error/missing-csrf-token-error.jsp" />
+          </bean>
+        </entry>
+      </map>
+    </constructor-arg>
+    <constructor-arg index="1">
+      <bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+        <property name="errorPage" value="/WEB-INF/views/common/error/access-denied-error.jsp" />
+      </bean>
+    </constructor-arg>
+  </bean>
 </beans>
