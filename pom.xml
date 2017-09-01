@@ -177,6 +177,14 @@
                         </includes>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>xml-maven-plugin</artifactId>
+                    <version>${xml-maven-plugin.version}</version>
+                    <configuration>
+                        <indentSize>2</indentSize>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins />
@@ -457,6 +465,7 @@
         <org.mockito.version>1.9.0</org.mockito.version>
         <org.springframework.build.aws.version>3.0.0.RELEASE</org.springframework.build.aws.version>
         <formatter-maven-plugin.version>2.0.1</formatter-maven-plugin.version>
+        <xml-maven-plugin.version>1.0.1</xml-maven-plugin.version>
         <postgresql.version>9.4.1212.jre7</postgresql.version>
         <tiles.version>2.2.2</tiles.version>
         <tomcat.api.version>7.0.40</tomcat.api.version>
