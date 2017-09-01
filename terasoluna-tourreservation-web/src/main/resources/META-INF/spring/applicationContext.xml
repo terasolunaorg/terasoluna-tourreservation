@@ -1,56 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-    xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+  xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+  xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath*:/META-INF/spring/*.properties" />
+  <context:property-placeholder location="classpath*:/META-INF/spring/*.properties" />
 
-    <import resource="classpath:/META-INF/spring/tourreservation-domain.xml" />
+  <import resource="classpath:/META-INF/spring/tourreservation-domain.xml" />
 
-    <!-- Message -->
-    <bean id="messageSource"
-        class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basenames">
-            <list>
-                <value>i18n/domain-messages</value>
-                <value>i18n/application-messages</value>
-                <value>ValidationMessages</value>
-            </list>
-        </property>
-    </bean>
+  <!-- Message -->
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="basenames">
+      <list>
+        <value>i18n/domain-messages</value>
+        <value>i18n/application-messages</value>
+        <value>ValidationMessages</value>
+      </list>
+    </property>
+  </bean>
 
-    <!-- Setting Exception Handling.  -->
-    <!-- Exception Logger. -->
-    <bean id="exceptionLogger"
-        class="org.terasoluna.gfw.common.exception.ExceptionLogger">
-        <property name="exceptionCodeResolver" ref="exceptionCodeResolver" />
-    </bean>
-    <!-- Exception Code Resolver. -->
-    <bean id="exceptionCodeResolver"
-        class="org.terasoluna.gfw.common.exception.SimpleMappingExceptionCodeResolver">
-        <property name="exceptionMappings">
-            <map>
-                <entry key="BusinessException" value="e.tr.fw.0003" />
-            </map>
-        </property>
-        <property name="defaultExceptionCode" value="e.tr.fw.0003" />
-    </bean>
-    <!-- Filter. -->
-    <bean id="exceptionLoggingFilter"
-        class="org.terasoluna.gfw.web.exception.ExceptionLoggingFilter" >
-        <property name="exceptionLogger" ref="exceptionLogger" />
-    </bean>
+  <!-- Setting Exception Handling. -->
+  <!-- Exception Logger. -->
+  <bean id="exceptionLogger" class="org.terasoluna.gfw.common.exception.ExceptionLogger">
+    <property name="exceptionCodeResolver" ref="exceptionCodeResolver" />
+  </bean>
+  <!-- Exception Code Resolver. -->
+  <bean id="exceptionCodeResolver" class="org.terasoluna.gfw.common.exception.SimpleMappingExceptionCodeResolver">
+    <property name="exceptionMappings">
+      <map>
+        <entry key="BusinessException" value="e.tr.fw.0003" />
+      </map>
+    </property>
+    <property name="defaultExceptionCode" value="e.tr.fw.0003" />
+  </bean>
+  <!-- Filter. -->
+  <bean id="exceptionLoggingFilter" class="org.terasoluna.gfw.web.exception.ExceptionLoggingFilter">
+    <property name="exceptionLogger" ref="exceptionLogger" />
+  </bean>
 
-    <bean class="org.dozer.spring.DozerBeanMapperFactoryBean">
-        <property name="mappingFiles"
-            value="classpath*:/META-INF/dozer/**/*-mapping.xml" />
-    </bean>
+  <bean class="org.dozer.spring.DozerBeanMapperFactoryBean">
+    <property name="mappingFiles" value="classpath*:/META-INF/dozer/**/*-mapping.xml" />
+  </bean>
 
 </beans>
