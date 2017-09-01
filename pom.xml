@@ -160,6 +160,23 @@
                         <xmlOutput>true</xmlOutput>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>net.revelc.code.formatter</groupId>
+                    <artifactId>formatter-maven-plugin</artifactId>
+                    <version>${formatter-maven-plugin.version}</version>
+                    <configuration>
+                        <configFile>${project.root.basedir}/eclipse/formatter.xml
+                        </configFile>
+                        <lineEnding>CRLF</lineEnding>
+                        <directories>
+                            <directory>${project.basedir}</directory>
+                        </directories>
+                        <includes>
+                            <include>**/src/main/java/**/*.java</include>
+                            <include>**/src/test/java/**/*.java</include>
+                        </includes>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins />
@@ -414,6 +431,7 @@
         <encoding>UTF-8</encoding>
         <jasperreports.version>3.5.1</jasperreports.version>
         <java-version>1.8</java-version>
+        <project.root.basedir>${project.basedir}</project.root.basedir>
         <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
         <junit.version>4.7</junit.version>
         <ch.qos.logback.version>1.0.13</ch.qos.logback.version>
@@ -438,6 +456,7 @@
         <org.codehaus.mojo.version>2.5</org.codehaus.mojo.version>
         <org.mockito.version>1.9.0</org.mockito.version>
         <org.springframework.build.aws.version>3.0.0.RELEASE</org.springframework.build.aws.version>
+        <formatter-maven-plugin.version>2.0.1</formatter-maven-plugin.version>
         <postgresql.version>9.4.1212.jre7</postgresql.version>
         <tiles.version>2.2.2</tiles.version>
         <tomcat.api.version>7.0.40</tomcat.api.version>

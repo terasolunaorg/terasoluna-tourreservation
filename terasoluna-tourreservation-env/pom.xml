@@ -87,6 +87,7 @@
     </profiles>
 
     <properties>
+        <project.root.basedir>${project.parent.basedir}</project.root.basedir>
         <encoding>UTF-8</encoding>
         <java-version>1.6</java-version>
     </properties>
