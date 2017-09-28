@@ -135,8 +135,8 @@ public class TourInfoRepositoryImplTest {
         assertThat(tour.getTourName(), is(tourName));
 
         assertThat(tour.getAccommodation().getAccomCode(), is("0001"));
-        assertThat(tour.getAccommodation().getAccomName(),
-                is("TERASOLUNAホテル第一荘"));
+        assertThat(tour.getAccommodation().getAccomName(), is(
+                "TERASOLUNAホテル第一荘"));
         assertThat(tour.getAccommodation().getAccomTel(), is("018-123-4567"));
 
         assertThat(tour.getDeparture().getDepCode(), is("01"));

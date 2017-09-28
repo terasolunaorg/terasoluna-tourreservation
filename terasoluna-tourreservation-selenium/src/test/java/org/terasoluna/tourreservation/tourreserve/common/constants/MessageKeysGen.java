@@ -38,9 +38,8 @@ public class MessageKeysGen {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
         Class<?> targetClazz = MessageKeys.class;
-        File output = new File("src/test/java/"
-                + targetClazz.getName().replaceAll(Pattern.quote("."), "/")
-                + ".java");
+        File output = new File("src/test/java/" + targetClazz.getName()
+                .replaceAll(Pattern.quote("."), "/") + ".java");
         System.out.println("write " + output.getAbsolutePath());
         PrintWriter pw = new PrintWriter(FileUtils.openOutputStream(output));
 
@@ -48,17 +47,23 @@ public class MessageKeysGen {
             pw.println("/*");
             pw.println(" * Copyright (C) 2013-2017 NTT DATA Corporation");
             pw.println(" *");
-            pw.println(" * Licensed under the Apache License, Version 2.0 (the \"License\");");
-            pw.println(" * you may not use this file except in compliance with the License.");
+            pw.println(
+                    " * Licensed under the Apache License, Version 2.0 (the \"License\");");
+            pw.println(
+                    " * you may not use this file except in compliance with the License.");
             pw.println(" * You may obtain a copy of the License at");
             pw.println(" *");
             pw.println(" *     http://www.apache.org/licenses/LICENSE-2.0");
             pw.println(" *");
-            pw.println(" * Unless required by applicable law or agreed to in writing, software");
-            pw.println(" * distributed under the License is distributed on an \"AS IS\" BASIS,");
+            pw.println(
+                    " * Unless required by applicable law or agreed to in writing, software");
+            pw.println(
+                    " * distributed under the License is distributed on an \"AS IS\" BASIS,");
             pw.println(" * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,");
-            pw.println(" * either express or implied. See the License for the specific language");
-            pw.println(" * governing permissions and limitations under the License.");
+            pw.println(
+                    " * either express or implied. See the License for the specific language");
+            pw.println(
+                    " * governing permissions and limitations under the License.");
             pw.println(" */");
             pw.println("package " + targetClazz.getPackage().getName() + ";");
             pw.println("/**");
@@ -73,10 +78,10 @@ public class MessageKeysGen {
                     String key = vals[0].trim();
                     String value = vals[1].trim();
                     pw.println("    /** " + key + "=" + value + " */");
-                    pw.println("    public static final String "
-                            + key.toUpperCase().replaceAll(Pattern.quote("."),
-                                    "_").replaceAll(Pattern.quote("-"), "_")
-                            + " = \"" + key + "\";");
+                    pw.println("    public static final String " + key
+                            .toUpperCase().replaceAll(Pattern.quote("."), "_")
+                            .replaceAll(Pattern.quote("-"), "_") + " = \"" + key
+                            + "\";");
                 }
             }
             pw.println("}");

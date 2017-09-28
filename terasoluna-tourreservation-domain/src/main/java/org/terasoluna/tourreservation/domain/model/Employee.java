@@ -121,8 +121,8 @@ public class Employee implements Serializable {
         }
         Employee other = (Employee) object;
         if ((this.staffCode == null && other.staffCode != null)
-                || (this.staffCode != null && !this.staffCode
-                        .equals(other.staffCode))) {
+                || (this.staffCode != null && !this.staffCode.equals(
+                        other.staffCode))) {
             return false;
         }
         return true;

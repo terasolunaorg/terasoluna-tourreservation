@@ -20,8 +20,8 @@ import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUser
 
 public class UserDetailsUtils {
     public static ReservationUserDetails getUserDetails(Authentication auth) {
-        if (auth != null
-                && auth.getPrincipal() instanceof ReservationUserDetails) {
+        if (auth != null && auth
+                .getPrincipal() instanceof ReservationUserDetails) {
             return ((ReservationUserDetails) auth.getPrincipal());
         }
 

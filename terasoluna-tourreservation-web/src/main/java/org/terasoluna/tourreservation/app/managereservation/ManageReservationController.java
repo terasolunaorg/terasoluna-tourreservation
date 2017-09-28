@@ -88,8 +88,8 @@ public class ManageReservationController {
     @RequestMapping(value = "detail/{reserveNo}", method = RequestMethod.GET)
     public String detailForm(@PathVariable("reserveNo") String reserveNo,
             Model model) {
-        ReservationDetailOutput output = manageReservationHelper
-                .findDetail(reserveNo);
+        ReservationDetailOutput output = manageReservationHelper.findDetail(
+                reserveNo);
         model.addAttribute("output", output);
         return "managereservation/detailForm";
     }
@@ -147,8 +147,8 @@ public class ManageReservationController {
             return "managereservation/updateForm";
         }
 
-        ReservationDetailOutput output = manageReservationHelper
-                .findDetail(form);
+        ReservationDetailOutput output = manageReservationHelper.findDetail(
+                form);
         model.addAttribute("output", output);
         return "managereservation/updateConfirm";
     }
@@ -162,9 +162,9 @@ public class ManageReservationController {
      */
     @TransactionTokenCheck(value = "update", type = TransactionTokenType.IN)
     @RequestMapping(value = "update", method = RequestMethod.POST)
-    public String update(
-            @Validated({ ReservationEdit.class, Default.class }) ManageReservationForm form,
-            BindingResult result, RedirectAttributes redirectAttr) {
+    public String update(@Validated({ ReservationEdit.class,
+            Default.class }) ManageReservationForm form, BindingResult result,
+            RedirectAttributes redirectAttr) {
         if (result.hasErrors()) {
             // TODO
             // return updateRedo(form, model);
@@ -191,24 +191,23 @@ public class ManageReservationController {
     @TransactionTokenCheck(value = "cancel", type = TransactionTokenType.BEGIN)
     @RequestMapping(value = "cancel", method = RequestMethod.POST, params = "confirm")
     public String cancelConfirm(ManageReservationForm form, Model model) {
-        ReservationDetailOutput output = manageReservationHelper
-                .findDetail(form.getReserveNo());
+        ReservationDetailOutput output = manageReservationHelper.findDetail(form
+                .getReserveNo());
         model.addAttribute("output", output);
         return "managereservation/cancelConfirm";
     }
 
     @TransactionTokenCheck(value = "cancel", type = TransactionTokenType.IN)
     @RequestMapping(value = "cancel", method = RequestMethod.POST)
-    public String cancel(
-            @Validated({ ReservationCancel.class, Default.class }) ManageReservationForm form,
-            Model model) {
+    public String cancel(@Validated({ ReservationCancel.class,
+            Default.class }) ManageReservationForm form, Model model) {
         String reserveNo = form.getReserveNo();
         try {
             reserveService.cancel(reserveNo);
         } catch (BusinessException e) {
             // TODO
-            ReservationDetailOutput output = manageReservationHelper
-                    .findDetail(reserveNo);
+            ReservationDetailOutput output = manageReservationHelper.findDetail(
+                    reserveNo);
             model.addAttribute("output", output);
             model.addAttribute(e.getResultMessages());
             return "managereservation/cancelConfirm";
@@ -228,8 +227,8 @@ public class ManageReservationController {
 
     @RequestMapping(value = "downloadPDF", method = RequestMethod.GET)
     public String downloadPDF(ManageReservationForm form, Model model) {
-        DownloadPDFOutput downloadPDFOutput = manageReservationHelper
-                .createPDF(form.getReserveNo());
+        DownloadPDFOutput downloadPDFOutput = manageReservationHelper.createPDF(
+                form.getReserveNo());
         model.addAttribute(Arrays.asList(downloadPDFOutput));
         return "reservationReport";
     }

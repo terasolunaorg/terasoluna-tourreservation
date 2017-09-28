@@ -35,59 +35,61 @@ import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUser
 @Component
 public class ReserveTourHelper {
 
-	@Inject
-	PriceCalculateSharedSerivce priceCalculateService;
+    @Inject
+    PriceCalculateSharedSerivce priceCalculateService;
 
-	@Inject
-	ReserveService reserveService;
+    @Inject
+    ReserveService reserveService;
 
-	@Inject
-	TourInfoSharedService tourInfoSharedService;
+    @Inject
+    TourInfoSharedService tourInfoSharedService;
 
-	@Inject
-	Mapper dozerBeanMapper;
+    @Inject
+    Mapper dozerBeanMapper;
 
-	/**
-	 * Fetches detailed information of a particular tour (associated entities
-	 * are also fetched)
-	 * 
-	 * @param form
-	 * @return
-	 */
-	public TourDetailOutput findTourDetail(Authentication auth, ReserveTourForm form) {
-		TourDetailOutput output = new TourDetailOutput();
-		TourInfo tourInfo = tourInfoSharedService.findOne(form.getTourCode());
+    /**
+     * Fetches detailed information of a particular tour (associated entities
+     * are also fetched)
+     * 
+     * @param form
+     * @return
+     */
+    public TourDetailOutput findTourDetail(Authentication auth,
+            ReserveTourForm form) {
+        TourDetailOutput output = new TourDetailOutput();
+        TourInfo tourInfo = tourInfoSharedService.findOne(form.getTourCode());
 
-		PriceCalculateOutput priceCalculateOutput = priceCalculateService
-				.calculatePrice(tourInfo.getBasePrice(), form.getAdultCount(),
-						form.getChildCount());
-		output.setTourInfo(tourInfo);
-		output.setPriceCalculateOutput(priceCalculateOutput);
-		ReservationUserDetails userDetails = UserDetailsUtils.getUserDetails(auth);
-		
-		if (userDetails != null) {
-			output.setCustomer(userDetails.getCustomer());
-		}
-		return output;
-	}
+        PriceCalculateOutput priceCalculateOutput = priceCalculateService
+                .calculatePrice(tourInfo.getBasePrice(), form.getAdultCount(),
+                        form.getChildCount());
+        output.setTourInfo(tourInfo);
+        output.setPriceCalculateOutput(priceCalculateOutput);
+        ReservationUserDetails userDetails = UserDetailsUtils.getUserDetails(
+                auth);
 
-	/**
-	 * makes a reservation
-	 * 
-	 * @param tourDetailForm
-	 * @return
-	 * @throws BusinessException
-	 */
-	public ReserveTourOutput reserve(Authentication auth, ReserveTourForm tourReserveForm)
-			throws BusinessException {
+        if (userDetails != null) {
+            output.setCustomer(userDetails.getCustomer());
+        }
+        return output;
+    }
 
-		ReserveTourInput input = dozerBeanMapper.map(tourReserveForm,
-				ReserveTourInput.class);
+    /**
+     * makes a reservation
+     * 
+     * @param tourDetailForm
+     * @return
+     * @throws BusinessException
+     */
+    public ReserveTourOutput reserve(Authentication auth,
+            ReserveTourForm tourReserveForm) throws BusinessException {
 
-		Customer customer = UserDetailsUtils.getUserDetails(auth).getCustomer();
-		input.setCustomer(customer);
-		ReserveTourOutput tourReserveOutput = reserveService.reserve(input);
-		return tourReserveOutput;
-	}
+        ReserveTourInput input = dozerBeanMapper.map(tourReserveForm,
+                ReserveTourInput.class);
+
+        Customer customer = UserDetailsUtils.getUserDetails(auth).getCustomer();
+        input.setCustomer(customer);
+        ReserveTourOutput tourReserveOutput = reserveService.reserve(input);
+        return tourReserveOutput;
+    }
 
 }

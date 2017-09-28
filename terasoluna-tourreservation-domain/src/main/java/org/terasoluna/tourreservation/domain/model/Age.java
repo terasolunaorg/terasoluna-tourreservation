@@ -103,7 +103,8 @@ public class Age implements Serializable {
         }
         Age other = (Age) object;
         if ((this.ageCode == null && other.ageCode != null)
-                || (this.ageCode != null && !this.ageCode.equals(other.ageCode))) {
+                || (this.ageCode != null && !this.ageCode.equals(
+                        other.ageCode))) {
             return false;
         }
         return true;

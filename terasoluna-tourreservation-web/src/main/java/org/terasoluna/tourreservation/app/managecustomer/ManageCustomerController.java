@@ -44,8 +44,8 @@ import org.terasoluna.tourreservation.domain.service.customer.CustomerService;
 @TransactionTokenCheck(value = "managecustomer")
 public class ManageCustomerController {
 
-    private static final Logger logger = LoggerFactory
-            .getLogger(ManageCustomerController.class);
+    private static final Logger logger = LoggerFactory.getLogger(
+            ManageCustomerController.class);
 
     @Inject
     CustomerService customerService;
@@ -114,7 +114,8 @@ public class ManageCustomerController {
      */
     @TransactionTokenCheck(value = "create", type = TransactionTokenType.BEGIN)
     @RequestMapping(value = "create", method = RequestMethod.POST, params = "confirm")
-    public String createConfirm(@Validated CustomerForm form, BindingResult result) {
+    public String createConfirm(@Validated CustomerForm form,
+            BindingResult result) {
         if (result.hasErrors()) {
             return createRedo(form);
         }
@@ -140,11 +141,12 @@ public class ManageCustomerController {
 
         customer.setCustomerBirth(new DateTime(form.getCustomerBirthYear(), form
                 .getCustomerBirthMonth(), form.getCustomerBirthDay(), 0, 0, 0)
-                .toDate());
+                        .toDate());
 
         Customer registeredCustomer = customerService.register(customer, form
                 .getCustomerPass());
-        redirectAttr.addFlashAttribute("customerCode", registeredCustomer.getCustomerCode());
+        redirectAttr.addFlashAttribute("customerCode", registeredCustomer
+                .getCustomerCode());
         return "redirect:/managecustomer/create?complete";
     }
 

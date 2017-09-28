@@ -60,8 +60,8 @@ public class CustomerRegisterTest extends FunctionTestSupport {
         driver.findElement(By.name("customerName")).sendKeys("ＴＥＲＡＳＯＬＵＮＡ");
         new Select(driver.findElement(By.id("customerBirthYear")))
                 .selectByValue("2000");
-        new Select(driver.findElement(By.id("customerBirthDay")))
-                .selectByValue("1");
+        new Select(driver.findElement(By.id("customerBirthDay"))).selectByValue(
+                "1");
         new Select(driver.findElement(By.id("customerBirthMonth")))
                 .selectByValue("12");
         driver.findElement(By.name("customerJob")).sendKeys("FW");
@@ -119,16 +119,11 @@ public class CustomerRegisterTest extends FunctionTestSupport {
 
     private void confirmRegistrationContents() {
         WebElement customerTable = driver.findElement(By.id("customerTable"));
-        assertTableContents(
-                customerTable,
-                0,
-                1,
-                null,
-                "テラソルナ",
-                "ＴＥＲＡＳＯＬＵＮＡ",
+        assertTableContents(customerTable, 0, 1, null, "テラソルナ", "ＴＥＲＡＳＯＬＵＮＡ",
                 ("2000" + getMessage(MessageKeys.LABEL_TR_COMMON_YEAR) + " 12"
-                        + getMessage(MessageKeys.LABEL_TR_COMMON_MONTH) + " 1" + getMessage(MessageKeys.LABEL_TR_COMMON_DAY)),
-                "FW", "terasoluna@nttd.co.jp", "090-99999999", "333-2222",
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_MONTH) + " 1"
+                        + getMessage(MessageKeys.LABEL_TR_COMMON_DAY)), "FW",
+                "terasoluna@nttd.co.jp", "090-99999999", "333-2222",
                 "tokyo-toyosu", "********");
     }
 

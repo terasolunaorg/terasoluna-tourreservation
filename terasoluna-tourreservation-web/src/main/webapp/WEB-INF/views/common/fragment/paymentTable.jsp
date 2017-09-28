@@ -19,7 +19,7 @@
   </tr>
   <tr>
     <td><spring:message code="label.tr.common.paymentInquiry" /></td>
-    <td colspan="3"><spring:message code="label.tr.common.companyName" /> <spring:message code="label.tr.common.companyTel" />
-      <spring:message code="label.tr.common.companyEmail" /></td>
+    <td colspan="3"><spring:message code="label.tr.common.companyName" /> <spring:message
+        code="label.tr.common.companyTel" /> <spring:message code="label.tr.common.companyEmail" /></td>
   </tr>
 </table>

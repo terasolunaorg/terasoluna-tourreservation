@@ -187,8 +187,8 @@ public class ReserveServiceImplTest {
         // normal
         ReserveTourOutput output = reserveService.reserve(input);
 
-        ArgumentCaptor<Reserve> capture = ArgumentCaptor
-                .forClass(Reserve.class);
+        ArgumentCaptor<Reserve> capture = ArgumentCaptor.forClass(
+                Reserve.class);
         verify(reserveRepository, atLeast(1)).save(capture.capture());
 
         Reserve r = capture.getValue();
@@ -243,8 +243,8 @@ public class ReserveServiceImplTest {
             assertThat(messages.isNotEmpty(), is(true));
             assertThat(messages.getType(), is((ResultMessageType) ERROR));
             assertThat(messages.getList().size(), is(1));
-            assertThat(messages.getList().get(0).getCode(),
-                    is(MessageId.E_TR_0004));
+            assertThat(messages.getList().get(0).getCode(), is(
+                    MessageId.E_TR_0004));
             throw e;
         }
     }
@@ -288,8 +288,8 @@ public class ReserveServiceImplTest {
             assertThat(messages.isNotEmpty(), is(true));
             assertThat(messages.getType(), is((ResultMessageType) ERROR));
             assertThat(messages.getList().size(), is(1));
-            assertThat(messages.getList().get(0).getCode(),
-                    is(MessageId.E_TR_0005));
+            assertThat(messages.getList().get(0).getCode(), is(
+                    MessageId.E_TR_0005));
             throw e;
         }
     }
@@ -310,8 +310,8 @@ public class ReserveServiceImplTest {
 
         reserveService.cancel("001");
 
-        ArgumentCaptor<String> argOfDelete = ArgumentCaptor
-                .forClass(String.class);
+        ArgumentCaptor<String> argOfDelete = ArgumentCaptor.forClass(
+                String.class);
         verify(reserveRepository, times(1)).delete(argOfDelete.capture());
 
         assertThat(argOfDelete.getValue(), is("001"));
@@ -339,8 +339,8 @@ public class ReserveServiceImplTest {
             assertThat(messages.isNotEmpty(), is(true));
             assertThat(messages.getType(), is((ResultMessageType) ERROR));
             assertThat(messages.getList().size(), is(1));
-            assertThat(messages.getList().get(0).getCode(),
-                    is(MessageId.E_TR_0001));
+            assertThat(messages.getList().get(0).getCode(), is(
+                    MessageId.E_TR_0001));
             throw e;
         }
     }
@@ -367,8 +367,8 @@ public class ReserveServiceImplTest {
             assertThat(messages.isNotEmpty(), is(true));
             assertThat(messages.getType(), is((ResultMessageType) ERROR));
             assertThat(messages.getList().size(), is(1));
-            assertThat(messages.getList().get(0).getCode(),
-                    is(MessageId.E_TR_0002));
+            assertThat(messages.getList().get(0).getCode(), is(
+                    MessageId.E_TR_0002));
             throw e;
         }
     }
@@ -397,8 +397,8 @@ public class ReserveServiceImplTest {
             assertThat(messages.isNotEmpty(), is(true));
             assertThat(messages.getType(), is((ResultMessageType) ERROR));
             assertThat(messages.getList().size(), is(1));
-            assertThat(messages.getList().get(0).getCode(),
-                    is(MessageId.E_TR_0003));
+            assertThat(messages.getList().get(0).getCode(), is(
+                    MessageId.E_TR_0003));
             throw e;
         }
     }

@@ -18,7 +18,7 @@ package org.terasoluna.tourreservation.app.managereservation;
 import org.terasoluna.tourreservation.domain.model.Reserve;
 
 public class ReserveRowOutput {
-    
+
     private Reserve reserve;
 
     private Boolean limitExceeding;
@@ -32,7 +32,6 @@ public class ReserveRowOutput {
     public void setReserve(Reserve reserve) {
         this.reserve = reserve;
     }
-
 
     public Boolean getLimitExceeding() {
         return limitExceeding;

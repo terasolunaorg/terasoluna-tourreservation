@@ -51,8 +51,8 @@ import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoService;
 @SessionAttributes(types = SearchTourForm.class)
 public class SearchTourController {
 
-    private static final Logger logger = LoggerFactory
-            .getLogger(SearchTourController.class);
+    private static final Logger logger = LoggerFactory.getLogger(
+            SearchTourController.class);
 
     @Inject
     TourInfoService tourInfoService;
@@ -78,7 +78,7 @@ public class SearchTourController {
      */
     @ModelAttribute
     public SearchTourForm setUpSearchTourForm() {
-    	SearchTourForm searchTourForm = new SearchTourForm();
+        SearchTourForm searchTourForm = new SearchTourForm();
         DateTime dateTime = dateFactory.newDateTime();
         DateTime nextWeekDate = dateTime.plusWeeks(1);
         searchTourForm.setDepYear(nextWeekDate.getYear());
@@ -119,10 +119,12 @@ public class SearchTourController {
         if (logger.isDebugEnabled()) {
             logger.info("pageable={}", pageable);
         }
-        
-        TourInfoSearchCriteria criteria = beanMapper.map(searchTourForm, TourInfoSearchCriteria.class);
 
-        Date depDate = new LocalDate(searchTourForm.getDepYear(), searchTourForm.getDepMonth(), searchTourForm.getDepDay()).toDate();
+        TourInfoSearchCriteria criteria = beanMapper.map(searchTourForm,
+                TourInfoSearchCriteria.class);
+
+        Date depDate = new LocalDate(searchTourForm.getDepYear(), searchTourForm
+                .getDepMonth(), searchTourForm.getDepDay()).toDate();
         criteria.setDepDate(depDate);
 
         Page<TourInfo> page = tourInfoService.searchTour(criteria, pageable);

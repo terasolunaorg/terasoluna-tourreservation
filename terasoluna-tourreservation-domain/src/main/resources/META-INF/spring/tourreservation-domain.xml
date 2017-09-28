@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-    xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+  xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+  xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <tx:annotation-driven />
+  <tx:annotation-driven />
 
-    <import resource="classpath:/META-INF/spring/tourreservation-infra.xml" />
+  <import resource="classpath:/META-INF/spring/tourreservation-infra.xml" />
 
-    <import resource="classpath*:META-INF/spring/**/*-codelist.xml" />
+  <import resource="classpath*:META-INF/spring/**/*-codelist.xml" />
 
-    <context:component-scan base-package="org.terasoluna.tourreservation.domain" />
+  <context:component-scan base-package="org.terasoluna.tourreservation.domain" />
 
-    <bean id="dateFactory" class="org.terasoluna.gfw.common.date.DefaultDateFactory" />
+  <bean id="dateFactory" class="org.terasoluna.gfw.common.date.DefaultDateFactory" />
 
-    <!-- AOP. -->
-    <bean id="resultMessagesLoggingInterceptor"
-        class="org.terasoluna.gfw.common.exception.ResultMessagesLoggingInterceptor">
-        <property name="exceptionLogger" ref="exceptionLogger" />
-    </bean>
-    <aop:config>
-        <aop:advisor advice-ref="resultMessagesLoggingInterceptor"
-            pointcut="@within(org.springframework.stereotype.Service)" />
-    </aop:config>
+  <!-- AOP. -->
+  <bean id="resultMessagesLoggingInterceptor" class="org.terasoluna.gfw.common.exception.ResultMessagesLoggingInterceptor">
+    <property name="exceptionLogger" ref="exceptionLogger" />
+  </bean>
+  <aop:config>
+    <aop:advisor advice-ref="resultMessagesLoggingInterceptor" pointcut="@within(org.springframework.stereotype.Service)" />
+  </aop:config>
 
 </beans>

@@ -72,10 +72,11 @@ public class ManageReservationHelper {
 
     public List<ReserveRowOutput> list(Authentication auth) {
         // must be logged in
-        String customerCode = UserDetailsUtils.getUserDetails(auth).getUsername();
+        String customerCode = UserDetailsUtils.getUserDetails(auth)
+                .getUsername();
 
-        List<Reserve> reserves = reserveService
-                .findAllByCustomerCode(customerCode);
+        List<Reserve> reserves = reserveService.findAllByCustomerCode(
+                customerCode);
 
         List<ReserveRowOutput> rows = new ArrayList<ReserveRowOutput>();
         for (Reserve reservation : reserves) {
@@ -117,8 +118,8 @@ public class ManageReservationHelper {
 
         // payment related
         output.setPaymentTimeLimit(info.getPaymentLimit().toDate());
-        output.setLimitExceeding(tourInfoSharedService
-                .isOverPaymentLimit(info));
+        output.setLimitExceeding(tourInfoSharedService.isOverPaymentLimit(
+                info));
 
         return output;
 
@@ -154,10 +155,12 @@ public class ManageReservationHelper {
 
         String paymentTimeLimit = null;
         if ("1".equals(reserveDetailOutput.getReserve().getTransfer())) {
-            paymentTimeLimit = getMessage(MessageId.LABEL_TR_MANAGERESERVATION_DONE);
+            paymentTimeLimit = getMessage(
+                    MessageId.LABEL_TR_MANAGERESERVATION_DONE);
         } else {
             // TODO use propertyUtil to fetch the format
-            SimpleDateFormat sdf = new SimpleDateFormat(getMessage(MessageId.LABEL_TR_COMMON_DATEPATTERN));
+            SimpleDateFormat sdf = new SimpleDateFormat(getMessage(
+                    MessageId.LABEL_TR_COMMON_DATEPATTERN));
             paymentTimeLimit = sdf.format(reserveDetailOutput
                     .getPaymentTimeLimit());
         }
@@ -191,23 +194,26 @@ public class ManageReservationHelper {
                 .getChildCount());
         downloadPDFOutput.setRemarks(reserveDetailOutput.getReserve()
                 .getRemarks());
-        downloadPDFOutput.setPaymentMethod(getMessage(MessageId.LABEL_TR_COMMON_BANKTRANSFER));
-        downloadPDFOutput.setPaymentCompanyName(getMessage(MessageId.LABEL_TR_COMMON_PAYMENTCOMPANYNAME));
-        downloadPDFOutput.setPaymentAccount(getMessage(MessageId.LABEL_TR_COMMON_SAVINGSACCOUNT));
+        downloadPDFOutput.setPaymentMethod(getMessage(
+                MessageId.LABEL_TR_COMMON_BANKTRANSFER));
+        downloadPDFOutput.setPaymentCompanyName(getMessage(
+                MessageId.LABEL_TR_COMMON_PAYMENTCOMPANYNAME));
+        downloadPDFOutput.setPaymentAccount(getMessage(
+                MessageId.LABEL_TR_COMMON_SAVINGSACCOUNT));
         downloadPDFOutput.setPaymentTimeLimit(paymentTimeLimit);
 
         // 料金を計算するクラス(共通処理：CP0009)を実行する。
         PriceCalculateOutput priceCalcResult = priceCalculateService
                 .calculatePrice(reserveDetailOutput.getReserve().getTourInfo()
                         .getBasePrice(), reserveDetailOutput.getReserve()
-                        .getAdultCount(), reserveDetailOutput.getReserve()
-                        .getChildCount());
+                                .getAdultCount(), reserveDetailOutput
+                                        .getReserve().getChildCount());
 
         // 料金情報を出力値に設定する。
-        downloadPDFOutput
-                .setAdultUnitPrice(priceCalcResult.getAdultUnitPrice());
-        downloadPDFOutput
-                .setChildUnitPrice(priceCalcResult.getChildUnitPrice());
+        downloadPDFOutput.setAdultUnitPrice(priceCalcResult
+                .getAdultUnitPrice());
+        downloadPDFOutput.setChildUnitPrice(priceCalcResult
+                .getChildUnitPrice());
         downloadPDFOutput.setAdultPrice(priceCalcResult.getAdultPrice());
         downloadPDFOutput.setChildPrice(priceCalcResult.getChildPrice());
         downloadPDFOutput.setSumPrice(priceCalcResult.getSumPrice());
@@ -233,9 +239,12 @@ public class ManageReservationHelper {
                 .getCustomerAdd());
 
         //問い合わせ先を設定する。
-        downloadPDFOutput.setReferenceName(getMessage(MessageId.LABEL_TR_COMMON_COMPANYNAME));
-        downloadPDFOutput.setReferenceEmail(getMessage(MessageId.LABEL_TR_COMMON_COMPANYEMAIL));
-        downloadPDFOutput.setReferenceTel(getMessage(MessageId.LABEL_TR_COMMON_COMPANYTEL));
+        downloadPDFOutput.setReferenceName(getMessage(
+                MessageId.LABEL_TR_COMMON_COMPANYNAME));
+        downloadPDFOutput.setReferenceEmail(getMessage(
+                MessageId.LABEL_TR_COMMON_COMPANYEMAIL));
+        downloadPDFOutput.setReferenceTel(getMessage(
+                MessageId.LABEL_TR_COMMON_COMPANYTEL));
 
         // 印刷日を出力値に設定する。
         downloadPDFOutput.setPrintDay(dateFactory.newDate());

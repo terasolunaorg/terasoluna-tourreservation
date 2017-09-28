@@ -227,8 +227,8 @@ public class Customer implements Serializable {
         }
         Customer other = (Customer) object;
         if ((this.customerCode == null && other.customerCode != null)
-                || (this.customerCode != null && !this.customerCode
-                        .equals(other.customerCode))) {
+                || (this.customerCode != null && !this.customerCode.equals(
+                        other.customerCode))) {
             return false;
         }
         return true;

@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:property-placeholder location="classpath*:META-INF/spring/*.properties" />
+  <context:property-placeholder location="classpath*:META-INF/spring/*.properties" />
 
-	<!-- Message -->
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basenames">
-			<list>
-				<value>i18n/domain-messages</value>
-				<value>i18n/application-messages</value>
-				<value>ValidationMessages</value>
-			</list>
-		</property>
-	</bean>
+  <!-- Message -->
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="basenames">
+      <list>
+        <value>i18n/domain-messages</value>
+        <value>i18n/application-messages</value>
+        <value>ValidationMessages</value>
+      </list>
+    </property>
+  </bean>
 
-	<bean id="dateFactory" class="org.terasoluna.gfw.common.date.DefaultDateFactory" />
+  <bean id="dateFactory" class="org.terasoluna.gfw.common.date.DefaultDateFactory" />
 
 
 </beans>

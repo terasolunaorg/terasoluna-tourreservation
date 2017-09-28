@@ -12,7 +12,8 @@
     </database>
     <!-- settings of class loader for web application -->
     <class-loader>
-      <library-loader path="${VM_TOMCAT_ENV_JAR_DIR!'/opt/resin/resin/webapps-env-jars/terasoluna-tourreservation-env-resin-postgresql'}" />
+      <library-loader
+        path="${VM_TOMCAT_ENV_JAR_DIR!'/opt/resin/resin/webapps-env-jars/terasoluna-tourreservation-env-resin-postgresql'}" />
     </class-loader>
   </web-app>
 
