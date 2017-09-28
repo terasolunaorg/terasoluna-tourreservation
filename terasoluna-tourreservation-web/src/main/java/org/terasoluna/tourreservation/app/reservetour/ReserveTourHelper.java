@@ -76,7 +76,8 @@ public class ReserveTourHelper {
      * @throws BusinessException
      */
     public ReserveTourOutput reserve(ReservationUserDetails userDetails,
-            String tourCode, ReserveTourForm tourReserveForm) throws BusinessException {
+            String tourCode,
+            ReserveTourForm tourReserveForm) throws BusinessException {
 
         ReserveTourInput input = beanMapper.map(tourReserveForm,
                 ReserveTourInput.class);

@@ -104,7 +104,8 @@ public class Departure implements Serializable {
         }
         Departure other = (Departure) object;
         if ((this.depCode == null && other.depCode != null)
-                || (this.depCode != null && !this.depCode.equals(other.depCode))) {
+                || (this.depCode != null && !this.depCode.equals(
+                        other.depCode))) {
             return false;
         }
         return true;

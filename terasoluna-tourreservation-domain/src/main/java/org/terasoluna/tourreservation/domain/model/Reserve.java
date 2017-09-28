@@ -195,8 +195,8 @@ public class Reserve implements Serializable {
         }
         Reserve other = (Reserve) object;
         if ((this.reserveNo == null && other.reserveNo != null)
-                || (this.reserveNo != null && !this.reserveNo
-                        .equals(other.reserveNo))) {
+                || (this.reserveNo != null && !this.reserveNo.equals(
+                        other.reserveNo))) {
             return false;
         }
         return true;

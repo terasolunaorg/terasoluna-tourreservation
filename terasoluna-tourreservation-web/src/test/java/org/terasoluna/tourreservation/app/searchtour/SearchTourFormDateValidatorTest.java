@@ -68,8 +68,8 @@ public class SearchTourFormDateValidatorTest {
 
         if (error != null) {
             assertThat(error.getCode(), is("IncorrectDate.inputdate"));
-            assertThat(error.getDefaultMessage(),
-                    is("Incorrect date was entered."));
+            assertThat(error.getDefaultMessage(), is(
+                    "Incorrect date was entered."));
         } else {
             fail("error");
         }

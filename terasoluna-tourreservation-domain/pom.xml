@@ -1,85 +1,89 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>terasoluna-tourreservation-domain</artifactId>
-    <packaging>jar</packaging>
-    <name>TERASOLUNA Server Framework for Java (5.x) - Tour Reservation Application - Domain Layer</name>
-    <description>Domain layer of Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
+  <artifactId>terasoluna-tourreservation-domain</artifactId>
+  <packaging>jar</packaging>
+  <name>TERASOLUNA Server Framework for Java (5.x) - Tour Reservation Application - Domain Layer</name>
+  <description>Domain layer of Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
 
-    <parent>
-        <groupId>org.terasoluna.app</groupId>
-        <artifactId>terasoluna-tourreservation</artifactId>
-        <version>5.0.3-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
+  <parent>
+    <groupId>org.terasoluna.app</groupId>
+    <artifactId>terasoluna-tourreservation</artifactId>
+    <version>5.0.3-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
 
-    <dependencies>
-        <!-- == Begin TourReservation == -->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>terasoluna-tourreservation-env</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- == End TourReservation == -->
+  <dependencies>
+    <!-- == Begin TourReservation == -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>terasoluna-tourreservation-env</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- == End TourReservation == -->
 
-        <!-- == Begin TERASOLUNA == -->
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-jodatime</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-security-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.terasoluna.gfw</groupId>
-            <artifactId>terasoluna-gfw-recommended-dependencies</artifactId>
-            <type>pom</type>
-        </dependency>
-        <!-- == End TERASOLUNA == -->
+    <!-- == Begin TERASOLUNA == -->
+    <dependency>
+      <groupId>org.terasoluna.gfw</groupId>
+      <artifactId>terasoluna-gfw-common</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.terasoluna.gfw</groupId>
+      <artifactId>terasoluna-gfw-jodatime</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.terasoluna.gfw</groupId>
+      <artifactId>terasoluna-gfw-security-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.terasoluna.gfw</groupId>
+      <artifactId>terasoluna-gfw-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.terasoluna.gfw</groupId>
+      <artifactId>terasoluna-gfw-recommended-dependencies</artifactId>
+      <type>pom</type>
+    </dependency>
+    <!-- == End TERASOLUNA == -->
 
-        <!-- == Begin Database == -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+    <!-- == Begin Database == -->
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <scope>runtime</scope>
+    </dependency>
 
-        <!-- == Begin JasperReports == -->
-        <dependency>
-            <groupId>jasperreports</groupId>
-            <artifactId>jasperreports</artifactId>
-        </dependency>
-        <!-- == End JasperReports == -->
+    <!-- == Begin JasperReports == -->
+    <dependency>
+      <groupId>jasperreports</groupId>
+      <artifactId>jasperreports</artifactId>
+    </dependency>
+    <!-- == End JasperReports == -->
 
-        <!-- == Begin Unit Test == -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- == End Unit Test == -->
+    <!-- == Begin Unit Test == -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- == End Unit Test == -->
 
-    </dependencies>
+  </dependencies>
+
+  <properties>
+    <project.root.basedir>${project.parent.basedir}</project.root.basedir>
+  </properties>
 
 </project>
