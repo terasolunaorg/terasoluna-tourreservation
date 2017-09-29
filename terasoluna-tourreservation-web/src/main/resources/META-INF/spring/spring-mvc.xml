@@ -20,8 +20,6 @@
       <bean
         class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver" />
     </mvc:argument-resolvers>
-    <!-- workaround to CVE-2016-5007. -->
-    <mvc:path-matching path-matcher="pathMatcher" />
   </mvc:annotation-driven>
 
   <mvc:default-servlet-handler />
@@ -126,11 +124,6 @@
   <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
     <property name="cookieName" value="locale" />
     <property name="defaultLocale" value="en" />
-  </bean>
-
-  <!-- Setting PathMatcher. -->
-  <bean id="pathMatcher" class="org.springframework.util.AntPathMatcher">
-    <property name="trimTokens" value="false" />
   </bean>
 
 </beans>
