@@ -90,6 +90,13 @@
         <buildFinalName>${project.artifactId}-${project.version}-tomcat8-postgresql</buildFinalName>
       </properties>
     </profile>
+    <profile>
+      <id>tomcat85-postgresql</id>
+      <properties>
+        <resource.directory>${basedir}/configs/tomcat85-postgresql/resources</resource.directory>
+        <buildFinalName>${project.artifactId}-${project.version}-tomcat85-postgresql</buildFinalName>
+      </properties>
+    </profile>
   </profiles>
 
   <dependencies>
