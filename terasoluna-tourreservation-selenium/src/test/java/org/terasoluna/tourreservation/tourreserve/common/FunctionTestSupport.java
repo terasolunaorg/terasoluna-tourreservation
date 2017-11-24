@@ -76,6 +76,9 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
             // firefox is default browser
             FirefoxProfile profile = new FirefoxProfile();
             profile.setPreference("intl.accept_languages", localeStr);
+            profile.setPreference("brouser.startup.homepage_override.mstone",
+                    "ignore");
+            profile.setPreference("network.proxy.type", 0);
             driver = new FirefoxDriver(profile);
         }
 
