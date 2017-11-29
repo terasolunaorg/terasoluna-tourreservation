@@ -27,6 +27,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
@@ -69,7 +70,11 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
         }
 
         if (driver == null) {
-            driver = new FirefoxDriver();
+            FirefoxProfile profile = new FirefoxProfile();
+            profile.setPreference("brouser.startup.homepage_override.mstone",
+                    "ignore");
+            profile.setPreference("network.proxy.type", 0);
+            driver = new FirefoxDriver(profile);
         }
 
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
