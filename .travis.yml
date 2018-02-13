@@ -12,7 +12,7 @@ cache:
 install:
   - pushd `pwd`
   - cd $HOME/build
-  - if [[ -z $GFW_BRANCH ]]; then GFW_BRANCH=5.4.x; fi
+  - if [[ -z $GFW_BRANCH ]]; then GFW_BRANCH=release/5.4.1.RELEASE; fi
   - git clone --depth=1 --branch=$GFW_BRANCH https://github.com/terasolunaorg/terasoluna-gfw.git terasolunaorg/terasoluna-gfw
   - cd terasolunaorg/terasoluna-gfw
   - sh ./mvn-build-all.sh install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dsource.skip=true
