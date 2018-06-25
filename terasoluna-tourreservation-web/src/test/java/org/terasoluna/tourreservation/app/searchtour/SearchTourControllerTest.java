@@ -18,7 +18,7 @@ package org.terasoluna.tourreservation.app.searchtour;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.junit.Assert.fail;
-import static org.mockito.Matchers.anyObject;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -26,9 +26,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import org.dozer.DozerBeanMapper;
+import org.dozer.DozerBeanMapperBuilder;
+import org.dozer.Mapper;
 import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
@@ -61,7 +61,7 @@ public class SearchTourControllerTest {
 
     JodaTimeDateFactory dateFactory;
 
-    DozerBeanMapper beanMapper;
+    Mapper beanMapper;
 
     @Before
     public void setUp() {
@@ -74,7 +74,7 @@ public class SearchTourControllerTest {
         validator = new SearchTourFormDateValidator();
         dateFactory = new DefaultJodaTimeDateFactory();
 
-        beanMapper = new DozerBeanMapper();
+        beanMapper = DozerBeanMapperBuilder.buildDefault();
 
         searchTourController.tourInfoService = tourInfoService;
         searchTourController.validator = validator;
@@ -104,7 +104,7 @@ public class SearchTourControllerTest {
                                     NativeWebRequest webRequest,
                                     WebDataBinderFactory binderFactory) throws Exception {
 
-                                return new PageRequest(0, 50);
+                                return PageRequest.of(0, 50);
                             }
                         }).build();
     }
@@ -156,8 +156,8 @@ public class SearchTourControllerTest {
                 "/tours");
 
         // Set mock behavior for service method
-        when(tourInfoService.searchTour((TourInfoSearchCriteria) anyObject(),
-                (Pageable) anyObject())).thenReturn(
+        when(tourInfoService.searchTour(any(TourInfoSearchCriteria.class), any(
+                Pageable.class))).thenReturn(
                         new PageImpl<TourInfo>(new ArrayList<TourInfo>()));
 
         DateTime dateTime = dateFactory.newDateTime();
@@ -200,8 +200,8 @@ public class SearchTourControllerTest {
                 "/tours");
 
         // Set mock behavior for service method
-        when(tourInfoService.searchTour((TourInfoSearchCriteria) anyObject(),
-                (Pageable) anyObject())).thenReturn(
+        when(tourInfoService.searchTour(any(TourInfoSearchCriteria.class), any(
+                Pageable.class))).thenReturn(
                         new PageImpl<TourInfo>(new ArrayList<TourInfo>()));
 
         // Set invalid date such that custom date validator will fail

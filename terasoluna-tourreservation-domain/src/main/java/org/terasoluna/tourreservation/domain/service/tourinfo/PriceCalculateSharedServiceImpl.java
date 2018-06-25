@@ -73,8 +73,8 @@ public class PriceCalculateSharedServiceImpl implements
             @Override
             protected void doInTransactionWithoutResult(
                     TransactionStatus status) {
-                childAge = ageRepository.findOne("1");
-                adultAge = ageRepository.findOne("0");
+                childAge = ageRepository.findById("1").orElse(null);
+                adultAge = ageRepository.findById("0").orElse(null);
             }
         });
     }

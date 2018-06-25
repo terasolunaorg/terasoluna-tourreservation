@@ -62,7 +62,7 @@ public class TourInfoRepositoryImpl implements TourInfoRepositoryCustom {
             query.setParameter("basePrice", criteria.getBasePrice());
         }
 
-        query.setFirstResult(pageable.getOffset());
+        query.setFirstResult((int) pageable.getOffset());
         query.setMaxResults(pageable.getPageSize());
 
         List<TourInfo> tourInfoList = query.getResultList();
