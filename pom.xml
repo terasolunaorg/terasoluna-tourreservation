@@ -278,7 +278,7 @@
     <xml-maven-plugin.version>1.0.1</xml-maven-plugin.version>
     <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
     <!-- == Dependency Versions == -->
-    <postgresql.version>9.4.1212.jre7</postgresql.version>
+    <postgresql.version>42.2.2</postgresql.version>
     <jasperreports.version>3.5.1</jasperreports.version>
     <selenium.version>2.46.0</selenium.version>
     <!-- == Project Properties == -->
