@@ -32,11 +32,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Proxy;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Data
+@Proxy(lazy = false)
 @ToString(exclude = "tourinfoList")
 @EqualsAndHashCode(exclude = "tourinfoList")
 @Entity
