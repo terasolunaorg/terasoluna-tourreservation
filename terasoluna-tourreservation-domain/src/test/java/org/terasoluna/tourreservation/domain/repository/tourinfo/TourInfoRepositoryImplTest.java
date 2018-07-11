@@ -110,7 +110,7 @@ public class TourInfoRepositoryImplTest {
         criteria.setDepCode("01");
         criteria.setTourDays(0);
 
-        Pageable pageable = new PageRequest(0, 10);
+        Pageable pageable = PageRequest.of(0, 10);
 
         // run
         Page<TourInfo> page = tourInfoRepository.findPageBySearchCriteria(
@@ -156,7 +156,7 @@ public class TourInfoRepositoryImplTest {
         criteria.setDepCode("01");
         criteria.setTourDays(2);
 
-        Pageable pageable = new PageRequest(0, 10);
+        Pageable pageable = PageRequest.of(0, 10);
         // run
         Page<TourInfo> page = tourInfoRepository.findPageBySearchCriteria(
                 criteria, pageable);

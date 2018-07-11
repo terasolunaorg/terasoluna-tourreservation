@@ -18,18 +18,16 @@ package org.terasoluna.tourreservation.app.reservetour;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.anyObject;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import org.dozer.DozerBeanMapper;
+import org.dozer.DozerBeanMapperBuilder;
 import org.dozer.Mapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.terasoluna.tourreservation.domain.model.Accommodation;
 import org.terasoluna.tourreservation.domain.model.Arrival;
 import org.terasoluna.tourreservation.domain.model.Customer;
@@ -69,7 +67,7 @@ public class ReserveTourHelperTest {
         reserveService = mock(ReserveService.class);
         priceCalculateSharedService = mock(PriceCalculateSharedService.class);
 
-        DozerBeanMapper dozerBeanMapper = new DozerBeanMapper();
+        Mapper dozerBeanMapper = DozerBeanMapperBuilder.buildDefault();
 
         reserveHelper.tourInfoSharedService = tourInfoSharedService;
         reserveHelper.reserveService = reserveService;
@@ -159,7 +157,7 @@ public class ReserveTourHelperTest {
 
         ReserveTourForm form = new ReserveTourForm();
         ReserveTourOutput output = new ReserveTourOutput();
-        when(reserveService.reserve((ReserveTourInput) anyObject())).thenReturn(
+        when(reserveService.reserve(any(ReserveTourInput.class))).thenReturn(
                 output);
 
         // run
