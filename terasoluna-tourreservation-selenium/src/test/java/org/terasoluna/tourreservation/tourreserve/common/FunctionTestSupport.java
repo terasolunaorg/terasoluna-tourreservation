@@ -29,6 +29,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ApplicationObjectSupport;
@@ -36,6 +38,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+
+import io.github.bonigarcia.wdm.FirefoxDriverManager;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public abstract class FunctionTestSupport extends ApplicationObjectSupport {
@@ -49,6 +53,18 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
     @Value("${selenium.locale:en}")
     protected Locale locale;
 
+    @Value("${selenium.geckodriverVersion}")
+    protected String geckodriverVersion;
+
+    @Value("${selenium.proxyHttpServer}")
+    protected String proxyHttpServer;
+
+    @Value("${selenium.proxyUserName}")
+    protected String proxyUserName;
+
+    @Value("${selenium.proxyUserPassword}")
+    protected String proxyUserPassword;
+
     /**
      * Starts a WebDriver<br>
      * </p>
@@ -56,6 +72,14 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
      */
     protected WebDriver createWebDriver() {
         WebDriver driver = null;
+
+        // geckodriverのセットアップ
+        if (System.getProperty("webdriver.gecko.driver") == null) {
+            FirefoxDriverManager.getInstance().version(geckodriverVersion)
+                    .proxy(proxyHttpServer).proxyUser(proxyUserName).proxyPass(
+                            proxyUserPassword).setup();
+        }
+
         for (String activeProfile : getApplicationContext().getEnvironment()
                 .getActiveProfiles()) {
             if ("chrome".equals(activeProfile)) {
@@ -74,13 +98,20 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
             profile.setPreference("brouser.startup.homepage_override.mstone",
                     "ignore");
             profile.setPreference("network.proxy.type", 0);
+            profile.setPreference("layout.css.devPixelsPerPx", "0.5");
+
             driver = new FirefoxDriver(profile);
         }
 
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get(applicationContextUrl + "?locale=" + locale.getLanguage());
 
-        return driver;
+        // WebDriverEventListenerを実行ドライバに登録
+        WebDriverEventListener waitWebDriverEventListener = new WebDriverListenerImpl();
+        EventFiringWebDriver webDriver = new EventFiringWebDriver(driver);
+        webDriver.register(waitWebDriverEventListener);
+
+        return webDriver;
     }
 
     /**

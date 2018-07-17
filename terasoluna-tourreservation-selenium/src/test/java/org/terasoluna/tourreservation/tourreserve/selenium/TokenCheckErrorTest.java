@@ -26,7 +26,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
@@ -261,7 +264,11 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
                 "_TRANSACTION_TOKEN")).clear();
 
         // change reservation
-        driver.findElement(By.id("changeBtn")).click();
+        jse.executeScript("document.getElementById('changeBtn').click();");
+
+        Wait<WebDriver> wait = new WebDriverWait(driver, 4, 2000);
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
+                .cssSelector("p"), getMessage(MessageKeys.E_TR_FW_0001)));
 
         assertEquals(getMessage(MessageKeys.E_TR_FW_0001), driver.findElement(By
                 .cssSelector("p")).getText());
@@ -369,6 +376,12 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
 
     @After
     public void tearDown() {
+        /*
+         * In case of firefox 52.9, geckodriver 0.14.0,
+         * Since it crashes when closing firefox browser,
+         * Open the configuratio neditor and close the browser.
+         */
+        driver.get("about:config");
         driver.quit();
     }
 }
