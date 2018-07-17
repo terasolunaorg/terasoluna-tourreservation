@@ -116,6 +116,12 @@ public class UnLogInTourSearchTest extends FunctionTestSupport {
 
     @After
     public void tearDown() {
+        /*
+         * In case of firefox 52.9, geckodriver 0.14.0,
+         * Since it crashes when closing firefox browser,
+         * Open the configuration editor and close the browser.
+         */
+        driver.get("about:config");
         driver.quit();
     }
 }
