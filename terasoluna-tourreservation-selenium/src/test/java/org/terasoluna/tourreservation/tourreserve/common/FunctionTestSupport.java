@@ -15,6 +15,9 @@
  */
 package org.terasoluna.tourreservation.tourreserve.common;
 
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -27,6 +30,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,8 +38,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.support.ApplicationObjectSupport;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public abstract class FunctionTestSupport extends ApplicationObjectSupport {
@@ -49,6 +52,18 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
     @Value("${selenium.locale:en}")
     protected Locale locale;
 
+    @Value("${selenium.geckodriverVersion}")
+    protected String geckodriverVersion;
+
+    @Value("${selenium.proxyHttpServer}")
+    protected String httpServer;
+
+    @Value("${selenium.proxyUserName}")
+    protected String userName;
+
+    @Value("${selenium.proxyUserPassword}")
+    protected String userPassword;
+
     /**
      * Starts a WebDriver<br>
      * </p>
@@ -56,6 +71,10 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
      */
     protected WebDriver createWebDriver() {
         WebDriver driver = null;
+
+        WebDriverManager.firefoxdriver().version(geckodriverVersion).proxy(
+                httpServer).proxyUser(userName).proxyPass(userPassword).setup();
+
         for (String activeProfile : getApplicationContext().getEnvironment()
                 .getActiveProfiles()) {
             if ("chrome".equals(activeProfile)) {
@@ -74,7 +93,8 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
             profile.setPreference("brouser.startup.homepage_override.mstone",
                     "ignore");
             profile.setPreference("network.proxy.type", 0);
-            driver = new FirefoxDriver(profile);
+            FirefoxOptions options = new FirefoxOptions().setProfile(profile);
+            driver = new FirefoxDriver(options);
         }
 
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
