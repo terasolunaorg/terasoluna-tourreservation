@@ -72,8 +72,9 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
     protected WebDriver createWebDriver() {
         WebDriver driver = null;
 
-        WebDriverManager.firefoxdriver().version(geckodriverVersion).proxy(
-                httpServer).proxyUser(userName).proxyPass(userPassword).setup();
+        WebDriverManager.firefoxdriver().version(geckodriverVersion)
+                .forceCache().proxy(httpServer).proxyUser(userName).proxyPass(
+                        userPassword).setup();
 
         for (String activeProfile : getApplicationContext().getEnvironment()
                 .getActiveProfiles()) {
