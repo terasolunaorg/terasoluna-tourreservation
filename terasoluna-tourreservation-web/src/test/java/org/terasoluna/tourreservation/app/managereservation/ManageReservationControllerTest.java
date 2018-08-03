@@ -17,8 +17,8 @@ package org.terasoluna.tourreservation.app.managereservation;
 
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.fail;
-import static org.mockito.Matchers.anyObject;
-import static org.mockito.Matchers.eq;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.flash;
@@ -192,8 +192,8 @@ public class ManageReservationControllerTest {
                 "/reservations/123/update").param("confirm", "");
 
         // Set mock behavior for helper method
-        when(manageReservationHelper.findDetail(eq("123"),
-                (ManageReservationForm) anyObject())).thenReturn(
+        when(manageReservationHelper.findDetail(eq("123"), any(
+                ManageReservationForm.class))).thenReturn(
                         new ReservationDetailOutput());
 
         // Set form data to pass @Validated check
@@ -253,7 +253,7 @@ public class ManageReservationControllerTest {
                 "/reservations/123/update");
 
         // Set mock behavior for helper method
-        when(reserveService.update((ReservationUpdateInput) anyObject()))
+        when(reserveService.update(any(ReservationUpdateInput.class)))
                 .thenReturn(new ReservationUpdateOutput());
 
         // Set form data to pass @Validated check
