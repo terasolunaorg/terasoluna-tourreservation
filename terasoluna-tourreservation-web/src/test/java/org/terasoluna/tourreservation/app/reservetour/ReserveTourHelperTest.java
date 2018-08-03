@@ -18,7 +18,7 @@ package org.terasoluna.tourreservation.app.reservetour;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.anyObject;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -159,7 +159,7 @@ public class ReserveTourHelperTest {
 
         ReserveTourForm form = new ReserveTourForm();
         ReserveTourOutput output = new ReserveTourOutput();
-        when(reserveService.reserve((ReserveTourInput) anyObject())).thenReturn(
+        when(reserveService.reserve(any(ReserveTourInput.class))).thenReturn(
                 output);
 
         // run
