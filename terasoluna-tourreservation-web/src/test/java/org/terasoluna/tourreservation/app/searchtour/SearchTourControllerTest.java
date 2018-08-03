@@ -104,7 +104,7 @@ public class SearchTourControllerTest {
                                     NativeWebRequest webRequest,
                                     WebDataBinderFactory binderFactory) throws Exception {
 
-                                return new PageRequest(0, 50);
+                                return PageRequest.of(0, 50);
                             }
                         }).build();
     }
