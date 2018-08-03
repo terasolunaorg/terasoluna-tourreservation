@@ -20,6 +20,8 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.util.Optional;
+
 import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
@@ -55,7 +57,7 @@ public class TourInfoSharedServiceImplTest {
     public void testFindOne01() {
         TourInfo info = new TourInfo();
 
-        when(tourInfoRepository.findOne("foo")).thenReturn(info);
+        when(tourInfoRepository.findById("foo")).thenReturn(Optional.of(info));
 
         // run
         TourInfo result = tourInfoSharedService.findOne("foo");

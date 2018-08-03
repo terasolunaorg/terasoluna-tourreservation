@@ -173,7 +173,7 @@ public class ReserveServiceImpl implements ReserveService {
         // reserve = reserveRepository.findForUpdate(reserveNo); TODO
         reserve = reserveRepository.findOneForUpdate(reserveNo);
         if (reserve != null) {
-            reserveRepository.delete(reserveNo);
+            reserveRepository.deleteById(reserveNo);
         } else {
             ResultMessages message = ResultMessages.error().add(
                     MessageId.E_TR_0003);
