@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 
-import org.dozer.DozerBeanMapper;
+import org.dozer.DozerBeanMapperBuilder;
 import org.dozer.Mapper;
 import org.hamcrest.core.IsNull;
 import org.junit.Before;
@@ -73,7 +73,7 @@ public class ManageReservationControllerTest {
         // other members instantiation and assignment
         manageReservationHelper = mock(ManageReservationHelper.class);
         manageReservationHelper.existenceCodeList = mock(I18nCodeList.class);
-        beanMapper = new DozerBeanMapper();
+        beanMapper = DozerBeanMapperBuilder.buildDefault();
         reserveService = mock(ReserveService.class);
         userDetails = mock(ReservationUserDetails.class);
         manageReservationController.manageReservationHelper = manageReservationHelper;

@@ -24,7 +24,7 @@
 
   <bean id="exceptionLogger" class="org.terasoluna.gfw.common.exception.ExceptionLogger" />
 
-  <bean class="org.dozer.spring.DozerBeanMapperFactoryBean">
+  <bean class="com.github.dozermapper.spring.DozerBeanMapperFactoryBean">
     <property name="mappingFiles" value="classpath*:/META-INF/dozer/**/*-mapping.xml" />
   </bean>
 
