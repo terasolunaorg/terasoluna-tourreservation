@@ -40,7 +40,7 @@ public class TourInfoSharedServiceImpl implements TourInfoSharedService {
 
     @Override
     public TourInfo findOne(String tourCode) {
-        return tourInfoRepository.findOne(tourCode);
+        return tourInfoRepository.findById(tourCode).orElse(null);
     }
 
     @Override

@@ -34,7 +34,7 @@ public class AuthorizedReserveSharedServiceImpl implements
     @PostAuthorize("returnObject == null or returnObject.customer.customerCode == principal.customer.customerCode")
     @Override
     public Reserve findOne(String reserveNo) {
-        return reserveRepository.findOne(reserveNo);
+        return reserveRepository.findById(reserveNo).orElse(null);
     }
 
 }
