@@ -29,7 +29,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-import org.dozer.DozerBeanMapper;
+import org.dozer.DozerBeanMapperBuilder;
+import org.dozer.Mapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
@@ -57,7 +58,7 @@ public class ManageCustomerControllerTest {
         CustomerPassEqualsValidator cpev = new CustomerPassEqualsValidator();
         CustomerBirthdayValidator cbv = new CustomerBirthdayValidator();
 
-        DozerBeanMapper beanMapper = new DozerBeanMapper();
+        Mapper beanMapper = DozerBeanMapperBuilder.buildDefault();
 
         // Whenever mapping files are required, can be set as shown below
 

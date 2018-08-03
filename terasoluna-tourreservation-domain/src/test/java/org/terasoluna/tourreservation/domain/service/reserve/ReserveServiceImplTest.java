@@ -31,7 +31,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import org.dozer.DozerBeanMapper;
+import org.dozer.DozerBeanMapperBuilder;
+import org.dozer.Mapper;
 import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Before;
@@ -69,7 +70,7 @@ public class ReserveServiceImplTest {
 
     Sequencer<String> sequencer;
 
-    DozerBeanMapper beanMapper;
+    Mapper beanMapper;
 
     DateTime now = new DateTime();
 
@@ -85,10 +86,10 @@ public class ReserveServiceImplTest {
         AuthorizedReserveSharedServiceImpl authorizedReserveSharedService = new AuthorizedReserveSharedServiceImpl();
         authorizedReserveSharedService.reserveRepository = reserveRepository;
 
-        beanMapper = new DozerBeanMapper();
         List<String> mappingFiles = new ArrayList<String>();
         mappingFiles.add("META-INF/dozer/domain-mapping.xml");
-        beanMapper.setMappingFiles(mappingFiles);
+        beanMapper = DozerBeanMapperBuilder.create().withMappingFiles(
+                mappingFiles).build();
 
         reserveService.reserveRepository = reserveRepository;
         reserveService.tourInfoSharedService = tourInfoSharedService;

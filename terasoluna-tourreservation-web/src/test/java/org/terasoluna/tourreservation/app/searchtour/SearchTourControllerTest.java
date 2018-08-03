@@ -28,7 +28,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dozer.DozerBeanMapper;
+import org.dozer.DozerBeanMapperBuilder;
+import org.dozer.Mapper;
 import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
@@ -61,7 +62,7 @@ public class SearchTourControllerTest {
 
     JodaTimeDateFactory dateFactory;
 
-    DozerBeanMapper beanMapper;
+    Mapper beanMapper;
 
     @Before
     public void setUp() {
@@ -74,7 +75,7 @@ public class SearchTourControllerTest {
         validator = new SearchTourFormDateValidator();
         dateFactory = new DefaultJodaTimeDateFactory();
 
-        beanMapper = new DozerBeanMapper();
+        beanMapper = DozerBeanMapperBuilder.buildDefault();
 
         searchTourController.tourInfoService = tourInfoService;
         searchTourController.validator = validator;
