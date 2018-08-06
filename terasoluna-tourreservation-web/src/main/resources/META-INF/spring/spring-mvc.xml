@@ -77,9 +77,9 @@
   </mvc:tiles-configurer>
 
 
-  <bean id="managereservation/report" class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView">
+  <!--<bean id="managereservation/report" class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView">
     <property name="url" value="/WEB-INF/reports/reservationReportPdf.jrxml" />
-  </bean>
+  </bean>-->
 
   <bean id="requestDataValueProcessor" class="org.terasoluna.gfw.web.mvc.support.CompositeRequestDataValueProcessor">
     <constructor-arg>
