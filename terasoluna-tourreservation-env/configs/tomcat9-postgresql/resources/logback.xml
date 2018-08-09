@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern><![CDATA[date:%d{yyyy-MM-dd HH:mm:ss}\tthread:%thread\tuser:%X{USER}\tX-Track:%X{X-Track}\tlevel:%-5level\tlogger:%-48logger{48}\tmessage:%msg%n]]></pattern>
+    </encoder>
+  </appender>
+
+  <appender name="APPLICATION_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${gfw.app.log.dir:-log}/terasoluna-tourreservation-application.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${gfw.app.log.dir:-log}/backup/terasoluna-tourreservation-application-%d{yyyyMMdd}.log</fileNamePattern>
+      <maxHistory>7</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <charset>UTF-8</charset>
+      <pattern><![CDATA[date:%d{yyyy-MM-dd HH:mm:ss}\tthread:%thread\tuser:%X{USER}\tX-Track:%X{X-Track}\tlevel:%-5level\tlogger:%-48logger{48}\tmessage:%msg%n]]></pattern>
+    </encoder>
+  </appender>
+
+  <appender name="MONITORING_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${gfw.app.log.dir:-log}/terasoluna-tourreservation-monitoring.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${gfw.app.log.dir:-log}/backup/terasoluna-tourreservation-monitoring-%d{yyyyMMdd}.log</fileNamePattern>
+      <maxHistory>7</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <charset>UTF-8</charset>
+      <pattern><![CDATA[date:%d{yyyy-MM-dd HH:mm:ss}\tuser:%X{USER}\tX-Track:%X{X-Track}\tlevel:%-5level\tmessage:%msg%n]]></pattern>
+    </encoder>
+  </appender>
+
+  <!-- Application Loggers -->
+  <logger name="org.terasoluna.tourreservation">
+    <level value="debug" />
+  </logger>
+
+  <!-- TERASOLUNA -->
+  <logger name="org.terasoluna.gfw">
+    <level value="info" />
+  </logger>
+  <logger name="org.terasoluna.gfw.web.logging.TraceLoggingInterceptor">
+    <level value="trace" />
+  </logger>
+  <logger name="org.terasoluna.gfw.common.exception.ExceptionLogger">
+    <level value="info" />
+  </logger>
+  <logger name="org.terasoluna.gfw.common.exception.ExceptionLogger.Monitoring" additivity="false">
+    <level value="error" />
+    <appender-ref ref="MONITORING_LOG_FILE" />
+  </logger>
+
+  <!-- 3rdparty Loggers -->
+  <logger name="org.springframework">
+    <level value="warn" />
+  </logger>
+
+  <logger name="org.springframework.web.servlet">
+    <level value="info" />
+  </logger>
+
+  <logger name="org.hibernate.engine.transaction">
+    <level value="debug" />
+  </logger>
+  <logger name="jdbc.sqltiming">
+    <level value="debug" />
+  </logger>
+
+  <!-- only for development -->
+  <logger name="jdbc.resultsettable">
+    <level value="debug" />
+  </logger>
+
+  <root level="warn">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="APPLICATION_LOG_FILE" />
+  </root>
+
+</configuration>

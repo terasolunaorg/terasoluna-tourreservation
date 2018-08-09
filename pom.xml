@@ -266,6 +266,16 @@
         <artifactId>selenium-support</artifactId>
         <version>${selenium.version}</version>
       </dependency>
+      <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>${webdrivermanager.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
       <!-- == End Test == -->
 
     </dependencies>
@@ -280,7 +290,9 @@
     <!-- == Dependency Versions == -->
     <postgresql.version>9.4.1212.jre7</postgresql.version>
     <jasperreports.version>3.5.1</jasperreports.version>
-    <selenium.version>2.46.0</selenium.version>
+    <selenium.version>3.9.1</selenium.version>
+    <webdrivermanager.version>2.1.0</webdrivermanager.version>
+    <guava.version>23.5-jre</guava.version>
     <!-- == Project Properties == -->
     <encoding>UTF-8</encoding>
     <java-version>1.8</java-version>
