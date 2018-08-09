@@ -74,8 +74,9 @@ public class ReserveTourControllerTest {
                 "/tours/123/reserve").param("form", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail(any(), eq("123"), any()))
-                .thenReturn(new TourDetailOutput());
+        when(reserveTourHelper.findTourDetail((ReservationUserDetails) any(),
+                eq("123"), any(ReserveTourForm.class))).thenReturn(
+                        new TourDetailOutput());
 
         try {
             ResultActions results = mockMvc.perform(getRequest);
@@ -100,8 +101,9 @@ public class ReserveTourControllerTest {
                 "/tours/123").param("form", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail(any(), eq("123"), any()))
-                .thenReturn(new TourDetailOutput());
+        when(reserveTourHelper.findTourDetail((ReservationUserDetails) any(),
+                eq("123"), any(ReserveTourForm.class))).thenReturn(
+                        new TourDetailOutput());
 
         try {
             ResultActions results = mockMvc.perform(getRequest);
@@ -126,8 +128,9 @@ public class ReserveTourControllerTest {
                 "/tours/123/reserve").param("confirm", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail(any(), eq("123"), any()))
-                .thenReturn(new TourDetailOutput());
+        when(reserveTourHelper.findTourDetail((ReservationUserDetails) any(),
+                eq("123"), any(ReserveTourForm.class))).thenReturn(
+                        new TourDetailOutput());
 
         // Set form data
         postRequest.param("adultCount", "2");
@@ -156,8 +159,9 @@ public class ReserveTourControllerTest {
                 "/tours/123/reserve").param("confirm", "");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail(any(), eq("123"), any()))
-                .thenReturn(new TourDetailOutput());
+        when(reserveTourHelper.findTourDetail((ReservationUserDetails) any(),
+                eq("123"), any(ReserveTourForm.class))).thenReturn(
+                        new TourDetailOutput());
 
         // Do not Set any form data so that form validation will fail
         // Just perform the request
@@ -186,8 +190,9 @@ public class ReserveTourControllerTest {
                 "/tours/123/reserve");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.reserve(any(), eq("123"), any())).thenReturn(
-                new ReserveTourOutput());
+        when(reserveTourHelper.reserve((ReservationUserDetails) any(), eq(
+                "123"), any(ReserveTourForm.class))).thenReturn(
+                        new ReserveTourOutput());
 
         postRequest.param("adultCount", "2");
         postRequest.param("childCount", "2");
@@ -215,10 +220,12 @@ public class ReserveTourControllerTest {
                 "/tours/123/reserve");
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.reserve(any(), eq("123"), any())).thenThrow(
-                new BusinessException(""));
-        when(reserveTourHelper.findTourDetail(any(), eq("123"), any()))
-                .thenReturn(new TourDetailOutput());
+        when(reserveTourHelper.reserve((ReservationUserDetails) any(), eq(
+                "123"), any(ReserveTourForm.class))).thenThrow(
+                        new BusinessException(""));
+        when(reserveTourHelper.findTourDetail((ReservationUserDetails) any(),
+                eq("123"), any(ReserveTourForm.class))).thenReturn(
+                        new TourDetailOutput());
 
         // Set form data
         postRequest.param("adultCount", "2");
