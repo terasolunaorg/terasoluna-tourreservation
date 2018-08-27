@@ -107,4 +107,6 @@ public class DownloadPDFOutput implements Serializable {
 
     private String paymentTimeLimit;
 
+    private String pdfName;
+
 }

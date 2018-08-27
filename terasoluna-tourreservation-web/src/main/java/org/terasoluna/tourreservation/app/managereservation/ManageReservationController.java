@@ -231,8 +231,8 @@ public class ManageReservationController {
             Model model, Locale locale) {
         DownloadPDFOutput downloadPDFOutput = manageReservationHelper.createPDF(
                 reserveNo, locale);
-        model.addAttribute(Arrays.asList(downloadPDFOutput));
-        return "managereservation/report";
+        model.addAttribute("downloadPDFOutput", downloadPDFOutput);
+        return "reservationReportPdfView";
     }
 
 }

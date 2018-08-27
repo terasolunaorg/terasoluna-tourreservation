@@ -133,6 +133,13 @@
     </dependency>
     <!-- == End Coding Support == -->
 
+    <!-- == Begin PDF Support == -->
+    <dependency>
+      <groupId>com.github.librepdf</groupId>
+      <artifactId>openpdf</artifactId>
+    </dependency>
+    <!-- == End PDF Support == -->
+
   </dependencies>
 
   <properties>

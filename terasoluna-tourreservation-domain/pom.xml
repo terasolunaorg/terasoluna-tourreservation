@@ -52,13 +52,6 @@
     </dependency>
     <!-- == End Database == -->
 
-    <!-- == Begin JasperReports == -->
-    <dependency>
-      <groupId>jasperreports</groupId>
-      <artifactId>jasperreports</artifactId>
-    </dependency>
-    <!-- == End JasperReports == -->
-
     <!-- == Begin Unit Test == -->
     <!-- == Begin TourReservation == -->
     <dependency>
