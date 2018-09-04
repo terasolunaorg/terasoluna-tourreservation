@@ -21,6 +21,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.flash;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -28,6 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.security.web.context.SecurityContextPersistenceFilter;
 import org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -63,7 +65,8 @@ public class ReserveTourControllerTest {
         // build
         mockMvc = MockMvcBuilders.standaloneSetup(reserveTourController)
                 .setCustomArgumentResolvers(
-                        new AuthenticationPrincipalArgumentResolver()).build();
+                        new AuthenticationPrincipalArgumentResolver())
+                .addFilters(new SecurityContextPersistenceFilter()).build();
     }
 
     @Test
@@ -71,10 +74,10 @@ public class ReserveTourControllerTest {
 
         // Prepare get request
         MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders.get(
-                "/tours/123/reserve").param("form", "");
+                "/tours/123/reserve").param("form", "").with(user(userDetails));
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((ReservationUserDetails) any(),
+        when(reserveTourHelper.findTourDetail(any(ReservationUserDetails.class),
                 eq("123"), any(ReserveTourForm.class))).thenReturn(
                         new TourDetailOutput());
 
@@ -98,10 +101,10 @@ public class ReserveTourControllerTest {
 
         // Prepare get request
         MockHttpServletRequestBuilder getRequest = MockMvcRequestBuilders.get(
-                "/tours/123").param("form", "");
+                "/tours/123").param("form", "").with(user(userDetails));
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((ReservationUserDetails) any(),
+        when(reserveTourHelper.findTourDetail(any(ReservationUserDetails.class),
                 eq("123"), any(ReserveTourForm.class))).thenReturn(
                         new TourDetailOutput());
 
@@ -125,10 +128,11 @@ public class ReserveTourControllerTest {
 
         // Prepare POST request
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
-                "/tours/123/reserve").param("confirm", "");
+                "/tours/123/reserve").param("confirm", "").with(user(
+                        userDetails));
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((ReservationUserDetails) any(),
+        when(reserveTourHelper.findTourDetail(any(ReservationUserDetails.class),
                 eq("123"), any(ReserveTourForm.class))).thenReturn(
                         new TourDetailOutput());
 
@@ -156,10 +160,11 @@ public class ReserveTourControllerTest {
     public void testReserveTourConfirmFail() {
         // Prepare POST request
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
-                "/tours/123/reserve").param("confirm", "");
+                "/tours/123/reserve").param("confirm", "").with(user(
+                        userDetails));
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.findTourDetail((ReservationUserDetails) any(),
+        when(reserveTourHelper.findTourDetail(any(ReservationUserDetails.class),
                 eq("123"), any(ReserveTourForm.class))).thenReturn(
                         new TourDetailOutput());
 
@@ -187,10 +192,10 @@ public class ReserveTourControllerTest {
     public void testReserveTourReserveSuccess() {
         // Prepare POST request
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
-                "/tours/123/reserve");
+                "/tours/123/reserve").with(user(userDetails));
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.reserve((ReservationUserDetails) any(), eq(
+        when(reserveTourHelper.reserve(any(ReservationUserDetails.class), eq(
                 "123"), any(ReserveTourForm.class))).thenReturn(
                         new ReserveTourOutput());
 
@@ -217,13 +222,13 @@ public class ReserveTourControllerTest {
     public void testReserveTourReserveFailByBusinessException() {
         // Prepare POST request
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
-                "/tours/123/reserve");
+                "/tours/123/reserve").with(user(userDetails));
 
         // Set mock behavior for helper method
-        when(reserveTourHelper.reserve((ReservationUserDetails) any(), eq(
+        when(reserveTourHelper.reserve(any(ReservationUserDetails.class), eq(
                 "123"), any(ReserveTourForm.class))).thenThrow(
                         new BusinessException(""));
-        when(reserveTourHelper.findTourDetail((ReservationUserDetails) any(),
+        when(reserveTourHelper.findTourDetail(any(ReservationUserDetails.class),
                 eq("123"), any(ReserveTourForm.class))).thenReturn(
                         new TourDetailOutput());
 
