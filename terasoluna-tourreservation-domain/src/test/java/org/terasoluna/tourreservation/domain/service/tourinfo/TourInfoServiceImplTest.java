@@ -64,7 +64,7 @@ public class TourInfoServiceImplTest {
     public void testSearchTourInfo01() {
 
         TourInfoSearchCriteria criteria = new TourInfoSearchCriteria();
-        Pageable pageable = new PageRequest(0, 10);
+        Pageable pageable = PageRequest.of(0, 10);
 
         List<TourInfo> mockedList = new ArrayList<TourInfo>();
 

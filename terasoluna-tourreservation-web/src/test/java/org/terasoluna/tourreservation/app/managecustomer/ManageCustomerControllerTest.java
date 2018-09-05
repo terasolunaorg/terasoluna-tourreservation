@@ -20,8 +20,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-import static org.mockito.Matchers.anyObject;
-import static org.mockito.Matchers.eq;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.flash;
@@ -29,7 +29,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-import org.dozer.DozerBeanMapper;
+import org.dozer.DozerBeanMapperBuilder;
+import org.dozer.Mapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
@@ -57,7 +58,7 @@ public class ManageCustomerControllerTest {
         CustomerPassEqualsValidator cpev = new CustomerPassEqualsValidator();
         CustomerBirthdayValidator cbv = new CustomerBirthdayValidator();
 
-        DozerBeanMapper beanMapper = new DozerBeanMapper();
+        Mapper beanMapper = DozerBeanMapperBuilder.buildDefault();
 
         // Whenever mapping files are required, can be set as shown below
 
@@ -233,7 +234,7 @@ public class ManageCustomerControllerTest {
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
                 "/customers/create");
 
-        when(customerService.register((Customer) anyObject(), eq("12345")))
+        when(customerService.register(any(Customer.class), eq("12345")))
                 .thenReturn(new Customer("12345678"));
 
         CustomerForm form = prepareNewForm();
@@ -264,7 +265,7 @@ public class ManageCustomerControllerTest {
         MockHttpServletRequestBuilder postRequest = MockMvcRequestBuilders.post(
                 "/customers/create");
 
-        when(customerService.register((Customer) anyObject(), eq("12345")))
+        when(customerService.register(any(Customer.class), eq("12345")))
                 .thenReturn(new Customer("12345678"));
 
         CustomerForm form = prepareNewForm();
