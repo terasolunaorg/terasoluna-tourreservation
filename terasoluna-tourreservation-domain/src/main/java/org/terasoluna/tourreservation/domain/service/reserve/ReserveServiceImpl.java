@@ -22,7 +22,7 @@ import javax.inject.Named;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.dozer.Mapper;
+import com.github.dozermapper.core.Mapper;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -22,8 +22,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import org.dozer.DozerBeanMapperBuilder;
-import org.dozer.Mapper;
+import com.github.dozermapper.core.DozerBeanMapperBuilder;
+import com.github.dozermapper.core.Mapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
