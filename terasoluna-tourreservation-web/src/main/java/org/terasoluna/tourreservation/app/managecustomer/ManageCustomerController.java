@@ -19,7 +19,7 @@ import javax.inject.Inject;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.dozer.Mapper;
+import com.github.dozermapper.core.Mapper;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

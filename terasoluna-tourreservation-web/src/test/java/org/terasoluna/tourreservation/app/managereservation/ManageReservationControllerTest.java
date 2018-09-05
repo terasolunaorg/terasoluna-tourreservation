@@ -30,8 +30,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 
-import org.dozer.DozerBeanMapperBuilder;
-import org.dozer.Mapper;
+import com.github.dozermapper.core.DozerBeanMapperBuilder;
+import com.github.dozermapper.core.Mapper;
 import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
