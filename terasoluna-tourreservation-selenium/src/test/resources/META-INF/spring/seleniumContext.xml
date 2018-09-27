@@ -20,5 +20,6 @@
 
   <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
+  <bean id="webDriverListenerImpl" class="org.terasoluna.tourreservation.tourreserve.selenium.WebDriverListenerImpl" />
 
 </beans>

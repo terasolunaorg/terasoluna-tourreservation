@@ -26,7 +26,7 @@
   <parent>
     <groupId>org.terasoluna.gfw</groupId>
     <artifactId>terasoluna-gfw-parent</artifactId>
-    <version>5.5.0.RC1</version>
+    <version>5.5.0-SNAPSHOT</version>
     <relativePath />
   </parent>
 
