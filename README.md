@@ -66,22 +66,21 @@ Alternatively, these project can also be imported into Eclipse and application c
 #### Test with selenium
 
 Install Firefox to run test.  
-And download [geckodriver](https://github.com/mozilla/geckodriver/releases/tag/v0.14.0).
+[geckodriver](https://github.com/mozilla/geckodriver/releases) (`v0.14.0` recommended) placed in application execution environment and add to `PATH`.
 
 Run test.
 
 ```console
-$ mvn -f terasoluna-tourreservation-selenium/pom.xml clean test -Dwebdriver.gecko.driver={path to geckodriver}
+$ mvn -f terasoluna-tourreservation-selenium/pom.xml clean test
 ```
 
 > **Note:**
 >
-> geckodriver can be downloaded automatically through the Internet.  
-> If proxy authentication is required, please build as follows.  
-> In the case of no authentication proxy, only  `-Dselenium.proxyHttpServer={HttpServer}`.  
+> If GeckoDriver is not registered in the path, [webdrivermanager](https://github.com/bonigarcia/webdrivermanager) will download it automatically.  
+> If required proxy, please set `selenium.proxyHttpServer`.  
+> If required proxy authentication, set   `selenium.proxyUserName`, `selenium.proxyUserPassword`.  
 > ```console
-> $ mvn -f terasoluna-tourreservation-selenium/pom.xml clean test -Dselenium.proxyUserName={UserName} -Dselenium.proxyUserPassword={Password} -Dselenium.proxyHttpServer={HttpServer}
-> ```
-
-
-
+> $ mvn -f terasoluna-tourreservation-selenium/pom.xml clean test -Dselenium.proxyHttpServer={HttpServer} -Dselenium.proxyUserName={UserName} -Dselenium.proxyUserPassword={Password}
+> ```  
+ > **Note:**
+> You can change GeckoDriver's version with setting `selenium.geckodriverVersion`.
