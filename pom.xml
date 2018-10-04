@@ -267,11 +267,18 @@
         <version>${selenium.version}</version>
       </dependency>
       <!-- == End Test == -->
+      <!-- == Begin Lombok == -->
+      <!-- Because of Lombok bug(see https://github.com/terasolunaorg/terasoluna-tourreservation/issues/585),
+           we defined version which above Spring IO definition.
+           After the version of Lombok defined by Spring IO is changed,
+           we will remove the version definition with the following ISSUE.
+           https://github.com/terasolunaorg/terasoluna-tourreservation/issues/588 -->
       <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
         <version>${lombok.version}</version>
       </dependency>
+      <!-- == End Lombok == -->
     </dependencies>
   </dependencyManagement>
   <properties>
