@@ -12,7 +12,7 @@
 
   <context:property-placeholder location="classpath*:/META-INF/spring/*.properties" />
 
-  <bean class="org.dozer.spring.DozerBeanMapperFactoryBean">
+  <bean class="com.github.dozermapper.spring.DozerBeanMapperFactoryBean">
     <property name="mappingFiles" value="classpath*:/META-INF/dozer/**/*-mapping.xml" />
   </bean>
 

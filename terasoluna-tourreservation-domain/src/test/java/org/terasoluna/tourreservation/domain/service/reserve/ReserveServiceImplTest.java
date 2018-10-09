@@ -29,8 +29,10 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
-import org.dozer.DozerBeanMapper;
+import com.github.dozermapper.core.DozerBeanMapperBuilder;
+import com.github.dozermapper.core.Mapper;
 import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Before;
@@ -68,7 +70,7 @@ public class ReserveServiceImplTest {
 
     Sequencer<String> sequencer;
 
-    DozerBeanMapper beanMapper;
+    Mapper beanMapper;
 
     DateTime now = new DateTime();
 
@@ -84,10 +86,10 @@ public class ReserveServiceImplTest {
         AuthorizedReserveSharedServiceImpl authorizedReserveSharedService = new AuthorizedReserveSharedServiceImpl();
         authorizedReserveSharedService.reserveRepository = reserveRepository;
 
-        beanMapper = new DozerBeanMapper();
         List<String> mappingFiles = new ArrayList<String>();
         mappingFiles.add("META-INF/dozer/domain-mapping.xml");
-        beanMapper.setMappingFiles(mappingFiles);
+        beanMapper = DozerBeanMapperBuilder.create().withMappingFiles(
+                mappingFiles).build();
 
         reserveService.reserveRepository = reserveRepository;
         reserveService.tourInfoSharedService = tourInfoSharedService;
@@ -107,7 +109,8 @@ public class ReserveServiceImplTest {
     @Test
     public void testFindOne01() {
         Reserve reserve = new Reserve();
-        when(reserveRepository.findOne("foo")).thenReturn(reserve);
+        when(reserveRepository.findById("foo")).thenReturn(Optional.of(
+                reserve));
 
         Reserve result = reserveService.findOne("foo");
         assertThat(result, is(reserve));
@@ -115,7 +118,7 @@ public class ReserveServiceImplTest {
 
     @Test
     public void testFindOne02() {
-        when(reserveRepository.findOne("foo")).thenReturn(null);
+        when(reserveRepository.findById("foo")).thenReturn(Optional.empty());
 
         Reserve result = reserveService.findOne("foo");
         assertThat(result, is(nullValue()));
@@ -307,7 +310,8 @@ public class ReserveServiceImplTest {
         reserve.setTourInfo(tour);
         reserve.setTransfer(Reserve.NOT_TRANSFERED);
 
-        when(reserveRepository.findOne("001")).thenReturn(reserve);
+        when(reserveRepository.findById("001")).thenReturn(Optional.of(
+                reserve));
         when(reserveRepository.findOneForUpdate("001")).thenReturn(reserve);
         when(tourInfoSharedService.isOverPaymentLimit(tour)).thenReturn(false); // within limit
 
@@ -315,7 +319,7 @@ public class ReserveServiceImplTest {
 
         ArgumentCaptor<String> argOfDelete = ArgumentCaptor.forClass(
                 String.class);
-        verify(reserveRepository, times(1)).delete(argOfDelete.capture());
+        verify(reserveRepository, times(1)).deleteById(argOfDelete.capture());
 
         assertThat(argOfDelete.getValue(), is("001"));
     }
@@ -330,7 +334,8 @@ public class ReserveServiceImplTest {
         reserve.setTourInfo(tour);
         reserve.setTransfer(Reserve.TRANSFERED); // !!!TRANSFERED
 
-        when(reserveRepository.findOne("001")).thenReturn(reserve);
+        when(reserveRepository.findById("001")).thenReturn(Optional.of(
+                reserve));
         when(reserveRepository.findOneForUpdate("001")).thenReturn(reserve);
         when(tourInfoSharedService.isOverPaymentLimit(tour)).thenReturn(false); // within limit
 
@@ -358,7 +363,8 @@ public class ReserveServiceImplTest {
         reserve.setTourInfo(tour);
         reserve.setTransfer(Reserve.NOT_TRANSFERED);
 
-        when(reserveRepository.findOne("001")).thenReturn(reserve);
+        when(reserveRepository.findById("001")).thenReturn(Optional.of(
+                reserve));
         when(reserveRepository.findOneForUpdate("001")).thenReturn(reserve);
         when(tourInfoSharedService.isOverPaymentLimit(tour)).thenReturn(true); // !!!over limit
 
@@ -386,8 +392,8 @@ public class ReserveServiceImplTest {
         reserve.setTourInfo(tour);
         reserve.setTransfer(Reserve.NOT_TRANSFERED);
 
-        when(reserveRepository.findOne("001")).thenReturn(reserve,
-                (Reserve) null); // !!!return null for second time
+        when(reserveRepository.findById("001")).thenReturn(Optional.of(reserve))
+                .thenReturn(Optional.empty()); // !!!return null for second time
         when(reserveRepository.findOneForUpdate("001")).thenReturn(
                 (Reserve) null); // return null
         when(tourInfoSharedService.isOverPaymentLimit(tour)).thenReturn(false); // within limit
@@ -427,7 +433,8 @@ public class ReserveServiceImplTest {
         tour.setBasePrice(10000);
         reserve.setTourInfo(tour);
 
-        when(reserveRepository.findOne("foo")).thenReturn(reserve);
+        when(reserveRepository.findById("foo")).thenReturn(Optional.of(
+                reserve));
         when(reserveRepository.findOneForUpdate("foo")).thenReturn(reserve);
         when(reserveRepository.save(reserve)).thenReturn(reserve);
         // run

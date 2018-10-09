@@ -17,8 +17,8 @@ package org.terasoluna.tourreservation.app.managereservation;
 
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.fail;
-import static org.mockito.Matchers.anyObject;
-import static org.mockito.Matchers.eq;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.flash;
@@ -30,8 +30,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 
-import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
+import com.github.dozermapper.core.DozerBeanMapperBuilder;
+import com.github.dozermapper.core.Mapper;
 import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
@@ -73,7 +73,7 @@ public class ManageReservationControllerTest {
         // other members instantiation and assignment
         manageReservationHelper = mock(ManageReservationHelper.class);
         manageReservationHelper.existenceCodeList = mock(I18nCodeList.class);
-        beanMapper = new DozerBeanMapper();
+        beanMapper = DozerBeanMapperBuilder.buildDefault();
         reserveService = mock(ReserveService.class);
         userDetails = mock(ReservationUserDetails.class);
         manageReservationController.manageReservationHelper = manageReservationHelper;
@@ -192,8 +192,8 @@ public class ManageReservationControllerTest {
                 "/reservations/123/update").param("confirm", "");
 
         // Set mock behavior for helper method
-        when(manageReservationHelper.findDetail(eq("123"),
-                (ManageReservationForm) anyObject())).thenReturn(
+        when(manageReservationHelper.findDetail(eq("123"), any(
+                ManageReservationForm.class))).thenReturn(
                         new ReservationDetailOutput());
 
         // Set form data to pass @Validated check
@@ -253,7 +253,7 @@ public class ManageReservationControllerTest {
                 "/reservations/123/update");
 
         // Set mock behavior for helper method
-        when(reserveService.update((ReservationUpdateInput) anyObject()))
+        when(reserveService.update(any(ReservationUpdateInput.class)))
                 .thenReturn(new ReservationUpdateOutput());
 
         // Set form data to pass @Validated check

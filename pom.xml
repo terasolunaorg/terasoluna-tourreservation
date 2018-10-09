@@ -267,7 +267,16 @@
         <version>${selenium.version}</version>
       </dependency>
       <!-- == End Test == -->
-
+      <!-- == Begin Lombok == -->
+      <!-- Workaround to Lombok bug(see https://github.com/terasolunaorg/terasoluna-tourreservation/issues/585).
+           We will remove the version definition with the following ISSUE.
+           https://github.com/terasolunaorg/terasoluna-tourreservation/issues/588 -->
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+      </dependency>
+      <!-- == End Lombok == -->
     </dependencies>
   </dependencyManagement>
   <properties>
@@ -278,9 +287,10 @@
     <xml-maven-plugin.version>1.0.1</xml-maven-plugin.version>
     <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
     <!-- == Dependency Versions == -->
-    <postgresql.version>9.4.1212.jre7</postgresql.version>
+    <postgresql.version>42.2.2</postgresql.version>
     <jasperreports.version>3.5.1</jasperreports.version>
     <selenium.version>2.46.0</selenium.version>
+    <lombok.version>1.18.2</lombok.version>
     <!-- == Project Properties == -->
     <encoding>UTF-8</encoding>
     <java-version>1.8</java-version>

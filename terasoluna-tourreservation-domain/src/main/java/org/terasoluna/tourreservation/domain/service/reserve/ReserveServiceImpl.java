@@ -22,7 +22,7 @@ import javax.inject.Named;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.dozer.Mapper;
+import com.github.dozermapper.core.Mapper;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -141,9 +141,9 @@ public class ReserveServiceImpl implements ReserveService {
         tourReserveOutput.setCustomer(input.getCustomer());
 
         // fetch to avoid lazy LazyInitializationException
-        tourInfo.getAccommodation().getAccomCode();
-        tourInfo.getDeparture().getDepCode();
-        tourInfo.getArrival().getArrCode();
+        tourInfo.getAccommodation().getAccomName();
+        tourInfo.getDeparture().getDepName();
+        tourInfo.getArrival().getArrName();
         return tourReserveOutput;
     }
 
@@ -173,7 +173,7 @@ public class ReserveServiceImpl implements ReserveService {
         // reserve = reserveRepository.findForUpdate(reserveNo); TODO
         reserve = reserveRepository.findOneForUpdate(reserveNo);
         if (reserve != null) {
-            reserveRepository.delete(reserveNo);
+            reserveRepository.deleteById(reserveNo);
         } else {
             ResultMessages message = ResultMessages.error().add(
                     MessageId.E_TR_0003);
@@ -202,8 +202,8 @@ public class ReserveServiceImpl implements ReserveService {
         output.setPaymentTimeLimit(info.getPaymentLimit().toDate());
 
         // eager fetch to avoid lazy-init exception
-        info.getDeparture().getDepCode();
-        info.getArrival().getArrCode();
+        info.getDeparture().getDepName();
+        info.getArrival().getArrName();
 
         return output;
     }
