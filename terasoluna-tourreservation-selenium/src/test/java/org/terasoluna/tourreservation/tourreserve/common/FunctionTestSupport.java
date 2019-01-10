@@ -76,7 +76,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
     protected WebDriver createWebDriver() {
         WebDriver driver = null;
 
-        // geckodriverのセットアップ
+        // Setting up geckodriver
         if (System.getProperty("webdriver.gecko.driver") == null) {
             FirefoxDriverManager.getInstance().version(geckodriverVersion)
                     .forceCache().proxy(proxyHttpServer).proxyUser(
@@ -109,7 +109,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get(applicationContextUrl + "?locale=" + locale.getLanguage());
 
-        // WebDriverEventListenerを実行ドライバに登録
+        // Register WebDriverEventListener in the webDriver
         EventFiringWebDriver webDriver = new EventFiringWebDriver(driver);
         webDriver.register(webDriverListenerImpl);
 

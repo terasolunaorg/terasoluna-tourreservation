@@ -14,7 +14,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
- * geckodriver0.14.0のバグで、待機処理が正常に起動しないため、 WebDriverEventListenerを実装
+ * Due to a bug in geckodriver 0.14.0, wait processing does not start normally,
+ * so implement WebDriverEventListener
  */
 public class WebDriverListenerImpl implements WebDriverEventListener {
 
@@ -73,8 +74,8 @@ public class WebDriverListenerImpl implements WebDriverEventListener {
     }
 
     /**
-     * click()後に、ページの読み込みが開始するまで待機を行い、<br>
-     * その後読み込みが完了するまで待機を行う。
+     * After click (), wait until loading of the page starts,
+     * then wait until the reading is completed.
      */
     @Override
     public void afterClickOn(WebElement element, WebDriver driver) {
