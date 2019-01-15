@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
  * Due to a bug in geckodriver 0.14.0, wait processing does not start normally,
  * so implement WebDriverEventListener
  */
-public class WebDriverListenerImpl implements WebDriverEventListener {
+public class WaitWebDriverEventListener implements WebDriverEventListener {
 
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
