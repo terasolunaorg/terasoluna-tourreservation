@@ -266,10 +266,6 @@ public class TokenCheckErrorTest extends FunctionTestSupport {
         // change reservation
         jse.executeScript("document.getElementById('changeBtn').click();");
 
-        Wait<WebDriver> wait = new WebDriverWait(driver, 4, 2000);
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By
-                .cssSelector("p"), getMessage(MessageKeys.E_TR_FW_0001)));
-
         assertEquals(getMessage(MessageKeys.E_TR_FW_0001), driver.findElement(By
                 .cssSelector("p")).getText());
 

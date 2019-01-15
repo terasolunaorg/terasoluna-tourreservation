@@ -73,25 +73,9 @@ public class WaitWebDriverEventListener implements WebDriverEventListener {
     public void beforeClickOn(WebElement element, WebDriver driver) {
     }
 
-    /**
-     * After click (), wait until loading of the page starts,
-     * then wait until the reading is completed.
-     */
     @Override
     public void afterClickOn(WebElement element, WebDriver driver) {
-        try {
-            wait = new WebDriverWait(driver, webDriverWait, webDriverSleepWait);
-            wait.until(
-                    (ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd)
-                            .executeScript("return document.readyState").equals(
-                                    "loading"));
-            wait.until(
-                    (ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd)
-                            .executeScript("return document.readyState").equals(
-                                    "complete"));
-        } catch (TimeoutException e) {
-            logger.debug("loading is not done");
-        }
+        waitProcessing(driver);
     }
 
     @Override
@@ -110,10 +94,30 @@ public class WaitWebDriverEventListener implements WebDriverEventListener {
 
     @Override
     public void afterScript(String script, WebDriver driver) {
+        waitProcessing(driver);
     }
 
     @Override
     public void onException(Throwable throwable, WebDriver driver) {
     }
 
+    /**
+     * wait until loading of the page starts, then wait until the reading is completed.
+     * @param driver
+     */
+    public void waitProcessing(WebDriver driver) {
+        try {
+            wait = new WebDriverWait(driver, webDriverWait, webDriverSleepWait);
+            wait.until(
+                    (ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd)
+                            .executeScript("return document.readyState").equals(
+                                    "loading"));
+            wait.until(
+                    (ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd)
+                            .executeScript("return document.readyState").equals(
+                                    "complete"));
+        } catch (TimeoutException e) {
+            logger.debug("loading is not done");
+        }
+    }
 }
