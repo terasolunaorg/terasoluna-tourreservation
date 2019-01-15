@@ -48,7 +48,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
     protected MessageSource messageSource;
 
     @Inject
-    protected WebDriverEventListener webDriverListenerImpl;
+    protected WebDriverEventListener waitWebDriverEventListener;
 
     @Value("${selenium.applicationContextUrl}")
     protected String applicationContextUrl;
@@ -111,7 +111,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
 
         // Register WebDriverEventListener in the webDriver
         EventFiringWebDriver webDriver = new EventFiringWebDriver(driver);
-        webDriver.register(webDriverListenerImpl);
+        webDriver.register(waitWebDriverEventListener);
 
         return webDriver;
     }
