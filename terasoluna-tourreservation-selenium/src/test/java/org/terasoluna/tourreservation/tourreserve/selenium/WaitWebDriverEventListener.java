@@ -105,7 +105,7 @@ public class WaitWebDriverEventListener implements WebDriverEventListener {
      * wait until loading of the page starts, then wait until the reading is completed.
      * @param driver
      */
-    public void waitProcessing(WebDriver driver) {
+    private void waitProcessing(WebDriver driver) {
         try {
             wait = new WebDriverWait(driver, webDriverWait, webDriverSleepWait);
             wait.until(
