@@ -258,13 +258,28 @@
       </dependency>
       <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-edge-driver</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-safari-driver</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-opera-driver</artifactId>
         <version>${selenium.version}</version>
       </dependency>
       <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-support</artifactId>
         <version>${selenium.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>${webdrivermanager.version}</version>
       </dependency>
       <!-- == End Test == -->
       <!-- == Begin Lombok == -->
@@ -289,8 +304,9 @@
     <!-- == Dependency Versions == -->
     <postgresql.version>42.2.4</postgresql.version>
     <jasperreports.version>3.5.1</jasperreports.version>
-    <selenium.version>2.46.0</selenium.version>
     <lombok.version>1.18.2</lombok.version>
+    <selenium.version>3.0.1</selenium.version>
+    <webdrivermanager.version>1.6.2</webdrivermanager.version>
     <!-- == Project Properties == -->
     <encoding>UTF-8</encoding>
     <java-version>1.8</java-version>
