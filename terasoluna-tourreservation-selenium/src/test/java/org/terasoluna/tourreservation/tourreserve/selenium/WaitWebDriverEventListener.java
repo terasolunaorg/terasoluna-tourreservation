@@ -94,7 +94,7 @@ public class WaitWebDriverEventListener implements WebDriverEventListener {
 
     @Override
     public void afterScript(String script, WebDriver driver) {
-        if (script.contains("click"))
+        if (script.contains(".click("))
             waitPageLoading(driver);
     }
 
