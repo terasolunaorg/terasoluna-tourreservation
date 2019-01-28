@@ -68,7 +68,7 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.id("confirmBtn")).click();
 
         assertTrue(multiMessageAssert(getMessage(
-                MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE)
+                MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_NOTEMPTY_MESSAGE)
                         .replace("{0}", getMessage(MessageKeys.CUSTOMERKANA))
                 + "\n" + getMessage(
                         MessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERKANA), driver
@@ -98,7 +98,7 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.id("confirmBtn")).click();
 
         assertTrue(multiMessageAssert(getMessage(
-                MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE)
+                MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_NOTEMPTY_MESSAGE)
                         .replace("{0}", getMessage(MessageKeys.CUSTOMERNAME))
                 + "\n" + getMessage(
                         MessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERNAME), driver
@@ -128,7 +128,7 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.id("confirmBtn")).click();
 
         assertEquals(getMessage(
-                MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE)
+                MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_NOTEMPTY_MESSAGE)
                         .replace("{0}", getMessage(MessageKeys.CUSTOMERJOB)),
                 driver.findElement(By.id("customerForm.errors")).getText());
 
@@ -214,7 +214,7 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.id("confirmBtn")).click();
 
         assertEquals(getMessage(
-                MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE)
+                MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_NOTEMPTY_MESSAGE)
                         .replace("{0}", getMessage(MessageKeys.CUSTOMERADD)),
                 driver.findElement(By.id("customerForm.errors")).getText());
 
@@ -243,7 +243,7 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         assertTrue(multiMessageAssert(getMessage(
                 MessageKeys.PATTERN_CUSTOMERFORM_CUSTOMERPASS) + "\n"
                 + getMessage(
-                        MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE)
+                        MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_NOTEMPTY_MESSAGE)
                                 .replace("{0}", getMessage(
                                         MessageKeys.CUSTOMERPASS)) + "\n"
                 + getMessage(
@@ -279,7 +279,7 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.id("confirmBtn")).click();
 
         assertTrue(multiMessageAssert(getMessage(
-                MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE)
+                MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_NOTEMPTY_MESSAGE)
                         .replace("{0}", getMessage(
                                 MessageKeys.CUSTOMERPASSCONFIRM)) + "\n"
                 + getMessage(
@@ -354,8 +354,8 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         driver.findElement(By.id("confirmBtn")).click();
 
         assertEquals(getMessage(
-                MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_EMAIL_MESSAGE),
-                driver.findElement(By.id("customerForm.errors")).getText());
+                MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_EMAIL_MESSAGE), driver
+                        .findElement(By.id("customerForm.errors")).getText());
     }
 
     @Test

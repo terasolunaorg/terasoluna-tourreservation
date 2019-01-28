@@ -822,9 +822,9 @@ public class MessageKeys {
     /** javax.validation.constraints.Max.message={0} must be less than or equal to {value}. */
     public static final String JAVAX_VALIDATION_CONSTRAINTS_MAX_MESSAGE = "javax.validation.constraints.Max.message";
 
-    /** org.hibernate.validator.constraints.NotEmpty.message={0} is required. */
-    public static final String ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE = "org.hibernate.validator.constraints.NotEmpty.message";
+    /** javax.validation.constraints.NotEmpty.message={0} is required. */
+    public static final String JAVAX_VALIDATION_CONSTRAINTS_NOTEMPTY_MESSAGE = "javax.validation.constraints.NotEmpty.message";
 
-    /** org.hibernate.validator.constraints.Email.message=Mail format is invalid. */
-    public static final String ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_EMAIL_MESSAGE = "org.hibernate.validator.constraints.Email.message";
+    /** javax.validation.constraints.Email.message=Mail format is invalid. */
+    public static final String JAVAX_VALIDATION_CONSTRAINTS_EMAIL_MESSAGE = "javax.validation.constraints.Email.message";
 }

@@ -82,7 +82,7 @@ public class TourSearchValidateTest extends FunctionTestSupport {
         driver.findElement(By.id("searchBtn")).click();
 
         assertEquals(getMessage(
-                MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE)
+                MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_NOTEMPTY_MESSAGE)
                         .replace("{0}", getMessage(MessageKeys.DEPCODE)), driver
                                 .findElement(By.id("searchTourForm.errors"))
                                 .getText());
@@ -95,7 +95,7 @@ public class TourSearchValidateTest extends FunctionTestSupport {
         driver.findElement(By.id("searchBtn")).click();
 
         assertEquals(getMessage(
-                MessageKeys.ORG_HIBERNATE_VALIDATOR_CONSTRAINTS_NOTEMPTY_MESSAGE)
+                MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_NOTEMPTY_MESSAGE)
                         .replace("{0}", getMessage(MessageKeys.ARRCODE)), driver
                                 .findElement(By.id("searchTourForm.errors"))
                                 .getText());
