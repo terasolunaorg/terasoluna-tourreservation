@@ -18,12 +18,9 @@ package org.terasoluna.tourreservation.tourreserve.selenium;
 import static org.junit.Assert.assertEquals;
 
 import org.joda.time.DateTime;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.test.context.ContextConfiguration;
@@ -36,14 +33,7 @@ import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
         "classpath:META-INF/spring/seleniumContext.xml" })
 public class LogInReservUpdateTest extends FunctionTestSupport {
 
-    WebDriver driver;
-
     public LogInReservUpdateTest() {
-    }
-
-    @Before
-    public void setUp() {
-        driver = createWebDriver();
     }
 
     @Test
@@ -299,14 +289,4 @@ public class LogInReservUpdateTest extends FunctionTestSupport {
 
     }
 
-    @After
-    public void tearDown() {
-        /*
-         * In case of firefox 52.9, geckodriver 0.14.0,
-         * Since it crashes when closing firefox browser,
-         * Open the configuration editor and close the browser.
-         */
-        driver.get("about:config");
-        driver.quit();
-    }
 }

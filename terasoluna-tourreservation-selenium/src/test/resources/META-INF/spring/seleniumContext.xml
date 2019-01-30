@@ -20,6 +20,17 @@
 
   <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
-  <bean id="waitWebDriverEventListener" class="org.terasoluna.tourreservation.tourreserve.selenium.WaitWebDriverEventListener" />
+  <beans profile="firefox default">
+    <bean id="webDriver" class="org.terasoluna.tourreservation.tourreserve.common.FirefoxDriverFactoryBean"
+      scope="prototype">
+      <property name="propertyFileLocation" value="wdm.properties" />
+    </bean>
+  </beans>
+  <beans profile="chrome">
+    <bean id="webDriver" class="org.openqa.selenium.chrome.ChromeDriver" scope="prototype" />
+  </beans>
+  <beans profile="ie">
+    <bean id="webDriver" class="org.openqa.selenium.ie.InternetExplorerDriver" scope="prototype" />
+  </beans>
 
 </beans>

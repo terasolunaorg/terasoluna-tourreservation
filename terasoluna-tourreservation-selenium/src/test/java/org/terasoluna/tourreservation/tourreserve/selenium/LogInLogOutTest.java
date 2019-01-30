@@ -19,12 +19,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
@@ -35,14 +32,7 @@ import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
         "classpath:META-INF/spring/seleniumContext.xml" })
 public class LogInLogOutTest extends FunctionTestSupport {
 
-    WebDriver driver;
-
     public LogInLogOutTest() {
-    }
-
-    @Before
-    public void setUp() {
-        driver = createWebDriver();
     }
 
     @Test
@@ -114,14 +104,4 @@ public class LogInLogOutTest extends FunctionTestSupport {
                 driver.findElement(By.id("messagesArea")).getText());
     }
 
-    @After
-    public void tearDown() {
-        /*
-         * In case of firefox 52.9, geckodriver 0.14.0,
-         * Since it crashes when closing firefox browser,
-         * Open the configuration editor and close the browser.
-         */
-        driver.get("about:config");
-        driver.quit();
-    }
 }

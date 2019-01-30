@@ -19,13 +19,11 @@ import static org.junit.Assert.assertEquals;
 
 import javax.inject.Inject;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -42,8 +40,6 @@ public class TourSearchValidateTest extends FunctionTestSupport {
 
     private static final int height = 768;
 
-    WebDriver driver;
-
     @Inject
     JodaTimeDateFactory dateFactory;
 
@@ -52,7 +48,7 @@ public class TourSearchValidateTest extends FunctionTestSupport {
 
     @Before
     public void setUp() {
-        driver = createWebDriver();
+        super.setUp();
         driver.manage().window().setSize(new Dimension(width, height));
     }
 
@@ -125,14 +121,4 @@ public class TourSearchValidateTest extends FunctionTestSupport {
                 .findElement(By.id("searchTourForm.errors")).getText());
     }
 
-    @After
-    public void tearDown() {
-        /*
-         * In case of firefox 52.9, geckodriver 0.14.0,
-         * Since it crashes when closing firefox browser,
-         * Open the configuration editor and close the browser.
-         */
-        driver.get("about:config");
-        driver.quit();
-    }
 }

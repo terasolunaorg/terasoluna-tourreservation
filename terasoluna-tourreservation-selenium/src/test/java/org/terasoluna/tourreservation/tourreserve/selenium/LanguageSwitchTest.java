@@ -15,12 +15,9 @@
  */
 package org.terasoluna.tourreservation.tourreserve.selenium;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
@@ -36,14 +33,7 @@ import static org.junit.Assert.assertThat;
         "classpath:META-INF/spring/seleniumContext.xml" })
 public class LanguageSwitchTest extends FunctionTestSupport {
 
-    WebDriver driver;
-
     public LanguageSwitchTest() {
-    }
-
-    @Before
-    public void setUp() {
-        driver = createWebDriver();
     }
 
     @Test
@@ -92,17 +82,6 @@ public class LanguageSwitchTest extends FunctionTestSupport {
                     : enSwitchLinkName));
         }
 
-    }
-
-    @After
-    public void tearDown() {
-        /*
-         * In case of firefox 52.9, geckodriver 0.14.0,
-         * Since it crashes when closing firefox browser,
-         * Open the configuration editor and close the browser.
-         */
-        driver.get("about:config");
-        driver.quit();
     }
 
 }
