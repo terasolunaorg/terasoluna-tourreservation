@@ -5,7 +5,7 @@ jdk:
   - oraclejdk11
 addons:
   postgresql: "9.4"
-  firefox: "52.9.0esr"
+  firefox: "60.3.0esr"
 cache:
   directories:
     - $HOME/.m2

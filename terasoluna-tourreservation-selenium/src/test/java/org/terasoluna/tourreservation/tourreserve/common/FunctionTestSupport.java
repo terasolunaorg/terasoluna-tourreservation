@@ -21,34 +21,22 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
-import org.junit.runner.RunWith;
+import org.junit.After;
+import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ApplicationObjectSupport;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-import io.github.bonigarcia.wdm.FirefoxDriverManager;
-
-@RunWith(SpringJUnit4ClassRunner.class)
 public abstract class FunctionTestSupport extends ApplicationObjectSupport {
 
     @Inject
-    protected MessageSource messageSource;
-
-    @Inject
-    protected WebDriverEventListener waitWebDriverEventListener;
+    protected WebDriver driver;
 
     @Value("${selenium.applicationContextUrl}")
     protected String applicationContextUrl;
@@ -56,64 +44,18 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
     @Value("${selenium.locale:en}")
     protected Locale locale;
 
-    @Value("${selenium.geckodriverVersion}")
-    protected String geckodriverVersion;
+    @Inject
+    protected MessageSource messageSource;
 
-    @Value("${selenium.proxyHttpServer}")
-    protected String proxyHttpServer;
-
-    @Value("${selenium.proxyUserName}")
-    protected String proxyUserName;
-
-    @Value("${selenium.proxyUserPassword}")
-    protected String proxyUserPassword;
-
-    /**
-     * Starts a WebDriver<br>
-     * </p>
-     * @return WebDriver web driver
-     */
-    protected WebDriver createWebDriver() {
-        WebDriver driver = null;
-
-        // Setting up geckodriver
-        if (System.getProperty("webdriver.gecko.driver") == null) {
-            FirefoxDriverManager.getInstance().version(geckodriverVersion)
-                    .forceCache().proxy(proxyHttpServer).proxyUser(
-                            proxyUserName).proxyPass(proxyUserPassword).setup();
-        }
-
-        for (String activeProfile : getApplicationContext().getEnvironment()
-                .getActiveProfiles()) {
-            if ("chrome".equals(activeProfile)) {
-                driver = new ChromeDriver();
-                break;
-            } else if ("firefox".equals(activeProfile)) {
-                break;
-            } else if ("ie".equals(activeProfile)) {
-                driver = new InternetExplorerDriver();
-                break;
-            }
-        }
-
-        if (driver == null) {
-            FirefoxProfile profile = new FirefoxProfile();
-            profile.setPreference("brouser.startup.homepage_override.mstone",
-                    "ignore");
-            profile.setPreference("network.proxy.type", 0);
-            profile.setPreference("layout.css.devPixelsPerPx", "0.5");
-
-            driver = new FirefoxDriver(profile);
-        }
-
+    @Before
+    public void setUp() {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get(applicationContextUrl + "?locale=" + locale.getLanguage());
+    }
 
-        // Register WebDriverEventListener in the webDriver
-        EventFiringWebDriver webDriver = new EventFiringWebDriver(driver);
-        webDriver.register(waitWebDriverEventListener);
-
-        return webDriver;
+    @After
+    public void tearDown() {
+        driver.quit();
     }
 
     /**
