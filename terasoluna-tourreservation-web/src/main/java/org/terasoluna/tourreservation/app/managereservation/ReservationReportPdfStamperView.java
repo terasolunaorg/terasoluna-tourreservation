@@ -28,7 +28,7 @@ import org.springframework.web.servlet.view.document.AbstractPdfStamperView;
 import com.lowagie.text.pdf.AcroFields;
 
 @Component
-public class ReservationReportPdfView extends AbstractPdfStamperView {
+public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
     @Value("${reservation.report.pdf.path}")
     String reservationReportPdfPath;

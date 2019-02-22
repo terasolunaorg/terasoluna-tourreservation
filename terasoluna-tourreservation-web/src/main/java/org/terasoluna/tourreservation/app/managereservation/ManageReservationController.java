@@ -232,7 +232,7 @@ public class ManageReservationController {
         DownloadPDFOutput downloadPDFOutput = manageReservationHelper.createPDF(
                 reserveNo, locale);
         model.addAttribute("downloadPDFOutput", downloadPDFOutput);
-        return "reservationReportPdfView";
+        return "reservationReportPdfStamperView";
     }
 
 }

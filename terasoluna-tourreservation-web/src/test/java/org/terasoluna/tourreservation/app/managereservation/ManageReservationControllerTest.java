@@ -354,7 +354,7 @@ public class ManageReservationControllerTest {
         try {
             ResultActions results = mockMvc.perform(getRequest);
             results.andExpect(status().isOk());
-            results.andExpect(view().name("reservationReportPdfView"));
+            results.andExpect(view().name("reservationReportPdfStamperView"));
             results.andExpect(model().attribute("downloadPDFOutput", IsNull
                     .notNullValue()));
             return;
