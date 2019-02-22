@@ -54,7 +54,6 @@
       <mvc:exclude-mapping path="/**/*.html" />
       <bean class="org.terasoluna.gfw.web.codelist.CodeListInterceptor">
         <property name="codeListIdPattern" value="CL_.+" />
-        <property name="fallbackTo" value="en" />
       </bean>
     </mvc:interceptor>
     <mvc:interceptor>

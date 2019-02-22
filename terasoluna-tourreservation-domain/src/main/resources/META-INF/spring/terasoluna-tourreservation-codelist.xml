@@ -65,6 +65,7 @@
         <entry key="ja_JP" value-ref="tourDaysMapJa" />
       </util:map>
     </property>
+    <property name="fallbackTo" value="en" />
   </bean>
 
   <util:map id="basePriceMapJa">
@@ -93,6 +94,7 @@
         <entry key="ja_JP" value-ref="basePriceMapJa" />
       </util:map>
     </property>
+    <property name="fallbackTo" value="en" />
   </bean>
 
   <util:map id="existenceMapJa">
@@ -113,6 +115,7 @@
         <entry key="ja_JP" value-ref="existenceMapJa" />
       </util:map>
     </property>
+    <property name="fallbackTo" value="en" />
   </bean>
 
   <bean id="CL_ADULT_COUNT" class="org.terasoluna.gfw.common.codelist.NumberRangeCodeList">
