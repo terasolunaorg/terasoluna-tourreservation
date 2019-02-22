@@ -101,7 +101,6 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
         stamper.setFreeTextFlattening(true);
         stamper.close();
 
-        response.setContentType("application/pdf");
         response.setCharacterEncoding("UTF-8");
         response.setHeader("Content-Disposition", "attachment; filename="
                 + downloadPDFOutput.getPdfName());
