@@ -99,7 +99,6 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
                 .getPaymentTimeLimit());
         stamper.setFormFlattening(true);
         stamper.setFreeTextFlattening(true);
-        stamper.close();
 
         response.setCharacterEncoding("UTF-8");
         response.setHeader("Content-Disposition", "attachment; filename="
