@@ -30,8 +30,8 @@ import com.lowagie.text.pdf.AcroFields;
 @Component
 public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
-    @Value("${reservation.report.pdf.path}")
-    String reservationReportPdfPath;
+    @Value("${reservation.report.pdf.url}")
+    String reservationReportPdfUrl;
 
     @Override
     protected void mergePdfDocument(Map<String, Object> model,
@@ -107,7 +107,7 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
     @Override
     public String getUrl() {
-        return reservationReportPdfPath;
+        return reservationReportPdfUrl;
     }
 
 }
