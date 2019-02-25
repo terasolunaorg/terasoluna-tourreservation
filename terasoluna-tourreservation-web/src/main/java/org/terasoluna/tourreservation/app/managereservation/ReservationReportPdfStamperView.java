@@ -33,14 +33,14 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
     @Value("${reservation.report.pdf.url}")
     String reservationReportPdfUrl;
 
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+
     @Override
     protected void mergePdfDocument(Map<String, Object> model,
             com.lowagie.text.pdf.PdfStamper stamper, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         DownloadPDFOutput downloadPDFOutput = (DownloadPDFOutput) model.get(
                 "downloadPDFOutput");
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
         AcroFields form = stamper.getAcroFields();
         String referenceName = downloadPDFOutput.getReferenceName();
