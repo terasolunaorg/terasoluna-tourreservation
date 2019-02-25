@@ -30,7 +30,7 @@ import com.lowagie.text.pdf.AcroFields;
 @Component
 public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
-    @Value("${reservation.report.pdf.url}")
+    @Value("${reservation.reportPdfUrl}")
     String reservationReportPdfUrl;
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");

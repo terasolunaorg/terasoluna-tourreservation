@@ -56,7 +56,7 @@ public class ManageReservationController {
     @Inject
     Mapper beanMapper;
 
-    @Value("${reservation.report.pdf.name}")
+    @Value("${reservation.reportPdfName}")
     String reservationReportPdfName;
 
     /**
