@@ -102,7 +102,7 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
         response.setCharacterEncoding("UTF-8");
         response.setHeader("Content-Disposition", "attachment; filename="
-                + model.get("downloadPdfName"));
+                + model.get("downloadPdfName") + ".pdf");
     }
 
     @Override
