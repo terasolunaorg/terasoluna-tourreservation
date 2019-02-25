@@ -7,6 +7,10 @@
            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
        ">
 
+  <bean id="fallbackToLocale" abstract="true">
+    <property name="fallbackTo" value="en" />
+  </bean>
+
   <bean id="jdbcTemplateForCodeList" class="org.springframework.jdbc.core.JdbcTemplate">
     <property name="dataSource" ref="dataSource" />
     <property name="fetchSize" value="${codelist.jdbc.fetchSize:1000}" />
@@ -47,7 +51,8 @@
     <entry key="6" value="5泊以下" />
   </util:map>
 
-  <bean id="CL_TOUR_DAYS" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
+  <bean id="CL_TOUR_DAYS" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList"
+    parent="fallbackToLocale">
     <property name="rows">
       <util:map key-type="java.util.Locale" value-type="java.util.LinkedHashMap" map-class="java.util.LinkedHashMap">
         <entry key="en">
@@ -65,7 +70,6 @@
         <entry key="ja_JP" value-ref="tourDaysMapJa" />
       </util:map>
     </property>
-    <property name="fallbackTo" value="en" />
   </bean>
 
   <util:map id="basePriceMapJa">
@@ -77,7 +81,8 @@
     <entry key="50000" value="50,000円以下" />
   </util:map>
 
-  <bean id="CL_BASE_PRICE" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
+  <bean id="CL_BASE_PRICE" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList"
+    parent="fallbackToLocale">
     <property name="rows">
       <util:map key-type="java.util.Locale" value-type="java.util.LinkedHashMap" map-class="java.util.LinkedHashMap">
         <entry key="en">
@@ -94,7 +99,6 @@
         <entry key="ja_JP" value-ref="basePriceMapJa" />
       </util:map>
     </property>
-    <property name="fallbackTo" value="en" />
   </bean>
 
   <util:map id="existenceMapJa">
@@ -102,7 +106,8 @@
     <entry key="1" value="有" />
   </util:map>
 
-  <bean id="CL_EXISTENCE" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList">
+  <bean id="CL_EXISTENCE" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList"
+    parent="fallbackToLocale">
     <property name="rows">
       <util:map key-type="java.util.Locale" value-type="java.util.LinkedHashMap" map-class="java.util.LinkedHashMap">
         <entry key="en">
@@ -115,7 +120,6 @@
         <entry key="ja_JP" value-ref="existenceMapJa" />
       </util:map>
     </property>
-    <property name="fallbackTo" value="en" />
   </bean>
 
   <bean id="CL_ADULT_COUNT" class="org.terasoluna.gfw.common.codelist.NumberRangeCodeList">
