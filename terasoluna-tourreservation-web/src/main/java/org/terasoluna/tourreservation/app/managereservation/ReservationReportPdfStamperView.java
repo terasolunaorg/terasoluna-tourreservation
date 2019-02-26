@@ -36,7 +36,7 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
     @Value("${reservation.reportPdfUrl}")
     String reservationReportPdfUrl;
 
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
     @Override
     public String getUrl() {
