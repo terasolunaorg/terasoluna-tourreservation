@@ -52,7 +52,7 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
         AcroFields form = stamper.getAcroFields();
         String referenceName = downloadPDFOutput.getReferenceName();
-        if (referenceName.length() >= 30) {
+        if (referenceName.getBytes("UTF-8").length >= 30) {
             form.setFieldProperty("referenceName", "textsize", new Float(8),
                     null);
         }
