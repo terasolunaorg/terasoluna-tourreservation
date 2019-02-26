@@ -39,6 +39,11 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
     @Override
+    public String getUrl() {
+        return reservationReportPdfUrl;
+    }
+
+    @Override
     protected void mergePdfDocument(Map<String, Object> model,
             com.lowagie.text.pdf.PdfStamper stamper, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
@@ -102,11 +107,6 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
                 .getPaymentTimeLimit());
         stamper.setFormFlattening(true);
         stamper.setFreeTextFlattening(true);
-    }
-
-    @Override
-    public String getUrl() {
-        return reservationReportPdfUrl;
     }
 
     @Override
