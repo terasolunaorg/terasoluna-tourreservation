@@ -30,6 +30,9 @@ import com.lowagie.text.pdf.AcroFields;
 @Component
 public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
+    @Value("${reservation.reportPdfName}")
+    String reservationReportPdfName;
+
     @Value("${reservation.reportPdfUrl}")
     String reservationReportPdfUrl;
 
@@ -99,15 +102,23 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
                 .getPaymentTimeLimit());
         stamper.setFormFlattening(true);
         stamper.setFreeTextFlattening(true);
-
-        response.setCharacterEncoding("UTF-8");
-        response.setHeader("Content-Disposition", "attachment; filename="
-                + model.get("downloadPdfName") + ".pdf");
     }
 
     @Override
     public String getUrl() {
         return reservationReportPdfUrl;
+    }
+
+    @Override
+    protected void prepareResponse(HttpServletRequest request,
+            HttpServletResponse response) {
+        if (generatesDownloadContent()) {
+            response.setHeader("Pragma", "private");
+            response.setHeader("Cache-Control", "private, must-revalidate");
+            response.setHeader("Content-Disposition", "attachment; filename="
+                    + reservationReportPdfName + ".pdf");
+            response.setCharacterEncoding("UTF-8");
+        }
     }
 
 }
