@@ -12,12 +12,13 @@
     <property name="fetchSize" value="${codelist.jdbc.fetchSize:1000}" />
   </bean>
 
-  <bean id="AbstractJdbcCodeList" class="org.terasoluna.gfw.common.codelist.JdbcCodeList"
+  <bean id="abstractJdbcCodeList" class="org.terasoluna.gfw.common.codelist.JdbcCodeList"
     abstract="true">
     <property name="jdbcTemplate" ref="jdbcTemplateForCodeList" />
   </bean>
 
-  <bean id="fallbackToLocale" abstract="true">
+  <bean id="abstractSimpleI18nCodeList" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList"
+    abstract="true">
     <property name="fallbackTo" value="en" />
   </bean>
 
@@ -52,7 +53,7 @@
   </util:map>
 
   <bean id="CL_TOUR_DAYS" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList"
-    parent="fallbackToLocale">
+    parent="abstractSimpleI18nCodeList">
     <property name="rows">
       <util:map key-type="java.util.Locale" value-type="java.util.LinkedHashMap" map-class="java.util.LinkedHashMap">
         <entry key="en">
@@ -82,7 +83,7 @@
   </util:map>
 
   <bean id="CL_BASE_PRICE" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList"
-    parent="fallbackToLocale">
+    parent="abstractSimpleI18nCodeList">
     <property name="rows">
       <util:map key-type="java.util.Locale" value-type="java.util.LinkedHashMap" map-class="java.util.LinkedHashMap">
         <entry key="en">
@@ -107,7 +108,7 @@
   </util:map>
 
   <bean id="CL_EXISTENCE" class="org.terasoluna.gfw.common.codelist.i18n.SimpleI18nCodeList"
-    parent="fallbackToLocale">
+    parent="abstractSimpleI18nCodeList">
     <property name="rows">
       <util:map key-type="java.util.Locale" value-type="java.util.LinkedHashMap" map-class="java.util.LinkedHashMap">
         <entry key="en">
@@ -132,7 +133,7 @@
     <property name="to" value="5" />
   </bean>
 
-  <bean id="CL_PREF" parent="AbstractJdbcCodeList">
+  <bean id="CL_PREF" parent="abstractJdbcCodeList">
     <property name="querySql" value="SELECT arr_code, arr_name FROM arrival ORDER BY arr_code" />
     <property name="valueColumn" value="arr_code" />
     <property name="labelColumn" value="arr_name" />
