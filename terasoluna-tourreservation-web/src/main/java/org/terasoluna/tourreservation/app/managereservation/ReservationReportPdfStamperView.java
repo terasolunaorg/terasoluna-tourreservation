@@ -32,6 +32,8 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
+    private static final String downloadPDFExtension = "pdf";
+
     @Value("${reservation.reportPdfUrl}")
     String reservationReportPdfUrl;
 
@@ -108,7 +110,7 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
         response.setCharacterEncoding("UTF-8");
         response.setHeader("Content-Disposition", "attachment; filename="
-                + downloadPDFName + ".pdf");
+                + downloadPDFName + "." + downloadPDFExtension);
     }
 
 }
