@@ -16,6 +16,8 @@
 package org.terasoluna.tourreservation.app.managereservation;
 
 import com.github.dozermapper.core.Mapper;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,6 +55,9 @@ public class ManageReservationController {
 
     @Inject
     Mapper beanMapper;
+
+    @Value("${reservation.reportPdfName}")
+    String reservationReportPdfName;
 
     /**
      * pre-initialization of form backed bean
@@ -232,6 +237,7 @@ public class ManageReservationController {
         DownloadPDFOutput downloadPDFOutput = manageReservationHelper.createPDF(
                 reserveNo, locale);
         model.addAttribute("downloadPDFOutput", downloadPDFOutput);
+        model.addAttribute("downloadPDFName", reservationReportPdfName);
         return "reservationReportPdfStamperView";
     }
 

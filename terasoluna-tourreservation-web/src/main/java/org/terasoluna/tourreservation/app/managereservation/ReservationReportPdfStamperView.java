@@ -32,9 +32,6 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
-    @Value("${reservation.reportPdfName}")
-    String reservationReportPdfName;
-
     @Value("${reservation.reportPdfUrl}")
     String reservationReportPdfUrl;
 
@@ -49,6 +46,7 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
             HttpServletResponse response) throws Exception {
         DownloadPDFOutput downloadPDFOutput = (DownloadPDFOutput) model.get(
                 "downloadPDFOutput");
+        String downloadPDFName = (String) model.get("downloadPDFName");
 
         AcroFields form = stamper.getAcroFields();
         String referenceName = downloadPDFOutput.getReferenceName();
@@ -107,18 +105,10 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
                 .getPaymentTimeLimit());
         stamper.setFormFlattening(true);
         stamper.setFreeTextFlattening(true);
-    }
 
-    @Override
-    protected void prepareResponse(HttpServletRequest request,
-            HttpServletResponse response) {
-        if (generatesDownloadContent()) {
-            response.setHeader("Pragma", "private");
-            response.setHeader("Cache-Control", "private, must-revalidate");
-            response.setHeader("Content-Disposition", "attachment; filename="
-                    + reservationReportPdfName + ".pdf");
-            response.setCharacterEncoding("UTF-8");
-        }
+        response.setCharacterEncoding("UTF-8");
+        response.setHeader("Content-Disposition", "attachment; filename="
+                + downloadPDFName + ".pdf");
     }
 
 }
