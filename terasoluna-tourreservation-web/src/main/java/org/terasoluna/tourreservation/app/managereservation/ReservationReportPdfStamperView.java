@@ -38,6 +38,12 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
     @Value("${reservation.reportPdfUrl}")
     String reservationReportPdfUrl;
 
+    @Value("${reservation.reportPdf.referenceNameMaximumValueWithNormalFontSize}")
+    int referenceNameMaximumValueWithNormalFontSize;
+
+    @Value("${reservation.reportPdf.referenceNameVariableFontSize}")
+    float referenceNameVariableFontSize;
+
     @Override
     public String getUrl() {
         return reservationReportPdfUrl;
@@ -53,9 +59,10 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
         AcroFields form = stamper.getAcroFields();
         String referenceName = downloadPDFOutput.getReferenceName();
-        if (referenceName.getBytes("UTF-8").length >= 30) {
-            form.setFieldProperty("referenceName", "textsize", new Float(8),
-                    null);
+        if (referenceName.getBytes(StandardCharsets.UTF_8
+                .name()).length >= referenceNameMaximumValueWithNormalFontSize) {
+            form.setFieldProperty("referenceName", "textsize",
+                    referenceNameVariableFontSize, null);
         }
         form.setField("referenceName", referenceName);
         form.setField("referenceEmail", downloadPDFOutput.getReferenceEmail());
