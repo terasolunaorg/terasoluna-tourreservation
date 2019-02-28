@@ -15,6 +15,7 @@
  */
 package org.terasoluna.tourreservation.app.managereservation;
 
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Map;
 
@@ -108,9 +109,15 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
         stamper.setFormFlattening(true);
         stamper.setFreeTextFlattening(true);
 
-        response.setCharacterEncoding("UTF-8");
         response.setHeader("Content-Disposition", "attachment; filename="
                 + downloadPDFName + downloadPDFExtension);
+    }
+
+    @Override
+    protected void prepareResponse(HttpServletRequest request,
+            HttpServletResponse response) {
+        super.prepareResponse(request, response);
+        response.setCharacterEncoding(StandardCharsets.UTF_8.name());
     }
 
 }
