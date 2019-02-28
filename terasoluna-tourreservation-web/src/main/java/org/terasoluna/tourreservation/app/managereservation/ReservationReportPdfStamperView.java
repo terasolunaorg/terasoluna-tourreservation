@@ -35,14 +35,12 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
     private static final String downloadPDFExtension = ".pdf";
 
+    private static final int referenceNameMaximumValueWithNormalFontSize = 30;
+
+    private static final float referenceNameVariableFontSize = 8.0F;
+
     @Value("${reservation.reportPdfUrl}")
     String reservationReportPdfUrl;
-
-    @Value("${reservation.reportPdf.referenceNameMaximumValueWithNormalFontSize}")
-    int referenceNameMaximumValueWithNormalFontSize;
-
-    @Value("${reservation.reportPdf.referenceNameVariableFontSize}")
-    float referenceNameVariableFontSize;
 
     @Override
     public String getUrl() {
