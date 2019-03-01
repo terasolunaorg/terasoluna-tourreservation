@@ -75,11 +75,6 @@
     <mvc:definitions location="/WEB-INF/tiles/tiles-definitions.xml" />
   </mvc:tiles-configurer>
 
-
-  <!--<bean id="managereservation/report" class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView">
-    <property name="url" value="/WEB-INF/reports/reservationReportPdf.jrxml" />
-  </bean>-->
-
   <bean id="requestDataValueProcessor" class="org.terasoluna.gfw.web.mvc.support.CompositeRequestDataValueProcessor">
     <constructor-arg>
       <util:list>
