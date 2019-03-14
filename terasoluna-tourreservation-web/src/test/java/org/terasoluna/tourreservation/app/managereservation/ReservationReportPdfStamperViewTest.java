@@ -20,9 +20,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +34,6 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.AcroFields;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
@@ -58,7 +55,7 @@ public class ReservationReportPdfStamperViewTest {
     HttpServletResponse response;
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         reservationReportPdfStamperView = new ReservationReportPdfStamperView();
 
         DownloadPDFOutput downloadPDFOutput = new DownloadPDFOutput();
@@ -94,29 +91,16 @@ public class ReservationReportPdfStamperViewTest {
         downloadPDFOutput.setChildPrice(112500);
         downloadPDFOutput.setSumPrice(487500);
         downloadPDFOutput.setPaymentTimeLimit("2019/03/24");
-        try {
-            downloadPDFOutput.setReservedDay(sdf.parse("2019/02/21"));
-            downloadPDFOutput.setDepDay(sdf.parse("2019/03/31"));
-            downloadPDFOutput.setCustomerBirth(sdf.parse("1975/01/05"));
-            downloadPDFOutput.setPrintDay(sdf.parse("2019/03/06"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-            fail(); // FAIL when exception is thrown
-        }
+        downloadPDFOutput.setReservedDay(sdf.parse("2019/02/21"));
+        downloadPDFOutput.setDepDay(sdf.parse("2019/03/31"));
+        downloadPDFOutput.setCustomerBirth(sdf.parse("1975/01/05"));
+        downloadPDFOutput.setPrintDay(sdf.parse("2019/03/06"));
 
         model = new HashMap<String, Object>();
         model.put("downloadPDFOutput", downloadPDFOutput);
         model.put("downloadPDFName", "reservationReport");
 
-        try {
-            stamper = new PdfStamper(new PdfReader("src/main/resources/reports/reservationReport.pdf"), new ByteArrayOutputStream(OUTPUT_BYTE_ARRAY_INITIAL_SIZE));
-        } catch (DocumentException e) {
-            e.printStackTrace();
-            fail(); // FAIL when exception is thrown
-        } catch (IOException e) {
-            e.printStackTrace();
-            fail(); // FAIL when exception is thrown
-        }
+        stamper = new PdfStamper(new PdfReader("src/main/resources/reports/reservationReport.pdf"), new ByteArrayOutputStream(OUTPUT_BYTE_ARRAY_INITIAL_SIZE));
 
         request = new MockHttpServletRequest();
         response = new MockHttpServletResponse();
@@ -128,13 +112,8 @@ public class ReservationReportPdfStamperViewTest {
 
     @Test
     public void testGetUrl() {
-        try {
-            String url = reservationReportPdfStamperView.getUrl();
-            assertThat(url, is("classpath:reports/reservationReport.pdf"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            fail(); // FAIL when exception is thrown
-        }
+        String url = reservationReportPdfStamperView.getUrl();
+        assertThat(url, is("classpath:reports/reservationReport.pdf"));
     }
 
     @Test
@@ -142,66 +121,59 @@ public class ReservationReportPdfStamperViewTest {
         try {
             reservationReportPdfStamperView.mergePdfDocument(model, stamper,
                     request, response);
-
-            AcroFields form = stamper.getAcroFields();
-            assertThat(form.getField("referenceName"), is(
-                    "TERASOLUNA TRAVEL CUSTOMER CENTER"));
-            assertThat(form.getField("referenceEmail"), is(
-                    "customer@example.com"));
-            assertThat(form.getField("referenceTel"), is("01-2345-6789"));
-            assertThat(form.getField("paymentMethod"), is("Bank Transfer"));
-            assertThat(form.getField("paymentAccount"), is(
-                    "Current Account：12345678"));
-            assertThat(form.getField("childCount"), is("3"));
-            assertThat(form.getField("tourName"), is(
-                    "【おすすめ】Terasolunaツアー(6泊7日)"));
-            assertThat(form.getField("accomName"), is("TERASOLUNAホテル第一荘"));
-            assertThat(form.getField("customerKana"), is("キムラ　タロウ"));
-            assertThat(form.getField("customerTel"), is("111-1111-1111"));
-            assertThat(form.getField("adultUnitPrice"), is("75000"));
-            assertThat(form.getField("reservedDay"), is("2019/02/21"));
-            assertThat(form.getField("conductor"), is("Yes"));
-            assertThat(form.getField("tourAbs"), is(
-                    "そこは別天地、静寂と湯けむりの待つ宿へ… 詳しい情報はお取り合わせをお願い致します。"));
-            assertThat(form.getField("customerAdd"), is("千葉県八千代市上高野"));
-            assertThat(form.getField("customerJob"), is("プログラマ"));
-            assertThat(form.getField("tourDays"), is("7"));
-            assertThat(form.getField("depDay"), is("2019/03/31"));
-            assertThat(form.getField("customerName"), is("木村　太郎"));
-            assertThat(form.getField("childUnitPrice"), is("37500"));
-            assertThat(form.getField("depName"), is("北海道"));
-            assertThat(form.getField("customerBirth"), is("1975/01/05"));
-            assertThat(form.getField("arrName"), is("北海道"));
-            assertThat(form.getField("customerMail"), is("tarou@example.com"));
-            assertThat(form.getField("adultCount"), is("5"));
-            assertThat(form.getField("customerCode"), is("00000001"));
-            assertThat(form.getField("reserveNo"), is("00000001"));
-            assertThat(form.getField("remarks"), is("特になし"));
-            assertThat(form.getField("accomTel"), is("018-123-4567"));
-            assertThat(form.getField("customerPost"), is("276-0022"));
-            assertThat(form.getField("printDay"), is("2019/03/06"));
-            assertThat(form.getField("adultPrice"), is("375000"));
-            assertThat(form.getField("childPrice"), is("112500"));
-            assertThat(form.getField("sumPrice"), is("487500"));
-            assertThat(form.getField("paymentTimeLimit"), is("2019/03/24"));
-
-            assertThat(response.getHeader("Content-Disposition"), is(
-                    "attachment; filename=reservationReport.pdf"));
         } catch (Exception e) {
             e.printStackTrace();
             fail(); // FAIL when exception is thrown
         }
+
+        AcroFields form = stamper.getAcroFields();
+        assertThat(form.getField("referenceName"), is(
+                "TERASOLUNA TRAVEL CUSTOMER CENTER"));
+        assertThat(form.getField("referenceEmail"), is("customer@example.com"));
+        assertThat(form.getField("referenceTel"), is("01-2345-6789"));
+        assertThat(form.getField("paymentMethod"), is("Bank Transfer"));
+        assertThat(form.getField("paymentAccount"), is(
+                "Current Account：12345678"));
+        assertThat(form.getField("childCount"), is("3"));
+        assertThat(form.getField("tourName"), is("【おすすめ】Terasolunaツアー(6泊7日)"));
+        assertThat(form.getField("accomName"), is("TERASOLUNAホテル第一荘"));
+        assertThat(form.getField("customerKana"), is("キムラ　タロウ"));
+        assertThat(form.getField("customerTel"), is("111-1111-1111"));
+        assertThat(form.getField("adultUnitPrice"), is("75000"));
+        assertThat(form.getField("reservedDay"), is("2019/02/21"));
+        assertThat(form.getField("conductor"), is("Yes"));
+        assertThat(form.getField("tourAbs"), is(
+                "そこは別天地、静寂と湯けむりの待つ宿へ… 詳しい情報はお取り合わせをお願い致します。"));
+        assertThat(form.getField("customerAdd"), is("千葉県八千代市上高野"));
+        assertThat(form.getField("customerJob"), is("プログラマ"));
+        assertThat(form.getField("tourDays"), is("7"));
+        assertThat(form.getField("depDay"), is("2019/03/31"));
+        assertThat(form.getField("customerName"), is("木村　太郎"));
+        assertThat(form.getField("childUnitPrice"), is("37500"));
+        assertThat(form.getField("depName"), is("北海道"));
+        assertThat(form.getField("customerBirth"), is("1975/01/05"));
+        assertThat(form.getField("arrName"), is("北海道"));
+        assertThat(form.getField("customerMail"), is("tarou@example.com"));
+        assertThat(form.getField("adultCount"), is("5"));
+        assertThat(form.getField("customerCode"), is("00000001"));
+        assertThat(form.getField("reserveNo"), is("00000001"));
+        assertThat(form.getField("remarks"), is("特になし"));
+        assertThat(form.getField("accomTel"), is("018-123-4567"));
+        assertThat(form.getField("customerPost"), is("276-0022"));
+        assertThat(form.getField("printDay"), is("2019/03/06"));
+        assertThat(form.getField("adultPrice"), is("375000"));
+        assertThat(form.getField("childPrice"), is("112500"));
+        assertThat(form.getField("sumPrice"), is("487500"));
+        assertThat(form.getField("paymentTimeLimit"), is("2019/03/24"));
+
+        assertThat(response.getHeader("Content-Disposition"), is(
+                "attachment; filename=reservationReport.pdf"));
     }
 
     @Test
     public void testPrepareResponse() {
-        try {
-            reservationReportPdfStamperView.prepareResponse(request, response);
-            assertThat(response.getCharacterEncoding(), is(
-                    StandardCharsets.UTF_8.name()));
-        } catch (Exception e) {
-            e.printStackTrace();
-            fail(); // FAIL when exception is thrown
-        }
+        reservationReportPdfStamperView.prepareResponse(request, response);
+        assertThat(response.getCharacterEncoding(), is(StandardCharsets.UTF_8
+                .name()));
     }
 }
