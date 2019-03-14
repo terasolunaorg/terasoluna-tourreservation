@@ -43,6 +43,8 @@ public class ReservationReportPdfStamperViewTest {
 
     private static final int OUTPUT_BYTE_ARRAY_INITIAL_SIZE = 4096;
 
+    private static final String reservationReportPdfPlace = "src/main/resources/reports/reservationReport.pdf";
+
     ReservationReportPdfStamperView reservationReportPdfStamperView;
 
     Map<String, Object> model;
@@ -99,7 +101,7 @@ public class ReservationReportPdfStamperViewTest {
         model.put("downloadPDFOutput", downloadPDFOutput);
         model.put("downloadPDFName", "reservationReport");
 
-        stamper = new PdfStamper(new PdfReader("src/main/resources/reports/reservationReport.pdf"), new ByteArrayOutputStream(OUTPUT_BYTE_ARRAY_INITIAL_SIZE));
+        stamper = new PdfStamper(new PdfReader(reservationReportPdfPlace), new ByteArrayOutputStream(OUTPUT_BYTE_ARRAY_INITIAL_SIZE));
 
         request = new MockHttpServletRequest();
         response = new MockHttpServletResponse();
