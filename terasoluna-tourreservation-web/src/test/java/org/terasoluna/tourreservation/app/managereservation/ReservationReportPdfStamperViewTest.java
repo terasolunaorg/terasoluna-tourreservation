@@ -32,7 +32,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.test.util.ReflectionTestUtils;
 
 import com.lowagie.text.pdf.AcroFields;
 import com.lowagie.text.pdf.PdfReader;
@@ -105,9 +104,7 @@ public class ReservationReportPdfStamperViewTest {
         request = new MockHttpServletRequest();
         response = new MockHttpServletResponse();
 
-        ReflectionTestUtils.setField(reservationReportPdfStamperView,
-                "reservationReportPdfUrl",
-                "classpath:reports/reservationReport.pdf");
+        reservationReportPdfStamperView.reservationReportPdfUrl = "classpath:reports/reservationReport.pdf";
     }
 
     @Test
