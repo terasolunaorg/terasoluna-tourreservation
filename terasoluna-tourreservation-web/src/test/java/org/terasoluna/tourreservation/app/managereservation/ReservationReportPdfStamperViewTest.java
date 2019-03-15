@@ -195,6 +195,9 @@ public class ReservationReportPdfStamperViewTest {
         HttpServletResponse response = new MockHttpServletResponse();
 
         reservationReportPdfStamperView.prepareResponse(request, response);
+        assertThat(response.getHeader("Pragma"), is("private"));
+        assertThat(response.getHeader("Cache-Control"), is(
+                "private, must-revalidate"));
         assertThat(response.getCharacterEncoding(), is(StandardCharsets.UTF_8
                 .name()));
     }
