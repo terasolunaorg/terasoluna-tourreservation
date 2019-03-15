@@ -49,12 +49,6 @@ public class ReservationReportPdfStamperViewTest {
 
     Map<String, Object> model;
 
-    PdfStamper stamper;
-
-    HttpServletRequest request;
-
-    HttpServletResponse response;
-
     @Before
     public void setUp() throws Exception {
         reservationReportPdfStamperView = new ReservationReportPdfStamperView();
@@ -101,11 +95,6 @@ public class ReservationReportPdfStamperViewTest {
         model.put("downloadPDFOutput", downloadPDFOutput);
         model.put("downloadPDFName", "reservationReport");
 
-        stamper = new PdfStamper(new PdfReader(reservationReportPdfPlace), new ByteArrayOutputStream(OUTPUT_BYTE_ARRAY_INITIAL_SIZE));
-
-        request = new MockHttpServletRequest();
-        response = new MockHttpServletResponse();
-
         reservationReportPdfStamperView.reservationReportPdfUrl = "classpath:reports/reservationReport.pdf";
     }
 
@@ -116,7 +105,15 @@ public class ReservationReportPdfStamperViewTest {
     }
 
     @Test
-    public void testMergePdfDocument() {
+    public void testMergePdfDocument() throws Exception {
+
+        PdfStamper stamper = null;
+        stamper = new PdfStamper(new PdfReader(reservationReportPdfPlace), new ByteArrayOutputStream(OUTPUT_BYTE_ARRAY_INITIAL_SIZE));
+
+        HttpServletRequest request = new MockHttpServletRequest();
+
+        HttpServletResponse response = new MockHttpServletResponse();
+
         try {
             reservationReportPdfStamperView.mergePdfDocument(model, stamper,
                     request, response);
@@ -171,6 +168,11 @@ public class ReservationReportPdfStamperViewTest {
 
     @Test
     public void testPrepareResponse() {
+
+        HttpServletRequest request = new MockHttpServletRequest();
+
+        HttpServletResponse response = new MockHttpServletResponse();
+
         reservationReportPdfStamperView.prepareResponse(request, response);
         assertThat(response.getCharacterEncoding(), is(StandardCharsets.UTF_8
                 .name()));
