@@ -182,6 +182,7 @@ public class ReservationReportPdfStamperViewTest {
         assertThat(form.getField("childPrice"), is("112500"));
         assertThat(form.getField("sumPrice"), is("487500"));
         assertThat(form.getField("paymentTimeLimit"), is("2019/03/24"));
+        assertThat(form.getFields().size(), is(35));
 
         assertThat(response.getHeader("Content-Disposition"), is(
                 "attachment; filename=reservationReport.pdf"));
