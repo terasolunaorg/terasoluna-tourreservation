@@ -111,8 +111,7 @@ public class ReservationReportPdfStamperViewTest {
         model.put("downloadPDFOutput", downloadPDFOutput);
         model.put("downloadPDFName", "reservationReport");
 
-        PdfStamper stamper = null;
-        stamper = new PdfStamper(new PdfReader(RESERVATION_REPORT_PDF_PLACE), new ByteArrayOutputStream(OUTPUT_BYTE_ARRAY_INITIAL_SIZE));
+        PdfStamper stamper = new PdfStamper(new PdfReader(RESERVATION_REPORT_PDF_PLACE), new ByteArrayOutputStream(OUTPUT_BYTE_ARRAY_INITIAL_SIZE));
 
         HttpServletRequest request = new MockHttpServletRequest();
 
