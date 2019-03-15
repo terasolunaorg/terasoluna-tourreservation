@@ -51,6 +51,8 @@ public class ReservationReportPdfStamperViewTest {
 
     private static final float REFERENCE_NAME_VARIABLE_FONTSIZE = 8.0F;
 
+    private static final float REFERENCE_NAME_DEFAULT_FONTSIZE = 10.5F;
+
     ReservationReportPdfStamperView reservationReportPdfStamperView;
 
     @Before
@@ -181,6 +183,45 @@ public class ReservationReportPdfStamperViewTest {
 
         assertThat(response.getHeader("Content-Disposition"), is(
                 "attachment; filename=reservationReport.pdf"));
+    }
+
+    @Test
+    public void testMergePdfDocumentDefaultFontsize() throws Exception {
+
+        DownloadPDFOutput downloadPDFOutput = new DownloadPDFOutput();
+        downloadPDFOutput.setReferenceName("TERASOLUNA TRAVEL");
+        downloadPDFOutput.setReservedDay(SDF.parse("2019/02/21"));
+        downloadPDFOutput.setDepDay(SDF.parse("2019/03/31"));
+        downloadPDFOutput.setCustomerBirth(SDF.parse("1975/01/05"));
+        downloadPDFOutput.setPrintDay(SDF.parse("2019/03/06"));
+
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("downloadPDFOutput", downloadPDFOutput);
+        model.put("downloadPDFName", "reservationReport");
+
+        PdfStamper stamper = new PdfStamper(new PdfReader(RESERVATION_REPORT_PDF_PLACE), new ByteArrayOutputStream(OUTPUT_BYTE_ARRAY_INITIAL_SIZE));
+
+        HttpServletRequest request = new MockHttpServletRequest();
+
+        HttpServletResponse response = new MockHttpServletResponse();
+
+        try {
+            reservationReportPdfStamperView.mergePdfDocument(model, stamper,
+                    request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail(); // FAIL when exception is thrown
+        }
+
+        AcroFields form = stamper.getAcroFields();
+        assertThat(form.getField("referenceName"), is("TERASOLUNA TRAVEL"));
+        AcroFields.Item referenceNameItem = form.getFieldItem("referenceName");
+        PdfDictionary referenceNameMerged = referenceNameItem.getMerged(0);
+        TextField referenceNameTextField = new TextField(null, null, null);
+        form.decodeGenericDictionary(referenceNameMerged,
+                referenceNameTextField);
+        assertThat(referenceNameTextField.getFontSize(), is(
+                REFERENCE_NAME_DEFAULT_FONTSIZE));
     }
 
     @Test
