@@ -20,6 +20,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -33,9 +34,12 @@ import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
+import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.AcroFields;
+import com.lowagie.text.pdf.PdfDictionary;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
+import com.lowagie.text.pdf.TextField;
 
 public class ReservationReportPdfStamperViewTest {
 
@@ -44,6 +48,8 @@ public class ReservationReportPdfStamperViewTest {
     private static final int OUTPUT_BYTE_ARRAY_INITIAL_SIZE = 4096;
 
     private static final String reservationReportPdfPlace = "src/main/resources/reports/reservationReport.pdf";
+
+    private static final float referenceNameVariableFontSize = 8.0F;
 
     ReservationReportPdfStamperView reservationReportPdfStamperView;
 
@@ -125,6 +131,21 @@ public class ReservationReportPdfStamperViewTest {
         AcroFields form = stamper.getAcroFields();
         assertThat(form.getField("referenceName"), is(
                 "TERASOLUNA TRAVEL CUSTOMER CENTER"));
+        AcroFields.Item referenceNameItem = form.getFieldItem("referenceName");
+        PdfDictionary referenceNameMerged = referenceNameItem.getMerged(0);
+        TextField referenceNameTextField = new TextField(null, null, null);
+        try {
+            form.decodeGenericDictionary(referenceNameMerged,
+                    referenceNameTextField);
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail(); // FAIL when exception is thrown
+        } catch (DocumentException e) {
+            e.printStackTrace();
+            fail(); // FAIL when exception is thrown
+        }
+        assertThat(referenceNameTextField.getFontSize(), is(
+                referenceNameVariableFontSize));
         assertThat(form.getField("referenceEmail"), is("customer@example.com"));
         assertThat(form.getField("referenceTel"), is("01-2345-6789"));
         assertThat(form.getField("paymentMethod"), is("Bank Transfer"));
