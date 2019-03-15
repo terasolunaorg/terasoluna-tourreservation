@@ -20,7 +20,6 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -34,7 +33,6 @@ import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.AcroFields;
 import com.lowagie.text.pdf.PdfDictionary;
 import com.lowagie.text.pdf.PdfReader;
@@ -132,16 +130,8 @@ public class ReservationReportPdfStamperViewTest {
         AcroFields.Item referenceNameItem = form.getFieldItem("referenceName");
         PdfDictionary referenceNameMerged = referenceNameItem.getMerged(0);
         TextField referenceNameTextField = new TextField(null, null, null);
-        try {
-            form.decodeGenericDictionary(referenceNameMerged,
-                    referenceNameTextField);
-        } catch (IOException e) {
-            e.printStackTrace();
-            fail(); // FAIL when exception is thrown
-        } catch (DocumentException e) {
-            e.printStackTrace();
-            fail(); // FAIL when exception is thrown
-        }
+        form.decodeGenericDictionary(referenceNameMerged,
+                referenceNameTextField);
         assertThat(referenceNameTextField.getFontSize(), is(
                 REFERENCE_NAME_VARIABLE_FONTSIZE));
         assertThat(form.getField("referenceEmail"), is("customer@example.com"));
