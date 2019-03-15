@@ -17,6 +17,7 @@ package org.terasoluna.tourreservation.app.managereservation;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.ByteArrayOutputStream;
@@ -32,6 +33,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import com.lowagie.text.pdf.AcroFields;
 import com.lowagie.text.pdf.PdfDictionary;
@@ -170,6 +172,12 @@ public class ReservationReportPdfStamperViewTest {
         assertThat(form.getField("childPrice"), is("112500"));
         assertThat(form.getField("sumPrice"), is("487500"));
         assertThat(form.getField("paymentTimeLimit"), is("2019/03/24"));
+
+        Object pdfStamperImp = ReflectionTestUtils.getField(stamper, "stamper");
+        assertTrue((boolean) ReflectionTestUtils.getField(pdfStamperImp,
+                "flat"));
+        assertTrue((boolean) ReflectionTestUtils.getField(pdfStamperImp,
+                "flatFreeText"));
 
         assertThat(response.getHeader("Content-Disposition"), is(
                 "attachment; filename=reservationReport.pdf"));
