@@ -78,21 +78,20 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
         form.setField("customerTel", downloadPDFOutput.getCustomerTel());
         form.setField("adultUnitPrice", String.valueOf(downloadPDFOutput
                 .getAdultUnitPrice()));
-        form.setField("reservedDay", String.valueOf(sdf.format(downloadPDFOutput
-                .getReservedDay())));
+        form.setField("reservedDay", sdf.format(downloadPDFOutput
+                .getReservedDay()));
         form.setField("conductor", downloadPDFOutput.getConductor());
         form.setField("tourAbs", downloadPDFOutput.getTourAbs());
         form.setField("customerAdd", downloadPDFOutput.getCustomerAdd());
         form.setField("customerJob", downloadPDFOutput.getCustomerJob());
         form.setField("tourDays", downloadPDFOutput.getTourDays());
-        form.setField("depDay", String.valueOf(sdf.format(downloadPDFOutput
-                .getDepDay())));
+        form.setField("depDay", sdf.format(downloadPDFOutput.getDepDay()));
         form.setField("customerName", downloadPDFOutput.getCustomerName());
         form.setField("childUnitPrice", String.valueOf(downloadPDFOutput
                 .getChildUnitPrice()));
         form.setField("depName", downloadPDFOutput.getDepName());
-        form.setField("customerBirth", String.valueOf(sdf.format(
-                downloadPDFOutput.getCustomerBirth())));
+        form.setField("customerBirth", sdf.format(downloadPDFOutput
+                .getCustomerBirth()));
         form.setField("arrName", downloadPDFOutput.getArrName());
         form.setField("customerMail", downloadPDFOutput.getCustomerMail());
         form.setField("adultCount", String.valueOf(downloadPDFOutput
@@ -102,8 +101,7 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
         form.setField("remarks", downloadPDFOutput.getRemarks());
         form.setField("accomTel", downloadPDFOutput.getAccomTel());
         form.setField("customerPost", downloadPDFOutput.getCustomerPost());
-        form.setField("printDay", String.valueOf(sdf.format(downloadPDFOutput
-                .getPrintDay())));
+        form.setField("printDay", sdf.format(downloadPDFOutput.getPrintDay()));
         form.setField("adultPrice", String.valueOf(downloadPDFOutput
                 .getAdultPrice()));
         form.setField("childPrice", String.valueOf(downloadPDFOutput
