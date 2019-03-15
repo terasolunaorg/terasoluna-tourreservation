@@ -53,11 +53,21 @@ public class ReservationReportPdfStamperViewTest {
 
     ReservationReportPdfStamperView reservationReportPdfStamperView;
 
-    Map<String, Object> model;
-
     @Before
     public void setUp() throws Exception {
         reservationReportPdfStamperView = new ReservationReportPdfStamperView();
+
+        reservationReportPdfStamperView.reservationReportPdfUrl = "classpath:reports/reservationReport.pdf";
+    }
+
+    @Test
+    public void testGetUrl() {
+        String url = reservationReportPdfStamperView.getUrl();
+        assertThat(url, is("classpath:reports/reservationReport.pdf"));
+    }
+
+    @Test
+    public void testMergePdfDocument() throws Exception {
 
         DownloadPDFOutput downloadPDFOutput = new DownloadPDFOutput();
         downloadPDFOutput.setReferenceName("TERASOLUNA TRAVEL CUSTOMER CENTER");
@@ -97,21 +107,9 @@ public class ReservationReportPdfStamperViewTest {
         downloadPDFOutput.setCustomerBirth(sdf.parse("1975/01/05"));
         downloadPDFOutput.setPrintDay(sdf.parse("2019/03/06"));
 
-        model = new HashMap<String, Object>();
+        Map<String, Object> model = new HashMap<String, Object>();
         model.put("downloadPDFOutput", downloadPDFOutput);
         model.put("downloadPDFName", "reservationReport");
-
-        reservationReportPdfStamperView.reservationReportPdfUrl = "classpath:reports/reservationReport.pdf";
-    }
-
-    @Test
-    public void testGetUrl() {
-        String url = reservationReportPdfStamperView.getUrl();
-        assertThat(url, is("classpath:reports/reservationReport.pdf"));
-    }
-
-    @Test
-    public void testMergePdfDocument() throws Exception {
 
         PdfStamper stamper = null;
         stamper = new PdfStamper(new PdfReader(reservationReportPdfPlace), new ByteArrayOutputStream(OUTPUT_BYTE_ARRAY_INITIAL_SIZE));
