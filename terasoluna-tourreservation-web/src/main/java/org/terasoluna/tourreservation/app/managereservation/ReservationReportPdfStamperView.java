@@ -27,6 +27,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.document.AbstractPdfStamperView;
 
 import com.lowagie.text.pdf.AcroFields;
+import com.lowagie.text.pdf.PdfStamper;
 
 @Component
 public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
@@ -49,7 +50,7 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
     @Override
     protected void mergePdfDocument(Map<String, Object> model,
-            com.lowagie.text.pdf.PdfStamper stamper, HttpServletRequest request,
+            PdfStamper stamper, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         DownloadPDFOutput downloadPDFOutput = (DownloadPDFOutput) model.get(
                 "downloadPDFOutput");
