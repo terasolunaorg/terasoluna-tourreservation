@@ -43,13 +43,13 @@ import com.lowagie.text.pdf.TextField;
 
 public class ReservationReportPdfStamperViewTest {
 
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+    private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy/MM/dd");
 
     private static final int OUTPUT_BYTE_ARRAY_INITIAL_SIZE = 4096;
 
-    private static final String reservationReportPdfPlace = "src/main/resources/reports/reservationReport.pdf";
+    private static final String RESERVATION_REPORT_PDF_PLACE = "src/main/resources/reports/reservationReport.pdf";
 
-    private static final float referenceNameVariableFontSize = 8.0F;
+    private static final float REFERENCE_NAME_VARIABLE_FONTSIZE = 8.0F;
 
     ReservationReportPdfStamperView reservationReportPdfStamperView;
 
@@ -102,17 +102,17 @@ public class ReservationReportPdfStamperViewTest {
         downloadPDFOutput.setChildPrice(112500);
         downloadPDFOutput.setSumPrice(487500);
         downloadPDFOutput.setPaymentTimeLimit("2019/03/24");
-        downloadPDFOutput.setReservedDay(sdf.parse("2019/02/21"));
-        downloadPDFOutput.setDepDay(sdf.parse("2019/03/31"));
-        downloadPDFOutput.setCustomerBirth(sdf.parse("1975/01/05"));
-        downloadPDFOutput.setPrintDay(sdf.parse("2019/03/06"));
+        downloadPDFOutput.setReservedDay(SDF.parse("2019/02/21"));
+        downloadPDFOutput.setDepDay(SDF.parse("2019/03/31"));
+        downloadPDFOutput.setCustomerBirth(SDF.parse("1975/01/05"));
+        downloadPDFOutput.setPrintDay(SDF.parse("2019/03/06"));
 
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("downloadPDFOutput", downloadPDFOutput);
         model.put("downloadPDFName", "reservationReport");
 
         PdfStamper stamper = null;
-        stamper = new PdfStamper(new PdfReader(reservationReportPdfPlace), new ByteArrayOutputStream(OUTPUT_BYTE_ARRAY_INITIAL_SIZE));
+        stamper = new PdfStamper(new PdfReader(RESERVATION_REPORT_PDF_PLACE), new ByteArrayOutputStream(OUTPUT_BYTE_ARRAY_INITIAL_SIZE));
 
         HttpServletRequest request = new MockHttpServletRequest();
 
@@ -143,7 +143,7 @@ public class ReservationReportPdfStamperViewTest {
             fail(); // FAIL when exception is thrown
         }
         assertThat(referenceNameTextField.getFontSize(), is(
-                referenceNameVariableFontSize));
+                REFERENCE_NAME_VARIABLE_FONTSIZE));
         assertThat(form.getField("referenceEmail"), is("customer@example.com"));
         assertThat(form.getField("referenceTel"), is("01-2345-6789"));
         assertThat(form.getField("paymentMethod"), is("Bank Transfer"));
