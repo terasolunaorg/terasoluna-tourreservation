@@ -29,9 +29,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
+
 import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
@@ -338,15 +340,13 @@ public class ManageReservationControllerTest {
                 "/reservations/123/pdf");
 
         // Set mock behavior for helper method
+        Map<String, String> clExistenceMap = new LinkedHashMap<>();
+        clExistenceMap.put("0", "No");
+        clExistenceMap.put("1", "Yes");
         when(manageReservationHelper.createPDF("123", Locale.ENGLISH))
                 .thenReturn(new DownloadPDFOutput());
         when(manageReservationHelper.existenceCodeList.asMap(Locale.ENGLISH))
-                .thenReturn(new LinkedHashMap<String, String>() {
-                    {
-                        put("0", "No");
-                        put("1", "Yes");
-                    }
-                });
+                .thenReturn(clExistenceMap);
 
         // No Logic testing here
         // this will just test the request mapping part
