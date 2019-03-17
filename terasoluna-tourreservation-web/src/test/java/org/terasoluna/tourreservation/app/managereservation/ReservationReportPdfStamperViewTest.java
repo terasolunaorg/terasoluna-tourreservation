@@ -131,6 +131,7 @@ public class ReservationReportPdfStamperViewTest {
         assertThat(form.getFields().size(), is(35));
         assertThat(form.getField("referenceName"), is(
                 "TERASOLUNA TRAVEL CUSTOMER CENTER"));
+        // Can't get field properties directly from AcroFields
         AcroFields.Item referenceNameItem = form.getFieldItem("referenceName");
         PdfDictionary referenceNameMerged = referenceNameItem.getMerged(0);
         TextField referenceNameTextField = new TextField(null, null, null);
@@ -215,6 +216,7 @@ public class ReservationReportPdfStamperViewTest {
 
         AcroFields form = stamper.getAcroFields();
         assertThat(form.getField("referenceName"), is("TERASOLUNA TRAVEL"));
+        // Can't get field properties directly from AcroFields
         AcroFields.Item referenceNameItem = form.getFieldItem("referenceName");
         PdfDictionary referenceNameMerged = referenceNameItem.getMerged(0);
         TextField referenceNameTextField = new TextField(null, null, null);
