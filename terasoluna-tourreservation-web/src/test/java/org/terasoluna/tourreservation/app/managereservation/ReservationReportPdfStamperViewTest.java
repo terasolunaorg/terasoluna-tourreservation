@@ -58,12 +58,12 @@ public class ReservationReportPdfStamperViewTest {
     @Before
     public void setUp() throws Exception {
         reservationReportPdfStamperView = new ReservationReportPdfStamperView();
-
-        reservationReportPdfStamperView.reservationReportPdfUrl = "classpath:reports/reservationReport.pdf";
     }
 
     @Test
     public void testGetUrl() {
+
+        reservationReportPdfStamperView.reservationReportPdfUrl = "classpath:reports/reservationReport.pdf";
         String url = reservationReportPdfStamperView.getUrl();
         assertThat(url, is("classpath:reports/reservationReport.pdf"));
     }
