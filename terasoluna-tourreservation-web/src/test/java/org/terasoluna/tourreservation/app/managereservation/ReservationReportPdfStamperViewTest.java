@@ -234,9 +234,13 @@ public class ReservationReportPdfStamperViewTest {
         HttpServletResponse response = new MockHttpServletResponse();
 
         reservationReportPdfStamperView.prepareResponse(request, response);
+
+        // Pragma and Cache-Control are responsibility of super class
         assertThat(response.getHeader("Pragma"), is("private"));
         assertThat(response.getHeader("Cache-Control"), is(
                 "private, must-revalidate"));
+
+        // CharacterEncoding is responsibility of ReservationReportPdfStamperView class
         assertThat(response.getCharacterEncoding(), is(StandardCharsets.UTF_8
                 .name()));
     }
