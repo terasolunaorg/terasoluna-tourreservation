@@ -27,17 +27,18 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.document.AbstractPdfStamperView;
 
 import com.lowagie.text.pdf.AcroFields;
+import com.lowagie.text.pdf.PdfStamper;
 
 @Component
 public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+    private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy/MM/dd");
 
-    private static final String downloadPDFExtension = ".pdf";
+    private static final String DOWNLOAD_PDF_EXTENSION = ".pdf";
 
-    private static final int referenceNameMaximumValueWithNormalFontSize = 30;
+    private static final int REFERENCE_NAME_MAXIMUM_VALUE_WITH_NORMAL_FONTSIZE = 30;
 
-    private static final float referenceNameVariableFontSize = 8.0F;
+    private static final float REFERENCE_NAME_VARIABLE_FONTSIZE = 8.0F;
 
     @Value("${reservation.reportPdfUrl}")
     String reservationReportPdfUrl;
@@ -49,7 +50,7 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
     @Override
     protected void mergePdfDocument(Map<String, Object> model,
-            com.lowagie.text.pdf.PdfStamper stamper, HttpServletRequest request,
+            PdfStamper stamper, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         DownloadPDFOutput downloadPDFOutput = (DownloadPDFOutput) model.get(
                 "downloadPDFOutput");
@@ -58,9 +59,9 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
         AcroFields form = stamper.getAcroFields();
         String referenceName = downloadPDFOutput.getReferenceName();
         if (referenceName.getBytes(StandardCharsets.UTF_8
-                .name()).length >= referenceNameMaximumValueWithNormalFontSize) {
+                .name()).length >= REFERENCE_NAME_MAXIMUM_VALUE_WITH_NORMAL_FONTSIZE) {
             form.setFieldProperty("referenceName", "textsize",
-                    referenceNameVariableFontSize, null);
+                    REFERENCE_NAME_VARIABLE_FONTSIZE, null);
         }
         form.setField("referenceName", referenceName);
         form.setField("referenceEmail", downloadPDFOutput.getReferenceEmail());
@@ -77,21 +78,20 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
         form.setField("customerTel", downloadPDFOutput.getCustomerTel());
         form.setField("adultUnitPrice", String.valueOf(downloadPDFOutput
                 .getAdultUnitPrice()));
-        form.setField("reservedDay", String.valueOf(sdf.format(downloadPDFOutput
-                .getReservedDay())));
+        form.setField("reservedDay", SDF.format(downloadPDFOutput
+                .getReservedDay()));
         form.setField("conductor", downloadPDFOutput.getConductor());
         form.setField("tourAbs", downloadPDFOutput.getTourAbs());
         form.setField("customerAdd", downloadPDFOutput.getCustomerAdd());
         form.setField("customerJob", downloadPDFOutput.getCustomerJob());
         form.setField("tourDays", downloadPDFOutput.getTourDays());
-        form.setField("depDay", String.valueOf(sdf.format(downloadPDFOutput
-                .getDepDay())));
+        form.setField("depDay", SDF.format(downloadPDFOutput.getDepDay()));
         form.setField("customerName", downloadPDFOutput.getCustomerName());
         form.setField("childUnitPrice", String.valueOf(downloadPDFOutput
                 .getChildUnitPrice()));
         form.setField("depName", downloadPDFOutput.getDepName());
-        form.setField("customerBirth", String.valueOf(sdf.format(
-                downloadPDFOutput.getCustomerBirth())));
+        form.setField("customerBirth", SDF.format(downloadPDFOutput
+                .getCustomerBirth()));
         form.setField("arrName", downloadPDFOutput.getArrName());
         form.setField("customerMail", downloadPDFOutput.getCustomerMail());
         form.setField("adultCount", String.valueOf(downloadPDFOutput
@@ -101,8 +101,7 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
         form.setField("remarks", downloadPDFOutput.getRemarks());
         form.setField("accomTel", downloadPDFOutput.getAccomTel());
         form.setField("customerPost", downloadPDFOutput.getCustomerPost());
-        form.setField("printDay", String.valueOf(sdf.format(downloadPDFOutput
-                .getPrintDay())));
+        form.setField("printDay", SDF.format(downloadPDFOutput.getPrintDay()));
         form.setField("adultPrice", String.valueOf(downloadPDFOutput
                 .getAdultPrice()));
         form.setField("childPrice", String.valueOf(downloadPDFOutput
@@ -115,7 +114,7 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
         stamper.setFreeTextFlattening(true);
 
         response.setHeader("Content-Disposition", "attachment; filename="
-                + downloadPDFName + downloadPDFExtension);
+                + downloadPDFName + DOWNLOAD_PDF_EXTENSION);
     }
 
     @Override
