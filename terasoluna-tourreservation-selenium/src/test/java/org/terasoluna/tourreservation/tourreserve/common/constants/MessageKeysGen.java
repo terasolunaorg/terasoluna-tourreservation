@@ -17,7 +17,6 @@ package org.terasoluna.tourreservation.tourreserve.common.constants;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -26,27 +25,32 @@ import java.io.SequenceInputStream;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 
 public class MessageKeysGen {
+
+    private static final Logger logger = LoggerFactory.getLogger(
+            MessageKeysGen.class);
+
     public static void main(String[] args) throws IOException {
         // message properties file
-
-        InputStream applicationMessagesInputStream = new ClassPathResource("i18n/application-messages_en.properties")
-                .getInputStream();
-        InputStream validationMessagesInputStream = new ClassPathResource("ValidationMessages_en.properties")
-                .getInputStream();
-        SequenceInputStream inputStream = new SequenceInputStream(applicationMessagesInputStream, validationMessagesInputStream);
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
         Class<?> targetClazz = MessageKeys.class;
         File output = new File("src/test/java/" + targetClazz.getName()
                 .replaceAll(Pattern.quote("."), "/") + ".java");
-        System.out.println("write " + output.getAbsolutePath());
-        PrintWriter pw = new PrintWriter(FileUtils.openOutputStream(output));
+        logger.info("write {}", output.getAbsolutePath());
 
-        try {
+        try (InputStream applicationMessagesInputStream = new ClassPathResource("i18n/application-messages_en.properties")
+                .getInputStream();
+                InputStream validationMessagesInputStream = new ClassPathResource("ValidationMessages_en.properties")
+                        .getInputStream();
+                SequenceInputStream inputStream = new SequenceInputStream(applicationMessagesInputStream, validationMessagesInputStream);
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                PrintWriter pw = new PrintWriter(FileUtils.openOutputStream(
+                        output))) {
+
             pw.println("/*");
             pw.println(" * Copyright (C) 2013-2017 NTT DATA Corporation");
             pw.println(" *");
@@ -89,11 +93,6 @@ public class MessageKeysGen {
             }
             pw.println("}");
             pw.flush();
-        } finally {
-            IOUtils.closeQuietly(applicationMessagesInputStream);
-            IOUtils.closeQuietly(validationMessagesInputStream);
-            IOUtils.closeQuietly(bufferedReader);
-            IOUtils.closeQuietly(pw);
         }
     }
 }

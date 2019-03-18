@@ -26,7 +26,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.dozer.DozerBeanMapper;
 import org.joda.time.DateTime;
