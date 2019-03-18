@@ -17,7 +17,6 @@ package org.terasoluna.tourreservation.app.managereservation;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.ByteArrayOutputStream;
@@ -177,10 +176,10 @@ public class ReservationReportPdfStamperViewTest {
         assertThat(form.getField("paymentTimeLimit"), is("2019/03/24"));
 
         Object pdfStamperImp = ReflectionTestUtils.getField(stamper, "stamper");
-        assertTrue((boolean) ReflectionTestUtils.getField(pdfStamperImp,
-                "flat"));
-        assertTrue((boolean) ReflectionTestUtils.getField(pdfStamperImp,
-                "flatFreeText"));
+        assertThat((boolean) ReflectionTestUtils.getField(pdfStamperImp,
+                "flat"), is(true));
+        assertThat((boolean) ReflectionTestUtils.getField(pdfStamperImp,
+                "flatFreeText"), is(true));
 
         assertThat(response.getHeader("Content-Disposition"), is(
                 "attachment; filename=reservationReport.pdf"));
