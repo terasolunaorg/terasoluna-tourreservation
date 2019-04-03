@@ -10,10 +10,10 @@
 
 ## Fix Version/s
 (To be written later by project member)
-- [ ] 5.5.1 (master)
-- [ ] 5.5.1 (mybatis3/master)
-- [ ] 5.4.2 (5.4.x)
-- [ ] 5.4.2 (mybatis3/5.4.x)
+- [ ] 5.6.0 (master)
+- [ ] 5.6.0 (mybatis3/master)
+- [ ] 5.5.2 (5.5.x)
+- [ ] 5.5.2 (mybatis3/5.5.x)
 
 ## Issue Links
 - #XXX
