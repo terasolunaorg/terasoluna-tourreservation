@@ -27,9 +27,7 @@ import org.dozer.Mapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.terasoluna.tourreservation.domain.model.Accommodation;
 import org.terasoluna.tourreservation.domain.model.Arrival;
 import org.terasoluna.tourreservation.domain.model.Customer;
@@ -69,7 +67,7 @@ public class ReserveTourHelperTest {
         reserveService = mock(ReserveService.class);
         priceCalculateSharedService = mock(PriceCalculateSharedService.class);
 
-        DozerBeanMapper dozerBeanMapper = new DozerBeanMapper();
+        Mapper dozerBeanMapper = new DozerBeanMapper();
 
         reserveHelper.tourInfoSharedService = tourInfoSharedService;
         reserveHelper.reserveService = reserveService;
