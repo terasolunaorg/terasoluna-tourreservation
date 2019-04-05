@@ -23,6 +23,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -66,7 +67,7 @@ public class ReserveTourHelperTest {
         reserveService = mock(ReserveService.class);
         priceCalculateSharedService = mock(PriceCalculateSharedService.class);
 
-        DozerBeanMapper dozerBeanMapper = new DozerBeanMapper();
+        Mapper dozerBeanMapper = new DozerBeanMapper();
 
         reserveHelper.tourInfoSharedService = tourInfoSharedService;
         reserveHelper.reserveService = reserveService;
