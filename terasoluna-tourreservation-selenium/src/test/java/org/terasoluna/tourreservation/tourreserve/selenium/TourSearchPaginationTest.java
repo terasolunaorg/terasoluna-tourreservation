@@ -15,16 +15,12 @@
  */
 package org.terasoluna.tourreservation.tourreserve.selenium;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import static org.hamcrest.CoreMatchers.is;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.test.context.ContextConfiguration;
@@ -36,14 +32,7 @@ import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
         "classpath:META-INF/spring/seleniumContext.xml" })
 public class TourSearchPaginationTest extends FunctionTestSupport {
 
-    WebDriver driver;
-
     public TourSearchPaginationTest() {
-    }
-
-    @Before
-    public void setUp() {
-        driver = createWebDriver();
     }
 
     /**
@@ -124,8 +113,4 @@ public class TourSearchPaginationTest extends FunctionTestSupport {
                 "3"));
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
 }

@@ -36,14 +36,7 @@ import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
         "classpath:META-INF/spring/seleniumContext.xml" })
 public class UnauthorizedAccessTest extends FunctionTestSupport {
 
-    WebDriver driver;
-
     public UnauthorizedAccessTest() {
-    }
-
-    @Before
-    public void setUp() {
-        driver = createWebDriver();
     }
 
     @Test
@@ -177,8 +170,4 @@ public class UnauthorizedAccessTest extends FunctionTestSupport {
 
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
 }

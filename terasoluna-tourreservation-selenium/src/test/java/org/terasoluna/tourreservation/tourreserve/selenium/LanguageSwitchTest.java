@@ -15,35 +15,25 @@
  */
 package org.terasoluna.tourreservation.tourreserve.selenium;
 
-import org.junit.After;
-import org.junit.Before;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
+import java.util.Locale;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.tourreservation.tourreserve.common.FunctionTestSupport;
 import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
-
-import java.util.Locale;
-
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
         "classpath:META-INF/spring/seleniumContext.xml" })
 public class LanguageSwitchTest extends FunctionTestSupport {
 
-    WebDriver driver;
-
     public LanguageSwitchTest() {
-    }
-
-    @Before
-    public void setUp() {
-        driver = createWebDriver();
     }
 
     @Test
@@ -92,11 +82,6 @@ public class LanguageSwitchTest extends FunctionTestSupport {
                     : enSwitchLinkName));
         }
 
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
     }
 
 }
