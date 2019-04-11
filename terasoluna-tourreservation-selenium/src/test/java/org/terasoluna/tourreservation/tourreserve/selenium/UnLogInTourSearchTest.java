@@ -36,14 +36,7 @@ import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
         "classpath:META-INF/spring/seleniumContext.xml" })
 public class UnLogInTourSearchTest extends FunctionTestSupport {
 
-    WebDriver driver;
-
     public UnLogInTourSearchTest() {
-    }
-
-    @Before
-    public void setUp() {
-        driver = createWebDriver();
     }
 
     @Test
@@ -114,8 +107,4 @@ public class UnLogInTourSearchTest extends FunctionTestSupport {
                 driver.findElement(By.id("screenName")).getText());
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
 }

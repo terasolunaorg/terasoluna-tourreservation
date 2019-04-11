@@ -20,5 +20,14 @@
 
   <bean id="dateFactory" class="org.terasoluna.gfw.common.date.jodatime.DefaultJodaTimeDateFactory" />
 
+  <beans profile="firefox default">
+    <bean id="webDriver" class="org.openqa.selenium.firefox.FirefoxDriver" scope="prototype" />
+  </beans>
+  <beans profile="chrome">
+    <bean id="webDriver" class="org.openqa.selenium.chrome.ChromeDriver" scope="prototype" />
+  </beans>
+  <beans profile="ie">
+    <bean id="webDriver" class="org.openqa.selenium.ie.InternetExplorerDriver" scope="prototype" />
+  </beans>
 
 </beans>

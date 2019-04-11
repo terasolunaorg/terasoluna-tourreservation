@@ -42,8 +42,6 @@ public class TourSearchValidateTest extends FunctionTestSupport {
 
     private static final int height = 768;
 
-    WebDriver driver;
-
     @Inject
     JodaTimeDateFactory dateFactory;
 
@@ -52,7 +50,7 @@ public class TourSearchValidateTest extends FunctionTestSupport {
 
     @Before
     public void setUp() {
-        driver = createWebDriver();
+        super.setUp();
         driver.manage().window().setSize(new Dimension(width, height));
     }
 
@@ -125,8 +123,4 @@ public class TourSearchValidateTest extends FunctionTestSupport {
                 .findElement(By.id("searchTourForm.errors")).getText());
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
 }
