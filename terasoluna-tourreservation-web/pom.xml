@@ -46,6 +46,17 @@
     </profile>
   </profiles>
 
+  <build>
+    <resources>
+      <resource>
+        <directory>${project.basedir}/src/main/resources</directory>
+        <excludes>
+          <exclude>**/reservationReportExcel.xlsx</exclude>
+        </excludes>
+      </resource>
+    </resources>
+  </build>
+
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
