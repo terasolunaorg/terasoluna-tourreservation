@@ -86,7 +86,7 @@
 						key="textField-1"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="14" isBold="false" isItalic="false" isUnderline="true" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="14" isBold="false" isItalic="false" isUnderline="true" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{customerName}+ " 様"]]></textFieldExpression>
 				</textField>
@@ -102,7 +102,7 @@
 						key="textField-2"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{referenceName}]]></textFieldExpression>
 				</textField>
@@ -118,7 +118,7 @@
 						key="staticText-2"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[お問い合わせ先：]]></text>
 				</staticText>
@@ -134,7 +134,7 @@
 						key="staticText-3"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[E-mail：]]></text>
 				</staticText>
@@ -150,7 +150,7 @@
 						key="textField-3"/>
 					<box rightPadding="2"><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{referenceEmail}]]></textFieldExpression>
 				</textField>
@@ -166,7 +166,7 @@
 						key="staticText-5"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[予約番号：]]></text>
 				</staticText>
@@ -182,7 +182,7 @@
 						key="textField-5"/>
 					<box rightPadding="2"><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="14" isBold="false" isItalic="false" isUnderline="true" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="14" isBold="false" isItalic="false" isUnderline="true" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{reserveNo}]]></textFieldExpression>
 				</textField>
@@ -198,7 +198,7 @@
 						key="textField-53"/>
 					<box rightPadding="2"><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{referenceTel}]]></textFieldExpression>
 				</textField>
@@ -214,7 +214,7 @@
 						key="textField-54"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="14" isBold="false" isItalic="false" isUnderline="true" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="14" isBold="false" isItalic="false" isUnderline="true" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{customerName}+ " 様"]]></textFieldExpression>
 				</textField>
@@ -230,7 +230,7 @@
 						key="textField-55"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{referenceName}]]></textFieldExpression>
 				</textField>
@@ -246,7 +246,7 @@
 						key="staticText-66"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[お問い合わせ先：]]></text>
 				</staticText>
@@ -262,7 +262,7 @@
 						key="staticText-67"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[E-mail：]]></text>
 				</staticText>
@@ -278,7 +278,7 @@
 						key="staticText-68"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[TEL：]]></text>
 				</staticText>
@@ -294,7 +294,7 @@
 						key="textField-56"/>
 					<box rightPadding="2"><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{referenceEmail}]]></textFieldExpression>
 				</textField>
@@ -310,7 +310,7 @@
 						key="textField-57"/>
 					<box rightPadding="2"><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{referenceTel}]]></textFieldExpression>
 				</textField>
@@ -326,7 +326,7 @@
 						key="staticText-69"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[予約番号：]]></text>
 				</staticText>
@@ -342,7 +342,7 @@
 						key="textField-58"/>
 					<box rightPadding="2"><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="14" isBold="false" isItalic="false" isUnderline="true" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="14" isBold="false" isItalic="false" isUnderline="true" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{reserveNo}]]></textFieldExpression>
 				</textField>
@@ -369,7 +369,7 @@
 						key="staticText-70"/>
 					<box leftPadding="5"><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="12" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="12" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[ツアー予約詳細情報]]></text>
 				</staticText>
@@ -387,7 +387,7 @@
 						stretchType="RelativeToBandHeight"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.util.Date"><![CDATA[$F{reservedDay}]]></textFieldExpression>
 				</textField>
@@ -405,7 +405,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5"><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="12" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="12" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[ツアー予約詳細情報]]></text>
 				</staticText>
@@ -423,7 +423,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box topPadding="5" leftPadding="5" rightPadding="5" bottomPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{tourName}]]></textFieldExpression>
 				</textField>
@@ -440,7 +440,7 @@
 						stretchType="RelativeToTallestObject"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[ツアー名]]></text>
 				</staticText>
@@ -457,7 +457,7 @@
 						stretchType="RelativeToTallestObject"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[申し込み日]]></text>
 				</staticText>
@@ -484,7 +484,7 @@
 						key="staticText-73"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[出発日]]></text>
 				</staticText>
@@ -500,7 +500,7 @@
 						key="textField-61"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.util.Date"><![CDATA[$F{depDay}]]></textFieldExpression>
 				</textField>
@@ -516,7 +516,7 @@
 						key="staticText-74"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[日数]]></text>
 				</staticText>
@@ -532,7 +532,7 @@
 						key="textField-62"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{tourDays}]]></textFieldExpression>
 				</textField>
@@ -548,7 +548,7 @@
 						key="textField-63"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{arrName}]]></textFieldExpression>
 				</textField>
@@ -564,7 +564,7 @@
 						key="staticText-75"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[目的地]]></text>
 				</staticText>
@@ -580,7 +580,7 @@
 						key="textField-64"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{depName}]]></textFieldExpression>
 				</textField>
@@ -596,7 +596,7 @@
 						key="staticText-76"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[出発地]]></text>
 				</staticText>
@@ -612,7 +612,7 @@
 						key="staticText-77"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[添乗員]]></text>
 				</staticText>
@@ -629,7 +629,7 @@
 						key="staticText-78"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[宿泊施設]]></text>
 				</staticText>
@@ -645,7 +645,7 @@
 						key="textField-65"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{accomName}]]></textFieldExpression>
 				</textField>
@@ -662,7 +662,7 @@
 						key="textField-66"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{conductor}]]></textFieldExpression>
 				</textField>
@@ -679,7 +679,7 @@
 						key="staticText-79"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[連絡先]]></text>
 				</staticText>
@@ -695,7 +695,7 @@
 						key="textField-67"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{accomTel}]]></textFieldExpression>
 				</textField>
@@ -725,7 +725,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box topPadding="5" leftPadding="5" rightPadding="5" bottomPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{tourAbs}]]></textFieldExpression>
 				</textField>
@@ -742,7 +742,7 @@
 						stretchType="RelativeToTallestObject"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[概要]]></text>
 				</staticText>
@@ -769,7 +769,7 @@
 						key="staticText-82"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[会員ID]]></text>
 				</staticText>
@@ -786,7 +786,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{customerCode}]]></textFieldExpression>
 				</textField>
@@ -803,7 +803,7 @@
 						stretchType="RelativeToTallestObject"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[フリガナ]]></text>
 				</staticText>
@@ -820,7 +820,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5"><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="12" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="12" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[代表者]]></text>
 				</staticText>
@@ -838,7 +838,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box topPadding="5" leftPadding="5" rightPadding="5" bottomPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{customerKana}]]></textFieldExpression>
 				</textField>
@@ -866,7 +866,7 @@
 						stretchType="RelativeToTallestObject"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[氏名]]></text>
 				</staticText>
@@ -884,7 +884,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box topPadding="5" leftPadding="5" rightPadding="5" bottomPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{customerName}]]></textFieldExpression>
 				</textField>
@@ -911,7 +911,7 @@
 						key="staticText-86"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[生年月日]]></text>
 				</staticText>
@@ -928,7 +928,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.util.Date"><![CDATA[$F{customerBirth}]]></textFieldExpression>
 				</textField>
@@ -946,7 +946,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box topPadding="5" leftPadding="5" rightPadding="5" bottomPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{customerJob}]]></textFieldExpression>
 				</textField>
@@ -963,7 +963,7 @@
 						stretchType="RelativeToTallestObject"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[職業]]></text>
 				</staticText>
@@ -991,7 +991,7 @@
 						stretchType="RelativeToTallestObject"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[Eメール]]></text>
 				</staticText>
@@ -1009,7 +1009,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box topPadding="5" leftPadding="5" rightPadding="5" bottomPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{customerMail}]]></textFieldExpression>
 				</textField>
@@ -1036,7 +1036,7 @@
 						key="staticText-123"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[電話番号]]></text>
 				</staticText>
@@ -1052,7 +1052,7 @@
 						key="staticText-124"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[郵便番号]]></text>
 				</staticText>
@@ -1069,7 +1069,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{customerPost}]]></textFieldExpression>
 				</textField>
@@ -1086,7 +1086,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{customerTel}]]></textFieldExpression>
 				</textField>
@@ -1105,7 +1105,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box topPadding="5" leftPadding="5" rightPadding="5" bottomPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{customerAdd}]]></textFieldExpression>
 				</textField>
@@ -1123,7 +1123,7 @@
 						stretchType="RelativeToTallestObject"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[住所]]></text>
 				</staticText>
@@ -1140,7 +1140,7 @@
 						stretchType="RelativeToTallestObject"/>
 					<box leftPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[連絡先]]></text>
 				</staticText>
@@ -1168,7 +1168,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="25"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{sumPrice}]]></textFieldExpression>
 				</textField>
@@ -1184,7 +1184,7 @@
 						key="staticText-93"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[合計料金]]></text>
 				</staticText>
@@ -1200,7 +1200,7 @@
 						key="staticText-94"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[料金]]></text>
 				</staticText>
@@ -1216,7 +1216,7 @@
 						key="staticText-95"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[人数]]></text>
 				</staticText>
@@ -1232,7 +1232,7 @@
 						key="staticText-96"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[単価]]></text>
 				</staticText>
@@ -1248,7 +1248,7 @@
 						key="staticText-97"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[年令区分]]></text>
 				</staticText>
@@ -1265,7 +1265,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="25"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{adultUnitPrice}]]></textFieldExpression>
 				</textField>
@@ -1282,7 +1282,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="25"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{childUnitPrice}]]></textFieldExpression>
 				</textField>
@@ -1299,7 +1299,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="60"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{adultCount}]]></textFieldExpression>
 				</textField>
@@ -1316,7 +1316,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="60"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{childCount}]]></textFieldExpression>
 				</textField>
@@ -1333,7 +1333,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="25"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{adultPrice}]]></textFieldExpression>
 				</textField>
@@ -1350,7 +1350,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="25"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{childPrice}]]></textFieldExpression>
 				</textField>
@@ -1366,7 +1366,7 @@
 						key="staticText-98"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[大人]]></text>
 				</staticText>
@@ -1382,7 +1382,7 @@
 						key="staticText-99"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[子ども]]></text>
 				</staticText>
@@ -1399,7 +1399,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5"><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="12" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="12" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[料金明細]]></text>
 				</staticText>
@@ -1416,7 +1416,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><bottomPen lineWidth="0.1" lineColor="#FFFFFF"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[円]]></text>
 				</staticText>
@@ -1433,7 +1433,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><bottomPen lineWidth="0.1" lineColor="#FFFFFF"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[円]]></text>
 				</staticText>
@@ -1450,7 +1450,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><bottomPen lineWidth="0.1" lineColor="#FFFFFF"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[円]]></text>
 				</staticText>
@@ -1467,7 +1467,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><bottomPen lineWidth="0.1" lineColor="#FFFFFF"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[円]]></text>
 				</staticText>
@@ -1484,7 +1484,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><bottomPen lineWidth="0.1" lineColor="#FFFFFF"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[円]]></text>
 				</staticText>
@@ -1501,7 +1501,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><bottomPen lineWidth="0.1" lineColor="#FFFFFF"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[人]]></text>
 				</staticText>
@@ -1518,7 +1518,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><bottomPen lineWidth="0.1" lineColor="#FFFFFF"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[人]]></text>
 				</staticText>
@@ -1547,7 +1547,7 @@
 						isPrintInFirstWholeBand="true"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[ご意見・ご要望]]></text>
 				</staticText>
@@ -1566,7 +1566,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{remarks}]]></textFieldExpression>
 				</textField>
@@ -1583,7 +1583,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5"><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="12" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="12" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[特記事項]]></text>
 				</staticText>
@@ -1611,7 +1611,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{paymentMethod}]]></textFieldExpression>
 				</textField>
@@ -1628,7 +1628,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[支払方法]]></text>
 				</staticText>
@@ -1645,7 +1645,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[振込口座]]></text>
 				</staticText>
@@ -1662,7 +1662,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[支払期限]]></text>
 				</staticText>
@@ -1679,7 +1679,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#FFFFFF"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{paymentCompanyName}]]></textFieldExpression>
 				</textField>
@@ -1696,7 +1696,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#FFFFFF"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{paymentAccount}]]></textFieldExpression>
 				</textField>
@@ -1713,7 +1713,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5"><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="12" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="12" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[支払情報]]></text>
 				</staticText>
@@ -1730,7 +1730,7 @@
 						isPrintWhenDetailOverflows="true"/>
 					<box leftPadding="5" rightPadding="5"><topPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.1" lineColor="#000000"/><rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{paymentTimeLimit}]]></textFieldExpression>
 				</textField>
@@ -1763,7 +1763,7 @@
 						key="staticText-1"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="1.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="18" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="18" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[予約明細票]]></text>
 				</staticText>
@@ -1779,7 +1779,7 @@
 						key="staticText-65"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[作成日：]]></text>
 				</staticText>
@@ -1795,7 +1795,7 @@
 						key="textField-52"/>
 					<box rightPadding="2"><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.util.Date"><![CDATA[$F{printDay}]]></textFieldExpression>
 				</textField>
@@ -1827,7 +1827,7 @@
 						key="textField-50"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
@@ -1843,7 +1843,7 @@
 						key="textField-51"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
@@ -1859,7 +1859,7 @@
 						key="staticText-64"/>
 					<box><topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/><bottomPen lineWidth="0.0" lineColor="#000000"/><rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/></box>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
-						<font fontName="ipam" pdfFontName="ipam" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+						<font fontName="IPAexMincho(Ver.004.01)" pdfFontName="IPAexMincho(Ver.004.01)" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" pdfEncoding ="Identity-H" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[/]]></text>
 				</staticText>

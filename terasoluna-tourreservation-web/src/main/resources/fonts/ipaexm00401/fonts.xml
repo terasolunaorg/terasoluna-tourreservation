@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <fontFamilies>
-  <fontFamily name="ipam">
+  <fontFamily name="IPAexMincho(Ver.004.01)">
     <normal>fonts/ipaexm00401/ipaexm.ttf</normal>
     <pdfEncoding>Identity-H</pdfEncoding>
     <pdfEmbedded>true</pdfEmbedded>
