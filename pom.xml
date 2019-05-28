@@ -157,7 +157,7 @@
 
       <!-- == Begin JasperReports == -->
       <dependency>
-        <groupId>jasperreports</groupId>
+        <groupId>net.sf.jasperreports</groupId>
         <artifactId>jasperreports</artifactId>
         <version>${jasperreports.version}</version>
         <exclusions>
@@ -288,7 +288,7 @@
     <com.google.code.maven-license-plugin.version>1.4.0</com.google.code.maven-license-plugin.version>
     <!-- == Dependency Versions == -->
     <postgresql.version>42.2.5.jre7</postgresql.version>
-    <jasperreports.version>3.5.1</jasperreports.version>
+    <jasperreports.version>5.2.0</jasperreports.version>
     <selenium.version>2.46.0</selenium.version>
     <lombok.version>1.18.4</lombok.version>
     <!-- == Project Properties == -->

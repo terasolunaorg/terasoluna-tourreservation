@@ -54,7 +54,7 @@
 
     <!-- == Begin JasperReports == -->
     <dependency>
-      <groupId>jasperreports</groupId>
+      <groupId>net.sf.jasperreports</groupId>
       <artifactId>jasperreports</artifactId>
     </dependency>
     <!-- == End JasperReports == -->
