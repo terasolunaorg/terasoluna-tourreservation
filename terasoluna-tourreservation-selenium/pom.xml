@@ -9,7 +9,7 @@
   <description>Selenium tests for Tour Reservation Application using TERASOLUNA Server Framework for Java (5.x)</description>
 
   <parent>
-    <version>5.5.1-SNAPSHOT</version>
+    <version>5.5.1.RELEASE</version>
     <artifactId>terasoluna-tourreservation</artifactId>
     <groupId>org.terasoluna.app</groupId>
     <relativePath>../pom.xml</relativePath>
