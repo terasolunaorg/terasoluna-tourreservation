@@ -70,7 +70,7 @@ public class Customer implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 64)
+    @Size(min = 1, max = 88)
     @Column(name = "customer_pass")
     private String customerPass;
 
