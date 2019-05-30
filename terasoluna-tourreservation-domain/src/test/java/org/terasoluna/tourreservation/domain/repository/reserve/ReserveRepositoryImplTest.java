@@ -241,7 +241,7 @@ public class ReserveRepositoryImplTest {
         assertThat(r.getCustomer().getCustomerMail(), is("tarou@example.com"));
         assertThat(r.getCustomer().getCustomerName(), is("木村　太郎"));
         assertThat(r.getCustomer().getCustomerPass(), is(
-                "$2a$12$Jfwcv/ZpfE0QjVlLT9CB9eqTLrYdAsvfGxXKvRMlpkfEn.9Uirgou"));
+                "{pbkdf2}34036dc513d126f31515bc6401347a33bc495df1b27b9b39c5770798caa96594616716943f2f33e4"));
         assertThat(r.getCustomer().getCustomerPost(), is("276-0022"));
         assertThat(r.getCustomer().getCustomerTel(), is("111-1111-1111"));
 
