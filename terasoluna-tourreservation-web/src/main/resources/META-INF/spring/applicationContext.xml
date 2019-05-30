@@ -8,7 +8,19 @@
 
   <import resource="classpath:/META-INF/spring/terasoluna-tourreservation-domain.xml" />
 
-  <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+  <bean id="passwordEncoder" class="org.springframework.security.crypto.password.DelegatingPasswordEncoder">
+    <constructor-arg name="idForEncode" value="pbkdf2" />
+    <constructor-arg name="idToPasswordEncoder">
+      <map>
+        <entry key="pbkdf2">
+          <bean class="org.springframework.security.crypto.password.Pbkdf2PasswordEncoder" />
+        </entry>
+        <entry key="bcrypt">
+          <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+        </entry>
+      </map>
+    </constructor-arg>
+  </bean>
 
   <context:property-placeholder location="classpath*:/META-INF/spring/*.properties" />
 
