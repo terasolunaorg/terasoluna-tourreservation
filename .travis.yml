@@ -16,6 +16,7 @@ install:
   - git clone --depth=1 --branch=$GFW_BRANCH https://github.com/terasolunaorg/terasoluna-gfw.git terasolunaorg/terasoluna-gfw
   - cd terasolunaorg/terasoluna-gfw
   - sh ./mvn-build-all.sh -B install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dsource.skip=true
+  - export CARGO_DAEMON_WEBAPP_VERSION=`mvn -B -f terasoluna-gfw-parent/pom.xml help:evaluate -Dexpression=cargo-maven2-plugin.version | grep -v '^\['`
   - popd
 
 before_script:
@@ -23,7 +24,6 @@ before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - export MAVEN_DEPENDENCY_PLUGIN_VERSION=2.8
-  - export CARGO_DAEMON_WEBAPP_VERSION=1.4.17
   - mvn -B org.apache.maven.plugins:maven-dependency-plugin:${MAVEN_DEPENDENCY_PLUGIN_VERSION}:copy -Dartifact=org.codehaus.cargo:cargo-daemon-webapp:${CARGO_DAEMON_WEBAPP_VERSION}:war -DoutputDirectory=./target/.
   - java -jar ./target/cargo-daemon-webapp-${CARGO_DAEMON_WEBAPP_VERSION}.war &
 
