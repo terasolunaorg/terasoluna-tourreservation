@@ -9,6 +9,8 @@ addons:
 cache:
   directories:
     - $HOME/.m2
+services:
+  - xvfb
 
 install:
   - pushd `pwd`
@@ -21,8 +23,6 @@ install:
 
 before_script:
   - psql -c 'create database tourreserve;' -U postgres
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
   - export CARGO_DAEMON_WEBAPP_VERSION=1.6.2
   - mvn dependency:copy -Dartifact=org.codehaus.cargo:cargo-daemon-webapp:${CARGO_DAEMON_WEBAPP_VERSION}:war -DoutputDirectory=./target/.
   - java -jar ./target/cargo-daemon-webapp-${CARGO_DAEMON_WEBAPP_VERSION}.war &
