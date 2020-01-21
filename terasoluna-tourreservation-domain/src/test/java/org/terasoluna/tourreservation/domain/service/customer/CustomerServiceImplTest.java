@@ -29,7 +29,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.terasoluna.gfw.common.sequencer.Sequencer;
 import org.terasoluna.tourreservation.domain.model.Customer;
 import org.terasoluna.tourreservation.domain.repository.customer.CustomerRepository;
@@ -47,7 +47,7 @@ public class CustomerServiceImplTest {
         customerService = new CustomerServiceImpl();
         customerRepository = mock(CustomerRepository.class);
         customerService.customerRepository = customerRepository;
-        customerService.passwordEncoder = new BCryptPasswordEncoder();
+        customerService.passwordEncoder = new Pbkdf2PasswordEncoder();
         sequencer = mock(Sequencer.class);
         customerService.customerCodeSeq = sequencer;
     }
