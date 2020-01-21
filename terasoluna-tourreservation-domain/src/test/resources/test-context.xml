@@ -20,7 +20,27 @@
     </constructor-arg>
   </bean>
 
-  <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+  <bean id="passwordEncoder" class="org.springframework.security.crypto.password.DelegatingPasswordEncoder">
+    <constructor-arg name="idForEncode" value="pbkdf2" />
+    <constructor-arg name="idToPasswordEncoder">
+      <map>
+        <entry key="pbkdf2">
+          <bean class="org.springframework.security.crypto.password.Pbkdf2PasswordEncoder" />
+        </entry>
+        <entry key="bcrypt">
+          <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+        </entry>
+        <!-- When using commented out PasswordEncoders, you need to add bcprov-jdk15on.jar to the dependency.
+        <entry key="argon2">
+          <bean class="org.springframework.security.crypto.argon2.Argon2PasswordEncoder" />
+        </entry>
+        <entry key="scrypt">
+          <bean class="org.springframework.security.crypto.scrypt.SCryptPasswordEncoder" />
+        </entry>
+        -->
+      </map>
+    </constructor-arg>
+  </bean>
 
   <bean id="exceptionLogger" class="org.terasoluna.gfw.common.exception.ExceptionLogger" />
 
