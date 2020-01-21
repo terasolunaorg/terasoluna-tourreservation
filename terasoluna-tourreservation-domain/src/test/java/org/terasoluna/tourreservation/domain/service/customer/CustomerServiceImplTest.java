@@ -25,26 +25,16 @@ import static org.mockito.Mockito.when;
 
 import java.util.Optional;
 
-import javax.inject.Inject;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.terasoluna.gfw.common.sequencer.Sequencer;
 import org.terasoluna.tourreservation.domain.model.Customer;
 import org.terasoluna.tourreservation.domain.repository.customer.CustomerRepository;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:test-context.xml" })
 public class CustomerServiceImplTest {
-    @Inject
-    PasswordEncoder passwoedEncoder;
-
     CustomerServiceImpl customerService;
 
     CustomerRepository customerRepository;
@@ -57,7 +47,7 @@ public class CustomerServiceImplTest {
         customerService = new CustomerServiceImpl();
         customerRepository = mock(CustomerRepository.class);
         customerService.customerRepository = customerRepository;
-        customerService.passwordEncoder = passwoedEncoder;
+        customerService.passwordEncoder = new BCryptPasswordEncoder();
         sequencer = mock(Sequencer.class);
         customerService.customerCodeSeq = sequencer;
     }
