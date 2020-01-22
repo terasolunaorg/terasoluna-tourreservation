@@ -23,6 +23,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.junit.After;
@@ -30,6 +32,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.terasoluna.gfw.common.sequencer.Sequencer;
 import org.terasoluna.tourreservation.domain.model.Customer;
 import org.terasoluna.tourreservation.domain.repository.customer.CustomerRepository;
@@ -47,7 +52,11 @@ public class CustomerServiceImplTest {
         customerService = new CustomerServiceImpl();
         customerRepository = mock(CustomerRepository.class);
         customerService.customerRepository = customerRepository;
-        customerService.passwordEncoder = new BCryptPasswordEncoder();
+        String encodingId = "pbkdf2";
+        Map<String, PasswordEncoder> encoders = new HashMap<>();
+        encoders.put("pbkdf2", new Pbkdf2PasswordEncoder());
+        encoders.put("bcrypt", new BCryptPasswordEncoder());
+        customerService.passwordEncoder = new DelegatingPasswordEncoder(encodingId, encoders);
         sequencer = mock(Sequencer.class);
         customerService.customerCodeSeq = sequencer;
     }
