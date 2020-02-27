@@ -30,13 +30,8 @@
     <level value="warn" />
   </logger>
 
-  <logger name="jdbc.sqltiming">
-    <level value="debug" />
-  </logger>
-
-  <!-- only for development -->
-  <logger name="jdbc.resultsettable">
-    <level value="debug" />
+  <logger name="org.springframework.jdbc.core.JdbcTemplate">
+    <level value="trace" />
   </logger>
 
   <root level="warn">
