@@ -61,15 +61,21 @@
     <level value="info" />
   </logger>
 
-  <logger name="org.hibernate.engine.transaction">
-    <level value="debug" />
-  </logger>
-  <logger name="jdbc.sqltiming">
-    <level value="debug" />
+  <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+    <level value="trace" />
   </logger>
 
-  <!-- only for development -->
-  <logger name="jdbc.resultsettable">
+  <logger name="org.springframework.jdbc.core.JdbcTemplate">
+    <level value="trace" />
+  </logger>
+
+  <logger name="org.hibernate.SQL" additivity="true">
+    <level value="debug" />
+  </logger>
+  <logger name="org.hibernate.type">
+    <level value="trace" />
+  </logger>
+  <logger name="org.hibernate.engine.transaction">
     <level value="debug" />
   </logger>
 
