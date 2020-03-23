@@ -37,6 +37,10 @@
     <level value="debug" />
   </logger>
 
+  <logger name="org.terasoluna.tourreservation.domain.repository">
+    <level value="trace" />
+  </logger>
+
   <!-- TERASOLUNA -->
   <logger name="org.terasoluna.gfw">
     <level value="info" />
