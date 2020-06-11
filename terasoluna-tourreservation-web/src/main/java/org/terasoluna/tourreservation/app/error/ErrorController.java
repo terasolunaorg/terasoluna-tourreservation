@@ -16,9 +16,8 @@
 package org.terasoluna.tourreservation.app.error;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("error")
@@ -28,7 +27,7 @@ public class ErrorController {
      * Shows the access denied error view.
      * @return access denied error view
      */
-    @GetMapping("accessDeniedError")
+    @RequestMapping(value = "accessDeniedError", method = RequestMethod.GET)
     public String accessDeniedError() {
         return "common/error/accessDeniedError";
     }
@@ -37,7 +36,7 @@ public class ErrorController {
      * Shows the resource not found error view.
      * @return resource not found error view
      */
-    @PostMapping("resourceNotFoundError")
+    @RequestMapping(value = "resourceNotFoundError", method = RequestMethod.POST)
     public String resourceNotFoundError() {
         return "common/error/resourceNotFoundError";
     }
@@ -46,7 +45,7 @@ public class ErrorController {
      * Shows the system error view.
      * @return system error view
      */
-    @PostMapping("systemError")
+    @RequestMapping(value = "systemError", method = RequestMethod.POST)
     public String systemError() {
         return "common/error/systemError";
     }
@@ -55,7 +54,7 @@ public class ErrorController {
      * Shows the invalid csrf token error view.
      * @return invalid csrf token error view
      */
-    @PostMapping("invalidCsrfTokenError")
+    @RequestMapping(value = "invalidCsrfTokenError", method = RequestMethod.POST)
     public String invalidCsrfTokenError() {
         return "common/error/invalidCsrfTokenError";
     }
@@ -64,7 +63,7 @@ public class ErrorController {
      * Shows the missing csrf token error view.
      * @return missing csrf token error view
      */
-    @PostMapping("missingCsrfTokenError")
+    @RequestMapping(value = "missingCsrfTokenError", method = RequestMethod.POST)
     public String missingCsrfTokenError() {
         return "common/error/missingCsrfTokenError";
     }
