@@ -26,7 +26,7 @@ import org.terasoluna.tourreservation.tourreserve.common.constants.MessageKeys;
 import java.util.Locale;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {

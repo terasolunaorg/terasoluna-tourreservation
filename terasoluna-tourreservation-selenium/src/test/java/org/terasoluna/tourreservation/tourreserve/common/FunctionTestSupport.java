@@ -31,7 +31,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.support.ApplicationObjectSupport;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public abstract class FunctionTestSupport extends ApplicationObjectSupport {
 
