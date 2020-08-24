@@ -15,9 +15,10 @@
  */
 package org.terasoluna.tourreservation.domain.service.tourinfo;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,6 @@ import org.terasoluna.tourreservation.domain.model.Departure;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoRepository;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoSearchCriteria;
-import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoServiceImpl;
 
 public class TourInfoServiceImplTest {
     TourInfoServiceImpl tourInfoService;

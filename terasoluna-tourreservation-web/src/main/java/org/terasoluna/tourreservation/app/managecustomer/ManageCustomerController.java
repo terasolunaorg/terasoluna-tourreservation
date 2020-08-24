@@ -17,9 +17,6 @@ package org.terasoluna.tourreservation.app.managecustomer;
 
 import javax.inject.Inject;
 
-import lombok.extern.slf4j.Slf4j;
-
-import com.github.dozermapper.core.Mapper;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -35,6 +32,10 @@ import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 import org.terasoluna.tourreservation.domain.model.Customer;
 import org.terasoluna.tourreservation.domain.service.customer.CustomerService;
+
+import com.github.dozermapper.core.Mapper;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Handle request of customer register.

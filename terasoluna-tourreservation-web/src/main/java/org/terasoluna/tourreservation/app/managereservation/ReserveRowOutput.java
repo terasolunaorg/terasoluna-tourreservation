@@ -15,11 +15,11 @@
  */
 package org.terasoluna.tourreservation.app.managereservation;
 
+import org.terasoluna.tourreservation.domain.model.Reserve;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import org.terasoluna.tourreservation.domain.model.Reserve;
 
 @Data
 @NoArgsConstructor

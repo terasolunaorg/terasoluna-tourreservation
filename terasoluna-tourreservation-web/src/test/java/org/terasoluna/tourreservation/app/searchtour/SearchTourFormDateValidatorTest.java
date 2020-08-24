@@ -23,7 +23,6 @@ import org.junit.Test;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.DirectFieldBindingResult;
 import org.springframework.validation.FieldError;
-import org.terasoluna.tourreservation.app.searchtour.SearchTourFormDateValidator;
 
 public class SearchTourFormDateValidatorTest {
 

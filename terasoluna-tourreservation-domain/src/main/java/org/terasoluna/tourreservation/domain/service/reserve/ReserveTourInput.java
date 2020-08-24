@@ -15,9 +15,9 @@
  */
 package org.terasoluna.tourreservation.domain.service.reserve;
 
-import lombok.Data;
-
 import org.terasoluna.tourreservation.domain.model.Customer;
+
+import lombok.Data;
 
 @Data
 public class ReserveTourInput {

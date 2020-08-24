@@ -17,8 +17,6 @@ package org.terasoluna.tourreservation.domain.service.tourinfo;
 
 import javax.inject.Inject;
 
-import lombok.extern.slf4j.Slf4j;
-
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +24,8 @@ import org.springframework.util.Assert;
 import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoRepository;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
