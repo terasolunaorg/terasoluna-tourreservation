@@ -16,14 +16,13 @@
 package org.terasoluna.tourreservation.app.searchtour;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.DirectFieldBindingResult;
 import org.springframework.validation.FieldError;
-import org.terasoluna.tourreservation.app.searchtour.SearchTourFormDateValidator;
 
 public class SearchTourFormDateValidatorTest {
 

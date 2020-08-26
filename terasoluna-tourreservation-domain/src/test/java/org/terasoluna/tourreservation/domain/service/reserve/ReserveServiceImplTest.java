@@ -18,21 +18,20 @@ package org.terasoluna.tourreservation.domain.service.reserve;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.terasoluna.gfw.common.message.StandardResultMessageType.ERROR;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import com.github.dozermapper.core.DozerBeanMapperBuilder;
-import com.github.dozermapper.core.Mapper;
 import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Before;
@@ -42,7 +41,6 @@ import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.gfw.common.message.ResultMessageType;
 import org.terasoluna.gfw.common.message.ResultMessages;
-import static org.terasoluna.gfw.common.message.StandardResultMessageType.*;
 import org.terasoluna.gfw.common.sequencer.Sequencer;
 import org.terasoluna.tourreservation.domain.common.constants.MessageId;
 import org.terasoluna.tourreservation.domain.model.Accommodation;
@@ -55,6 +53,9 @@ import org.terasoluna.tourreservation.domain.repository.reserve.ReserveRepositor
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateSharedService;
 import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoSharedService;
+
+import com.github.dozermapper.core.DozerBeanMapperBuilder;
+import com.github.dozermapper.core.Mapper;
 
 public class ReserveServiceImplTest {
 

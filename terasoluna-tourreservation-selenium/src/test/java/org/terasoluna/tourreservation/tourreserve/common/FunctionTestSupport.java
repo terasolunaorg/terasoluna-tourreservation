@@ -15,6 +15,9 @@
  */
 package org.terasoluna.tourreservation.tourreserve.common;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -29,9 +32,6 @@ import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ApplicationObjectSupport;
-
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 
 public abstract class FunctionTestSupport extends ApplicationObjectSupport {
 

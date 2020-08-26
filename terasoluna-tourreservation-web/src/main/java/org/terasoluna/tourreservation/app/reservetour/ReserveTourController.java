@@ -15,7 +15,8 @@
  */
 package org.terasoluna.tourreservation.app.reservetour;
 
-import lombok.extern.slf4j.Slf4j;
+import javax.inject.Inject;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +33,7 @@ import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 import org.terasoluna.tourreservation.domain.service.reserve.ReserveTourOutput;
 import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
 
-import javax.inject.Inject;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Handle request of tour searching.

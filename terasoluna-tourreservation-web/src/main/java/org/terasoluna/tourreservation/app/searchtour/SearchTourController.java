@@ -19,9 +19,6 @@ import java.util.Date;
 
 import javax.inject.Inject;
 
-import lombok.extern.slf4j.Slf4j;
-
-import com.github.dozermapper.core.Mapper;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.springframework.data.domain.Page;
@@ -42,6 +39,10 @@ import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoSearchCriteria;
 import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoService;
+
+import com.github.dozermapper.core.Mapper;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Handle request of tour searching.

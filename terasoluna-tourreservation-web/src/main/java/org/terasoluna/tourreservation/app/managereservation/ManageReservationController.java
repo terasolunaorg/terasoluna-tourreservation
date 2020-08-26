@@ -15,7 +15,10 @@
  */
 package org.terasoluna.tourreservation.app.managereservation;
 
-import com.github.dozermapper.core.Mapper;
+import java.util.List;
+import java.util.Locale;
+
+import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -37,9 +40,7 @@ import org.terasoluna.tourreservation.domain.service.reserve.ReservationUpdateOu
 import org.terasoluna.tourreservation.domain.service.reserve.ReserveService;
 import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
 
-import javax.inject.Inject;
-import java.util.List;
-import java.util.Locale;
+import com.github.dozermapper.core.Mapper;
 
 @Controller
 @RequestMapping(value = "reservations")

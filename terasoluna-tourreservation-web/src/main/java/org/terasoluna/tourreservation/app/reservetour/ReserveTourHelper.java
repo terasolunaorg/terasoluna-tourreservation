@@ -17,7 +17,6 @@ package org.terasoluna.tourreservation.app.reservetour;
 
 import javax.inject.Inject;
 
-import com.github.dozermapper.core.Mapper;
 import org.springframework.stereotype.Component;
 import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.tourreservation.domain.model.Customer;
@@ -29,6 +28,8 @@ import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutp
 import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateSharedService;
 import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoSharedService;
 import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
+
+import com.github.dozermapper.core.Mapper;
 
 @Component
 public class ReserveTourHelper {

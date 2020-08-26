@@ -31,9 +31,6 @@ import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import com.github.dozermapper.core.DozerBeanMapperBuilder;
-import com.github.dozermapper.core.Mapper;
-
 import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
@@ -51,6 +48,9 @@ import org.terasoluna.tourreservation.domain.service.reserve.ReservationUpdateIn
 import org.terasoluna.tourreservation.domain.service.reserve.ReservationUpdateOutput;
 import org.terasoluna.tourreservation.domain.service.reserve.ReserveService;
 import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
+
+import com.github.dozermapper.core.DozerBeanMapperBuilder;
+import com.github.dozermapper.core.Mapper;
 
 public class ManageReservationControllerTest {
 
