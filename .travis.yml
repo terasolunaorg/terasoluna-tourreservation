@@ -41,8 +41,8 @@ script:
   - mvn -B xml:check-format -f terasoluna-tourreservation-initdb/pom.xml
   - mvn -B xml:check-format -f terasoluna-tourreservation-selenium/pom.xml
   - mvn -B formatter:validate
-  - mvn -B -U sql:execute -f terasoluna-tourreservation-initdb/pom.xml -Ddb.url=jdbc:postgresql://127.0.0.1:5433/tourreserve -Ddb.password=
-  - sed -i -e "s/localhost/localhost:5433/" *env/src/main/resources/META-INF/*/*infra.properties
+  - mvn -B -U sql:execute -f terasoluna-tourreservation-initdb/pom.xml -Ddb.url=jdbc:postgresql://127.0.0.1:${PGPORT}/tourreserve -Ddb.password=
+  - sed -i -e "s/localhost/localhost:${PGPORT}/" *env/src/main/resources/META-INF/*/*infra.properties
   - mvn -B -U install
   - mvn -B -U cargo:daemon-start -f terasoluna-tourreservation-web/pom.xml
   - mvn -B -U test -f terasoluna-tourreservation-selenium/pom.xml
