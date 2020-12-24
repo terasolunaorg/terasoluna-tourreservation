@@ -87,14 +87,13 @@
     <!-- == End TERASOLUNA == -->
 
     <!-- == Begin Tomcat == -->
-    <!-- Servlet API 3.0 & JSP API 2.2 -->
+    <!-- Servlet API 4.0 & JSP API 2.3 -->
     <dependency>
       <groupId>org.apache.tomcat</groupId>
       <artifactId>tomcat-jsp-api</artifactId>
       <scope>provided</scope>
     </dependency>
 
-    <!-- JavaEE/SE APIs -->
     <!-- Required only for Tomcat. If run on other J2EE server, remove this dependency and use provided 
       tag libraries. -->
     <dependency>
