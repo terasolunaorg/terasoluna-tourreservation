@@ -3,7 +3,16 @@
   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
   version="3.0">
 
+  <context-param>
+    <param-name>logbackDisableServletContainerInitializer</param-name>
+    <param-value>true</param-value>
+  </context-param>
+
   <!-- Listeners -->
+  <listener>
+    <listener-class>ch.qos.logback.classic.servlet.LogbackServletContextListener</listener-class>
+  </listener>
+
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
