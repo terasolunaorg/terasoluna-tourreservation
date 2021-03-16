@@ -22,7 +22,7 @@ services:
 install:
   - pushd `pwd`
   - cd $HOME/build
-  - if [[ -z $GFW_BRANCH ]]; then GFW_BRANCH=master; fi
+  - if [[ -z $GFW_BRANCH ]]; then GFW_BRANCH=release/5.7.0.RC1; fi
   - git clone --depth=1 --branch=$GFW_BRANCH https://github.com/terasolunaorg/terasoluna-gfw.git terasolunaorg/terasoluna-gfw
   - cd terasolunaorg/terasoluna-gfw
   - sh ./mvn-build-all.sh -B install -P default -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dsource.skip=true
