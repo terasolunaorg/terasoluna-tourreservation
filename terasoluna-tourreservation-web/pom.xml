@@ -14,6 +14,23 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+    <resources>
+      <resource>
+        <directory>${project.basedir}/src/main/resources</directory>
+        <excludes>
+          <exclude>**/reservationReportExcel.xlsx</exclude>
+        </excludes>
+      </resource>
+    </resources>
+  </build>
+
   <!-- Please generate the war file using following Maven command. * Generate for local development environment 
     mvn clean package * Generate for test or production environment (exclude the projectName-env.jar) mvn 
     -P warpack clean package * Generate for test or production environment (include the projectName-env.jar) 
@@ -45,17 +62,6 @@
       </dependencies>
     </profile>
   </profiles>
-
-  <build>
-    <resources>
-      <resource>
-        <directory>${project.basedir}/src/main/resources</directory>
-        <excludes>
-          <exclude>**/reservationReportExcel.xlsx</exclude>
-        </excludes>
-      </resource>
-    </resources>
-  </build>
 
   <dependencies>
     <dependency>
