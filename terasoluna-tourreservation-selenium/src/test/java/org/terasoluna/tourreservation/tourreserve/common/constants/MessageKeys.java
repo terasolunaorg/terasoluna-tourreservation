@@ -497,9 +497,8 @@ public class MessageKeys {
 
     /**
      * label.tr.searchtour.searchtourReserveDetailMessage=Make the payment at the reception or in the bank account before the
-     * payment due-date.<br \/>
-     * Also, note that if payment is not done by the due-date, it is possible that the reservation may get cancelled.<br \/>
-     * \n Thank you for your understanding<br \/>
+     * payment due-date.<br \/> Also, note that if payment is not done by the due-date, it is possible that the reservation may
+     * get cancelled.<br \/> \n Thank you for your understanding<br \/>
      */
     public static final String LABEL_TR_SEARCHTOUR_SEARCHTOURRESERVEDETAILMESSAGE = "label.tr.searchtour.searchtourReserveDetailMessage";
 
@@ -523,17 +522,14 @@ public class MessageKeys {
 
     /**
      * label.tr.managereservation.manageReservationNoRecordMessage=For checking details, making changes to a reservation or
-     * canceling a reservation, <br \/>
-     * press \"Check Details\", \"Edit\", \"Delete\" button respectively <br \/>
-     * <br \/>
+     * canceling a reservation, <br \/> press \"Check Details\", \"Edit\", \"Delete\" button respectively <br \/> <br \/>
      */
     public static final String LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONNORECORDMESSAGE = "label.tr.managereservation.manageReservationNoRecordMessage";
 
     /**
      * label.tr.managereservation.manageReservationNoCancelMessage=The Tours for which the payment has been done or payment due
-     * date has already passed, <br \/>
-     * it cannot be changed or canceled on the website.<br \/>
-     * \nPlease call us on phone at (01-2345-6789) or visit our office.
+     * date has already passed, <br \/> it cannot be changed or canceled on the website.<br \/> \nPlease call us on phone at
+     * (01-2345-6789) or visit our office.
      */
     public static final String LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONNOCANCELMESSAGE = "label.tr.managereservation.manageReservationNoCancelMessage";
 
@@ -600,21 +596,22 @@ public class MessageKeys {
      */
     public static final String LABEL_TR_MANAGERESERVATION_UPDATEDSCREENFLOWMESSAGE = "label.tr.managereservation.updatedScreenFlowMessage";
 
-    /** label.tr.managereservation.updatedFinishMessage=The reservation has been changed as below.<br> */
+    /**
+     * label.tr.managereservation.updatedFinishMessage=The reservation has been changed as below.<br>
+     */
     public static final String LABEL_TR_MANAGERESERVATION_UPDATEDFINISHMESSAGE = "label.tr.managereservation.updatedFinishMessage";
 
     /**
      * label.tr.managereservation.paymentReminderMessage=Make the payment at the reception or in the bank account before the
-     * payment due-date.<br \/>
-     * Also, note that if payment is not done by the due-date, it is possible that the reservation may get cancelled.<br \/>
-     * \n Thank you for your understanding<br \/>
+     * payment due-date.<br \/> Also, note that if payment is not done by the due-date, it is possible that the reservation may
+     * get cancelled.<br \/> \n Thank you for your understanding<br \/>
      */
     public static final String LABEL_TR_MANAGERESERVATION_PAYMENTREMINDERMESSAGE = "label.tr.managereservation.paymentReminderMessage";
 
     /**
-     * label.tr.managereservation.paymentNoCancelMessage=The payment for this reservation has been done.<br \/>
-     * \nThereby, this reservation cannot be changed or cancelled from the website.<br \/>
-     * \nPlease visit the travel desk or contact us on phone at (01-2345-6789) for changes and cancellation related procedures<br \/>
+     * label.tr.managereservation.paymentNoCancelMessage=The payment for this reservation has been done.<br \/> \nThereby, this
+     * reservation cannot be changed or cancelled from the website.<br \/> \nPlease visit the travel desk or contact us on phone
+     * at (01-2345-6789) for changes and cancellation related procedures<br \/>
      */
     public static final String LABEL_TR_MANAGERESERVATION_PAYMENTNOCANCELMESSAGE = "label.tr.managereservation.paymentNoCancelMessage";
 
@@ -687,7 +684,9 @@ public class MessageKeys {
     /** label.tr.managereservation.beforecancelScreenTitleMessage=Confirmation for Cancel Reservation */
     public static final String LABEL_TR_MANAGERESERVATION_BEFORECANCELSCREENTITLEMESSAGE = "label.tr.managereservation.beforecancelScreenTitleMessage";
 
-    /** label.tr.managereservation.beforecancelScreenFlowMessage=<strong>Confirm Cancellation Contents<\/strong> \u21D2 Finish */
+    /**
+     * label.tr.managereservation.beforecancelScreenFlowMessage=<strong>Confirm Cancellation Contents<\/strong> \u21D2 Finish
+     */
     public static final String LABEL_TR_MANAGERESERVATION_BEFORECANCELSCREENFLOWMESSAGE = "label.tr.managereservation.beforecancelScreenFlowMessage";
 
     /**

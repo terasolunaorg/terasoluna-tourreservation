@@ -191,8 +191,8 @@ public class SearchTourControllerTest {
     }
 
     /**
-     * This method tests the failure case of Search operation due to validation error. This test case will confirm working of @InitiBinder
-     * and @Validated annotations <br>
+     * This method tests the failure case of Search operation due to validation error. This test case will confirm working
+     * of @InitiBinder and @Validated annotations <br>
      * </p>
      */
     @Test
