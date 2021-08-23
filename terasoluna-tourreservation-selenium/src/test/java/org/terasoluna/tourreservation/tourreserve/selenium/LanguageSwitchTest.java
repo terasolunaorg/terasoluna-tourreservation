@@ -59,7 +59,8 @@ public class LanguageSwitchTest extends FunctionTestSupport {
 
             String afterTitle = driver.getTitle();
             String switchLinkName = driver.findElement(By.id(isEn
-                    ? enSwitchLinkId : jaSwitchLinkId)).getText();
+                    ? enSwitchLinkId
+                    : jaSwitchLinkId)).getText();
 
             assertThat(beforeTitle, is(isEn ? enTitle : jaTitle));
             assertThat(afterTitle, is(isEn ? jaTitle : enTitle));
@@ -75,7 +76,8 @@ public class LanguageSwitchTest extends FunctionTestSupport {
 
             String afterTitle = driver.getTitle();
             String switchLinkName = driver.findElement(By.id(isEn
-                    ? jaSwitchLinkId : enSwitchLinkId)).getText();
+                    ? jaSwitchLinkId
+                    : enSwitchLinkId)).getText();
 
             assertThat(afterTitle, is(isEn ? enTitle : jaTitle));
             assertThat(switchLinkName, is(isEn ? jaSwitchLinkName

@@ -538,7 +538,8 @@ public final class MessageId {
 
     /**
      * <strong>label.tr.searchtour.pressReserveBtnMessage = Once the Tour details are confirmed, please press the Reserve button
-     * below. </br> Please fill in, if there are any suggestions. </strong>
+     * below. </br>
+     * Please fill in, if there are any suggestions. </strong>
      */
     public static final String LABEL_TR_SEARCHTOUR_PRESSRESERVEBTNMESSAGE = "label.tr.searchtour.pressReserveBtnMessage";
 
@@ -774,8 +775,9 @@ public final class MessageId {
     public static final String LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONMESSAGE = "label.tr.managereservation.manageReservationMessage";
 
     /**
-     * <strong>label.tr.managereservation.manageReservationFlowMessage = <strong>Confirm the List of Reservations </strong>　⇒
-     * Confirm the Details</br></strong>
+     * <strong>label.tr.managereservation.manageReservationFlowMessage = <strong>Confirm the List of Reservations </strong> ⇒
+     * Confirm the Details</br>
+     * </strong>
      */
     public static final String LABEL_TR_MANAGERESERVATION_MANAGERESERVATIONFLOWMESSAGE = "label.tr.managereservation.manageReservationFlowMessage";
 
@@ -903,7 +905,8 @@ public final class MessageId {
     /**
      * <strong>label.tr.managereservation.paymentReminderMessage = Please make the payment at the reception or in the bank
      * account before the payment due-date.<br />
-     * Also, please note that if payment is not done by the due-date, it is possible that the reservation may get cancelled.<br />
+     * Also, please note that if payment is not done by the due-date, it is possible that the reservation may get
+     * cancelled.<br />
      * Thank you for your understanding<br />
      * </strong>
      */
@@ -912,7 +915,8 @@ public final class MessageId {
     /**
      * <strong>label.tr.managereservation.paymentNoCancelMessage = The payment for this reservation has been done.<br />
      * Thereby, this reservation cannot be changed or cancelled from the web.<br />
-     * Please visit the travel desk or contact us on phone at (01-2345-6789) for changes and cancellation related procedures<br />
+     * Please visit the travel desk or contact us on phone at (01-2345-6789) for changes and cancellation related
+     * procedures<br />
      * </strong>
      */
     public static final String LABEL_TR_MANAGERESERVATION_PAYMENTNOCANCELMESSAGE = "label.tr.managereservation.paymentNoCancelMessage";
