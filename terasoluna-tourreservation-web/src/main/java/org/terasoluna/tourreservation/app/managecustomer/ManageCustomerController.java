@@ -26,8 +26,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
@@ -101,7 +101,7 @@ public class ManageCustomerController {
      * Return to main input screen
      * @return
      */
-    @RequestMapping(value = "create", method = RequestMethod.POST, params = "redo")
+    @PostMapping(value = "create", params = "redo")
     public String createRedo(CustomerForm form) {
         return "managecustomer/createForm";
     }
@@ -113,7 +113,7 @@ public class ManageCustomerController {
      * @return
      */
     @TransactionTokenCheck(value = "create", type = TransactionTokenType.BEGIN)
-    @RequestMapping(value = "create", method = RequestMethod.POST, params = "confirm")
+    @PostMapping(value = "create", params = "confirm")
     public String createConfirm(@Validated CustomerForm form,
             BindingResult result) {
         if (result.hasErrors()) {
@@ -130,7 +130,7 @@ public class ManageCustomerController {
      * @return
      */
     @TransactionTokenCheck(value = "create", type = TransactionTokenType.IN)
-    @RequestMapping(value = "create", method = RequestMethod.POST)
+    @PostMapping(value = "create")
     public String create(@Validated CustomerForm form, BindingResult result,
             RedirectAttributes redirectAttr) {
         if (result.hasErrors()) {

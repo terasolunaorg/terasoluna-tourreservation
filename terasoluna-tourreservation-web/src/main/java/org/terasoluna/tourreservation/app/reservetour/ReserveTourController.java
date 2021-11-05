@@ -25,8 +25,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
@@ -86,7 +86,7 @@ public class ReserveTourController {
      * @return
      */
     @TransactionTokenCheck(value = "reserve", type = TransactionTokenType.BEGIN)
-    @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.POST, params = "confirm")
+    @PostMapping(value = "{tourCode}/reserve", params = "confirm")
     public String confirm(
             @AuthenticationPrincipal ReservationUserDetails userDetails,
             @PathVariable("tourCode") String tourCode,
@@ -113,7 +113,7 @@ public class ReserveTourController {
      * @return
      */
     @TransactionTokenCheck(value = "reserve", type = TransactionTokenType.IN)
-    @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.POST)
+    @PostMapping(value = "{tourCode}/reserve")
     public String reserve(
             @AuthenticationPrincipal ReservationUserDetails userDetails,
             @PathVariable("tourCode") String tourCode,
@@ -146,7 +146,7 @@ public class ReserveTourController {
         return "reservetour/reserveComplete";
     }
 
-    @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.POST, params = "redo")
+    @PostMapping(value = "{tourCode}/reserve", params = "redo")
     public String reserveRedo(
             @AuthenticationPrincipal ReservationUserDetails userDetails,
             @PathVariable("tourCode") String tourCode, ReserveTourForm form,

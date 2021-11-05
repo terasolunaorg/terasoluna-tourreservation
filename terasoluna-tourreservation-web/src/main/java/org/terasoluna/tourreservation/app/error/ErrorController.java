@@ -17,8 +17,8 @@ package org.terasoluna.tourreservation.app.error;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("error")
@@ -37,7 +37,7 @@ public class ErrorController {
      * Shows the resource not found error view.
      * @return resource not found error view
      */
-    @RequestMapping(value = "resourceNotFoundError", method = RequestMethod.POST)
+    @PostMapping(value = "resourceNotFoundError")
     public String resourceNotFoundError() {
         return "common/error/resourceNotFoundError";
     }
@@ -46,7 +46,7 @@ public class ErrorController {
      * Shows the system error view.
      * @return system error view
      */
-    @RequestMapping(value = "systemError", method = RequestMethod.POST)
+    @PostMapping(value = "systemError")
     public String systemError() {
         return "common/error/systemError";
     }
@@ -55,7 +55,7 @@ public class ErrorController {
      * Shows the invalid csrf token error view.
      * @return invalid csrf token error view
      */
-    @RequestMapping(value = "invalidCsrfTokenError", method = RequestMethod.POST)
+    @PostMapping(value = "invalidCsrfTokenError")
     public String invalidCsrfTokenError() {
         return "common/error/invalidCsrfTokenError";
     }
@@ -64,7 +64,7 @@ public class ErrorController {
      * Shows the missing csrf token error view.
      * @return missing csrf token error view
      */
-    @RequestMapping(value = "missingCsrfTokenError", method = RequestMethod.POST)
+    @PostMapping(value = "missingCsrfTokenError")
     public String missingCsrfTokenError() {
         return "common/error/missingCsrfTokenError";
     }

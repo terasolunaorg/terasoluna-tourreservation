@@ -29,8 +29,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
@@ -128,7 +128,7 @@ public class ManageReservationController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "{reserveNo}/update", method = RequestMethod.POST, params = "redo")
+    @PostMapping(value = "{reserveNo}/update", params = "redo")
     public String updateRedo(@PathVariable("reserveNo") String reserveNo,
             ManageReservationForm form, Model model) {
         Reserve reserve = reserveService.findOne(reserveNo);
@@ -142,7 +142,7 @@ public class ManageReservationController {
      * @return
      */
     @TransactionTokenCheck(value = "update", type = TransactionTokenType.BEGIN)
-    @RequestMapping(value = "{reserveNo}/update", method = RequestMethod.POST, params = "confirm")
+    @PostMapping(value = "{reserveNo}/update", params = "confirm")
     public String updateConfirm(@PathVariable("reserveNo") String reserveNo,
             @Validated ManageReservationForm form, BindingResult result,
             Model model) {
@@ -162,7 +162,7 @@ public class ManageReservationController {
      * @return
      */
     @TransactionTokenCheck(value = "update", type = TransactionTokenType.IN)
-    @RequestMapping(value = "{reserveNo}/update", method = RequestMethod.POST)
+    @PostMapping(value = "{reserveNo}/update")
     public String update(@PathVariable("reserveNo") String reserveNo,
             @Validated ManageReservationForm form, BindingResult result,
             Model model, RedirectAttributes redirectAttr) {
@@ -188,7 +188,7 @@ public class ManageReservationController {
         return "managereservation/updateComplete";
     }
 
-    @RequestMapping(value = "{reserveNo}/update", method = RequestMethod.POST, params = "backTolist")
+    @PostMapping(value = "{reserveNo}/update", params = "backTolist")
     public String updateBackList() {
         return "redirect:/reservations/me";
     }
@@ -204,7 +204,7 @@ public class ManageReservationController {
     }
 
     @TransactionTokenCheck(value = "cancel", type = TransactionTokenType.IN)
-    @RequestMapping(value = "{reserveNo}/cancel", method = RequestMethod.POST)
+    @PostMapping(value = "{reserveNo}/cancel")
     public String cancel(@PathVariable("reserveNo") String reserveNo,
             Model model, RedirectAttributes redirectAttr) {
         try {
@@ -227,7 +227,7 @@ public class ManageReservationController {
         return "managereservation/cancelComplete";
     }
 
-    @RequestMapping(value = "{reserveNo}/cancel", method = RequestMethod.POST, params = "backTolist")
+    @PostMapping(value = "{reserveNo}/cancel", params = "backTolist")
     public String backList() {
         return "redirect:/reservations/me";
     }
