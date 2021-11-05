@@ -16,8 +16,8 @@
 package org.terasoluna.tourreservation.app.menu;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,7 +30,7 @@ public class MenuController {
      * forward initial menu view.
      * @return menu view
      */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/")
     public String init() {
         log.info("initial view");
         return "menu/menu";

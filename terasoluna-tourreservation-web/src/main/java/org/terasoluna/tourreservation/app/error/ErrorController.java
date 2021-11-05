@@ -16,6 +16,7 @@
 package org.terasoluna.tourreservation.app.error;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,7 +28,7 @@ public class ErrorController {
      * Shows the access denied error view.
      * @return access denied error view
      */
-    @RequestMapping(value = "accessDeniedError", method = RequestMethod.GET)
+    @GetMapping(value = "accessDeniedError")
     public String accessDeniedError() {
         return "common/error/accessDeniedError";
     }

@@ -26,6 +26,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,7 +75,7 @@ public class ManageReservationController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "me", method = RequestMethod.GET)
+    @GetMapping(value = "me")
     public String list(
             @AuthenticationPrincipal ReservationUserDetails userDetails,
             Model model) {
@@ -90,7 +91,7 @@ public class ManageReservationController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "{reserveNo}", method = RequestMethod.GET)
+    @GetMapping(value = "{reserveNo}")
     public String detailForm(@PathVariable("reserveNo") String reserveNo,
             Model model) {
         ReservationDetailOutput output = manageReservationHelper.findDetail(
@@ -107,7 +108,7 @@ public class ManageReservationController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "{reserveNo}/update", method = RequestMethod.GET, params = "form")
+    @GetMapping(value = "{reserveNo}/update", params = "form")
     public String updateForm(@PathVariable("reserveNo") String reserveNo,
             ManageReservationForm form, Model model) {
 
@@ -182,7 +183,7 @@ public class ManageReservationController {
      * redirects to the update completion page
      * @return
      */
-    @RequestMapping(value = "{reserveNo}/update", method = RequestMethod.GET, params = "complete")
+    @GetMapping(value = "{reserveNo}/update", params = "complete")
     public String updateComplete() {
         return "managereservation/updateComplete";
     }
@@ -193,7 +194,7 @@ public class ManageReservationController {
     }
 
     @TransactionTokenCheck(value = "cancel", type = TransactionTokenType.BEGIN)
-    @RequestMapping(value = "{reserveNo}/cancel", method = RequestMethod.GET)
+    @GetMapping(value = "{reserveNo}/cancel")
     public String cancelConfirm(@PathVariable("reserveNo") String reserveNo,
             Model model) {
         ReservationDetailOutput output = manageReservationHelper.findDetail(
@@ -219,7 +220,7 @@ public class ManageReservationController {
      * redirects to the update completion page
      * @return
      */
-    @RequestMapping(value = "{reserveNo}/cancel", method = RequestMethod.GET, params = "complete")
+    @GetMapping(value = "{reserveNo}/cancel", params = "complete")
     public String cancelComplete(@PathVariable("reserveNo") String reserveNo,
             Model model) {
         model.addAttribute("reserveNo", reserveNo);
@@ -231,7 +232,7 @@ public class ManageReservationController {
         return "redirect:/reservations/me";
     }
 
-    @RequestMapping(value = "{reserveNo}/pdf", method = RequestMethod.GET)
+    @GetMapping(value = "{reserveNo}/pdf")
     public String downloadPDF(@PathVariable("reserveNo") String reserveNo,
             Model model, Locale locale) {
         DownloadPDFOutput downloadPDFOutput = manageReservationHelper.createPDF(

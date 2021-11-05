@@ -29,10 +29,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
@@ -91,7 +91,7 @@ public class SearchTourController {
      * clear session attributes and redirect to the search input view
      * @return redirect view for show the search input
      */
-    @RequestMapping(method = RequestMethod.GET, params = "initForm")
+    @GetMapping(params = "initForm")
     public String searchInitForm(SessionStatus status) {
         status.setComplete();
         return "redirect:/tours?form";
@@ -101,7 +101,7 @@ public class SearchTourController {
      * shows the search input view
      * @return search input view
      */
-    @RequestMapping(method = RequestMethod.GET, params = "form")
+    @GetMapping(params = "form")
     public String searchForm() {
         return "searchtour/searchForm";
     }
@@ -115,7 +115,7 @@ public class SearchTourController {
      * @param pageable
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String search(@Validated SearchTourForm searchTourForm,
             BindingResult result, Model model,
             @PageableDefault Pageable pageable) {

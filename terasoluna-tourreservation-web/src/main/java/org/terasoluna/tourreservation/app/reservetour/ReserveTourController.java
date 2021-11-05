@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,8 +63,7 @@ public class ReserveTourController {
      * @param model
      * @return
      */
-    @RequestMapping(value = { "{tourCode}",
-            "{tourCode}/reserve" }, method = RequestMethod.GET, params = "form")
+    @GetMapping(value = { "{tourCode}", "{tourCode}/reserve" }, params = "form")
     public String reserveForm(
             @AuthenticationPrincipal ReservationUserDetails userDetails,
             @PathVariable("tourCode") String tourCode, ReserveTourForm form,
@@ -141,7 +141,7 @@ public class ReserveTourController {
      * redirects to the reservation completion page
      * @return
      */
-    @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.GET, params = "complete")
+    @GetMapping(value = "{tourCode}/reserve", params = "complete")
     public String reserveComplete() {
         return "reservetour/reserveComplete";
     }

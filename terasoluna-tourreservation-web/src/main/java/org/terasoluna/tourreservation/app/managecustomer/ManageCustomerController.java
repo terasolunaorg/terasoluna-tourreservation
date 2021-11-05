@@ -23,6 +23,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -91,7 +92,7 @@ public class ManageCustomerController {
      * pre-initialization of form backed bean
      * @return
      */
-    @RequestMapping(value = "create", method = RequestMethod.GET, params = "form")
+    @GetMapping(value = "create", params = "form")
     public String createForm() {
         return "managecustomer/createForm";
     }
@@ -152,7 +153,7 @@ public class ManageCustomerController {
      * Redirected to the result page after registering a customer
      * @return
      */
-    @RequestMapping(value = "create", method = RequestMethod.GET, params = "complete")
+    @GetMapping(value = "create", params = "complete")
     public String createComplete() {
         return "managecustomer/createComplete";
     }
