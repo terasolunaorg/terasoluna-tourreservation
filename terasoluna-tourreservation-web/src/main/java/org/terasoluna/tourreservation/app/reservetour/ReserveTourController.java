@@ -22,10 +22,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
@@ -62,8 +63,7 @@ public class ReserveTourController {
      * @param model
      * @return
      */
-    @RequestMapping(value = { "{tourCode}",
-            "{tourCode}/reserve" }, method = RequestMethod.GET, params = "form")
+    @GetMapping(value = { "{tourCode}", "{tourCode}/reserve" }, params = "form")
     public String reserveForm(
             @AuthenticationPrincipal ReservationUserDetails userDetails,
             @PathVariable("tourCode") String tourCode, ReserveTourForm form,
@@ -86,7 +86,7 @@ public class ReserveTourController {
      * @return
      */
     @TransactionTokenCheck(value = "reserve", type = TransactionTokenType.BEGIN)
-    @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.POST, params = "confirm")
+    @PostMapping(value = "{tourCode}/reserve", params = "confirm")
     public String confirm(
             @AuthenticationPrincipal ReservationUserDetails userDetails,
             @PathVariable("tourCode") String tourCode,
@@ -113,7 +113,7 @@ public class ReserveTourController {
      * @return
      */
     @TransactionTokenCheck(value = "reserve", type = TransactionTokenType.IN)
-    @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.POST)
+    @PostMapping(value = "{tourCode}/reserve")
     public String reserve(
             @AuthenticationPrincipal ReservationUserDetails userDetails,
             @PathVariable("tourCode") String tourCode,
@@ -141,12 +141,12 @@ public class ReserveTourController {
      * redirects to the reservation completion page
      * @return
      */
-    @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.GET, params = "complete")
+    @GetMapping(value = "{tourCode}/reserve", params = "complete")
     public String reserveComplete() {
         return "reservetour/reserveComplete";
     }
 
-    @RequestMapping(value = "{tourCode}/reserve", method = RequestMethod.POST, params = "redo")
+    @PostMapping(value = "{tourCode}/reserve", params = "redo")
     public String reserveRedo(
             @AuthenticationPrincipal ReservationUserDetails userDetails,
             @PathVariable("tourCode") String tourCode, ReserveTourForm form,
