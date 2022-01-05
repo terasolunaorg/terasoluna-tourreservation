@@ -66,7 +66,7 @@ Alternatively, these project can also be imported into Eclipse and application c
 #### Test with selenium
 
 Install Firefox to run test.  
-[geckodriver](https://github.com/mozilla/geckodriver/releases) (`v0.23.0` recommended) placed in application execution environment and add to `PATH`.
+[geckodriver](https://github.com/mozilla/geckodriver/releases) (`v0.30.0` recommended) placed in application execution environment and add to `PATH`.
 
 Run test.
 
