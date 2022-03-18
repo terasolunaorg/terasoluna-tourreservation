@@ -5,8 +5,6 @@ This application shows **how an IDEAL project configuration and package structur
 
 **This sample uses Spring Data JPA.**
 
-* 5.7.x [![Build Status for 5.7.x](https://travis-ci.org/terasolunaorg/terasoluna-tourreservation.svg?branch=5.7.x)](https://travis-ci.org/terasolunaorg/terasoluna-tourreservation)
-
 ### Getting started
 
 #### Download
