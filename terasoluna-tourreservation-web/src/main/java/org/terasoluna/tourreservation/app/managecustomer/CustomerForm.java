@@ -88,6 +88,7 @@ public class CustomerForm implements Serializable {
     private String customerPost;
 
     @NotEmpty
+    @Size(min = 1, max = 300)
     private String customerAdd;
 
     @Override
