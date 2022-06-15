@@ -17,7 +17,7 @@ package org.terasoluna.tourreservation.app.managereservation;
 
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
-import java.time.LocalDateTime;
+
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -41,6 +41,8 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
     private static final int REFERENCE_NAME_MAXIMUM_VALUE_WITH_NORMAL_FONTSIZE = 30;
 
     private static final float REFERENCE_NAME_VARIABLE_FONTSIZE = 8.0F;
+
+    private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("uuuu/MM/dd");
 
     @Value("${reservation.reportPdfUrl}")
     String reservationReportPdfUrl;
@@ -127,7 +129,6 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
     }
     
     private String date2LocalDateString(final Date date) {
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("uuuu/MM/dd");
         return date == null ? ""
                 : fmt.format(Instant.ofEpochMilli(date.getTime()).atZone(ZoneId
                         .systemDefault()).toLocalDateTime());
