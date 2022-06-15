@@ -17,6 +17,7 @@ package org.terasoluna.tourreservation.app.managereservation;
 
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -127,8 +128,8 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
     
     private String date2LocalDateString(final Date date) {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("uuuu/MM/dd");
-        return date==null ? "" : fmt.format(Instant.ofEpochMilli(date.getTime())
-                .atZone(ZoneId.systemDefault())
-                .toLocalDateTime());
+        return date == null ? ""
+                : fmt.format(Instant.ofEpochMilli(date.getTime()).atZone(ZoneId
+                        .systemDefault()).toLocalDateTime());
     }
 }
