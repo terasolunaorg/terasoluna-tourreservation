@@ -53,11 +53,12 @@ public class ReservationReportPdfStamperViewTest {
     private static final float REFERENCE_NAME_VARIABLE_FONTSIZE = 8.0F;
 
     private static final float REFERENCE_NAME_DEFAULT_FONTSIZE = 10.5F;
+    
+    private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("uuuu/MM/dd");
 
     ReservationReportPdfStamperView reservationReportPdfStamperView;
     
     private Date dateString2Date(final String dateString) {
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("uuuu/MM/dd");
         LocalDate localDate = LocalDate.parse(dateString, fmt);
         
         return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
