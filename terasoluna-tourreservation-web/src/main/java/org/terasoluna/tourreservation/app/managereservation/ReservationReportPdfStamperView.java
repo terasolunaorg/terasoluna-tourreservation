@@ -17,7 +17,6 @@ package org.terasoluna.tourreservation.app.managereservation;
 
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -42,8 +41,6 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
     private static final float REFERENCE_NAME_VARIABLE_FONTSIZE = 8.0F;
 
-    private DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-    
     @Value("${reservation.reportPdfUrl}")
     String reservationReportPdfUrl;
 
@@ -82,21 +79,20 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
         form.setField("customerTel", downloadPDFOutput.getCustomerTel());
         form.setField("adultUnitPrice", String.valueOf(downloadPDFOutput
                 .getAdultUnitPrice()));
-        form.setField("reservedDay", fmt.format(date2LocalDate(downloadPDFOutput
-                .getReservedDay())));
+        form.setField("reservedDay", date2LocalDateString(downloadPDFOutput
+                .getReservedDay()));
         form.setField("conductor", downloadPDFOutput.getConductor());
         form.setField("tourAbs", downloadPDFOutput.getTourAbs());
         form.setField("customerAdd", downloadPDFOutput.getCustomerAdd());
         form.setField("customerJob", downloadPDFOutput.getCustomerJob());
         form.setField("tourDays", downloadPDFOutput.getTourDays());
-        form.setField("depDay", fmt.format(date2LocalDate(downloadPDFOutput
-                .getDepDay())));
+        form.setField("depDay", date2LocalDateString(downloadPDFOutput.getDepDay()));
         form.setField("customerName", downloadPDFOutput.getCustomerName());
         form.setField("childUnitPrice", String.valueOf(downloadPDFOutput
                 .getChildUnitPrice()));
         form.setField("depName", downloadPDFOutput.getDepName());
-        form.setField("customerBirth", fmt.format(date2LocalDate(downloadPDFOutput
-                .getCustomerBirth())));
+        form.setField("customerBirth", date2LocalDateString(downloadPDFOutput
+                .getCustomerBirth()));
         form.setField("arrName", downloadPDFOutput.getArrName());
         form.setField("customerMail", downloadPDFOutput.getCustomerMail());
         form.setField("adultCount", String.valueOf(downloadPDFOutput
@@ -106,8 +102,7 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
         form.setField("remarks", downloadPDFOutput.getRemarks());
         form.setField("accomTel", downloadPDFOutput.getAccomTel());
         form.setField("customerPost", downloadPDFOutput.getCustomerPost());
-        form.setField("printDay", fmt.format(date2LocalDate(downloadPDFOutput
-                .getPrintDay())));
+        form.setField("printDay", date2LocalDateString(downloadPDFOutput.getPrintDay()));
         form.setField("adultPrice", String.valueOf(downloadPDFOutput
                 .getAdultPrice()));
         form.setField("childPrice", String.valueOf(downloadPDFOutput
@@ -130,9 +125,10 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
     }
     
-    private LocalDate date2LocalDate(final Date date) {
-        return date != null ? Instant.ofEpochMilli(date.getTime())
+    private String date2LocalDateString(final Date date) {
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+        return date==null ? "" : fmt.format(Instant.ofEpochMilli(date.getTime())
                 .atZone(ZoneId.systemDefault())
-                .toLocalDate() : null;
+                .toLocalDateTime());
     }
 }

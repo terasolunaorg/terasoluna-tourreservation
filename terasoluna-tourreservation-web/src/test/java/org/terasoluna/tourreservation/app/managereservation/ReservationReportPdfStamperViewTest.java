@@ -21,7 +21,11 @@ import static org.junit.Assert.fail;
 
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,6 +37,7 @@ import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.util.ReflectionTestUtils;
+import org.terasoluna.tourreservation.app.common.constants.MessageId;
 
 import com.lowagie.text.pdf.AcroFields;
 import com.lowagie.text.pdf.PdfDictionary;
@@ -41,8 +46,6 @@ import com.lowagie.text.pdf.PdfStamper;
 import com.lowagie.text.pdf.TextField;
 
 public class ReservationReportPdfStamperViewTest {
-
-    private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy/MM/dd");
 
     private static final int OUTPUT_BYTE_ARRAY_INITIAL_SIZE = 4096;
 
@@ -53,6 +56,13 @@ public class ReservationReportPdfStamperViewTest {
     private static final float REFERENCE_NAME_DEFAULT_FONTSIZE = 10.5F;
 
     ReservationReportPdfStamperView reservationReportPdfStamperView;
+    
+    private Date dateString2Date(final String dateString) {
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+        LocalDate localDate = LocalDate.parse(dateString, fmt);
+        
+        return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+    }
 
     @Before
     public void setUp() throws Exception {
@@ -103,10 +113,10 @@ public class ReservationReportPdfStamperViewTest {
         downloadPDFOutput.setChildPrice(112500);
         downloadPDFOutput.setSumPrice(487500);
         downloadPDFOutput.setPaymentTimeLimit("2019/03/24");
-        downloadPDFOutput.setReservedDay(SDF.parse("2019/02/21"));
-        downloadPDFOutput.setDepDay(SDF.parse("2019/03/31"));
-        downloadPDFOutput.setCustomerBirth(SDF.parse("1975/01/05"));
-        downloadPDFOutput.setPrintDay(SDF.parse("2019/03/06"));
+        downloadPDFOutput.setReservedDay(dateString2Date("2019/02/21"));
+        downloadPDFOutput.setDepDay(dateString2Date("2019/03/31"));
+        downloadPDFOutput.setCustomerBirth(dateString2Date("1975/01/05"));
+        downloadPDFOutput.setPrintDay(dateString2Date("2019/03/06"));
 
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("downloadPDFOutput", downloadPDFOutput);
@@ -190,10 +200,10 @@ public class ReservationReportPdfStamperViewTest {
 
         DownloadPDFOutput downloadPDFOutput = new DownloadPDFOutput();
         downloadPDFOutput.setReferenceName("TERASOLUNA TRAVEL");
-        downloadPDFOutput.setReservedDay(SDF.parse("2019/02/21"));
-        downloadPDFOutput.setDepDay(SDF.parse("2019/03/31"));
-        downloadPDFOutput.setCustomerBirth(SDF.parse("1975/01/05"));
-        downloadPDFOutput.setPrintDay(SDF.parse("2019/03/06"));
+        downloadPDFOutput.setReservedDay(dateString2Date("2019/02/21"));
+        downloadPDFOutput.setDepDay(dateString2Date("2019/03/31"));
+        downloadPDFOutput.setCustomerBirth(dateString2Date("1975/01/05"));
+        downloadPDFOutput.setPrintDay(dateString2Date("2019/03/06"));
 
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("downloadPDFOutput", downloadPDFOutput);
