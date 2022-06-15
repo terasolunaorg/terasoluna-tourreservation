@@ -22,7 +22,7 @@ import static org.junit.Assert.fail;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -37,7 +37,6 @@ import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.util.ReflectionTestUtils;
-import org.terasoluna.tourreservation.app.common.constants.MessageId;
 
 import com.lowagie.text.pdf.AcroFields;
 import com.lowagie.text.pdf.PdfDictionary;
