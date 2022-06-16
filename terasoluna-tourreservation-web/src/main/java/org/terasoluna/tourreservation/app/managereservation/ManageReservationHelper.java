@@ -15,7 +15,9 @@
  */
 package org.terasoluna.tourreservation.app.managereservation;
 
-import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -159,10 +161,12 @@ public class ManageReservationHelper {
             paymentTimeLimit = getMessage(
                     MessageId.LABEL_TR_MANAGERESERVATION_DONE, locale);
         } else {
-            SimpleDateFormat sdf = new SimpleDateFormat(getMessage(
-                    MessageId.LABEL_TR_COMMON_DATEPATTERN, locale));
-            paymentTimeLimit = sdf.format(reserveDetailOutput
-                    .getPaymentTimeLimit());
+            DateTimeFormatter fmt = DateTimeFormatter.ofPattern(
+                    getMessage(MessageId.LABEL_TR_COMMON_DATEPATTERN, locale));
+
+            paymentTimeLimit = reserveDetailOutput.getPaymentTimeLimit() == null ? ""
+                    : fmt.format(Instant.ofEpochMilli(reserveDetailOutput.getPaymentTimeLimit().getTime())
+                            .atZone(ZoneId.systemDefault()).toLocalDateTime());
         }
 
         DownloadPDFOutput downloadPDFOutput = new DownloadPDFOutput();
