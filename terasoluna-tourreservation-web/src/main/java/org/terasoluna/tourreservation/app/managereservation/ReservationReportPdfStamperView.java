@@ -42,7 +42,7 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
 
     private static final float REFERENCE_NAME_VARIABLE_FONTSIZE = 8.0F;
 
-    private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+    private static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("uuuu/MM/dd");
 
     @Value("${reservation.reportPdfUrl}")
     String reservationReportPdfUrl;
@@ -130,7 +130,7 @@ public class ReservationReportPdfStamperView extends AbstractPdfStamperView {
     
     private String date2LocalDateString(final Date date) {
         return date == null ? ""
-                : fmt.format(Instant.ofEpochMilli(date.getTime()).atZone(ZoneId
+                : FMT.format(Instant.ofEpochMilli(date.getTime()).atZone(ZoneId
                         .systemDefault()).toLocalDateTime());
     }
 }
