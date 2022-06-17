@@ -203,10 +203,18 @@ public class CustomerRegisterValidateTest extends FunctionTestSupport {
         // go to confirm screen
         driver.findElement(By.id("confirmBtn")).click();
 
-        assertEquals(getMessage(
+        assertTrue(multiMessageAssert(getMessage(
                 MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_NOTEMPTY_MESSAGE)
-                        .replace("{0}", getMessage(MessageKeys.CUSTOMERADD)),
-                driver.findElement(By.id("customerForm.errors")).getText());
+                        .replace("{0}", getMessage(MessageKeys.CUSTOMERADD))
+                + "\n" + getMessage(
+                        MessageKeys.JAVAX_VALIDATION_CONSTRAINTS_SIZE_MESSAGE)
+                                .replace("{0}", getMessage(
+                                        MessageKeys.CUSTOMERADD)).replace(
+                                                "{min}", "1").replace("{max}",
+                                                        "300") + "\n"
+                + getMessage(MessageKeys.NOTEQUALS_CUSTOMERPASS), driver
+                        .findElement(By.id("customerForm.errors")).getText(),
+                "\n"));
 
         // input new customer
         driver.findElement(By.id("customerKana")).clear();
