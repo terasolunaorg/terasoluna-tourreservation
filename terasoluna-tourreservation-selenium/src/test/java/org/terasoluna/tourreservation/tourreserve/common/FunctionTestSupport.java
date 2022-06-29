@@ -18,9 +18,9 @@ package org.terasoluna.tourreservation.tourreserve.common;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -49,7 +49,7 @@ public abstract class FunctionTestSupport extends ApplicationObjectSupport {
 
     @Before
     public void setUp() {
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.get(applicationContextUrl + "?locale=" + locale.getLanguage());
     }
 
