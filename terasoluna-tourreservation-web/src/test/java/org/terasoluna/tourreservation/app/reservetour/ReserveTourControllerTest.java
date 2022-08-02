@@ -29,7 +29,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.security.web.context.SecurityContextPersistenceFilter;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.context.SecurityContextHolderFilter;
 import org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -66,7 +67,9 @@ public class ReserveTourControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(reserveTourController)
                 .setCustomArgumentResolvers(
                         new AuthenticationPrincipalArgumentResolver())
-                .addFilters(new SecurityContextPersistenceFilter()).build();
+                .addFilters(
+                        new SecurityContextHolderFilter(new HttpSessionSecurityContextRepository()))
+                .build();
     }
 
     @Test
